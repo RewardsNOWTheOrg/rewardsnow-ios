@@ -8,6 +8,11 @@
 
 #import "AFHTTPClient.h"
 
+typedef void (^RNResultCallback)(id result);
+
 @interface RNWebService : AFHTTPClient
+
++ (instancetype)sharedClient;
+- (void)getRewards:(NSString *)tipFirst WithCallback:(RNResultCallback)callback;
 
 @end
