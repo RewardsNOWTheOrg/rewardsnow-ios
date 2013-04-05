@@ -7,6 +7,9 @@
 //
 
 #import "RNAboutViewController.h"
+#import "RNAboutQAViewController.h"
+#import "RNAboutRulesViewController.h"
+#import "RNAboutEarningViewController.h"
 
 @interface RNAboutViewController ()
 
@@ -14,25 +17,54 @@
 
 @implementation RNAboutViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITableView Methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    cell.textLabel.text = @[@"Q&A", @"Program Rules", @"Earning Points"][indexPath.row];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UIViewController *vc;
+    switch (indexPath.row) {
+        case 0:
+            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutQAViewController"];
+            break;
+        case 1:
+            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutRulesViewController"];
+            break;
+        default:
+            vc = vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutEarningViewController"];
+            break;
+    }
+    
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 @end

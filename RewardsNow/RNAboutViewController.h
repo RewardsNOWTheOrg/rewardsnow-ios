@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNAboutViewController : UIViewController
+@interface RNAboutViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
