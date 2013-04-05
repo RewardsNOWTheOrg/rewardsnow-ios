@@ -7,8 +7,13 @@
 //
 
 #import "RNRedeemViewController.h"
+#import "RNRedeemCell.h"
+#import "RNWebService.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface RNRedeemViewController ()
+
+@property (nonatomic, strong) NSArray *rewards;
 
 @end
 
@@ -17,6 +22,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.rewards = [NSArray array];
+    
+    ///
+    /// On View Load, get the information
+    ///
+    [[RNWebService sharedClient] getRewards:@"241" WithCallback:^(id result) {
+        if (result) {
+            self.rewards = result;
+            [self.tableView reloadData];
+        } else {
+            DLog(@"Error!!");
+        }
+    }];
 
 }
 
@@ -31,14 +49,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return [self.rewards count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *CellIdentifier = @"RedeemCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.textLabel.text = @"Woot";
+    RNRedeemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", [self.rewards[indexPath.row][@"CashValue"] integerValue]];
+    cell.redeemBottomLabel.text = self.rewards[indexPath.row][@"CatagoryDesc"];
+    [cell.redeemImage setImageWithURL:[NSURL URLWithString:[self.rewards[indexPath.row][@"Image"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
     return cell;
 }
