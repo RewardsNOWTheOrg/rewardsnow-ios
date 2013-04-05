@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA53FE34170F5D6A00041748 /* RNRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */; };
+		AA53FE37170F5D7E00041748 /* RNRedeemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */; };
+		AA53FE3B170F5D9200041748 /* RNLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE3A170F5D9200041748 /* RNLocalViewController.m */; };
+		AA53FE3E170F5DA200041748 /* RNLocalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE3D170F5DA200041748 /* RNLocalDetailViewController.m */; };
+		AA53FE41170F5DEA00041748 /* RNLocalMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE40170F5DEA00041748 /* RNLocalMapViewController.m */; };
+		AA53FE44170F5DF900041748 /* RNAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE43170F5DF900041748 /* RNAccountViewController.m */; };
+		AA53FE47170F5E3200041748 /* RNAccountEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE46170F5E3200041748 /* RNAccountEditViewController.m */; };
+		AA53FE4A170F5E4300041748 /* RNAccountEditPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE49170F5E4300041748 /* RNAccountEditPasswordViewController.m */; };
+		AA53FE4D170F5E5D00041748 /* RNAccountStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE4C170F5E5C00041748 /* RNAccountStatementViewController.m */; };
+		AA53FE50170F5E8C00041748 /* RNAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE4F170F5E8C00041748 /* RNAboutViewController.m */; };
+		AA53FE53170F5EA100041748 /* RNAboutEarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE52170F5EA100041748 /* RNAboutEarningViewController.m */; };
+		AA53FE56170F5EAA00041748 /* RNAboutRulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE55170F5EAA00041748 /* RNAboutRulesViewController.m */; };
+		AA53FE59170F5EB800041748 /* RNAboutQAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE58170F5EB800041748 /* RNAboutQAViewController.m */; };
 		AA5510A2170F10A3001CC718 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5510A1170F10A3001CC718 /* UIKit.framework */; };
 		AA5510A4170F10A3001CC718 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5510A3170F10A3001CC718 /* Foundation.framework */; };
 		AA5510A6170F10A3001CC718 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5510A5170F10A3001CC718 /* CoreGraphics.framework */; };
@@ -41,6 +54,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA53FE32170F5D6A00041748 /* RNRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemViewController.h; sourceTree = "<group>"; };
+		AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRedeemViewController.m; sourceTree = "<group>"; };
+		AA53FE35170F5D7E00041748 /* RNRedeemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemDetailViewController.h; sourceTree = "<group>"; };
+		AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRedeemDetailViewController.m; sourceTree = "<group>"; };
+		AA53FE39170F5D9200041748 /* RNLocalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLocalViewController.h; sourceTree = "<group>"; };
+		AA53FE3A170F5D9200041748 /* RNLocalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLocalViewController.m; sourceTree = "<group>"; };
+		AA53FE3C170F5DA200041748 /* RNLocalDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLocalDetailViewController.h; sourceTree = "<group>"; };
+		AA53FE3D170F5DA200041748 /* RNLocalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLocalDetailViewController.m; sourceTree = "<group>"; };
+		AA53FE3F170F5DEA00041748 /* RNLocalMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLocalMapViewController.h; sourceTree = "<group>"; };
+		AA53FE40170F5DEA00041748 /* RNLocalMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLocalMapViewController.m; sourceTree = "<group>"; };
+		AA53FE42170F5DF900041748 /* RNAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountViewController.h; sourceTree = "<group>"; };
+		AA53FE43170F5DF900041748 /* RNAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountViewController.m; sourceTree = "<group>"; };
+		AA53FE45170F5E3200041748 /* RNAccountEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountEditViewController.h; sourceTree = "<group>"; };
+		AA53FE46170F5E3200041748 /* RNAccountEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountEditViewController.m; sourceTree = "<group>"; };
+		AA53FE48170F5E4300041748 /* RNAccountEditPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountEditPasswordViewController.h; sourceTree = "<group>"; };
+		AA53FE49170F5E4300041748 /* RNAccountEditPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountEditPasswordViewController.m; sourceTree = "<group>"; };
+		AA53FE4B170F5E5C00041748 /* RNAccountStatementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountStatementViewController.h; sourceTree = "<group>"; };
+		AA53FE4C170F5E5C00041748 /* RNAccountStatementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountStatementViewController.m; sourceTree = "<group>"; };
+		AA53FE4E170F5E8C00041748 /* RNAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAboutViewController.h; sourceTree = "<group>"; };
+		AA53FE4F170F5E8C00041748 /* RNAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAboutViewController.m; sourceTree = "<group>"; };
+		AA53FE51170F5EA100041748 /* RNAboutEarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAboutEarningViewController.h; sourceTree = "<group>"; };
+		AA53FE52170F5EA100041748 /* RNAboutEarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAboutEarningViewController.m; sourceTree = "<group>"; };
+		AA53FE54170F5EAA00041748 /* RNAboutRulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAboutRulesViewController.h; sourceTree = "<group>"; };
+		AA53FE55170F5EAA00041748 /* RNAboutRulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAboutRulesViewController.m; sourceTree = "<group>"; };
+		AA53FE57170F5EB800041748 /* RNAboutQAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAboutQAViewController.h; sourceTree = "<group>"; };
+		AA53FE58170F5EB800041748 /* RNAboutQAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAboutQAViewController.m; sourceTree = "<group>"; };
 		AA55109E170F10A3001CC718 /* RewardsNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RewardsNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5510A1170F10A3001CC718 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA5510A3170F10A3001CC718 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,6 +134,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA53FE38170F5D8400041748 /* Local Deals */ = {
+			isa = PBXGroup;
+			children = (
+				AA53FE39170F5D9200041748 /* RNLocalViewController.h */,
+				AA53FE3A170F5D9200041748 /* RNLocalViewController.m */,
+				AA53FE3C170F5DA200041748 /* RNLocalDetailViewController.h */,
+				AA53FE3D170F5DA200041748 /* RNLocalDetailViewController.m */,
+				AA53FE3F170F5DEA00041748 /* RNLocalMapViewController.h */,
+				AA53FE40170F5DEA00041748 /* RNLocalMapViewController.m */,
+			);
+			name = "Local Deals";
+			sourceTree = "<group>";
+		};
+		AA53FE5A170F5EFE00041748 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				AA53FE5C170F5F2200041748 /* Edit */,
+				AA53FE42170F5DF900041748 /* RNAccountViewController.h */,
+				AA53FE43170F5DF900041748 /* RNAccountViewController.m */,
+				AA53FE4B170F5E5C00041748 /* RNAccountStatementViewController.h */,
+				AA53FE4C170F5E5C00041748 /* RNAccountStatementViewController.m */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		AA53FE5B170F5F1500041748 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				AA53FE4E170F5E8C00041748 /* RNAboutViewController.h */,
+				AA53FE4F170F5E8C00041748 /* RNAboutViewController.m */,
+				AA53FE51170F5EA100041748 /* RNAboutEarningViewController.h */,
+				AA53FE52170F5EA100041748 /* RNAboutEarningViewController.m */,
+				AA53FE54170F5EAA00041748 /* RNAboutRulesViewController.h */,
+				AA53FE55170F5EAA00041748 /* RNAboutRulesViewController.m */,
+				AA53FE57170F5EB800041748 /* RNAboutQAViewController.h */,
+				AA53FE58170F5EB800041748 /* RNAboutQAViewController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		AA53FE5C170F5F2200041748 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				AA53FE45170F5E3200041748 /* RNAccountEditViewController.h */,
+				AA53FE46170F5E3200041748 /* RNAccountEditViewController.m */,
+				AA53FE48170F5E4300041748 /* RNAccountEditPasswordViewController.h */,
+				AA53FE49170F5E4300041748 /* RNAccountEditPasswordViewController.m */,
+			);
+			name = Edit;
+			sourceTree = "<group>";
+		};
 		AA551095170F10A3001CC718 = {
 			isa = PBXGroup;
 			children = (
@@ -128,17 +218,16 @@
 		AA5510A7170F10A3001CC718 /* RewardsNow */ = {
 			isa = PBXGroup;
 			children = (
-				AA5510B0170F10A3001CC718 /* RNAppDelegate.h */,
-				AA5510B1170F10A3001CC718 /* RNAppDelegate.m */,
-				AA5510B9170F10A3001CC718 /* MainStoryboard.storyboard */,
+				AA5510E9170F114C001CC718 /* App Delegates */,
+				AA5510E8170F1145001CC718 /* StoryBoard */,
+				AA5510EA170F1155001CC718 /* Redeem */,
+				AA53FE38170F5D8400041748 /* Local Deals */,
+				AA53FE5A170F5EFE00041748 /* Account */,
+				AA53FE5B170F5F1500041748 /* About */,
 				AA5510BC170F10A3001CC718 /* RNFirstViewController.h */,
 				AA5510BD170F10A3001CC718 /* RNFirstViewController.m */,
-				AA5510BF170F10A3001CC718 /* first.png */,
-				AA5510C1170F10A3001CC718 /* first@2x.png */,
 				AA5510C3170F10A3001CC718 /* RNSecondViewController.h */,
 				AA5510C4170F10A3001CC718 /* RNSecondViewController.m */,
-				AA5510C6170F10A3001CC718 /* second.png */,
-				AA5510C8170F10A3001CC718 /* second@2x.png */,
 				AA5510A8170F10A3001CC718 /* Supporting Files */,
 			);
 			path = RewardsNow;
@@ -147,6 +236,7 @@
 		AA5510A8170F10A3001CC718 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA5510E7170F1134001CC718 /* Images */,
 				AA5510A9170F10A3001CC718 /* RewardsNow-Info.plist */,
 				AA5510AA170F10A3001CC718 /* InfoPlist.strings */,
 				AA5510AD170F10A3001CC718 /* main.m */,
@@ -175,6 +265,45 @@
 				AA5510D9170F10A3001CC718 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA5510E7170F1134001CC718 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AA5510BF170F10A3001CC718 /* first.png */,
+				AA5510C1170F10A3001CC718 /* first@2x.png */,
+				AA5510C6170F10A3001CC718 /* second.png */,
+				AA5510C8170F10A3001CC718 /* second@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		AA5510E8170F1145001CC718 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				AA5510B9170F10A3001CC718 /* MainStoryboard.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		AA5510E9170F114C001CC718 /* App Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				AA5510B0170F10A3001CC718 /* RNAppDelegate.h */,
+				AA5510B1170F10A3001CC718 /* RNAppDelegate.m */,
+			);
+			name = "App Delegates";
+			sourceTree = "<group>";
+		};
+		AA5510EA170F1155001CC718 /* Redeem */ = {
+			isa = PBXGroup;
+			children = (
+				AA53FE32170F5D6A00041748 /* RNRedeemViewController.h */,
+				AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */,
+				AA53FE35170F5D7E00041748 /* RNRedeemDetailViewController.h */,
+				AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */,
+			);
+			name = Redeem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +425,19 @@
 				AA5510B2170F10A3001CC718 /* RNAppDelegate.m in Sources */,
 				AA5510BE170F10A3001CC718 /* RNFirstViewController.m in Sources */,
 				AA5510C5170F10A3001CC718 /* RNSecondViewController.m in Sources */,
+				AA53FE34170F5D6A00041748 /* RNRedeemViewController.m in Sources */,
+				AA53FE37170F5D7E00041748 /* RNRedeemDetailViewController.m in Sources */,
+				AA53FE3B170F5D9200041748 /* RNLocalViewController.m in Sources */,
+				AA53FE3E170F5DA200041748 /* RNLocalDetailViewController.m in Sources */,
+				AA53FE41170F5DEA00041748 /* RNLocalMapViewController.m in Sources */,
+				AA53FE44170F5DF900041748 /* RNAccountViewController.m in Sources */,
+				AA53FE47170F5E3200041748 /* RNAccountEditViewController.m in Sources */,
+				AA53FE4A170F5E4300041748 /* RNAccountEditPasswordViewController.m in Sources */,
+				AA53FE4D170F5E5D00041748 /* RNAccountStatementViewController.m in Sources */,
+				AA53FE50170F5E8C00041748 /* RNAboutViewController.m in Sources */,
+				AA53FE53170F5EA100041748 /* RNAboutEarningViewController.m in Sources */,
+				AA53FE56170F5EAA00041748 /* RNAboutRulesViewController.m in Sources */,
+				AA53FE59170F5EB800041748 /* RNAboutQAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +618,7 @@
 				AA5510E3170F10A3001CC718 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA5510E4170F10A3001CC718 /* Build configuration list for PBXNativeTarget "RewardsNowTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +627,7 @@
 				AA5510E6170F10A3001CC718 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
