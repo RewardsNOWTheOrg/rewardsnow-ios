@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define C(color) (float)color/255.0
+
 @interface RNConstants : NSCache
 
 @end
