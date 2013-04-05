@@ -23,23 +23,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.rewards = [NSArray array];
-    
-    ///
-    /// On View Load, get the information
-    ///
-    [[RNWebService sharedClient] getRewards:@"241" WithCallback:^(id result) {
-        if (result) {
-            self.rewards = result;
-            [self.tableView reloadData];
-        } else {
-            DLog(@"Error!!");
-        }
-    }];
-
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    [refreshControl beginRefreshing];
+    [self refresh:refreshControl];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)refresh:(UIRefreshControl *)sender {
+    [[RNWebService sharedClient] getRewards:@"241" WithCallback:^(id result) {
+        if (result) {
+            self.rewards = result;
+            [self.tableView reloadData];
+            [sender endRefreshing];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil] show];
+        }
+        [sender endRefreshing];
+    }];
 }
 
 #pragma mark - UITableView Methods
