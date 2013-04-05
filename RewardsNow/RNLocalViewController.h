@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNLocalViewController : UIViewController
+@interface RNLocalViewController : UITableViewController
 
 @end
