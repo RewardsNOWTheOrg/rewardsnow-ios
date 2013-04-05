@@ -7,13 +7,31 @@
 //
 
 #import "RNAppDelegate.h"
+#import "RNConstants.h"
 
 @implementation RNAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:C(19) green:C(149) blue:C(207) alpha:1.0]];
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar-background.png"]];
+    [[UITabBar appearance] setShadowImage:[UIImage imageNamed:@"tabbar-shadow.png"]];
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:C(19) green:C(149) blue:C(207) alpha:1.0]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar-background.png"] forBarMetrics:UIBarMetricsDefault];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateHighlighted];
+
+    
+    
     return YES;
+}
+
+void uncaughtExceptionHandler(NSException *exception) {
+    NSLog(@"CRASH: %@", exception);
+    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
