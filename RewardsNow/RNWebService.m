@@ -12,7 +12,7 @@
 
 NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/FacadeService.svc/";
 NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3eb07bc74d5bc081";
-NSString *const kResultsKey = @"Results";
+NSString *const kResultsKey = @"Result";
 
 @implementation RNWebService
 
@@ -48,6 +48,8 @@ NSString *const kResultsKey = @"Results";
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);
                                                                                      
                                                                                      callback([JSON objectForKey:kResultsKey]);
                                                                                      
