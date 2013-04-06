@@ -8,6 +8,7 @@
 
 #import "RNWebService.h"
 #import "AFJSONRequestOperation.h"
+#import "RNRedeemObject.h"
 
 
 NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/FacadeService.svc/";
@@ -49,9 +50,12 @@ NSString *const kResultsKey = @"Result";
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      
-                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     NSMutableArray *toReturn = [NSMutableArray array];
+                                                                                     for (NSDictionary *d in [JSON objectForKey:kResultsKey]) {
+                                                                                         [toReturn addObject:[[RNRedeemObject alloc] initWithDictionary:d]];
+                                                                                     }
                                                                                      
-                                                                                     callback([JSON objectForKey:kResultsKey]);
+                                                                                     callback(toReturn);
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      DLog(@"FAILURE: %@", error);
