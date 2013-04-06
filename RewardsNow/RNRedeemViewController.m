@@ -41,7 +41,7 @@
             [self.tableView reloadData];
             [sender endRefreshing];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
         }
         [sender endRefreshing];
     }];
@@ -64,8 +64,18 @@
     
     cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", [self.rewards[indexPath.row][@"CashValue"] integerValue]];
     cell.redeemBottomLabel.text = self.rewards[indexPath.row][@"CatagoryDesc"];
-    [cell.redeemImage setImageWithURL:[NSURL URLWithString:[self.rewards[indexPath.row][@"Image"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    cell.redeemImage.contentMode = UIViewContentModeScaleAspectFit;
     
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[self.rewards[indexPath.row][@"Image"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
+    
+    [cell.redeemImage setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        
+        cell.redeemImage.image = image;
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        DLog(@"Failed to get image!");
+    }];
+
     return cell;
 }
 
