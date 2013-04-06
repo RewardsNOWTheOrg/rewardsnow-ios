@@ -8,13 +8,6 @@
 
 #import "RNConstants.h"
 
-
-NSString *const CatagoryDescKey = @"CatagoryDesc";
-NSString *const CashValueKey = @"CashValue";
-NSString *const ImageKey = @"Image";
-NSString *const ImageObjectKey = @"ImageObject";
-NSString *const DescriptionKey = @"Description";
-
 @implementation RNConstants
 
 @end
