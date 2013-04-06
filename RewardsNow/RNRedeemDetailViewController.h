@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class RNRedeemObject;
+
 @interface RNRedeemDetailViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UILabel *redeemBottomLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UIView *descriptionView;
+@property (weak, nonatomic) IBOutlet UILabel *redeemTopLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *redeemImage;
+
+@property (nonatomic, strong) RNRedeemObject *info;
+
 
 @end
