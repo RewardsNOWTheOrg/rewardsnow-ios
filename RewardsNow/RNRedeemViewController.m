@@ -10,6 +10,9 @@
 #import "RNRedeemCell.h"
 #import "RNWebService.h"
 #import "UIImageView+AFNetworking.h"
+#import "RNConstants.h"
+#import "RNRedeemDetailViewController.h"
+#import "RNRedeemObject.h"
 
 @interface RNRedeemViewController ()
 
@@ -62,16 +65,16 @@
     
     RNRedeemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", [self.rewards[indexPath.row][@"CashValue"] integerValue]];
-    cell.redeemBottomLabel.text = self.rewards[indexPath.row][@"CatagoryDesc"];
+    cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", (NSInteger)[self.rewards[indexPath.row] cashValue]];
+    cell.redeemBottomLabel.text = [self.rewards[indexPath.row] catagoryDescription];
     cell.redeemImage.contentMode = UIViewContentModeScaleAspectFit;
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[self.rewards[indexPath.row][@"Image"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[[self.rewards[indexPath.row] imageURL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
     
     [cell.redeemImage setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        
         cell.redeemImage.image = image;
+        [self.rewards[indexPath.row] setImage:image];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         DLog(@"Failed to get image!");
     }];
@@ -81,6 +84,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    if ([[segue identifier] isEqualToString:@"RedeemCellPush"]) {
+        RNRedeemDetailViewController *detail = [segue destinationViewController];
+        detail.info = self.rewards[indexPath.row];
+    }
 }
 
 @end
