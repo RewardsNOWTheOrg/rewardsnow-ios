@@ -10,4 +10,13 @@
 
 @implementation RNObject
 
+
+- (id)initWithDictionary:(NSDictionary *)dict {
+    
+    if ( (self = [super init]) ) {
+        
+    }
+    return self;
+}
+
 @end

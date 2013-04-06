@@ -10,4 +10,6 @@
 
 @interface RNObject : NSObject
 
+- (id)initWithDictionary:(NSDictionary *)dict;
+
 @end
