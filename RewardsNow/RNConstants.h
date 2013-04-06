@@ -10,6 +10,11 @@
 
 #define C(color) (float)color/255.0
 
+FOUNDATION_EXPORT NSString *const CatagoryDescKey;
+FOUNDATION_EXPORT NSString *const CashValueKey;
+FOUNDATION_EXPORT NSString *const ImageKey;
+
+
 @interface RNConstants : NSCache
 
 @end
