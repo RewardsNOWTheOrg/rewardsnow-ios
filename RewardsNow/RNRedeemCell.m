@@ -10,11 +10,9 @@
 
 @implementation RNRedeemCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ( (self = [super initWithCoder:aDecoder]) ) {
+
     }
     return self;
 }
