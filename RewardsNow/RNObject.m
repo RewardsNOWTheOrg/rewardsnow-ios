@@ -11,7 +11,7 @@
 @implementation RNObject
 
 
-- (id)initWithDictionary:(NSDictionary *)dict {
+- (instancetype)initWithDictionary:(NSDictionary *)dict {
     
     if ( (self = [super init]) ) {
         
