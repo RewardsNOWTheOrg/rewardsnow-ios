@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA2E3EDB1718BCC6005ACE36 /* RNAccountStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */; };
+		AA2E3EDE1718BE4D005ACE36 /* RNTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDD1718BE4D005ACE36 /* RNTransaction.m */; };
+		AA2E3EE11718C192005ACE36 /* RNPointChange.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE01718C192005ACE36 /* RNPointChange.m */; };
 		AA53FE34170F5D6A00041748 /* RNRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */; };
 		AA53FE37170F5D7E00041748 /* RNRedeemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */; };
 		AA53FE3B170F5D9200041748 /* RNLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE3A170F5D9200041748 /* RNLocalViewController.m */; };
@@ -91,6 +94,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA2E3ED91718BCC6005ACE36 /* RNAccountStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountStatement.h; sourceTree = "<group>"; };
+		AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountStatement.m; sourceTree = "<group>"; };
+		AA2E3EDC1718BE4D005ACE36 /* RNTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTransaction.h; sourceTree = "<group>"; };
+		AA2E3EDD1718BE4D005ACE36 /* RNTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTransaction.m; sourceTree = "<group>"; };
+		AA2E3EDF1718C192005ACE36 /* RNPointChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPointChange.h; sourceTree = "<group>"; };
+		AA2E3EE01718C192005ACE36 /* RNPointChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPointChange.m; sourceTree = "<group>"; };
 		AA53FE32170F5D6A00041748 /* RNRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemViewController.h; sourceTree = "<group>"; };
 		AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRedeemViewController.m; sourceTree = "<group>"; };
 		AA53FE35170F5D7E00041748 /* RNRedeemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemDetailViewController.h; sourceTree = "<group>"; };
@@ -337,6 +346,12 @@
 				AA53FEB61710CFFE00041748 /* RNObject.m */,
 				AA53FEB81710D01400041748 /* RNRedeemObject.h */,
 				AA53FEB91710D01400041748 /* RNRedeemObject.m */,
+				AA2E3ED91718BCC6005ACE36 /* RNAccountStatement.h */,
+				AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */,
+				AA2E3EDC1718BE4D005ACE36 /* RNTransaction.h */,
+				AA2E3EDD1718BE4D005ACE36 /* RNTransaction.m */,
+				AA2E3EDF1718C192005ACE36 /* RNPointChange.h */,
+				AA2E3EE01718C192005ACE36 /* RNPointChange.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -665,6 +680,9 @@
 				AA53FEC61710EEBB00041748 /* RNCartAccountViewController.m in Sources */,
 				AA53FEC91710EF0600041748 /* RNCartConfirmationViewController.m in Sources */,
 				AA53FECC1710EF1900041748 /* RNCartThanksViewController.m in Sources */,
+				AA2E3EDB1718BCC6005ACE36 /* RNAccountStatement.m in Sources */,
+				AA2E3EDE1718BE4D005ACE36 /* RNTransaction.m in Sources */,
+				AA2E3EE11718C192005ACE36 /* RNPointChange.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
