@@ -8,15 +8,6 @@
 
 #import "RNTransaction.h"
 
-/*
- "AcctId": "1234D00000109901",
- "Description": "Debit Pin Purchase                      ",
- "HistDate": "/Date(1338440400000-0500)/",
- "HistKey": 1,
- "MerchantName": "",
- "Points": 9
- */
-
 @implementation RNTransaction
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
