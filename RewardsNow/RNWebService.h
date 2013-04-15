@@ -13,6 +13,8 @@ typedef void (^RNResultCallback)(id result);
 @interface RNWebService : AFHTTPClient
 
 + (instancetype)sharedClient;
+
 - (void)getRewards:(NSString *)tipFirst WithCallback:(RNResultCallback)callback;
+- (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to;
 
 @end
