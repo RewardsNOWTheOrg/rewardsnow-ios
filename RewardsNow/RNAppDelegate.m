@@ -20,7 +20,7 @@
     [[UITabBar appearance] setShadowImage:[UIImage imageNamed:@"tabbar-shadow.png"]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
     [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateHighlighted];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateHighlighted]; //logs a warning.
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar-background.png"] forBarMetrics:UIBarMetricsDefault];
     
     
