@@ -21,26 +21,20 @@ NSString *const PriceInPointsKey = @"PriceInPoints";
 
 @implementation RNRedeemObject
 
-- (id)initWithDictionary:(NSDictionary *)dict {
-    
-    if ( (self = [super initWithDictionary:dict]) ) {
-        
-        @try {
-            self.cashValue = [dict[CashValueKey] doubleValue];
-            self.catagoryDescription = dict[CatagoryDescKey];
-            self.catalogCode = dict[CatalogCodeKey];
-            self.catalogID = [dict[CatalogIdKey] integerValue];
-            self.categoryID = [dict[CategoryIdKey] integerValue];
-            self.description = dict[DescriptionKey];
-            self.descriptionName = dict[DescriptionNameKey];
-            self.imageURL = dict[ImageKey];
-            self.priceInPoints = [dict[PriceInPointsKey] doubleValue];
-        }
-        @catch (NSException *exception) {
-            DLog(@"Error Parsing Object! %@", exception);
-        }
-    }
-    return self;
+
+#pragma mark - Mantle
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"cashValue": @"CashValue",
+             @"catagoryDescription" : @"CatagoryDesc",
+             @"catalogCode" : @"CatalogCodeKey",
+             @"catalogID" : @"CatalogId",
+             @"categoryID" : @"CategoryId",
+             @"description" : @"Description",
+             @"descriptionName" : @"DescriptionName",
+             @"imageURL" : @"Image",
+             @"priceInPoints" : @"PriceInPoints"
+             };
 }
 
 @end
