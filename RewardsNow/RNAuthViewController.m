@@ -7,6 +7,7 @@
 //
 
 #import "RNAuthViewController.h"
+#import "RNConstants.h"
 
 #define kUsernameTextFieldTag 1
 #define kPasswordTextFieldTag 2
@@ -28,7 +29,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _fields = @[self.usernameTextField, self.passwordTextField, self.codeTextField, self.signInButton, self.forgotPasswordButton];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -79,7 +85,7 @@
 - (IBAction)backgroundTapped:(id)sender {
     [self.view endEditing:YES];
     [UIView animateWithDuration:0.2 animations:^{
-        self.view.frame = CGRectMake(0, kStatusBarHeight, self.view.frame.size.width, self.view.frame.size.height);
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
 
