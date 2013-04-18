@@ -17,4 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 
+
+- (IBAction)backgroundTapped:(id)sender;
+- (IBAction)signInTapped:(id)sender;
+- (IBAction)forgotPasswordTapped:(id)sender;
+
 @end
