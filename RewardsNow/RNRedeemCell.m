@@ -7,12 +7,13 @@
 //
 
 #import "RNRedeemCell.h"
+#import "RNConstants.h"
 
 @implementation RNRedeemCell
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ( (self = [super initWithCoder:aDecoder]) ) {
-
+        self.contentView.backgroundColor = [UIColor colorWithRed:C(233) green:C(236) blue:C(238) alpha:1.0];
     }
     return self;
 }
