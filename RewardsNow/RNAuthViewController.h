@@ -1,4 +1,4 @@
-//
+
 //  RNAuthViewController.h
 //  RewardsNow
 //
@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNAuthViewController : UIViewController
+@interface RNAuthViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+@property (weak, nonatomic) IBOutlet UIButton *signInButton;
+@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 
 @end
