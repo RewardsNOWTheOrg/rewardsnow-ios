@@ -21,6 +21,11 @@
 		AA31022F1720816800E44D44 /* rewardsnow-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31022D1720816800E44D44 /* rewardsnow-logo@2x.png */; };
 		AA3102321720826A00E44D44 /* auth-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3102301720826A00E44D44 /* auth-button.png */; };
 		AA3102331720826A00E44D44 /* auth-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3102311720826A00E44D44 /* auth-button@2x.png */; };
+		AA355A53172095FD0014E01B /* RNAuthPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA355A52172095FD0014E01B /* RNAuthPasswordViewController.m */; };
+		AA355A561720A3BE0014E01B /* vertical-line.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A541720A3BE0014E01B /* vertical-line.png */; };
+		AA355A571720A3BE0014E01B /* vertical-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A551720A3BE0014E01B /* vertical-line@2x.png */; };
+		AA355A5A1720A7D90014E01B /* RNGiftCard.m in Sources */ = {isa = PBXBuildFile; fileRef = AA355A591720A7D90014E01B /* RNGiftCard.m */; };
+		AA355A5E1720ACFA0014E01B /* RNCart.m in Sources */ = {isa = PBXBuildFile; fileRef = AA355A5D1720ACFA0014E01B /* RNCart.m */; };
 		AA53FE34170F5D6A00041748 /* RNRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */; };
 		AA53FE37170F5D7E00041748 /* RNRedeemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */; };
 		AA53FE3B170F5D9200041748 /* RNLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE3A170F5D9200041748 /* RNLocalViewController.m */; };
@@ -80,6 +85,7 @@
 		AA5510D3170F10A3001CC718 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5510A3170F10A3001CC718 /* Foundation.framework */; };
 		AA5510DB170F10A3001CC718 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA5510D9170F10A3001CC718 /* InfoPlist.strings */; };
 		AA5510DE170F10A3001CC718 /* RewardsNowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5510DD170F10A3001CC718 /* RewardsNowTests.m */; };
+		BEE78D9760F24F3DB6FAB95F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B69993D8124244B8A76580AB /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +99,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		AA2E3ED91718BCC6005ACE36 /* RNAccountStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountStatement.h; sourceTree = "<group>"; };
 		AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountStatement.m; sourceTree = "<group>"; };
 		AA2E3EDC1718BE4D005ACE36 /* RNTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTransaction.h; sourceTree = "<group>"; };
@@ -112,6 +119,14 @@
 		AA31022D1720816800E44D44 /* rewardsnow-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewardsnow-logo@2x.png"; sourceTree = "<group>"; };
 		AA3102301720826A00E44D44 /* auth-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth-button.png"; sourceTree = "<group>"; };
 		AA3102311720826A00E44D44 /* auth-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth-button@2x.png"; sourceTree = "<group>"; };
+		AA355A51172095FD0014E01B /* RNAuthPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAuthPasswordViewController.h; sourceTree = "<group>"; };
+		AA355A52172095FD0014E01B /* RNAuthPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAuthPasswordViewController.m; sourceTree = "<group>"; };
+		AA355A541720A3BE0014E01B /* vertical-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vertical-line.png"; sourceTree = "<group>"; };
+		AA355A551720A3BE0014E01B /* vertical-line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vertical-line@2x.png"; sourceTree = "<group>"; };
+		AA355A581720A7D90014E01B /* RNGiftCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGiftCard.h; sourceTree = "<group>"; };
+		AA355A591720A7D90014E01B /* RNGiftCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGiftCard.m; sourceTree = "<group>"; };
+		AA355A5C1720ACFA0014E01B /* RNCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCart.h; sourceTree = "<group>"; };
+		AA355A5D1720ACFA0014E01B /* RNCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCart.m; sourceTree = "<group>"; };
 		AA53FE32170F5D6A00041748 /* RNRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemViewController.h; sourceTree = "<group>"; };
 		AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRedeemViewController.m; sourceTree = "<group>"; };
 		AA53FE35170F5D7E00041748 /* RNRedeemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemDetailViewController.h; sourceTree = "<group>"; };
@@ -200,6 +215,7 @@
 		AA5510DA170F10A3001CC718 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AA5510DC170F10A3001CC718 /* RewardsNowTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RewardsNowTests.h; sourceTree = "<group>"; };
 		AA5510DD170F10A3001CC718 /* RewardsNowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RewardsNowTests.m; sourceTree = "<group>"; };
+		B69993D8124244B8A76580AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +230,7 @@
 				AA5510A2170F10A3001CC718 /* UIKit.framework in Frameworks */,
 				AA5510A4170F10A3001CC718 /* Foundation.framework in Frameworks */,
 				AA5510A6170F10A3001CC718 /* CoreGraphics.framework in Frameworks */,
+				BEE78D9760F24F3DB6FAB95F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +252,8 @@
 			children = (
 				AA31021B1720782000E44D44 /* RNAuthViewController.h */,
 				AA31021C1720782000E44D44 /* RNAuthViewController.m */,
+				AA355A51172095FD0014E01B /* RNAuthPasswordViewController.h */,
+				AA355A52172095FD0014E01B /* RNAuthPasswordViewController.m */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -246,6 +265,15 @@
 				AA31022517207FD100E44D44 /* RNUser.m */,
 			);
 			name = User;
+			sourceTree = "<group>";
+		};
+		AA355A5B1720ACDC0014E01B /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				AA355A5C1720ACFA0014E01B /* RNCart.h */,
+				AA355A5D1720ACFA0014E01B /* RNCart.m */,
+			);
+			name = Cart;
 			sourceTree = "<group>";
 		};
 		AA53FE38170F5D8400041748 /* Local Deals */ = {
@@ -312,14 +340,6 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
-		AA53FE85170F86B300041748 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Vendor;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		AA53FEB41710CFDE00041748 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +354,8 @@
 				AA2E3EDD1718BE4D005ACE36 /* RNTransaction.m */,
 				AA2E3EDF1718C192005ACE36 /* RNPointChange.h */,
 				AA2E3EE01718C192005ACE36 /* RNPointChange.m */,
+				AA355A581720A7D90014E01B /* RNGiftCard.h */,
+				AA355A591720A7D90014E01B /* RNGiftCard.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -360,6 +382,7 @@
 				AA5510D6170F10A3001CC718 /* RewardsNowTests */,
 				AA5510A0170F10A3001CC718 /* Frameworks */,
 				AA55109F170F10A3001CC718 /* Products */,
+				68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -383,6 +406,7 @@
 				AA5510A3170F10A3001CC718 /* Foundation.framework */,
 				AA5510A5170F10A3001CC718 /* CoreGraphics.framework */,
 				AA5510D0170F10A3001CC718 /* SenTestingKit.framework */,
+				B69993D8124244B8A76580AB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -399,8 +423,8 @@
 				AA53FEC01710EE7C00041748 /* Cart */,
 				AA53FE5B170F5F1500041748 /* About */,
 				AA53FE84170F869C00041748 /* Networking */,
+				AA355A5B1720ACDC0014E01B /* Cart */,
 				AA53FEB41710CFDE00041748 /* Model */,
-				AA53FE85170F86B300041748 /* Vendor */,
 				AA5510A8170F10A3001CC718 /* Supporting Files */,
 			);
 			path = RewardsNow;
@@ -443,6 +467,8 @@
 		AA5510E7170F1134001CC718 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA355A541720A3BE0014E01B /* vertical-line.png */,
+				AA355A551720A3BE0014E01B /* vertical-line@2x.png */,
 				AA3102301720826A00E44D44 /* auth-button.png */,
 				AA3102311720826A00E44D44 /* auth-button@2x.png */,
 				AA31022C1720816800E44D44 /* rewardsnow-logo.png */,
@@ -511,9 +537,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA5510E1170F10A3001CC718 /* Build configuration list for PBXNativeTarget "RewardsNow" */;
 			buildPhases = (
+				C3E613C5AF914C0A8A5E5EBD /* Check Pods Manifest.lock */,
 				AA55109A170F10A3001CC718 /* Sources */,
 				AA55109B170F10A3001CC718 /* Frameworks */,
 				AA55109C170F10A3001CC718 /* Resources */,
+				AF5DE6E8921A4964B8D19DC7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -606,6 +634,8 @@
 				AA31022F1720816800E44D44 /* rewardsnow-logo@2x.png in Resources */,
 				AA3102321720826A00E44D44 /* auth-button.png in Resources */,
 				AA3102331720826A00E44D44 /* auth-button@2x.png in Resources */,
+				AA355A561720A3BE0014E01B /* vertical-line.png in Resources */,
+				AA355A571720A3BE0014E01B /* vertical-line@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +662,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		AF5DE6E8921A4964B8D19DC7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		C3E613C5AF914C0A8A5E5EBD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sanbox is not in sync with the Podfile.lock. Run 'pod install'.\nEOM\n    exit 1\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -671,6 +729,9 @@
 				AA2E3EE11718C192005ACE36 /* RNPointChange.m in Sources */,
 				AA31021D1720782000E44D44 /* RNAuthViewController.m in Sources */,
 				AA31022617207FD100E44D44 /* RNUser.m in Sources */,
+				AA355A53172095FD0014E01B /* RNAuthPasswordViewController.m in Sources */,
+				AA355A5A1720A7D90014E01B /* RNGiftCard.m in Sources */,
+				AA355A5E1720ACFA0014E01B /* RNCart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +839,7 @@
 		};
 		AA5510E2170F10A3001CC718 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
@@ -790,6 +852,7 @@
 		};
 		AA5510E3170F10A3001CC718 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
