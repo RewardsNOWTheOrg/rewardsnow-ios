@@ -10,6 +10,7 @@
 
 @implementation RNTransaction
 
+/*
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     
     if ( (self = [super initWithDictionary:dict]) ) {
@@ -21,5 +22,6 @@
     }
     return self;
 }
+ */
 
 @end

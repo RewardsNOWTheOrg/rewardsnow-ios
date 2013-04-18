@@ -10,13 +10,14 @@
 
 @implementation RNAccountStatement
 
+/*
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     
     if ( (self = [super initWithDictionary:dict]) ) {
         
     }
     return self;
-}
+}*/
 
 - (void)setPointsIncreaseFromDictionaries:(NSArray *)dictionaries {}
 - (void)setPointsDecreaseFromDictionaries:(NSArray *)dictionaries {}
