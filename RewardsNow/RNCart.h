@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class RNUser;
+
 @interface RNCart : NSObject
+
+@property (nonatomic, strong) RNUser *user;
+
++ (instancetype)sharedCart;
 
 @end

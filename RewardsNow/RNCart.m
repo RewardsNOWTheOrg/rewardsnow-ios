@@ -10,4 +10,23 @@
 
 @implementation RNCart
 
++ (instancetype)sharedCart {
+    static RNCart *_sharedWebService;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedWebService = [[RNCart alloc] init];
+    });
+    
+    return _sharedWebService;
+}
+
+- (instancetype)init {
+    
+    if ( (self = [super init]) ) {
+        
+    }
+    return self;
+}
+
 @end
