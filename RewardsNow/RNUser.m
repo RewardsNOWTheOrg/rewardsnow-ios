@@ -13,12 +13,14 @@
 
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return @{@"firstName": @"Info.FirstName",
-             @"fullName" : @"Info.FullName",
-             @"email" : @"Info.Email",
-             @"balance" : @"Info.AvailableBalance",
-             @"giftCards" : @"GiftCards"
-             };
+    
+    NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
+    [fields setValue:@"Info.FirstName" forKey:@"firstName"];
+    [fields setValue:@"Info.FullName" forKey:@"fullName"];
+    [fields setValue:@"Email" forKey:@"email"];
+    [fields setValue:@"Info.AvailableBalance" forKey:@"balance"];
+    [fields setValue:@"GiftCards" forKey:@"giftCards"];
+    return fields;
 }
 
 + (NSValueTransformer *)giftCardsJSONTransformer {
