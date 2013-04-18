@@ -25,19 +25,122 @@
             </objects>
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
-        <!--View Controller-->
+        <!--Auth View Controller-->
         <scene sceneID="Fng-XU-Srl">
             <objects>
-                <viewController id="eag-8K-4sh" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bQN-T6-5nU">
+                <viewController storyboardIdentifier="RNAuthViewController" id="eag-8K-4sh" customClass="RNAuthViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bQN-T6-5nU" customClass="UIControl">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bgx-iy-dmg">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" type="user" id="OwY-IS-bWy"/>
+                                    <constraint firstAttribute="width" constant="264" type="user" id="pWC-0s-e0A"/>
+                                </constraints>
+                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eag-8K-4sh" id="jZa-QI-PEu"/>
+                                </connections>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="MsD-vr-Sm8">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" type="user" id="1BB-IQ-Pow"/>
+                                    <constraint firstAttribute="width" constant="255" type="user" id="HBy-R2-ORO"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="HDi-k1-VY5">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" type="user" id="P8j-Ad-Mco"/>
+                                    <constraint firstAttribute="width" constant="264" type="user" id="W1T-8g-vjS"/>
+                                </constraints>
+                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eag-8K-4sh" id="tG3-fD-0A2"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="3 digit code" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="2Fk-LX-nbG">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="264" type="user" id="RDP-Ju-X9l"/>
+                                    <constraint firstAttribute="height" constant="56" type="user" id="iny-py-yKu"/>
+                                </constraints>
+                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eag-8K-4sh" id="6rA-Bg-NOU"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" alpha="0.0" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nI-hI-wVx">
+                                <color key="backgroundColor" red="0.9137254901960784" green="0.92549019607843142" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="264" type="user" id="dsl-K1-ikd"/>
+                                    <constraint firstAttribute="height" constant="56" type="user" id="rsq-vF-SAk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                <state key="normal" title="sign in" backgroundImage="auth-button.png">
+                                    <color key="titleColor" red="0.9137254901960784" green="0.92549019607843142" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInTapped:" destination="eag-8K-4sh" eventType="touchUpInside" id="KFh-co-Zzu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p79-dq-AFG">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" type="user" id="2BT-Cm-JqZ"/>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="2SD-7x-tvH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <state key="normal" title="Forgot Password?">
+                                    <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="forgotPasswordTapped:" destination="eag-8K-4sh" eventType="touchUpInside" id="0o3-Iu-qe3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.9137254901960784" green="0.92156862745098034" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="7nI-hI-wVx" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="28" type="user" id="0Fw-qw-ldn"/>
+                            <constraint firstItem="Bgx-iy-dmg" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="28" type="user" id="1wD-Sm-waa"/>
+                            <constraint firstItem="p79-dq-AFG" firstAttribute="top" secondItem="bQN-T6-5nU" secondAttribute="top" constant="468" type="user" id="7jR-9Y-BDm"/>
+                            <constraint firstItem="p79-dq-AFG" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="95" type="user" id="BBg-cO-KQT" userLabel="Horizontal Space (≥95) - Button - Forgot Password? - View"/>
+                            <constraint firstItem="MsD-vr-Sm8" firstAttribute="top" secondItem="bQN-T6-5nU" secondAttribute="top" constant="86" id="EGH-70-76f"/>
+                            <constraint firstItem="7nI-hI-wVx" firstAttribute="top" secondItem="bQN-T6-5nU" secondAttribute="top" constant="403" type="user" id="Mgz-uh-JSZ"/>
+                            <constraint firstItem="Bgx-iy-dmg" firstAttribute="top" secondItem="bQN-T6-5nU" secondAttribute="top" constant="207" type="user" id="bA4-Ne-AW4"/>
+                            <constraint firstItem="HDi-k1-VY5" firstAttribute="top" secondItem="bQN-T6-5nU" secondAttribute="top" constant="271" type="user" id="bzS-gN-OMg"/>
+                            <constraint firstItem="2Fk-LX-nbG" firstAttribute="top" secondItem="bQN-T6-5nU" secondAttribute="top" constant="334" type="user" id="epa-vH-tNM"/>
+                            <constraint firstItem="HDi-k1-VY5" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="28" type="user" id="fRi-dA-NNf"/>
+                            <constraint firstItem="2Fk-LX-nbG" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="28" type="user" id="r0A-nF-wNB"/>
+                            <constraint firstItem="MsD-vr-Sm8" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="29" id="v2D-q6-XkK"/>
+                        </constraints>
+                        <connections>
+                            <action selector="backgroundTapped:" destination="eag-8K-4sh" eventType="touchUpInside" id="vnY-dq-hya"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="codeTextField" destination="2Fk-LX-nbG" id="clZ-cq-HUd"/>
+                        <outlet property="forgotPasswordButton" destination="p79-dq-AFG" id="kbb-AC-Aoe"/>
+                        <outlet property="logoImageView" destination="MsD-vr-Sm8" id="rwp-XK-997"/>
+                        <outlet property="passwordTextField" destination="HDi-k1-VY5" id="kAT-Oz-W0P"/>
+                        <outlet property="signInButton" destination="7nI-hI-wVx" id="6uN-lt-P1w"/>
+                        <outlet property="usernameTextField" destination="Bgx-iy-dmg" id="Y4w-Wi-SVf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poV-EX-g3W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141" y="-1336"/>
+            <point key="canvasLocation" x="137" y="844"/>
         </scene>
         <!--Redeem View Controller - Gift Cards-->
         <scene sceneID="gMz-hP-cfz">
@@ -898,10 +1001,85 @@
     <resources>
         <image name="about.png" width="17" height="23"/>
         <image name="account.png" width="26" height="24"/>
+        <image name="auth-button.png" width="264" height="56"/>
+        <image name="auth-textfield-background.png" width="264" height="56"/>
         <image name="cart-empty.png" width="29" height="22"/>
         <image name="localdeals.png" width="25" height="24"/>
         <image name="redeem.png" width="23" height="23"/>
+        <image name="rewardsnow-logo.png" width="255" height="57"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RNAboutEarningViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutEarningViewController.h"/>
+        </class>
+        <class className="RNAboutQAViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutQAViewController.h"/>
+        </class>
+        <class className="RNAboutRulesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutRulesViewController.h"/>
+        </class>
+        <class className="RNAboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutViewController.h"/>
+        </class>
+        <class className="RNAccountViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountViewController.h"/>
+        </class>
+        <class className="RNAuthViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAuthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="forgotPasswordTapped:"/>
+                <relationship kind="action" name="signInTapped:"/>
+                <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="forgotPasswordButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signInButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="usernameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RNLocalAdditionalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalAdditionalViewController.h"/>
+        </class>
+        <class className="RNLocalDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="directionsTapped:"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="RNLocalViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalViewController.h"/>
+        </class>
+        <class className="RNRedeemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="redeemBottomLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redeemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="redeemTopLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="descriptionView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="redeemBottomLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redeemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="redeemTopLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
