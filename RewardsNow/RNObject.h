@@ -12,5 +12,6 @@
 @interface RNObject : NSObject
 
 + (NSUInteger)modelVersion;
++ (NSArray *)objectsFromJSON:(NSArray *)array;
 
 @end
