@@ -9,15 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "RNObject.h"
 
-/*
- "Info": {
- "AvailableBalance": 20012,
- "Email": "ssmith@rewardsnow.com",
- "FirstName": "SHAWN",
- "FullName": "SHAWN SMITH"
- }
- */
-
 @interface RNUser : RNObject
 
 @property (nonatomic, copy) NSString *firstName;
