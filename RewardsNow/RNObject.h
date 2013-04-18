@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Mantle.h"
 
-@interface RNObject : NSObject
+@interface RNObject : MTLModel <MTLJSONSerializing>
 
 + (NSUInteger)modelVersion;
 + (NSArray *)objectsFromJSON:(NSArray *)array;

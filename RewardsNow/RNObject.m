@@ -32,4 +32,8 @@
     return created;
 }
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [NSDictionary dictionary];
+}
+
 @end
