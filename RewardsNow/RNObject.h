@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Mantle.h"
 
 @interface RNObject : NSObject
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
++ (NSUInteger)modelVersion;
 
 @end

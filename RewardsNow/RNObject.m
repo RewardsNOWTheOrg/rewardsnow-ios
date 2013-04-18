@@ -10,13 +10,8 @@
 
 @implementation RNObject
 
-
-- (instancetype)initWithDictionary:(NSDictionary *)dict {
-    
-    if ( (self = [super init]) ) {
-        
-    }
-    return self;
++ (NSUInteger)modelVersion {
+	return 1;
 }
 
 @end
