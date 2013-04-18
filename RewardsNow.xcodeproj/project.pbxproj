@@ -10,6 +10,17 @@
 		AA2E3EDB1718BCC6005ACE36 /* RNAccountStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */; };
 		AA2E3EDE1718BE4D005ACE36 /* RNTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDD1718BE4D005ACE36 /* RNTransaction.m */; };
 		AA2E3EE11718C192005ACE36 /* RNPointChange.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE01718C192005ACE36 /* RNPointChange.m */; };
+		AA31021D1720782000E44D44 /* RNAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA31021C1720782000E44D44 /* RNAuthViewController.m */; };
+		AA31021F17207F3000E44D44 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31021E17207F3000E44D44 /* Default-568h@2x.png */; };
+		AA31022117207F4300E44D44 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31022017207F4300E44D44 /* Default@2x.png */; };
+		AA31022317207F4700E44D44 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31022217207F4700E44D44 /* Default.png */; };
+		AA31022617207FD100E44D44 /* RNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA31022517207FD100E44D44 /* RNUser.m */; };
+		AA31022A172080EC00E44D44 /* auth-textfield-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA310228172080EC00E44D44 /* auth-textfield-background.png */; };
+		AA31022B172080EC00E44D44 /* auth-textfield-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA310229172080EC00E44D44 /* auth-textfield-background@2x.png */; };
+		AA31022E1720816800E44D44 /* rewardsnow-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31022C1720816800E44D44 /* rewardsnow-logo.png */; };
+		AA31022F1720816800E44D44 /* rewardsnow-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31022D1720816800E44D44 /* rewardsnow-logo@2x.png */; };
+		AA3102321720826A00E44D44 /* auth-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3102301720826A00E44D44 /* auth-button.png */; };
+		AA3102331720826A00E44D44 /* auth-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3102311720826A00E44D44 /* auth-button@2x.png */; };
 		AA53FE34170F5D6A00041748 /* RNRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */; };
 		AA53FE37170F5D7E00041748 /* RNRedeemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */; };
 		AA53FE3B170F5D9200041748 /* RNLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE3A170F5D9200041748 /* RNLocalViewController.m */; };
@@ -72,9 +83,6 @@
 		AA5510AC170F10A3001CC718 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA5510AA170F10A3001CC718 /* InfoPlist.strings */; };
 		AA5510AE170F10A3001CC718 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5510AD170F10A3001CC718 /* main.m */; };
 		AA5510B2170F10A3001CC718 /* RNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5510B1170F10A3001CC718 /* RNAppDelegate.m */; };
-		AA5510B4170F10A3001CC718 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5510B3170F10A3001CC718 /* Default.png */; };
-		AA5510B6170F10A3001CC718 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5510B5170F10A3001CC718 /* Default@2x.png */; };
-		AA5510B8170F10A3001CC718 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5510B7170F10A3001CC718 /* Default-568h@2x.png */; };
 		AA5510BB170F10A3001CC718 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5510B9170F10A3001CC718 /* MainStoryboard.storyboard */; };
 		AA5510D1170F10A3001CC718 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5510D0170F10A3001CC718 /* SenTestingKit.framework */; };
 		AA5510D2170F10A3001CC718 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5510A1170F10A3001CC718 /* UIKit.framework */; };
@@ -100,6 +108,19 @@
 		AA2E3EDD1718BE4D005ACE36 /* RNTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTransaction.m; sourceTree = "<group>"; };
 		AA2E3EDF1718C192005ACE36 /* RNPointChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPointChange.h; sourceTree = "<group>"; };
 		AA2E3EE01718C192005ACE36 /* RNPointChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPointChange.m; sourceTree = "<group>"; };
+		AA31021B1720782000E44D44 /* RNAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAuthViewController.h; sourceTree = "<group>"; };
+		AA31021C1720782000E44D44 /* RNAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAuthViewController.m; sourceTree = "<group>"; };
+		AA31021E17207F3000E44D44 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		AA31022017207F4300E44D44 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		AA31022217207F4700E44D44 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		AA31022417207FD100E44D44 /* RNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNUser.h; sourceTree = "<group>"; };
+		AA31022517207FD100E44D44 /* RNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNUser.m; sourceTree = "<group>"; };
+		AA310228172080EC00E44D44 /* auth-textfield-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth-textfield-background.png"; sourceTree = "<group>"; };
+		AA310229172080EC00E44D44 /* auth-textfield-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth-textfield-background@2x.png"; sourceTree = "<group>"; };
+		AA31022C1720816800E44D44 /* rewardsnow-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewardsnow-logo.png"; sourceTree = "<group>"; };
+		AA31022D1720816800E44D44 /* rewardsnow-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewardsnow-logo@2x.png"; sourceTree = "<group>"; };
+		AA3102301720826A00E44D44 /* auth-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth-button.png"; sourceTree = "<group>"; };
+		AA3102311720826A00E44D44 /* auth-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth-button@2x.png"; sourceTree = "<group>"; };
 		AA53FE32170F5D6A00041748 /* RNRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemViewController.h; sourceTree = "<group>"; };
 		AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRedeemViewController.m; sourceTree = "<group>"; };
 		AA53FE35170F5D7E00041748 /* RNRedeemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemDetailViewController.h; sourceTree = "<group>"; };
@@ -200,9 +221,6 @@
 		AA5510AF170F10A3001CC718 /* RewardsNow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RewardsNow-Prefix.pch"; sourceTree = "<group>"; };
 		AA5510B0170F10A3001CC718 /* RNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNAppDelegate.h; sourceTree = "<group>"; };
 		AA5510B1170F10A3001CC718 /* RNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNAppDelegate.m; sourceTree = "<group>"; };
-		AA5510B3170F10A3001CC718 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		AA5510B5170F10A3001CC718 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		AA5510B7170F10A3001CC718 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AA5510BA170F10A3001CC718 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		AA5510CF170F10A3001CC718 /* RewardsNowTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewardsNowTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5510D0170F10A3001CC718 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -240,6 +258,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA31021A1720780200E44D44 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				AA31021B1720782000E44D44 /* RNAuthViewController.h */,
+				AA31021C1720782000E44D44 /* RNAuthViewController.m */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		AA31022717207FD600E44D44 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				AA31022417207FD100E44D44 /* RNUser.h */,
+				AA31022517207FD100E44D44 /* RNUser.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		AA53FE38170F5D8400041748 /* Local Deals */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +378,7 @@
 		AA53FEB41710CFDE00041748 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AA31022717207FD600E44D44 /* User */,
 				AA53FEB51710CFFE00041748 /* RNObject.h */,
 				AA53FEB61710CFFE00041748 /* RNObject.m */,
 				AA53FEB81710D01400041748 /* RNRedeemObject.h */,
@@ -410,6 +447,7 @@
 			children = (
 				AA5510E9170F114C001CC718 /* App Delegates */,
 				AA5510E8170F1145001CC718 /* StoryBoard */,
+				AA31021A1720780200E44D44 /* Authentication */,
 				AA5510EA170F1155001CC718 /* Redeem */,
 				AA53FE38170F5D8400041748 /* Local Deals */,
 				AA53FE5A170F5EFE00041748 /* Account */,
@@ -428,12 +466,12 @@
 			children = (
 				AA5510E7170F1134001CC718 /* Images */,
 				AA5510A9170F10A3001CC718 /* RewardsNow-Info.plist */,
+				AA31022217207F4700E44D44 /* Default.png */,
+				AA31022017207F4300E44D44 /* Default@2x.png */,
+				AA31021E17207F3000E44D44 /* Default-568h@2x.png */,
 				AA5510AA170F10A3001CC718 /* InfoPlist.strings */,
 				AA5510AD170F10A3001CC718 /* main.m */,
 				AA5510AF170F10A3001CC718 /* RewardsNow-Prefix.pch */,
-				AA5510B3170F10A3001CC718 /* Default.png */,
-				AA5510B5170F10A3001CC718 /* Default@2x.png */,
-				AA5510B7170F10A3001CC718 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -460,6 +498,12 @@
 		AA5510E7170F1134001CC718 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA3102301720826A00E44D44 /* auth-button.png */,
+				AA3102311720826A00E44D44 /* auth-button@2x.png */,
+				AA31022C1720816800E44D44 /* rewardsnow-logo.png */,
+				AA31022D1720816800E44D44 /* rewardsnow-logo@2x.png */,
+				AA310228172080EC00E44D44 /* auth-textfield-background.png */,
+				AA310229172080EC00E44D44 /* auth-textfield-background@2x.png */,
 				AA53FEAA170F937A00041748 /* about.png */,
 				AA53FEAB170F937A00041748 /* about@2x.png */,
 				AA53FEAC170F937A00041748 /* account.png */,
@@ -588,9 +632,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA5510AC170F10A3001CC718 /* InfoPlist.strings in Resources */,
-				AA5510B4170F10A3001CC718 /* Default.png in Resources */,
-				AA5510B6170F10A3001CC718 /* Default@2x.png in Resources */,
-				AA5510B8170F10A3001CC718 /* Default-568h@2x.png in Resources */,
 				AA5510BB170F10A3001CC718 /* MainStoryboard.storyboard in Resources */,
 				AA53FE65170F707200041748 /* tabbar-shadow.png in Resources */,
 				AA53FE66170F707200041748 /* tabbar-shadow@2x.png in Resources */,
@@ -611,6 +652,15 @@
 				AA53FEAF170F937A00041748 /* about@2x.png in Resources */,
 				AA53FEB0170F937A00041748 /* account.png in Resources */,
 				AA53FEB1170F937A00041748 /* account@2x.png in Resources */,
+				AA31021F17207F3000E44D44 /* Default-568h@2x.png in Resources */,
+				AA31022117207F4300E44D44 /* Default@2x.png in Resources */,
+				AA31022317207F4700E44D44 /* Default.png in Resources */,
+				AA31022A172080EC00E44D44 /* auth-textfield-background.png in Resources */,
+				AA31022B172080EC00E44D44 /* auth-textfield-background@2x.png in Resources */,
+				AA31022E1720816800E44D44 /* rewardsnow-logo.png in Resources */,
+				AA31022F1720816800E44D44 /* rewardsnow-logo@2x.png in Resources */,
+				AA3102321720826A00E44D44 /* auth-button.png in Resources */,
+				AA3102331720826A00E44D44 /* auth-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +733,8 @@
 				AA2E3EDB1718BCC6005ACE36 /* RNAccountStatement.m in Sources */,
 				AA2E3EDE1718BE4D005ACE36 /* RNTransaction.m in Sources */,
 				AA2E3EE11718C192005ACE36 /* RNPointChange.m in Sources */,
+				AA31021D1720782000E44D44 /* RNAuthViewController.m in Sources */,
+				AA31022617207FD100E44D44 /* RNUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,6 +846,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
 				INFOPLIST_FILE = "RewardsNow/RewardsNow-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -805,6 +858,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
 				INFOPLIST_FILE = "RewardsNow/RewardsNow-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

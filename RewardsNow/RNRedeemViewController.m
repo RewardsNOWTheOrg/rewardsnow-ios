@@ -13,6 +13,7 @@
 #import "RNConstants.h"
 #import "RNRedeemDetailViewController.h"
 #import "RNRedeemObject.h"
+#import "RNAuthViewController.h"
 
 @interface RNRedeemViewController ()
 
@@ -33,6 +34,16 @@
     [self refresh:refreshControl];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (YES) {
+        RNAuthViewController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthViewController"];
+        [self presentViewController:auth animated:NO completion:nil];
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -44,7 +55,7 @@
             [self.tableView reloadData];
             [sender endRefreshing];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
+//            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
         }
         [sender endRefreshing];
     }];

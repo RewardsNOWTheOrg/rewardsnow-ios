@@ -19,10 +19,14 @@
     [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar-background.png"]];
     [[UITabBar appearance] setShadowImage:[UIImage imageNamed:@"tabbar-shadow.png"]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:C(19) green:C(149) blue:C(207) alpha:1.0]];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar-background.png"] forBarMetrics:UIBarMetricsDefault];
     [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateHighlighted];
+    
+    //
+    // If showing login screen?
+    //
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:C(233) green:C(235) blue:C(237) alpha:1.0]];
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar-background.png"] forBarMetrics:UIBarMetricsDefault];
 
     
     
