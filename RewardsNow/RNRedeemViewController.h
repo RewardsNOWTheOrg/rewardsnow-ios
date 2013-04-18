@@ -10,6 +10,7 @@
 
 @interface RNRedeemViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

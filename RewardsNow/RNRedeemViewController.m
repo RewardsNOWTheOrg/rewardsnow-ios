@@ -14,6 +14,8 @@
 #import "RNRedeemDetailViewController.h"
 #import "RNRedeemObject.h"
 #import "RNAuthViewController.h"
+#import "RNCart.h"
+#import "RNUser.h"
 
 @interface RNRedeemViewController ()
 
@@ -37,11 +39,20 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    static BOOL once = YES;
     if (YES) {
-        RNAuthViewController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthViewController"];
+        UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
         [self presentViewController:auth animated:NO completion:nil];
+        once = NO;
     }
     
+    RNUser *user = [[RNCart sharedCart] user];
+    self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", user.firstName, user.balance];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +60,8 @@
 }
 
 - (void)refresh:(UIRefreshControl *)sender {
-    [[RNWebService sharedClient] getRewards:@"241" WithCallback:^(id result) {
+    [[RNWebService sharedClient] getRewards:@"969" WithCallback:^(id result) {
+        DLog(@"Result: %@", result);
         if (result) {
             self.rewards = result;
             [self.tableView reloadData];
