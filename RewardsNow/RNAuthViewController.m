@@ -8,6 +8,10 @@
 
 #import "RNAuthViewController.h"
 #import "RNConstants.h"
+#import "MBProgressHUD.h"
+#import "RNWebService.h"
+#import "RNUser.h"
+#import "RNCart.h"
 
 #define kUsernameTextFieldTag 1
 #define kPasswordTextFieldTag 2
@@ -93,7 +97,16 @@
     ///
     /// Perform authentication...
     ///
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[RNWebService sharedClient] getAccountInfoWithTip:[NSNumber numberWithLongLong:969999999999999] callback:^(RNUser *result) {
+        
+        [[RNCart sharedCart] setUser:result];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    
 }
 
 - (IBAction)forgotPasswordTapped:(id)sender {
