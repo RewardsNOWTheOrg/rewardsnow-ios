@@ -11,6 +11,8 @@
 #import "MBProgressHUD.h"
 #import "RNAuthViewController.h"
 
+NSString *const BankCodeKey = @"BankCodeKey";
+
 @interface RNPreAuthViewController ()
 
 @property (nonatomic, copy) NSArray *fields;
@@ -27,11 +29,12 @@
     if (!IS_WIDESCREEN) {
         self.logoTopConstraint.constant = 42;
     }
+    
+    self.codeTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:BankCodeKey];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -48,15 +51,22 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     
-    CGRect frame = self.view.frame;
-    frame.origin.y = -30;
-    
-    [UIView animateWithDuration:0.25 animations:^{
-        self.view.frame = frame;
-    }];
+    if (!IS_WIDESCREEN) {
+        
+        CGRect frame = self.view.frame;
+        frame.origin.y = -30;
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.view.frame = frame;
+        }];
+    }
 }
 
 - (IBAction)continueTapped:(id)sender {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.codeTextField.text forKey:BankCodeKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     ///
     /// Get bank information and then skin
     ///
