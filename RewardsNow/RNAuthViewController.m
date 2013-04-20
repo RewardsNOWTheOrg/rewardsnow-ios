@@ -12,13 +12,13 @@
 #import "RNWebService.h"
 #import "RNUser.h"
 #import "RNCart.h"
+#import "RNConstants.h"
 
 #define kUsernameTextFieldTag 1
 #define kPasswordTextFieldTag 2
 #define kCodeTextFieldTag 3
 #define kStatusBarHeight 20
 
-#define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
 @interface RNAuthViewController ()
 
@@ -32,8 +32,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _fields = @[self.usernameTextField, self.passwordTextField, self.codeTextField, self.signInButton, self.forgotPasswordButton];
+    _fields = @[self.usernameTextField, self.passwordTextField, self.signInButton, self.forgotPasswordButton];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    if (!IS_WIDESCREEN) {
+        self.logoTopConstraint.constant = 35;
+    }
 
 }
 
@@ -59,28 +63,9 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     CGRect frame = self.view.frame;
+    frame.origin.y = IS_WIDESCREEN ? -(135 + kStatusBarHeight) : -(110 + kStatusBarHeight);
     
-    switch (textField.tag) {
-        case kUsernameTextFieldTag:
-        {
-            frame.origin.y = IS_WIDESCREEN ? -(135 + kStatusBarHeight) : 0;
-            break;
-        }
-        case kPasswordTextFieldTag:
-        {
-            frame.origin.y = IS_WIDESCREEN ? -(135 + kStatusBarHeight) : 0;
-            break;
-        }
-        case kCodeTextFieldTag:
-        {
-            frame.origin.y = IS_WIDESCREEN ? -(135 + kStatusBarHeight) : 0;
-            break;
-        }
-        default:
-            break;
-    }
-    
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.view.frame = frame;
     }];
 }
@@ -88,12 +73,13 @@
 
 - (IBAction)backgroundTapped:(id)sender {
     [self.view endEditing:YES];
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
 
 - (IBAction)signInTapped:(id)sender {
+    [self backgroundTapped:nil];
     ///
     /// Perform authentication...
     ///
