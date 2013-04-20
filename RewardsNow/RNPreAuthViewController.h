@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNPreAuthViewController : UIViewController
+@interface RNPreAuthViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+@property (weak, nonatomic) IBOutlet UIButton *continueButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
+
+- (IBAction)continueTapped:(id)sender;
+- (IBAction)backgroundTapped:(id)sender;
 
 @end
