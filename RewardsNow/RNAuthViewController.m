@@ -41,22 +41,6 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    for (NSInteger i = 0; i < _fields.count; i++) {
-        UIView *view = _fields[i];
-        
-        [UIView animateWithDuration:0.5 delay:(i * 0.15) options:UIViewAnimationOptionCurveEaseOut animations:^{
-            view.alpha = 1.0;
-        } completion:nil];
-    }
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -83,16 +67,18 @@
     ///
     /// Perform authentication...
     ///
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[RNWebService sharedClient] getAccountInfoWithTip:[NSNumber numberWithLongLong:969999999999999] callback:^(RNUser *result) {
-        
-        [[RNCart sharedCart] setUser:result];
-        
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.detailsLabelText = @"signing in...";
+    [[RNWebService sharedClient] getAccountInfoWithTip:@[@969999999999999, @969999999999998, @969999999999997, @969999999999996][arc4random_uniform(3)] callback:^(RNUser *result) {
+
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if (result != nil) {
+            [[RNCart sharedCart] setUser:result];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error authenticating, please try again." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+        }
     }];
-    
-    
 }
 
 - (IBAction)forgotPasswordTapped:(id)sender {
