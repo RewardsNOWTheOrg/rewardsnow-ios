@@ -14,6 +14,8 @@
 
 @interface RNAccountEditViewController ()
 
+@property (nonatomic) BOOL dirty;
+
 @end
 
 @implementation RNAccountEditViewController
@@ -24,6 +26,7 @@
     RNUser *user = [[RNCart sharedCart] user];
     self.nameLabel.text = user.fullName;
     self.emailTextField.text = user.email;
+    self.dirty = NO;
 
 }
 
@@ -33,26 +36,34 @@
 }
 
 - (IBAction)saveTapped:(id)sender {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.detailsLabelText = @"Changing...";
     
-    [[RNWebService sharedClient] putEmail:self.emailTextField.text callback:^(id result) {
+    if (self.dirty) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.detailsLabelText = @"Changing...";
         
-        
-        hud.mode = MBProgressHUDModeCustomView;
-        
-        [hud hide:YES afterDelay:1.5];
-        
-        if (result != nil) {
-            RNUser *user = [[RNCart sharedCart] user];
-            user.email = self.emailTextField.text;
-            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-            hud.detailsLabelText = @"Completed";
-        } else {
-            hud.detailsLabelText = @"Error";
-        }
-        
-       
-    }];
+        [[RNWebService sharedClient] putEmail:self.emailTextField.text callback:^(id result) {
+            
+            hud.mode = MBProgressHUDModeCustomView;
+            
+            [hud hide:YES afterDelay:1.5];
+            
+            if (result != nil) {
+                RNUser *user = [[RNCart sharedCart] user];
+                user.email = self.emailTextField.text;
+                hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+                hud.detailsLabelText = @"Completed";
+            } else {
+                hud.detailsLabelText = @"Error";
+            }
+        }];
+    }
 }
+
+#pragma mark UITextFild Delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    self.dirty = YES;
+    return YES;
+}
+
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNAccountEditViewController : UIViewController
+@interface RNAccountEditViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
