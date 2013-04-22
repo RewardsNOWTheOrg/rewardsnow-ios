@@ -31,7 +31,8 @@
     
     for (NSInteger i = 0; i < self.user.giftCards.count; i++) {
         RNGiftCard *card = self.user.giftCards[i];
-        UILabel *gcLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 30 + (30 * i), 200, 30)];
+        UILabel *gcLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50 + (30 * i), 200, 30)];
+        gcLabel.backgroundColor = [UIColor clearColor];
         
         NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
         [mutParaStyle setAlignment:NSTextAlignmentLeft];
