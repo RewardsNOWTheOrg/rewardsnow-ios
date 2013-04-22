@@ -20,6 +20,7 @@
 @interface RNRedeemViewController ()
 
 @property (nonatomic, strong) NSArray *rewards;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -29,31 +30,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.rewards = [NSArray array];
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:refreshControl];
-    [refreshControl beginRefreshing];
-    [self refresh:refreshControl];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:_refreshControl];
+    [_refreshControl beginRefreshing];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    static BOOL once = YES;
-    if (YES) {
+    RNUser *user = [[RNCart sharedCart] user];
+    if (user == nil) {
         UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
         [self presentViewController:auth animated:NO completion:nil];
-        once = NO;
     }
     
-    RNUser *user = [[RNCart sharedCart] user];
     self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", user.firstName, user.balance];
 
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self refresh:_refreshControl];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -65,9 +65,8 @@
         if (result) {
             self.rewards = result;
             [self.tableView reloadData];
-            [sender endRefreshing];
         } else {
-//            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
         }
         [sender endRefreshing];
     }];
@@ -89,7 +88,7 @@
     RNRedeemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", (NSInteger)[self.rewards[indexPath.row] cashValue]];
-    cell.redeemBottomLabel.text = [self.rewards[indexPath.row] catagoryDescription];
+    cell.redeemBottomLabel.text = [NSString stringWithFormat:@"%.0f Redemption points", [self.rewards[indexPath.row] priceInPoints]];
     cell.redeemImage.contentMode = UIViewContentModeScaleAspectFit;
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[[self.rewards[indexPath.row] imageURL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
