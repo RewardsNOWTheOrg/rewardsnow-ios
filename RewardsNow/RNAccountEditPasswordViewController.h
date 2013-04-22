@@ -10,4 +10,10 @@
 
 @interface RNAccountEditPasswordViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *passwordOldTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordNewTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordNewRetypeTextField;
+
+- (IBAction)saveTapped:(id)sender;
+
 @end

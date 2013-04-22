@@ -7,6 +7,8 @@
 //
 
 #import "RNAccountEditPasswordViewController.h"
+#import "RNWebService.h"
+#import "MBProgressHUD.h"
 
 @interface RNAccountEditPasswordViewController ()
 
@@ -14,25 +16,59 @@
 
 @implementation RNAccountEditPasswordViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.passwordOldTextField becomeFirstResponder];
+
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
+
+- (IBAction)saveTapped:(id)sender {
+    [self.view endEditing:YES];
+    
+    if ([self isRequiredInfoEntered]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.detailsLabelText = @"Changing...";
+        
+        [[RNWebService sharedClient] putPasswordFrom:self.passwordOldTextField.text
+                                         oldPassword:self.passwordNewTextField.text
+                                             retyped:self.passwordNewRetypeTextField.text
+                                            callback:^(id result) {
+                                                
+                                                hud.mode = MBProgressHUDModeCustomView;
+                                                
+                                                if (result != nil) {
+                                                    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+                                                    hud.detailsLabelText = @"Completed";
+                                                } else {
+                                                    hud.detailsLabelText = @"Error";
+                                                }
+                                            }];
+
+    }
+    
+}
+
+- (BOOL)isRequiredInfoEntered {
+    return ![self isEmpty:self.passwordOldTextField.text] && ![self isEmpty:self.passwordNewTextField.text] && ![self isEmpty:self.passwordNewRetypeTextField.text];
+}
+
+- (BOOL)isEmpty:(NSString *)string {
+    
+    if([string length] == 0) {
+        return YES;
+    }
+    
+    if(![[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 
 @end
