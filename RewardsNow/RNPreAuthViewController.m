@@ -10,6 +10,7 @@
 #import "RNConstants.h"
 #import "MBProgressHUD.h"
 #import "RNAuthViewController.h"
+#import "RNWebService.h"
 
 NSString *const BankCodeKey = @"BankCodeKey";
 
@@ -74,16 +75,10 @@ NSString *const BankCodeKey = @"BankCodeKey";
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.detailsLabelText = @"loading...";
     
-    double delayInSeconds = 5.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-        ///
-        /// Skin the application
-        ///
-        
+    [[RNWebService sharedClient] getBankFromCode:self.codeTextField.text callback:^(id result) {
         hud.detailsLabelText = @"skinning...";
-        double delayInSeconds = 2.0;
+        
+        double delayInSeconds = 1.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             
@@ -92,7 +87,7 @@ NSString *const BankCodeKey = @"BankCodeKey";
             [self.navigationController pushViewController:auth animated:YES];
             
         });
-    });
+    }];
 }
 
 - (IBAction)backgroundTapped:(id)sender {
