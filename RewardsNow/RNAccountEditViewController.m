@@ -37,6 +37,8 @@
 
 - (IBAction)saveTapped:(id)sender {
     
+    [self.view endEditing:YES];
+    
     if (self.dirty) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.detailsLabelText = @"Changing...";
