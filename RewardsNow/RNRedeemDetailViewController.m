@@ -29,7 +29,7 @@
     self.redeemImage.image = self.info.image;
     self.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", (NSInteger)self.info.cashValue];
     self.redeemBottomLabel.text = self.info.catagoryDescription;
-    self.descriptionTextView.text = self.info.description;
+    self.descriptionTextView.text = self.info.catagoryDescription;
 
 
 }
