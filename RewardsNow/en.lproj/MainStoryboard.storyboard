@@ -853,6 +853,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="zQf-ic-gj2" id="nXX-F8-cIm"/>
                         <outlet property="nameLabel" destination="BAq-59-pgV" id="gzS-Nb-2bv"/>
+                        <outlet property="saveButton" destination="olM-Ec-Jvr" id="edt-Ex-sjI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phj-tB-8O3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -874,6 +875,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="GWS-uR-rAQ" id="6MM-co-G6P"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  New Password" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="CSD-2V-IRZ">
                                 <constraints>
@@ -881,6 +885,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="GWS-uR-rAQ" id="lWj-7s-7Ss"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Re-Type New Password" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="l0N-GC-Seh">
                                 <constraints>
@@ -888,6 +895,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="GWS-uR-rAQ" id="6LL-GM-JTD"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -913,6 +923,7 @@
                         <outlet property="passwordNewRetypeTextField" destination="l0N-GC-Seh" id="hfa-sH-Ocj"/>
                         <outlet property="passwordNewTextField" destination="CSD-2V-IRZ" id="gcW-eT-yJR"/>
                         <outlet property="passwordOldTextField" destination="beu-Dc-iIH" id="REa-8e-UEx"/>
+                        <outlet property="saveButton" destination="di5-uK-oqR" id="Sd6-EQ-4TM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Fg-Wp-6BL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1259,6 +1270,7 @@
                 <relationship kind="outlet" name="passwordNewRetypeTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordNewTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordOldTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="RNAccountEditViewController" superclassName="UIViewController">
@@ -1267,6 +1279,7 @@
                 <relationship kind="action" name="saveTapped:"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="RNAccountViewController" superclassName="UIViewController">
