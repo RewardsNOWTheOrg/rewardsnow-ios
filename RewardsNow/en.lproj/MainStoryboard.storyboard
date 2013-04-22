@@ -780,20 +780,20 @@
             </objects>
             <point key="canvasLocation" x="2161" y="791"/>
         </scene>
-        <!--View Controller - Edit Account-->
+        <!--Account Edit View Controller - Edit Account-->
         <scene sceneID="E66-k8-6b6">
             <objects>
-                <viewController id="iNE-BX-4zM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RNAccountEditViewController" id="iNE-BX-4zM" customClass="RNAccountEditViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b8O-mU-Mqm">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3j-oX-ju6">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tX-VR-13J">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tX-VR-13J">
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Change Password          ->">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="  Change Password" backgroundImage="grey-button-arrow.png">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -804,89 +804,116 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.92156862750000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="7tX-VR-13J" firstAttribute="top" secondItem="I3j-oX-ju6" secondAttribute="top" constant="20" symbolic="YES" type="default" id="DdG-q6-eYJ"/>
-                                    <constraint firstItem="7tX-VR-13J" firstAttribute="leading" secondItem="I3j-oX-ju6" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="LBl-9O-TZo"/>
-                                    <constraint firstAttribute="trailing" secondItem="7tX-VR-13J" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vLj-3s-loW"/>
+                                    <constraint firstItem="7tX-VR-13J" firstAttribute="centerX" secondItem="I3j-oX-ju6" secondAttribute="centerX" type="default" id="Luv-0L-PaZ"/>
+                                    <constraint firstItem="7tX-VR-13J" firstAttribute="top" secondItem="I3j-oX-ju6" secondAttribute="top" constant="13" id="Uyc-SM-UTH"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="First and last name." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAq-59-pgV">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="jWX-0M-ISv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="this is your email." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zQf-ic-gj2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Email" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="zQf-ic-gj2">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="IEK-xb-FnV"/>
+                                    <constraint firstAttribute="width" constant="300" id="tIL-ex-WDH"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <connections>
+                                    <outlet property="delegate" destination="iNE-BX-4zM" id="KGf-Tn-glu"/>
+                                </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="random numbers." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9B-r3-qt8">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="I3j-oX-ju6" firstAttribute="bottom" secondItem="b8O-mU-Mqm" secondAttribute="bottom" type="default" id="AW3-FU-34l"/>
                             <constraint firstItem="BAq-59-pgV" firstAttribute="leading" secondItem="b8O-mU-Mqm" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="CBf-LU-oVA"/>
                             <constraint firstItem="I3j-oX-ju6" firstAttribute="top" secondItem="b8O-mU-Mqm" secondAttribute="top" constant="135" id="Fxv-td-zDF"/>
-                            <constraint firstItem="W9B-r3-qt8" firstAttribute="top" secondItem="zQf-ic-gj2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Kzg-Gl-ZqA"/>
-                            <constraint firstAttribute="trailing" secondItem="W9B-r3-qt8" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="StQ-7D-Fug"/>
+                            <constraint firstItem="zQf-ic-gj2" firstAttribute="centerX" secondItem="I3j-oX-ju6" secondAttribute="centerX" type="default" id="H0j-3W-UjW"/>
+                            <constraint firstItem="zQf-ic-gj2" firstAttribute="centerX" secondItem="b8O-mU-Mqm" secondAttribute="centerX" type="default" id="bfv-Wc-HCb"/>
                             <constraint firstItem="zQf-ic-gj2" firstAttribute="top" secondItem="BAq-59-pgV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="cbJ-HI-bf9"/>
-                            <constraint firstAttribute="trailing" secondItem="zQf-ic-gj2" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dbc-wl-J6n"/>
-                            <constraint firstItem="I3j-oX-ju6" firstAttribute="trailing" secondItem="b8O-mU-Mqm" secondAttribute="trailing" type="default" id="gkf-YF-w07"/>
-                            <constraint firstItem="W9B-r3-qt8" firstAttribute="leading" secondItem="b8O-mU-Mqm" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="i3V-ZS-7C3"/>
+                            <constraint firstItem="zQf-ic-gj2" firstAttribute="centerX" secondItem="BAq-59-pgV" secondAttribute="centerX" type="default" id="gpE-55-iMt"/>
                             <constraint firstItem="I3j-oX-ju6" firstAttribute="leading" secondItem="b8O-mU-Mqm" secondAttribute="leading" type="default" id="pa2-rf-aYs"/>
-                            <constraint firstItem="BAq-59-pgV" firstAttribute="top" secondItem="b8O-mU-Mqm" secondAttribute="top" constant="20" symbolic="YES" type="default" id="wgM-wD-bS3"/>
-                            <constraint firstItem="zQf-ic-gj2" firstAttribute="leading" secondItem="b8O-mU-Mqm" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="zxR-d0-pMF"/>
+                            <constraint firstItem="BAq-59-pgV" firstAttribute="top" secondItem="b8O-mU-Mqm" secondAttribute="top" constant="12" id="sqH-Rf-1oj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Account" id="Vxw-3G-9Oc">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="olM-Ec-Jvr"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="olM-Ec-Jvr">
+                            <connections>
+                                <action selector="saveTapped:" destination="iNE-BX-4zM" id="uiy-j7-HQN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="zQf-ic-gj2" id="nXX-F8-cIm"/>
+                        <outlet property="nameLabel" destination="BAq-59-pgV" id="gzS-Nb-2bv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phj-tB-8O3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2703" y="791"/>
         </scene>
-        <!--View Controller - Password-->
+        <!--Account Edit Password View Controller - Password-->
         <scene sceneID="ehu-lU-qhU">
             <objects>
-                <viewController id="GWS-uR-rAQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RNAccountEditPasswordViewController" id="GWS-uR-rAQ" customClass="RNAccountEditPasswordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kd5-hx-D4n">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beu-Dc-iIH">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Old Password" adjustsFontSizeToFit="NO" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="beu-Dc-iIH">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="I5I-FX-t6Y"/>
+                                    <constraint firstAttribute="width" constant="300" id="ZeP-lD-dxj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSD-2V-IRZ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  New Password" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="CSD-2V-IRZ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6pY-JJ-MUo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-Type New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l0N-GC-Seh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Re-Type New Password" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="l0N-GC-Seh">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2lm-HU-YJT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="l0N-GC-Seh" firstAttribute="top" secondItem="Kd5-hx-D4n" secondAttribute="top" constant="131" id="0OA-NW-244"/>
-                            <constraint firstItem="beu-Dc-iIH" firstAttribute="leading" secondItem="Kd5-hx-D4n" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Gzi-ax-B6a"/>
-                            <constraint firstItem="CSD-2V-IRZ" firstAttribute="leading" secondItem="Kd5-hx-D4n" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Jrl-72-Da8"/>
-                            <constraint firstAttribute="trailing" secondItem="beu-Dc-iIH" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="NbS-k5-AiK"/>
-                            <constraint firstAttribute="trailing" secondItem="l0N-GC-Seh" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="gfV-HY-AXp"/>
-                            <constraint firstItem="l0N-GC-Seh" firstAttribute="leading" secondItem="Kd5-hx-D4n" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="l9P-xe-j19"/>
-                            <constraint firstAttribute="trailing" secondItem="CSD-2V-IRZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="lhN-1I-Tqc"/>
-                            <constraint firstItem="beu-Dc-iIH" firstAttribute="top" secondItem="Kd5-hx-D4n" secondAttribute="top" constant="20" symbolic="YES" type="default" id="w5c-Hn-klF"/>
-                            <constraint firstItem="CSD-2V-IRZ" firstAttribute="top" secondItem="Kd5-hx-D4n" secondAttribute="top" constant="76" id="yUy-RF-Lhb"/>
+                            <constraint firstItem="CSD-2V-IRZ" firstAttribute="leading" secondItem="beu-Dc-iIH" secondAttribute="leading" type="default" id="Bmf-QU-ure"/>
+                            <constraint firstItem="CSD-2V-IRZ" firstAttribute="top" secondItem="Kd5-hx-D4n" secondAttribute="top" constant="73" id="DdK-RR-qCm"/>
+                            <constraint firstItem="beu-Dc-iIH" firstAttribute="centerX" secondItem="Kd5-hx-D4n" secondAttribute="centerX" type="default" id="M42-pi-Wp9"/>
+                            <constraint firstItem="CSD-2V-IRZ" firstAttribute="trailing" secondItem="beu-Dc-iIH" secondAttribute="trailing" type="default" id="NH4-Ya-VgJ"/>
+                            <constraint firstItem="l0N-GC-Seh" firstAttribute="leading" secondItem="CSD-2V-IRZ" secondAttribute="leading" type="default" id="STZ-pD-3B6"/>
+                            <constraint firstItem="beu-Dc-iIH" firstAttribute="top" secondItem="Kd5-hx-D4n" secondAttribute="top" constant="14" id="aAS-bU-Wmn"/>
+                            <constraint firstItem="l0N-GC-Seh" firstAttribute="trailing" secondItem="CSD-2V-IRZ" secondAttribute="trailing" type="default" id="lJA-qv-qCL"/>
+                            <constraint firstItem="l0N-GC-Seh" firstAttribute="top" secondItem="CSD-2V-IRZ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rqy-aw-szb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Password" id="rUC-RC-ZcV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="di5-uK-oqR"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="di5-uK-oqR">
+                            <connections>
+                                <action selector="saveTapped:" destination="GWS-uR-rAQ" id="2oZ-7f-q6o"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="passwordNewRetypeTextField" destination="l0N-GC-Seh" id="hfa-sH-Ocj"/>
+                        <outlet property="passwordNewTextField" destination="CSD-2V-IRZ" id="gcW-eT-yJR"/>
+                        <outlet property="passwordOldTextField" destination="beu-Dc-iIH" id="REa-8e-UEx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Fg-Wp-6BL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1224,6 +1251,23 @@
         </class>
         <class className="RNAboutViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutViewController.h"/>
+        </class>
+        <class className="RNAccountEditPasswordViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditPasswordViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveTapped:"/>
+                <relationship kind="outlet" name="passwordNewRetypeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordNewTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordOldTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RNAccountEditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveTapped:"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="RNAccountViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountViewController.h"/>
