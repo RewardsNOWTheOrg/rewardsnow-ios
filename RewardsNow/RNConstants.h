@@ -10,6 +10,8 @@
 
 #define C(color) (float)color/255.0
 
+#define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
 @interface RNConstants : NSCache
 
 @end
