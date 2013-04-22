@@ -7,6 +7,10 @@
 //
 
 #import "RNAccountEditViewController.h"
+#import "MBProgressHUD.h"
+#import "RNCart.h"
+#import "RNUser.h"
+#import "RNWebService.h"
 
 @interface RNAccountEditViewController ()
 
@@ -14,25 +18,41 @@
 
 @implementation RNAccountEditViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    RNUser *user = [[RNCart sharedCart] user];
+    self.nameLabel.text = user.fullName;
+    self.emailTextField.text = user.email;
+
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
+- (IBAction)saveTapped:(id)sender {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.detailsLabelText = @"Changing...";
+    
+    [[RNWebService sharedClient] putEmail:self.emailTextField.text callback:^(id result) {
+        
+        
+        hud.mode = MBProgressHUDModeCustomView;
+        
+        [hud hide:YES afterDelay:1.5];
+        
+        if (result != nil) {
+            RNUser *user = [[RNCart sharedCart] user];
+            user.email = self.emailTextField.text;
+            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            hud.detailsLabelText = @"Completed";
+        } else {
+            hud.detailsLabelText = @"Error";
+        }
+        
+       
+    }];
+}
 @end
