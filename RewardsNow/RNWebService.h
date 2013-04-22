@@ -18,7 +18,11 @@ typedef void (^RNResultCallback)(id result);
 - (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback;
 
 - (void)getAccountInfoWithTip:(NSNumber *)tip callback:(RNResultCallback)callback;
+- (void)getBankFromCode:(NSString *)code callback:(RNResultCallback)callback;
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password code:(NSNumber *)code callback:(RNResultCallback)callback;
+
+- (void)putEmail:(NSString *)email callback:(RNResultCallback)callback;
+- (void)putPasswordFrom:(NSString *)password oldPassword:(NSString *)oldPassword retyped:(NSString *)retypedPassword callback:(RNResultCallback)callback;
 
 @end

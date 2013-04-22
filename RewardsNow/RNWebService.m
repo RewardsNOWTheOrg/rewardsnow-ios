@@ -16,8 +16,9 @@
 
 NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/FacadeService.svc/";
 NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3eb07bc74d5bc081";
-NSString *const kResultsKey = @"Result";
 
+NSString *const kResultsKey = @"Result";
+NSString *const kErrorKey = @"Error";
 
 @interface RNWebService()
 
@@ -71,9 +72,17 @@ NSString *const kResultsKey = @"Result";
                                                                                      DLog(@"Requst: %@", response);
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     NSArray *objects = [RNRedeemObject objectsFromJSON:[JSON objectForKey:kResultsKey]];
-                                                                                     // cache?
-                                                                                     callback(objects);
+                                                                                     if ([self wasSuccessful:JSON]) {
+                                                                                         NSArray *objects = [RNRedeemObject objectsFromJSON:[JSON objectForKey:kResultsKey]];
+                                                                                         // cache?
+                                                                                         callback(objects);
+                                                                                     } else {
+                                                                                         callback(nil);
+                                                                                     }
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                     
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
@@ -83,6 +92,18 @@ NSString *const kResultsKey = @"Result";
                                                                                      callback(nil);
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
+}
+
+- (void)getBankFromCode:(NSString *)code callback:(RNResultCallback)callback {
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+        callback(@{@"success" : @"true"});
+    });
 }
 
 - (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback {
@@ -120,6 +141,15 @@ NSString *const kResultsKey = @"Result";
     ///
     /// Perform the authentication
     ///
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+        callback(@{@"success" : @"true"});
+    });
+
 }
 
 - (void)getAccountInfoWithTip:(NSNumber *)tip callback:(RNResultCallback)callback {
@@ -133,13 +163,19 @@ NSString *const kResultsKey = @"Result";
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     NSError *error = nil;                                                                                     
-                                                                                     RNUser *user = [MTLJSONAdapter modelOfClass:[RNUser class] fromJSONDictionary:JSON error:&error];
-                                                                                     if (error != nil) {
-                                                                                         DLog(@"Error creating RNUser: %@", error);
+                                                                                     if ([self wasSuccessful:JSON]) {
+                                                                                         NSError *error = nil;
+                                                                                         RNUser *user = [MTLJSONAdapter modelOfClass:[RNUser class] fromJSONDictionary:JSON error:&error];
+                                                                                         if (error != nil) {
+                                                                                             DLog(@"Error creating RNUser: %@", error);
+                                                                                         }
+                                                                                         
+                                                                                         callback(user);
+                                                                                     } else {
+                                                                                         callback(nil);
                                                                                      }
                                                                                      
-                                                                                     callback(user);
+                                                                                     
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
@@ -148,6 +184,40 @@ NSString *const kResultsKey = @"Result";
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
     
+}
+
+- (void)putEmail:(NSString *)email callback:(RNResultCallback)callback {
+    
+//    NSString *url = [NSString stringWithFormat:@"email"];
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+        callback(@{@"success" : @"true"});
+    });
+}
+
+- (void)putPasswordFrom:(NSString *)password oldPassword:(NSString *)oldPassword retyped:(NSString *)retypedPassword callback:(RNResultCallback)callback {
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+        callback(@{@"success" : @"true"});
+    });
+
+    
+}
+
+- (BOOL)wasSuccessful:(id)JSON {
+    return [JSON isKindOfClass:[NSDictionary class]] && (JSON[kErrorKey] == nil || JSON[kErrorKey] == [NSNull null]);
 }
 
 //- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
