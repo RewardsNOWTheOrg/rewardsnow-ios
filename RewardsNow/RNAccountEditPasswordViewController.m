@@ -47,6 +47,7 @@
                                                 } else {
                                                     hud.detailsLabelText = @"Error";
                                                 }
+                                                [hud hide:YES afterDelay:1.5];
                                             }];
 
     }
