@@ -92,6 +92,8 @@
 		AA5510DB170F10A3001CC718 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA5510D9170F10A3001CC718 /* InfoPlist.strings */; };
 		AA5510DE170F10A3001CC718 /* RewardsNowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5510DD170F10A3001CC718 /* RewardsNowTests.m */; };
 		AA5DF36217231B2D0093B7AC /* RNPreAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DF36117231B2D0093B7AC /* RNPreAuthViewController.m */; };
+		AA9020C01725AE6D0074B857 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */; };
+		AA9020C11725AE6D0074B857 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */; };
 		BEE78D9760F24F3DB6FAB95F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B69993D8124244B8A76580AB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -230,6 +232,8 @@
 		AA5510DD170F10A3001CC718 /* RewardsNowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RewardsNowTests.m; sourceTree = "<group>"; };
 		AA5DF36017231B2D0093B7AC /* RNPreAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPreAuthViewController.h; sourceTree = "<group>"; };
 		AA5DF36117231B2D0093B7AC /* RNPreAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPreAuthViewController.m; sourceTree = "<group>"; };
+		AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
+		AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		B69993D8124244B8A76580AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -484,6 +488,8 @@
 		AA5510E7170F1134001CC718 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */,
+				AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */,
 				AA355A67172199DD0014E01B /* divider-line.png */,
 				AA355A68172199DD0014E01B /* divider-line@2x.png */,
 				AA355A63172199240014E01B /* red-button.png */,
@@ -665,6 +671,8 @@
 				AA355A66172199240014E01B /* red-button@2x.png in Resources */,
 				AA355A69172199DD0014E01B /* divider-line.png in Resources */,
 				AA355A6A172199DD0014E01B /* divider-line@2x.png in Resources */,
+				AA9020C01725AE6D0074B857 /* 37x-Checkmark.png in Resources */,
+				AA9020C11725AE6D0074B857 /* 37x-Checkmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,11 +879,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
 				INFOPLIST_FILE = "RewardsNow/RewardsNow-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -884,11 +894,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CloudMine LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CloudMine LLC";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
 				INFOPLIST_FILE = "RewardsNow/RewardsNow-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
