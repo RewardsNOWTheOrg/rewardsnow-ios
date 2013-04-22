@@ -26,6 +26,7 @@
     RNUser *user = [[RNCart sharedCart] user];
     self.nameLabel.text = user.fullName;
     self.emailTextField.text = user.email;
+    self.saveButton.enabled = NO;
     self.dirty = NO;
 
 }
@@ -64,7 +65,7 @@
 #pragma mark UITextFild Delegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    self.dirty = YES;
+    self.saveButton.enabled = YES;
     return YES;
 }
 

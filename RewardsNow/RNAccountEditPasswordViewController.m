@@ -19,38 +19,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.passwordOldTextField becomeFirstResponder];
+    self.saveButton.enabled = NO;
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
+    
 }
 
 - (IBAction)saveTapped:(id)sender {
     [self.view endEditing:YES];
     
-    if ([self isRequiredInfoEntered]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.detailsLabelText = @"Changing...";
-        
-        [[RNWebService sharedClient] putPasswordFrom:self.passwordOldTextField.text
-                                         oldPassword:self.passwordNewTextField.text
-                                             retyped:self.passwordNewRetypeTextField.text
-                                            callback:^(id result) {
-                                                
-                                                hud.mode = MBProgressHUDModeCustomView;
-                                                
-                                                if (result != nil) {
-                                                    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-                                                    hud.detailsLabelText = @"Completed";
-                                                } else {
-                                                    hud.detailsLabelText = @"Error";
-                                                }
-                                                [hud hide:YES afterDelay:1.5];
-                                            }];
-
-    }
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.detailsLabelText = @"Changing...";
+    
+    [[RNWebService sharedClient] putPasswordFrom:self.passwordOldTextField.text
+                                     oldPassword:self.passwordNewTextField.text
+                                         retyped:self.passwordNewRetypeTextField.text
+                                        callback:^(id result) {
+                                            
+                                            hud.mode = MBProgressHUDModeCustomView;
+                                            
+                                            if (result != nil) {
+                                                hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+                                                hud.detailsLabelText = @"Completed";
+                                            } else {
+                                                hud.detailsLabelText = @"Error";
+                                            }
+                                            [hud hide:YES afterDelay:1.5];
+                                        }];
+    
 }
 
 - (BOOL)isRequiredInfoEntered {
@@ -68,6 +67,13 @@
     }
     
     return NO;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([self isRequiredInfoEntered]) {
+        self.saveButton.enabled = YES;
+    }
+    return YES;
 }
 
 

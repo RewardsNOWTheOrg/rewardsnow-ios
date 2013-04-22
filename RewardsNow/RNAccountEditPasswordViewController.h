@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordOldTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordNewTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordNewRetypeTextField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 - (IBAction)saveTapped:(id)sender;
 
