@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 CloudMine LLC. All rights reserved.
 //
 
-#import "AFHTTPClient.h"
+#import "AFNetworking.h"
 
 typedef void (^RNResultCallback)(id result);
 
