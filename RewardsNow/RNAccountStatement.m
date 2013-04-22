@@ -10,18 +10,15 @@
 
 @implementation RNAccountStatement
 
-/*
-- (instancetype)initWithDictionary:(NSDictionary *)dict {
-    
-    if ( (self = [super initWithDictionary:dict]) ) {
-        
-    }
-    return self;
-}*/
+#pragma mark - Mantle
 
-- (void)setPointsIncreaseFromDictionaries:(NSArray *)dictionaries {}
-- (void)setPointsDecreaseFromDictionaries:(NSArray *)dictionaries {}
-- (void)setHistoryFromDictionaries:(NSArray *)dictionaries {}
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    
+    NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
+    [fields setValue:@"BeginningPointsBalance" forKey:@"pointsBeginning"];
+    [fields setValue:@"EndingPointsBalance" forKey:@"pointsEnd"];
+    return fields;
+}
 
 
 @end

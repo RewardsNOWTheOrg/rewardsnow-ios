@@ -12,14 +12,11 @@
 
 @property (nonatomic, strong) NSDate *dateStart;
 @property (nonatomic, strong) NSDate *dateEnd;
-@property (nonatomic, strong) NSNumber *points;
+@property (nonatomic, strong) NSNumber *pointsBeginning;
+@property (nonatomic, strong) NSNumber *pointsEnd;
 
 @property (nonatomic, copy) NSArray *pointsIncrease;
 @property (nonatomic, copy) NSArray *pointsDecrease;
 @property (nonatomic, copy) NSArray *history;
-
-- (void)setPointsIncreaseFromDictionaries:(NSArray *)dictionaries;
-- (void)setPointsDecreaseFromDictionaries:(NSArray *)dictionaries;
-- (void)setHistoryFromDictionaries:(NSArray *)dictionaries;
 
 @end
