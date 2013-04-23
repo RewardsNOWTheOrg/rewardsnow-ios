@@ -42,6 +42,7 @@ typedef enum {
     
     self.firstDay = [NSDate firstDayOfCurrentMonth];
     self.lastDay = [NSDate firstDayOfNextMonth];
+    self.currentState = DetailViewTable;
     
     [self updateInfo];
     
@@ -72,10 +73,48 @@ typedef enum {
 
 - (IBAction)swipeRecognized:(UISwipeGestureRecognizer *)sender {
     
-    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
-        [self showPointsIncrease];
+    DLog(@"Direction: %d", sender.direction);
+    NSInteger change = sender.direction == UISwipeGestureRecognizerDirectionLeft ? 1 : -1;
+    
+    DLog(@"State: %d", _currentState);
+    
+    if (_currentState == 0 && change == -1) {
+        _currentState = 4;
+    } else if (_currentState == 4 && change == 1) {
+        _currentState = 0;
     } else {
-        DLog(@"Right");
+        _currentState += change;
+    }
+    
+    switch (self.currentState) {
+        case DetailViewTable:
+        {
+            [self showTable:sender.direction];
+            break;
+        }
+        case DetailViewIncrease:
+        {
+            [self showPointsIncrease:sender.direction];
+            break;
+        }
+        case DetailViewDecrease:
+        {
+            [self showPointsDecrease:sender.direction];
+            break;
+        }
+        case DetailViewHistory:
+        {
+            [self showActivityDetail:sender.direction];
+            break;
+        }
+        case DetailViewOther:
+        {
+            [self showOther:sender.direction];
+            break;
+        }
+        default:
+            DLog(@"Unexpected Value: %d", _currentState);
+            break;
     }
 }
 
@@ -121,19 +160,22 @@ typedef enum {
     switch (indexPath.row) {
         case 0:
         {
-            [self showPointsIncrease];
+            [self showPointsIncrease:UISwipeGestureRecognizerDirectionLeft];
             break;
         }
         case 1:
         {
+            [self showPointsDecrease:UISwipeGestureRecognizerDirectionLeft];
             break;
         }
         case 2:
         {
+            [self showActivityDetail:UISwipeGestureRecognizerDirectionLeft];
             break;
         }
         case 3:
         {
+            [self showOther:UISwipeGestureRecognizerDirectionLeft];
             break;
         }
         default:
@@ -141,8 +183,13 @@ typedef enum {
     }
 }
 
-- (void)showPointsIncrease {
-    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10 + 320, 130, 300, (self.statement.pointsIncrease.count * 40) + 70)];
+- (void)showTable:(UISwipeGestureRecognizerDirection)direction {
+    [self scrollDetailView:direction toView:self.tableView];
+}
+
+- (void)showPointsIncrease:(UISwipeGestureRecognizerDirection)direction {
+    
+    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, 130, 300, (self.statement.pointsIncrease.count * 40) + 70)];
     details.titleLabel.text = @"Points Increase";
 
     DLog(@"Info: %@", self.statement);
@@ -152,20 +199,67 @@ typedef enum {
         [details addLeftText:pc.statementType rightText:[pc.points description]];
     }
     
-    self.scrollView.contentSize = CGSizeMake(320, details.frame.origin.y + details.frame.size.height);
-    [self.innerView addSubview:details];
+    [self scrollDetailView:direction toView:details];
+}
+
+- (void)showPointsDecrease:(UISwipeGestureRecognizerDirection)direction {
+    
+    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, 130, 300, (self.statement.pointsDecrease.count * 40) + 70)];
+    details.titleLabel.text = @"Points Decrease";
+    
+    for (NSInteger i = 0; i < self.statement.pointsDecrease.count; i++) {
+        RNPointChange *pc = self.statement.pointsDecrease[i];
+        [details addLeftText:pc.statementType rightText:[pc.points description]];
+    }
+    
+    [self scrollDetailView:direction toView:details];
+    
+}
+
+- (void)showActivityDetail:(UISwipeGestureRecognizerDirection)direction {
+    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, 130, 300, (self.statement.history.count * 40) + 70)];
+    details.titleLabel.text = @"Activity Detail";
+    
+    for (NSInteger i = 0; i < self.statement.history.count; i++) {
+        RNTransaction *transaction = self.statement.history[i];
+        [details addLeftText:transaction.transactionDescription rightText:[transaction.points description]];
+    }
+    
+    [self scrollDetailView:direction toView:details];
+}
+
+- (void)showOther:(UISwipeGestureRecognizerDirection)direction {
+    
+    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, 130, 300, 300)];
+    details.titleLabel.text = @"Other";
+
+    [self scrollDetailView:direction toView:details];
+}
+
+- (void)scrollDetailView:(UISwipeGestureRecognizerDirection)direction toView:(UIView *)aView {
+    
+    CGFloat modifier = direction == UISwipeGestureRecognizerDirectionLeft ? 320 : -320;
+    
+    if ([aView isKindOfClass:[UITableView class]]) {
+        self.tableLeftSpace.constant = modifier;
+        [self.view layoutIfNeeded];
+    }
+    aView.frame = CGRectMake(aView.frame.origin.x + modifier, aView.frame.origin.y, aView.frame.size.width, aView.frame.size.height);
+    [self.innerView addSubview:aView];
     
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         
         if ([self.displayedDetailView isKindOfClass:[UITableView class]]) {
-            self.tableLeftSpace.constant = -320;
+            self.tableLeftSpace.constant = -(modifier);
             [self.view layoutIfNeeded];
         }
         
-        self.displayedDetailView.frame = CGRectMake(-320, self.displayedDetailView.frame.origin.y, self.displayedDetailView.frame.size.width, self.displayedDetailView.frame.size.height);
-        details.frame = CGRectMake(details.frame.origin.x - 320, details.frame.origin.y, details.frame.size.width, details.frame.size.height);
+        self.displayedDetailView.frame = CGRectMake(-(modifier), self.displayedDetailView.frame.origin.y, self.displayedDetailView.frame.size.width, self.displayedDetailView.frame.size.height);
+        aView.frame = CGRectMake(aView.frame.origin.x - (modifier), aView.frame.origin.y, aView.frame.size.width, aView.frame.size.height);
+        
     } completion:^(BOOL finished) {
-        self.displayedDetailView = details;
+        self.displayedDetailView = aView;
+        self.scrollView.contentSize = CGSizeMake(320, self.displayedDetailView.frame.origin.y + self.displayedDetailView.frame.size.height);
     }];
 }
 

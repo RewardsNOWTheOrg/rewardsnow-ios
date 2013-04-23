@@ -17,8 +17,10 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *displayedDetailView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableLeftSpace;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)backMonth:(id)sender;
 - (IBAction)forwardMonth:(id)sender;
 - (IBAction)swipeRecognized:(id)sender;
+
 @end
