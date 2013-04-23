@@ -10,4 +10,8 @@
 
 @interface RNAccountStatementDetailView : UIView
 
+@property (nonatomic, strong) UILabel *titleLabel;
+
+- (void)addLeftText:(NSString *)left rightText:(NSString *)right;
+
 @end
