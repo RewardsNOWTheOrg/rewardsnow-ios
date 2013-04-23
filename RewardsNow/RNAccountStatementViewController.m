@@ -24,6 +24,8 @@ typedef enum {
     DetailViewOther
 } DetailView;
 
+static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
+
 @interface RNAccountStatementViewController ()
 
 @property (nonatomic) NSInteger currentMonth;
@@ -44,9 +46,14 @@ typedef enum {
     self.lastDay = [NSDate firstDayOfNextMonth];
     self.currentState = DetailViewTable;
     
-    [self updateInfo];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 121, 320, 44*4) style:UITableViewStylePlain];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:RNAccountStatementCell];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.innerView addSubview:self.tableView];
+    self.displayedDetailView = self.tableView;
     
-    DLog(@"What: %@", self.displayedDetailView);
+    [self updateInfo];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -143,7 +150,6 @@ typedef enum {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:RNAccountStatementCell];
     
@@ -184,7 +190,13 @@ typedef enum {
 }
 
 - (void)showTable:(UISwipeGestureRecognizerDirection)direction {
-    [self scrollDetailView:direction toView:self.tableView];
+    
+    UITableView *aTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 121, 320, 44*4) style:UITableViewStylePlain];
+    [aTable registerClass:[UITableViewCell class] forCellReuseIdentifier:RNAccountStatementCell];
+    aTable.delegate = self;
+    aTable.dataSource = self;
+    
+    [self scrollDetailView:direction toView:aTable];
 }
 
 - (void)showPointsIncrease:(UISwipeGestureRecognizerDirection)direction {
@@ -240,19 +252,10 @@ typedef enum {
     
     CGFloat modifier = direction == UISwipeGestureRecognizerDirectionLeft ? 320 : -320;
     
-    if ([aView isKindOfClass:[UITableView class]]) {
-        self.tableLeftSpace.constant = modifier;
-        [self.view layoutIfNeeded];
-    }
     aView.frame = CGRectMake(aView.frame.origin.x + modifier, aView.frame.origin.y, aView.frame.size.width, aView.frame.size.height);
     [self.innerView addSubview:aView];
     
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        
-        if ([self.displayedDetailView isKindOfClass:[UITableView class]]) {
-            self.tableLeftSpace.constant = -(modifier);
-            [self.view layoutIfNeeded];
-        }
         
         self.displayedDetailView.frame = CGRectMake(-(modifier), self.displayedDetailView.frame.origin.y, self.displayedDetailView.frame.size.width, self.displayedDetailView.frame.size.height);
         aView.frame = CGRectMake(aView.frame.origin.x - (modifier), aView.frame.origin.y, aView.frame.size.width, aView.frame.size.height);
