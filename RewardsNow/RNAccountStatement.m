@@ -7,6 +7,9 @@
 //
 
 #import "RNAccountStatement.h"
+#import "RNTransaction.h"
+#import "RNPointChange.h"
+
 
 @implementation RNAccountStatement
 
@@ -15,9 +18,21 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     
     NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
-    [fields setValue:@"BeginningPointsBalance" forKey:@"pointsBeginning"];
-    [fields setValue:@"EndingPointsBalance" forKey:@"pointsEnd"];
+    [fields setValue:@"BeginningPointsBalance.Points" forKey:@"pointsBeginning"];
+    [fields setValue:@"EndingPointsBalance.Points" forKey:@"pointsEnd"];
     return fields;
+}
+
++ (NSValueTransformer *)pointsIncreaseJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:RNPointChange.class];
+}
+
++ (NSValueTransformer *)pointsDecreaseJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:RNPointChange.class];
+}
+
++ (NSValueTransformer *)historyJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:RNTransaction.class];
 }
 
 
