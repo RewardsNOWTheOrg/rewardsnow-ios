@@ -88,7 +88,7 @@
     RNRedeemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", (NSInteger)[self.rewards[indexPath.row] cashValue]];
-    cell.redeemBottomLabel.text = [NSString stringWithFormat:@"%.0f Redemption points", [self.rewards[indexPath.row] priceInPoints]];
+    cell.redeemBottomLabel.text = [NSString stringWithFormat:@"%.0f Points", [self.rewards[indexPath.row] priceInPoints]];
     cell.redeemImage.contentMode = UIViewContentModeScaleAspectFit;
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[[self.rewards[indexPath.row] imageURL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
