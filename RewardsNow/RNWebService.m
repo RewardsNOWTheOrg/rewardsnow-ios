@@ -12,6 +12,7 @@
 #import "Mantle.h"
 #import "RNUser.h"
 #import "RNCart.h"
+#import "RNAccountStatement.h"
 
 
 NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/FacadeService.svc/";
@@ -19,6 +20,7 @@ NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3
 
 NSString *const kResultsKey = @"Result";
 NSString *const kErrorKey = @"Error";
+NSString *const kStatementKey = @"Statement";
 
 @interface RNWebService()
 
@@ -122,12 +124,19 @@ NSString *const kErrorKey = @"Error";
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
-//                                                                                     NSMutableArray *toReturn = [NSMutableArray array];
-//                                                                                     for (NSDictionary *d in [JSON objectForKey:kResultsKey]) {
-//                                                                                         [toReturn addObject:[[RNRedeemObject alloc] initWithDictionary:d]];
-//                                                                                     }
+                                                                                     DLog(@"Requst: %@", response);
+                                                                                     DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     callback(nil);
+                                                                                     if (YES/*[self wasSuccessful:JSON]*/) {
+                                                                                         
+                                                                                         DLog(@"WHAT: %@", [JSON objectForKey:kStatementKey]);
+                                                                                         DLog(@"WHAT2: %@", NSStringFromClass([[JSON objectForKey:kStatementKey] class]));
+                                                                                         NSArray *objects = [RNAccountStatement objectsFromJSON:@[[JSON objectForKey:kStatementKey]]];
+                                                                                         // cache?
+                                                                                         callback([objects lastObject]);
+                                                                                     } else {
+                                                                                         callback(nil);
+                                                                                     }
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
