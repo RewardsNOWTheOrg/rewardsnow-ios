@@ -10,10 +10,8 @@
 
 /*
  "Points": 0,
- "Ratio": -1,
  "StatementTypeId": 6,
  "StatementTypeName": "Other Adjustments",
- "TranCodes": "DE"
  */
 
 @interface RNPointChange : RNObject

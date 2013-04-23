@@ -10,16 +10,12 @@
 
 @implementation RNPointChange
 
-/*
-- (instancetype)initWithDictionary:(NSDictionary *)dict {
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
     
-    if ( (self = [super initWithDictionary:dict]) ) {
-        self.points = dict[@"Points"];
-        self.statementType = dict[@"StatementTypeName"];
-    }
-    return self;
+    NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
+    [fields setValue:@"Points" forKey:@"points"];
+    [fields setValue:@"StatementTypeName" forKey:@"statementType"];
+    return fields;
 }
-*/
-
 
 @end
