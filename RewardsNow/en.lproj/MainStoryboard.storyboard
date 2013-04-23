@@ -891,7 +891,7 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bCr-bO-dgm">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="170" id="G5n-Ct-jko"/>
+                                                    <constraint firstAttribute="height" constant="170" id="Kiz-jh-lPB"/>
                                                     <constraint firstAttribute="width" constant="320" type="user" id="OKn-OS-SHi"/>
                                                 </constraints>
                                                 <view key="tableFooterView" contentMode="scaleToFill" id="jT5-VP-kfW">
@@ -920,9 +920,11 @@
                                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
+                                            <constraint firstItem="bCr-bO-dgm" firstAttribute="top" secondItem="LKT-c4-AQF" secondAttribute="top" constant="121" id="087-1a-liL"/>
                                             <constraint firstItem="RGo-MC-Kuf" firstAttribute="top" secondItem="LKT-c4-AQF" secondAttribute="top" type="user" id="3Im-5n-7Uc"/>
                                             <constraint firstItem="RGo-MC-Kuf" firstAttribute="leading" secondItem="LKT-c4-AQF" secondAttribute="leading" type="user" id="Dzf-RV-WVI"/>
-                                            <constraint firstItem="bCr-bO-dgm" firstAttribute="top" secondItem="LKT-c4-AQF" secondAttribute="top" constant="122" id="Z7a-R7-KTh"/>
+                                            <constraint firstAttribute="width" constant="320" type="user" id="XuS-Sd-dJ8"/>
+                                            <constraint firstAttribute="height" constant="900" type="user" id="gs1-X9-tsT"/>
                                             <constraint firstItem="RGo-MC-Kuf" firstAttribute="trailing" secondItem="LKT-c4-AQF" secondAttribute="trailing" type="user" id="jzR-CZ-5OQ"/>
                                             <constraint firstItem="bCr-bO-dgm" firstAttribute="leading" secondItem="LKT-c4-AQF" secondAttribute="leading" type="user" id="kDT-HD-Vx0"/>
                                         </constraints>
@@ -934,11 +936,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="LKT-c4-AQF" firstAttribute="top" secondItem="5Dj-se-ENC" secondAttribute="top" type="user" id="K2k-v0-b9n"/>
+                                    <constraint firstAttribute="bottom" secondItem="LKT-c4-AQF" secondAttribute="bottom" constant="-495" id="ToP-uo-6ML"/>
                                     <constraint firstItem="LKT-c4-AQF" firstAttribute="trailing" secondItem="5Dj-se-ENC" secondAttribute="trailing" type="default" id="VNo-N7-1Te"/>
-                                    <constraint firstItem="LKT-c4-AQF" firstAttribute="centerX" secondItem="5Dj-se-ENC" secondAttribute="centerX" type="user" id="i7m-07-HIA"/>
-                                    <constraint firstItem="LKT-c4-AQF" firstAttribute="centerY" secondItem="5Dj-se-ENC" secondAttribute="centerY" type="user" id="mZN-ml-Ytx"/>
                                     <constraint firstItem="LKT-c4-AQF" firstAttribute="leading" secondItem="5Dj-se-ENC" secondAttribute="leading" type="user" id="nzU-IV-tWf"/>
-                                    <constraint firstItem="LKT-c4-AQF" firstAttribute="bottom" secondItem="5Dj-se-ENC" secondAttribute="bottom" type="default" id="zSh-2T-PSx"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -967,6 +967,7 @@
                         <outlet property="pointsStartLabel" destination="WSX-Z6-sb5" id="zBA-6F-qTf"/>
                         <outlet property="scrollView" destination="5Dj-se-ENC" id="t00-Ta-vz8"/>
                         <outlet property="tableLeftSpace" destination="kDT-HD-Vx0" id="SYn-s5-IeQ"/>
+                        <outlet property="tableView" destination="bCr-bO-dgm" id="zlj-sb-qjC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZn-N5-AcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1501,6 +1502,7 @@
                 <relationship kind="outlet" name="pointsStartLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="tableLeftSpace" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="RNAccountViewController" superclassName="UIViewController">
