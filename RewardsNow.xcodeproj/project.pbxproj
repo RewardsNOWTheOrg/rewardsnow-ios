@@ -94,6 +94,14 @@
 		AA5DF36217231B2D0093B7AC /* RNPreAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DF36117231B2D0093B7AC /* RNPreAuthViewController.m */; };
 		AA9020C01725AE6D0074B857 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */; };
 		AA9020C11725AE6D0074B857 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */; };
+		AAD9734E1725C48E00171240 /* account-back.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734A1725C48E00171240 /* account-back.png */; };
+		AAD9734F1725C48E00171240 /* account-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734B1725C48E00171240 /* account-back@2x.png */; };
+		AAD973501725C48E00171240 /* account-forward.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734C1725C48E00171240 /* account-forward.png */; };
+		AAD973511725C48E00171240 /* account-forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734D1725C48E00171240 /* account-forward@2x.png */; };
+		AAD973541725C58200171240 /* account-point-divider.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD973521725C58200171240 /* account-point-divider.png */; };
+		AAD973551725C58200171240 /* account-point-divider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD973531725C58200171240 /* account-point-divider@2x.png */; };
+		AAD973581725DB2E00171240 /* NSDate+Reporting.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD973571725DB2E00171240 /* NSDate+Reporting.m */; };
+		AAD9735B1726D6F300171240 /* RNAccountStatementDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD9735A1726D6F300171240 /* RNAccountStatementDetailView.m */; };
 		BEE78D9760F24F3DB6FAB95F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B69993D8124244B8A76580AB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -234,6 +242,16 @@
 		AA5DF36117231B2D0093B7AC /* RNPreAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPreAuthViewController.m; sourceTree = "<group>"; };
 		AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		AAD9734A1725C48E00171240 /* account-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-back.png"; sourceTree = "<group>"; };
+		AAD9734B1725C48E00171240 /* account-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-back@2x.png"; sourceTree = "<group>"; };
+		AAD9734C1725C48E00171240 /* account-forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-forward.png"; sourceTree = "<group>"; };
+		AAD9734D1725C48E00171240 /* account-forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-forward@2x.png"; sourceTree = "<group>"; };
+		AAD973521725C58200171240 /* account-point-divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-point-divider.png"; sourceTree = "<group>"; };
+		AAD973531725C58200171240 /* account-point-divider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-point-divider@2x.png"; sourceTree = "<group>"; };
+		AAD973561725DB2E00171240 /* NSDate+Reporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Reporting.h"; sourceTree = "<group>"; };
+		AAD973571725DB2E00171240 /* NSDate+Reporting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Reporting.m"; sourceTree = "<group>"; };
+		AAD973591726D6F200171240 /* RNAccountStatementDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountStatementDetailView.h; sourceTree = "<group>"; };
+		AAD9735A1726D6F300171240 /* RNAccountStatementDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountStatementDetailView.m; sourceTree = "<group>"; };
 		B69993D8124244B8A76580AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -318,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				AA53FE5C170F5F2200041748 /* Edit */,
+				AAD9735C1726DBC900171240 /* Views */,
 				AA53FE42170F5DF900041748 /* RNAccountViewController.h */,
 				AA53FE43170F5DF900041748 /* RNAccountViewController.m */,
 				AA53FE4B170F5E5C00041748 /* RNAccountStatementViewController.h */,
@@ -355,6 +374,8 @@
 		AA53FE84170F869C00041748 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				AAD973561725DB2E00171240 /* NSDate+Reporting.h */,
+				AAD973571725DB2E00171240 /* NSDate+Reporting.m */,
 				AA53FEA3170F873C00041748 /* RNWebService.h */,
 				AA53FEA4170F873C00041748 /* RNWebService.m */,
 			);
@@ -488,6 +509,12 @@
 		AA5510E7170F1134001CC718 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AAD973521725C58200171240 /* account-point-divider.png */,
+				AAD973531725C58200171240 /* account-point-divider@2x.png */,
+				AAD9734A1725C48E00171240 /* account-back.png */,
+				AAD9734B1725C48E00171240 /* account-back@2x.png */,
+				AAD9734C1725C48E00171240 /* account-forward.png */,
+				AAD9734D1725C48E00171240 /* account-forward@2x.png */,
 				AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */,
 				AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */,
 				AA355A67172199DD0014E01B /* divider-line.png */,
@@ -557,6 +584,15 @@
 				AA53FE7C170F78D900041748 /* RNRedeemCell.m */,
 			);
 			name = Redeem;
+			sourceTree = "<group>";
+		};
+		AAD9735C1726DBC900171240 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AAD973591726D6F200171240 /* RNAccountStatementDetailView.h */,
+				AAD9735A1726D6F300171240 /* RNAccountStatementDetailView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -673,6 +709,12 @@
 				AA355A6A172199DD0014E01B /* divider-line@2x.png in Resources */,
 				AA9020C01725AE6D0074B857 /* 37x-Checkmark.png in Resources */,
 				AA9020C11725AE6D0074B857 /* 37x-Checkmark@2x.png in Resources */,
+				AAD9734E1725C48E00171240 /* account-back.png in Resources */,
+				AAD9734F1725C48E00171240 /* account-back@2x.png in Resources */,
+				AAD973501725C48E00171240 /* account-forward.png in Resources */,
+				AAD973511725C48E00171240 /* account-forward@2x.png in Resources */,
+				AAD973541725C58200171240 /* account-point-divider.png in Resources */,
+				AAD973551725C58200171240 /* account-point-divider@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +812,8 @@
 				AA355A5A1720A7D90014E01B /* RNGiftCard.m in Sources */,
 				AA355A5E1720ACFA0014E01B /* RNCart.m in Sources */,
 				AA5DF36217231B2D0093B7AC /* RNPreAuthViewController.m in Sources */,
+				AAD973581725DB2E00171240 /* NSDate+Reporting.m in Sources */,
+				AAD9735B1726D6F300171240 /* RNAccountStatementDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
