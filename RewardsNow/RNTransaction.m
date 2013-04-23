@@ -10,18 +10,15 @@
 
 @implementation RNTransaction
 
-/*
-- (instancetype)initWithDictionary:(NSDictionary *)dict {
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
     
-    if ( (self = [super initWithDictionary:dict]) ) {
-        self.accountID = dict[@"AcctId"];
-        self.description = dict[@"Description"];
-        self.transactionDate = dict[@"HistDate"];
-        self.MerchantName = dict[@"MerchantName"];
-        self.points = dict[@"Points"];
-    }
-    return self;
+    NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
+    [fields setValue:@"Points" forKey:@"points"];
+    [fields setValue:@"MerchantName" forKey:@"merchantName"];
+    [fields setValue:@"HistDate" forKey:@"transactionDate"];
+    [fields setValue:@"Description" forKey:@"transactionDescription"];
+    [fields setValue:@"AcctId" forKey:@"accountID"];
+    return fields;
 }
- */
 
 @end

@@ -20,9 +20,9 @@
 @interface RNTransaction : RNObject
 
 @property (nonatomic, strong) NSString *accountID;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *transactionDescription;
 @property (nonatomic, strong) NSDate *transactionDate;
-@property (nonatomic, strong) NSString *MerchantName;
+@property (nonatomic, strong) NSString *merchantName;
 @property (nonatomic, strong) NSNumber *points;
 
 @end
