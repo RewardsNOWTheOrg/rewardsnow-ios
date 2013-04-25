@@ -60,8 +60,6 @@
 
 - (IBAction)filterTapped:(id)sender {
     
-    
-    
 }
 
 - (IBAction)mapTapped:(id)sender {
@@ -70,13 +68,17 @@
         self.mapController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalMapViewController"];
     }
     
-    [self.navigationController addChildViewController:self.mapController];
-    [self.navigationController willMoveToParentViewController:self.mapController];
-    
-    [UIView transitionFromView:self.view toView:self.mapController.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished) {
+    [UIView transitionFromView:self.view
+                        toView:self.mapController.view
+                      duration:0.8
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    completion:^(BOOL finished) {
+        
+        
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStyleBordered target:self action:@selector(listTapped:)];
-        [self.navigationController didMoveToParentViewController:self.mapController];
     }];
+    
+
 }
 
 - (IBAction)listTapped:(id)sender {
