@@ -71,8 +71,8 @@ NSString *const kStatementKey = @"Statement";
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
-                                                                                     DLog(@"Requst: %@", response);
-                                                                                     DLog(@"JSON: %@", JSON);
+//                                                                                     DLog(@"Requst: %@", response);
+//                                                                                     DLog(@"JSON: %@", JSON);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNRedeemObject objectsFromJSON:[JSON objectForKey:kResultsKey]];
