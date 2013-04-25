@@ -7,8 +7,13 @@
 //
 
 #import "RNLocalViewController.h"
+#import "RNLocalMapViewController.h"
+#import "RNUser.h"
+#import "RNCart.h"
 
 @interface RNLocalViewController ()
+
+@property (nonatomic, strong) RNLocalMapViewController *mapController;
 
 @end
 
@@ -17,6 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    RNUser *user = [[RNCart sharedCart] user];
+    self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", user.firstName, user.balance];
 
 }
 
@@ -48,4 +56,33 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - Bar Button Methods
+
+- (IBAction)filterTapped:(id)sender {
+    
+    
+    
+}
+
+- (IBAction)mapTapped:(id)sender {
+    
+    if (self.mapController == nil) {
+        self.mapController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalMapViewController"];
+    }
+    
+    [self.navigationController addChildViewController:self.mapController];
+    [self.navigationController willMoveToParentViewController:self.mapController];
+    
+    [UIView transitionFromView:self.view toView:self.mapController.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStyleBordered target:self action:@selector(listTapped:)];
+        [self.navigationController didMoveToParentViewController:self.mapController];
+    }];
+}
+
+- (IBAction)listTapped:(id)sender {
+    
+    [UIView transitionFromView:self.mapController.view toView:self.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStyleBordered target:self action:@selector(mapTapped:)];
+    }];
+}
 @end

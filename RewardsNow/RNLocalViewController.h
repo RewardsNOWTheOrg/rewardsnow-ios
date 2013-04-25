@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNLocalViewController : UITableViewController
+@interface RNLocalViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
+
+- (IBAction)filterTapped:(id)sender;
+- (IBAction)mapTapped:(id)sender;
 
 @end
