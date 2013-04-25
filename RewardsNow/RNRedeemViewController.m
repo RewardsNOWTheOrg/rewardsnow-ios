@@ -39,7 +39,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
     RNUser *user = [[RNCart sharedCart] user];
     if (user == nil) {
         UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
