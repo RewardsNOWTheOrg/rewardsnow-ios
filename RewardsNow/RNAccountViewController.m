@@ -19,6 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     self.user = [[RNCart sharedCart] user];
     
     if (self.user == nil) {
@@ -27,11 +33,8 @@
     }
     
     self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", _user.firstName, _user.balance];
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    
+    
     self.nameLabel.text = self.user.fullName;
     self.emailLabel.text = self.user.email;
     self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", self.user.firstName, self.user.balance];
