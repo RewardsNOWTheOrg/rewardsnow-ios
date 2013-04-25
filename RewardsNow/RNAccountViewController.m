@@ -20,6 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [[RNCart sharedCart] user];
+    
+    if (self.user == nil) {
+        UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
+        [self presentViewController:auth animated:NO completion:nil];
+    }
+    
+    self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", _user.firstName, _user.balance];
 
 }
 
