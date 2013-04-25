@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *pointsLeftLabel;
 
 - (IBAction)confirmTapped:(id)sender;
+- (IBAction)cancelTapped:(id)sender;
 
 @end
