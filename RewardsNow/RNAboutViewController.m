@@ -10,6 +10,8 @@
 #import "RNAboutQAViewController.h"
 #import "RNAboutRulesViewController.h"
 #import "RNAboutEarningViewController.h"
+#import "RNUser.h"
+#import "RNCart.h"
 
 @interface RNAboutViewController ()
 
@@ -19,6 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    RNUser *user = [[RNCart sharedCart] user];
+    self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", user.firstName, user.balance];
 
 }
 
@@ -42,7 +47,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.textLabel.text = @[@"Q&A", @"Program Rules", @"Earning Points"][indexPath.row];
+    cell.textLabel.text = @[@"FAQ", @"Program Rules", @"Earning Points"][indexPath.row];
     
     return cell;
 }

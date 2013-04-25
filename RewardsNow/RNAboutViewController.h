@@ -10,4 +10,6 @@
 
 @interface RNAboutViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
+
 @end
