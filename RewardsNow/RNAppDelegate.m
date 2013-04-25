@@ -23,6 +23,9 @@
     [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateHighlighted]; //logs a warning.
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar-background.png"] forBarMetrics:UIBarMetricsDefault];
     
+    UITabBarController *root = (UITabBarController *)[[self window] rootViewController];
+    [root setSelectedIndex:3];
+    
     
     return YES;
 }
