@@ -39,12 +39,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    
     RNUser *user = [[RNCart sharedCart] user];
     if (user == nil) {
         UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
         [self presentViewController:auth animated:NO completion:nil];
     }
-    
+
     self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", user.firstName, user.balance];
 
 }
@@ -61,7 +62,6 @@
 
 - (void)refresh:(UIRefreshControl *)sender {
     [[RNWebService sharedClient] getRewards:@"969" WithCallback:^(id result) {
-        DLog(@"Result: %@", result);
         if (result) {
             self.rewards = result;
             [self.tableView reloadData];
