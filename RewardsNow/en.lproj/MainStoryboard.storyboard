@@ -1212,7 +1212,18 @@
                             <constraint firstItem="eZR-GM-pv7" firstAttribute="top" secondItem="ZnJ-tA-gCA" secondAttribute="top" type="default" id="uVN-nd-na2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Deals" id="ibK-3B-Vcf"/>
+                    <navigationItem key="navigationItem" title="Deals" id="ibK-3B-Vcf">
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="uyn-K0-9Zn">
+                            <connections>
+                                <action selector="filterTapped:" destination="DXt-mt-Omv" id="WrN-nI-hW8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="IxQ-e7-izt">
+                            <connections>
+                                <action selector="mapTapped:" destination="DXt-mt-Omv" id="wqe-u8-bdC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="j55-db-UZQ" id="aFK-9B-KCc"/>
                         <outlet property="topPointsLabel" destination="i9a-G2-JUI" id="L6N-Wj-qaL"/>
@@ -2406,6 +2417,168 @@
         <image name="thank-you-button.png" width="141" height="141"/>
         <image name="vertical-line.png" width="1" height="110"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RNAboutEarningViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutEarningViewController.h"/>
+        </class>
+        <class className="RNAboutQAViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutQAViewController.h"/>
+        </class>
+        <class className="RNAboutRulesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutRulesViewController.h"/>
+        </class>
+        <class className="RNAboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNAccountEditPasswordViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditPasswordViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveTapped:"/>
+                <relationship kind="outlet" name="passwordNewRetypeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordNewTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordOldTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="RNAccountEditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveTapped:"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="RNAccountStatementViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountStatementViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backMonth:"/>
+                <relationship kind="action" name="forwardMonth:"/>
+                <relationship kind="action" name="swipeRecognized:"/>
+                <relationship kind="outlet" name="displayedDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsEndLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsStartLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RNAccountViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="giftCardHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="giftCardView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNAuthPasswordViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAuthPasswordViewController.h"/>
+        </class>
+        <class className="RNAuthViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAuthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="forgotPasswordTapped:"/>
+                <relationship kind="action" name="signInTapped:"/>
+                <relationship kind="outlet" name="forgotPasswordButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="logoTopConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signInButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="usernameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RNCartConfirmationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartConfirmationViewController.h"/>
+        </class>
+        <class className="RNCartThanksViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartThanksViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="thankYouTapped:"/>
+                <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="upperView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="RNCartViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelTapped:"/>
+                <relationship kind="action" name="confirmTapped:"/>
+                <relationship kind="outlet" name="pointsAvailableLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsInCartLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsLeftLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNLocalAdditionalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalAdditionalViewController.h"/>
+        </class>
+        <class className="RNLocalDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="directionsTapped:"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="RNLocalMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalMapViewController.h"/>
+        </class>
+        <class className="RNLocalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="filterTapped:"/>
+                <relationship kind="action" name="listTapped:"/>
+                <relationship kind="action" name="mapTapped:"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNPreAuthViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNPreAuthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="continueTapped:"/>
+                <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="continueButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoTopConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="redeemBottomLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redeemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="redeemTopLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="descriptionView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="redeemBottomLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redeemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="redeemTopLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
