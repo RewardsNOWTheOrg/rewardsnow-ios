@@ -7,6 +7,7 @@
 //
 
 #import "RNCartThanksViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface RNCartThanksViewController ()
 
@@ -14,25 +15,32 @@
 
 @implementation RNCartThanksViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.upperView.layer.masksToBounds = NO;
+    self.upperView.layer.shadowOffset = CGSizeMake(0, 5);
+    self.upperView.layer.shadowOpacity = 0.5;
+    
+    [self.thankYouButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    
+    [self.navigationItem setHidesBackButton:YES];
+}
+
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
+- (IBAction)thankYouTapped:(id)sender {
+    DLog(@"Button: %@", NSStringFromCGRect([sender frame]));
+    DLog(@"1: %d", [sender contentMode]);
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

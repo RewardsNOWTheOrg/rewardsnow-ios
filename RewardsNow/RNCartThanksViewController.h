@@ -10,4 +10,9 @@
 
 @interface RNCartThanksViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *upperView;
+@property (weak, nonatomic) IBOutlet UIButton *thankYouButton;
+
+- (IBAction)thankYouTapped:(id)sender;
+
 @end
