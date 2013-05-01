@@ -16,6 +16,8 @@
 #import "RNPointChange.h"
 #import "RNAccountStatementDetailView.h"
 
+#define kNumberOfMonthsVisible 4
+
 typedef enum {
     DetailViewTable = 0,
     DetailViewIncrease = 1,
@@ -34,6 +36,8 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 @property (nonatomic, strong) NSDate *lastDay;
 @property (nonatomic, strong) RNAccountStatement *statement;
 @property (nonatomic) DetailView currentState;
+@property (nonatomic, strong) NSDate *finalLastDay;
+@property (nonatomic, strong) NSDate *finalFirstDay;
 
 @end
 
@@ -44,6 +48,13 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     
     self.firstDay = [NSDate firstDayOfCurrentMonth];
     self.lastDay = [NSDate firstDayOfNextMonth];
+    self.finalLastDay = _lastDay;
+    
+    self.finalFirstDay = _firstDay;
+    for (NSInteger i = 0; i < kNumberOfMonthsVisible; i++) {
+        self.finalFirstDay = [_finalFirstDay firstDayOfPreviousMonth];
+    }
+    
     self.currentState = DetailViewTable;
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 121, 320, 44*4) style:UITableViewStylePlain];
@@ -76,6 +87,14 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     self.lastDay = [self.lastDay firstDayOfNextMonth];
     
     [self updateInfo];
+}
+
+- (void)updateControls {
+    ///
+    /// If the last day is the same as what we set in the beginning, then we can't go any further into the future
+    ///
+    self.forwardMonthButton.enabled = ![self.lastDay isEqualToDate:self.finalLastDay];
+    self.backMonthButton.enabled = ![self.firstDay isEqualToDate:self.finalFirstDay];
 }
 
 - (IBAction)swipeRecognized:(UISwipeGestureRecognizer *)sender {
@@ -126,6 +145,7 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 }
 
 - (void)updateInfo {
+    [self updateControls];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
