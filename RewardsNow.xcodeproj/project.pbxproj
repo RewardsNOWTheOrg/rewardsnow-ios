@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AA2259551731B03900F4C787 /* image 2.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2259541731B03900F4C787 /* image 2.png */; };
 		AA2259571731B05A00F4C787 /* image 22.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2259561731B05A00F4C787 /* image 22.png */; };
+		AA2493EF1731B701005B29E5 /* RNLocalDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2493EE1731B701005B29E5 /* RNLocalDeal.m */; };
+		AA2493F11731B881005B29E5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2493F01731B881005B29E5 /* CoreLocation.framework */; };
 		AA2E3EDB1718BCC6005ACE36 /* RNAccountStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */; };
 		AA2E3EDE1718BE4D005ACE36 /* RNTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDD1718BE4D005ACE36 /* RNTransaction.m */; };
 		AA2E3EE11718C192005ACE36 /* RNPointChange.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE01718C192005ACE36 /* RNPointChange.m */; };
@@ -137,6 +139,9 @@
 		68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		AA2259541731B03900F4C787 /* image 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image 2.png"; path = "../image 2.png"; sourceTree = "<group>"; };
 		AA2259561731B05A00F4C787 /* image 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image 22.png"; path = "../image 22.png"; sourceTree = "<group>"; };
+		AA2493ED1731B701005B29E5 /* RNLocalDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLocalDeal.h; sourceTree = "<group>"; };
+		AA2493EE1731B701005B29E5 /* RNLocalDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLocalDeal.m; sourceTree = "<group>"; };
+		AA2493F01731B881005B29E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA2E3ED91718BCC6005ACE36 /* RNAccountStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountStatement.h; sourceTree = "<group>"; };
 		AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountStatement.m; sourceTree = "<group>"; };
 		AA2E3EDC1718BE4D005ACE36 /* RNTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTransaction.h; sourceTree = "<group>"; };
@@ -296,6 +301,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA2493F11731B881005B29E5 /* CoreLocation.framework in Frameworks */,
 				AA53FEBF1710DDEA00041748 /* MapKit.framework in Frameworks */,
 				AA53FEB31710A5AB00041748 /* QuartzCore.framework in Frameworks */,
 				AA53FEA9170F8AE200041748 /* MobileCoreServices.framework in Frameworks */,
@@ -434,6 +440,8 @@
 				AA2E3EE01718C192005ACE36 /* RNPointChange.m */,
 				AA355A581720A7D90014E01B /* RNGiftCard.h */,
 				AA355A591720A7D90014E01B /* RNGiftCard.m */,
+				AA2493ED1731B701005B29E5 /* RNLocalDeal.h */,
+				AA2493EE1731B701005B29E5 /* RNLocalDeal.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -476,6 +484,7 @@
 		AA5510A0170F10A3001CC718 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA2493F01731B881005B29E5 /* CoreLocation.framework */,
 				AA53FEBE1710DDE900041748 /* MapKit.framework */,
 				AA53FEB21710A5AB00041748 /* QuartzCore.framework */,
 				AA53FEA8170F8AE200041748 /* MobileCoreServices.framework */,
@@ -886,6 +895,7 @@
 				AA5DF36217231B2D0093B7AC /* RNPreAuthViewController.m in Sources */,
 				AAD973581725DB2E00171240 /* NSDate+Reporting.m in Sources */,
 				AAD9735B1726D6F300171240 /* RNAccountStatementDetailView.m in Sources */,
+				AA2493EF1731B701005B29E5 /* RNLocalDeal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
