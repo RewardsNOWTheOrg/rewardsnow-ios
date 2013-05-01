@@ -10,10 +10,18 @@
 #import "RNLocalMapViewController.h"
 #import "RNUser.h"
 #import "RNCart.h"
+#import "RNLocalDeal.h"
+#import "RNWebService.h"
+#import "RNLocalCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface RNLocalViewController ()
 
 @property (nonatomic, strong) RNLocalMapViewController *mapController;
+@property (nonatomic, copy) NSArray *deals;
+@property (nonatomic, strong) CLLocationManager *manager;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic) BOOL gettingInformation;
 
 @end
 
@@ -22,10 +30,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
+    self.gettingInformation = NO;
     
-    RNUser *user = [[RNCart sharedCart] user];
-    self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", user.firstName, user.balance];
-
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:_refreshControl];
+    [_refreshControl beginRefreshing];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +46,15 @@
 }
 
 #pragma mark - UITableView Methods
+
+- (void)refresh:(UIRefreshControl *)sender {
+    
+    self.manager = [[CLLocationManager alloc] init];
+    _manager.delegate = self;
+    _manager.distanceFilter = kCLDistanceFilterNone;
+    _manager.desiredAccuracy = kCLLocationAccuracyBest;
+    [_manager startUpdatingLocation];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -44,10 +65,26 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = @"LocalDealCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.textLabel.text = @"Woot";
+    NSString *CellIdentifier = @"LocalDealCell";
+    RNLocalCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    RNLocalDeal *deal = _deals[indexPath.row];
+    
+    cell.upperTitle.text = deal.businessName;
+    cell.textView.text = deal.localDealDescription;
+    cell.lowerLabel.text = deal.discountString;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:deal.imageURL];
+    [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
+    
+    [cell.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        cell.imageView.image = image;
+//        [self.rewards[indexPath.row] setImage:image];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        DLog(@"Failed to get image!");
+    }];
     
     return cell;
 }
@@ -87,4 +124,27 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStyleBordered target:self action:@selector(mapTapped:)];
     }];
 }
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = [locations lastObject];
+    
+    if (!_gettingInformation) {
+        self.gettingInformation = YES;
+        [[RNWebService sharedClient] getDeals:@"969" location:location query:@"" callback:^(id result) {
+            if (result != nil) {
+                self.deals = result;
+                [self.tableView reloadData];
+            } else {
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
+            }
+            [self.refreshControl endRefreshing];
+            self.gettingInformation = NO;
+        }];
+    }
+    
+    [manager stopUpdatingLocation];
+}
+
 @end
