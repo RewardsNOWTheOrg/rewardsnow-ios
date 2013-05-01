@@ -7,6 +7,7 @@
 //
 
 #import "RNCart.h"
+#import "RNUser.h"
 
 @implementation RNCart
 
@@ -28,5 +29,10 @@
     }
     return self;
 }
+
+- (NSString *)getNamePoints {
+    return [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", _user.firstName, _user.balance];
+}
+
 
 @end

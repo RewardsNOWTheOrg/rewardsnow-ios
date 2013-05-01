@@ -15,5 +15,6 @@
 @property (nonatomic, strong) RNUser *user;
 
 + (instancetype)sharedCart;
+- (NSString *)getNamePoints;
 
 @end
