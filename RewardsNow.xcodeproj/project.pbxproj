@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA2259551731B03900F4C787 /* image 2.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2259541731B03900F4C787 /* image 2.png */; };
+		AA2259571731B05A00F4C787 /* image 22.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2259561731B05A00F4C787 /* image 22.png */; };
 		AA2E3EDB1718BCC6005ACE36 /* RNAccountStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */; };
 		AA2E3EDE1718BE4D005ACE36 /* RNTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDD1718BE4D005ACE36 /* RNTransaction.m */; };
 		AA2E3EE11718C192005ACE36 /* RNPointChange.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE01718C192005ACE36 /* RNPointChange.m */; };
@@ -133,6 +135,8 @@
 
 /* Begin PBXFileReference section */
 		68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		AA2259541731B03900F4C787 /* image 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image 2.png"; path = "../image 2.png"; sourceTree = "<group>"; };
+		AA2259561731B05A00F4C787 /* image 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image 22.png"; path = "../image 22.png"; sourceTree = "<group>"; };
 		AA2E3ED91718BCC6005ACE36 /* RNAccountStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountStatement.h; sourceTree = "<group>"; };
 		AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountStatement.m; sourceTree = "<group>"; };
 		AA2E3EDC1718BE4D005ACE36 /* RNTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTransaction.h; sourceTree = "<group>"; };
@@ -509,6 +513,8 @@
 			children = (
 				AA5510E7170F1134001CC718 /* Images */,
 				AA5510A9170F10A3001CC718 /* RewardsNow-Info.plist */,
+				AA2259561731B05A00F4C787 /* image 22.png */,
+				AA2259541731B03900F4C787 /* image 2.png */,
 				AA31022217207F4700E44D44 /* Default.png */,
 				AA31022017207F4300E44D44 /* Default@2x.png */,
 				AA31021E17207F3000E44D44 /* Default-568h@2x.png */,
@@ -779,6 +785,8 @@
 				AA2FF32117273CC100E4FB26 /* blue-arrow-button@2x.png in Resources */,
 				AACADBC717287DDE00F9D765 /* thank-you-button.png in Resources */,
 				AACADBC817287DDE00F9D765 /* thank-you-button@2x.png in Resources */,
+				AA2259551731B03900F4C787 /* image 2.png in Resources */,
+				AA2259571731B05A00F4C787 /* image 22.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
