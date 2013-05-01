@@ -862,9 +862,8 @@
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="ulV-Pj-TRf">
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="ulV-Pj-TRf">
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="36" id="MbY-R4-q3a"/>
                                                             <constraint firstAttribute="width" constant="89" id="hzm-XD-DW3"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -962,6 +961,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Account Statement" id="P4l-Tm-Nhj"/>
                     <connections>
+                        <outlet property="backMonthButton" destination="bef-Ct-Elj" id="1Hd-bA-Omi"/>
+                        <outlet property="forwardMonthButton" destination="BKK-cS-g1X" id="ebT-kR-6Hf"/>
                         <outlet property="innerView" destination="LKT-c4-AQF" id="0VL-Kz-pg7"/>
                         <outlet property="monthLabel" destination="yny-TC-u29" id="iUE-cy-3M3"/>
                         <outlet property="pointsEndLabel" destination="ulV-Pj-TRf" id="bjc-eU-SA2"/>
@@ -2461,7 +2462,9 @@
                 <relationship kind="action" name="backMonth:"/>
                 <relationship kind="action" name="forwardMonth:"/>
                 <relationship kind="action" name="swipeRecognized:"/>
+                <relationship kind="outlet" name="backMonthButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="displayedDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="forwardMonthButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pointsEndLabel" candidateClass="UILabel"/>
@@ -2538,7 +2541,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalViewController.h"/>
             <relationships>
                 <relationship kind="action" name="filterTapped:"/>
-                <relationship kind="action" name="listTapped:"/>
                 <relationship kind="action" name="mapTapped:"/>
                 <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
             </relationships>
