@@ -31,7 +31,7 @@
 }
 
 - (NSString *)getNamePoints {
-    return [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", _user.firstName, _user.balance];
+    return [NSString stringWithFormat:@"%@ Rewards: %@ points.", _user.firstName, _user.balance];
 }
 
 
