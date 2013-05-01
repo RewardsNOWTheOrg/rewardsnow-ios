@@ -1153,7 +1153,7 @@
                                     </connections>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocalDealCell" id="0eh-wN-msm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocalDealCell" id="0eh-wN-msm" customClass="RNLocalCell">
                                         <rect key="frame" x="0.0" y="66" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1166,14 +1166,48 @@
                                                         <constraint firstAttribute="height" constant="119" id="d1A-an-S3l"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTd-Gc-qKj">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="174" id="ptn-gA-d2e"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ae2-PR-gg1">
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="67" id="Nj2-cx-xrV"/>
+                                                    </constraints>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSt-BE-7bo">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="eUW-uh-eQv" firstAttribute="trailing" secondItem="0eh-wN-msm" secondAttribute="trailing" type="default" id="0RS-aY-luh"/>
+                                            <constraint firstItem="eUW-uh-eQv" firstAttribute="leading" secondItem="Ae2-PR-gg1" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="42k-nr-y2w"/>
                                             <constraint firstItem="eUW-uh-eQv" firstAttribute="top" secondItem="0eh-wN-msm" secondAttribute="top" type="default" id="90I-QX-kyj"/>
+                                            <constraint firstItem="WTd-Gc-qKj" firstAttribute="top" secondItem="0eh-wN-msm" secondAttribute="top" constant="5" id="Cyo-NO-yJy"/>
+                                            <constraint firstAttribute="bottom" secondItem="oSt-BE-7bo" secondAttribute="bottom" constant="8" id="H9U-1R-tI8"/>
+                                            <constraint firstItem="eUW-uh-eQv" firstAttribute="leading" secondItem="oSt-BE-7bo" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="aDk-qp-VOt"/>
+                                            <constraint firstItem="eUW-uh-eQv" firstAttribute="leading" secondItem="WTd-Gc-qKj" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="atd-7E-4Rk"/>
+                                            <constraint firstItem="oSt-BE-7bo" firstAttribute="leading" secondItem="Ae2-PR-gg1" secondAttribute="leading" type="default" id="cc5-Io-8jR"/>
+                                            <constraint firstItem="Ae2-PR-gg1" firstAttribute="top" secondItem="0eh-wN-msm" secondAttribute="top" constant="25" id="dfT-6B-5hE"/>
+                                            <constraint firstItem="Ae2-PR-gg1" firstAttribute="leading" secondItem="WTd-Gc-qKj" secondAttribute="leading" type="default" id="lTt-zZ-wVX"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="imageView" destination="eUW-uh-eQv" id="XZ9-bS-Gkn"/>
+                                            <outlet property="lowerLabel" destination="oSt-BE-7bo" id="IeT-OS-vti"/>
+                                            <outlet property="textView" destination="Ae2-PR-gg1" id="9ge-IT-8eX"/>
+                                            <outlet property="upperTitle" destination="WTd-Gc-qKj" id="4aK-AG-8ez"/>
                                             <segue destination="o23-f9-nqK" kind="push" id="67x-Fq-KdG"/>
                                         </connections>
                                     </tableViewCell>
@@ -1227,6 +1261,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="j55-db-UZQ" id="aFK-9B-KCc"/>
+                        <outlet property="tableView" destination="tYn-1L-gc3" id="9IC-xc-R82"/>
                         <outlet property="topPointsLabel" destination="i9a-G2-JUI" id="L6N-Wj-qaL"/>
                     </connections>
                 </viewController>
@@ -2526,6 +2561,15 @@
         <class className="RNLocalAdditionalViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalAdditionalViewController.h"/>
         </class>
+        <class className="RNLocalCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lowerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="upperTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="RNLocalDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalDetailViewController.h"/>
             <relationships>
@@ -2541,7 +2585,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalViewController.h"/>
             <relationships>
                 <relationship kind="action" name="filterTapped:"/>
+                <relationship kind="action" name="listTapped:"/>
                 <relationship kind="action" name="mapTapped:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
