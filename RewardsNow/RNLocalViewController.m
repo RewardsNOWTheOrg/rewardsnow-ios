@@ -45,6 +45,11 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self refresh:_refreshControl];
+}
+
 #pragma mark - UITableView Methods
 
 - (void)refresh:(UIRefreshControl *)sender {
@@ -61,7 +66,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _deals.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
