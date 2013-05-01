@@ -13,6 +13,7 @@
 #import "RNUser.h"
 #import "RNCart.h"
 #import "RNAccountStatement.h"
+#import "RNLocalDeal.h"
 
 
 NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/FacadeService.svc/";
@@ -21,6 +22,7 @@ NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3
 NSString *const kResultsKey = @"Result";
 NSString *const kErrorKey = @"Error";
 NSString *const kStatementKey = @"Statement";
+NSString *const kOffersKey = @"Offers";
 
 @interface RNWebService()
 
@@ -95,6 +97,48 @@ NSString *const kStatementKey = @"Statement";
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
+
+- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query callback:(RNResultCallback)callback {
+    [self getDeals:tipFirst location:location query:query limit:20 offset:0 radius:15.0 callback:callback];
+}
+
+
+
+- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius callback:(RNResultCallback)callback {
+    
+    NSString *url = [NSString stringWithFormat:@"GetLocalOffers/%@", tipFirst];
+    NSDictionary *params = @{@"q": query,
+                             @"limit" : @(lim),
+                             @"offset" : @(offset),
+                             @"lat" : @(location.coordinate.latitude),
+                             @"lon" : @(location.coordinate.longitude),
+                             @"radius" : @(radius)};
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:params]
+                                                                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                 [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+
+                                                                                 if ([self wasSuccessful:JSON]) {
+                                                                                     NSArray *objects = [RNLocalDeal objectsFromJSON:[JSON objectForKey:kOffersKey]];
+                                                                                     // cache?
+                                                                                     callback(objects);
+                                                                                 } else {
+                                                                                     callback(nil);
+                                                                                 }
+                                                                                 
+                                                                             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                 [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                 DLog(@"FAILURE: %@", error);
+                                                                                 DLog(@"JSON: %@", JSON);
+                                                                                 DLog(@"Test: %@", request);
+                                                                                 callback(nil);
+                                                                             }];
+    [self enqueueHTTPRequestOperation:op];
+
+}
+
 
 - (void)getBankFromCode:(NSString *)code callback:(RNResultCallback)callback {
     

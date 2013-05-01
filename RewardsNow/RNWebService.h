@@ -7,6 +7,7 @@
 //
 
 #import "AFNetworking.h"
+#import <CoreLocation/CoreLocation.h>
 
 typedef void (^RNResultCallback)(id result);
 
@@ -15,6 +16,8 @@ typedef void (^RNResultCallback)(id result);
 + (instancetype)sharedClient;
 
 - (void)getRewards:(NSString *)tipFirst WithCallback:(RNResultCallback)callback;
+- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query callback:(RNResultCallback)callback;
+- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius callback:(RNResultCallback)callback;
 - (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback;
 
 - (void)getAccountInfoWithTip:(NSNumber *)tip callback:(RNResultCallback)callback;
