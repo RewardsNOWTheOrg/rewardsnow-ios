@@ -17,8 +17,11 @@
 @property (weak, nonatomic) IBOutlet UIView *descriptionView;
 @property (weak, nonatomic) IBOutlet UILabel *redeemTopLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *redeemImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *innerView;
 
 @property (nonatomic, strong) RNRedeemObject *info;
 
+- (IBAction)addToCartTapped:(id)sender;
 
 @end
