@@ -8,8 +8,15 @@
 
 #import "RNCartViewController.h"
 #import "RNCartConfirmationViewController.h"
+#import "RNCart.h"
+#import "RNCartCell.h"
+#import "RNRedeemObject.h"
+#import "UIImageView+AFNetworking.h"
+
 
 @interface RNCartViewController ()
+
+@property (nonatomic, strong) RNCart *cart;
 
 @end
 
@@ -17,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.cart = [RNCart sharedCart];
 
 }
 
@@ -42,14 +51,18 @@
 #pragma mark - UITableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return _cart.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"RNCartOverviewCell";
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    RNCartCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    cell.upperLabel.text = [_cart.items[indexPath.row] descriptionName];
+    cell.lowerLabel.text = [NSString stringWithFormat:@"%d points", (NSInteger)[_cart.items[indexPath.row] priceInPoints]];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:[[_cart.items[indexPath.row] imageURL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
     return cell;
 }
