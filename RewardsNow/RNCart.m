@@ -25,6 +25,7 @@
 - (instancetype)init {
     
     if ( (self = [super init]) ) {
+        self.items = [NSMutableArray array];
         
     }
     return self;
@@ -32,6 +33,10 @@
 
 - (NSString *)getNamePoints {
     return [NSString stringWithFormat:@"%@ Rewards: %@ points.", _user.firstName, _user.balance];
+}
+
+- (void)addToCart:(RNGiftCard *)card {
+    [_items addObject:card];
 }
 
 

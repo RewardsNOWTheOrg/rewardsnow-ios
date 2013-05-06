@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class RNUser;
+@class RNUser, RNGiftCard;
 
 @interface RNCart : NSObject
 
 @property (nonatomic, strong) RNUser *user;
+@property (nonatomic, strong) NSMutableArray *items;
 
 + (instancetype)sharedCart;
 - (NSString *)getNamePoints;
+
+- (void)addToCart:(RNGiftCard *)card;
 
 @end
