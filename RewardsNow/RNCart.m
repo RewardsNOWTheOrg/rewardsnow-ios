@@ -7,6 +7,7 @@
 //
 
 #import "RNCart.h"
+#import "RNRedeemObject.h"
 #import "RNUser.h"
 
 @implementation RNCart
@@ -35,7 +36,7 @@
     return [NSString stringWithFormat:@"%@ Rewards: %@ points.", _user.firstName, _user.balance];
 }
 
-- (void)addToCart:(RNGiftCard *)card {
+- (void)addToCart:(RNRedeemObject *)card {
     [_items addObject:card];
 }
 

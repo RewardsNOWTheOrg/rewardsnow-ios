@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class RNUser, RNGiftCard;
+@class RNUser, RNRedeemObject;
 
 @interface RNCart : NSObject
 
@@ -18,6 +18,6 @@
 + (instancetype)sharedCart;
 - (NSString *)getNamePoints;
 
-- (void)addToCart:(RNGiftCard *)card;
+- (void)addToCart:(RNRedeemObject *)card;
 
 @end
