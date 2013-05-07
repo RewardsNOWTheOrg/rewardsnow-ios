@@ -110,6 +110,11 @@
 		AA5510DB170F10A3001CC718 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA5510D9170F10A3001CC718 /* InfoPlist.strings */; };
 		AA5510DE170F10A3001CC718 /* RewardsNowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5510DD170F10A3001CC718 /* RewardsNowTests.m */; };
 		AA5DF36217231B2D0093B7AC /* RNPreAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DF36117231B2D0093B7AC /* RNPreAuthViewController.m */; };
+		AA5FBD4017386890008B40BA /* blue-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5FBD3E1738688C008B40BA /* blue-button.png */; };
+		AA5FBD4117386890008B40BA /* blue-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5FBD3F1738688E008B40BA /* blue-button@2x.png */; };
+		AA5FBD4517386C87008B40BA /* RNCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5FBD4417386C87008B40BA /* RNCartCell.m */; };
+		AA5FBD471738A817008B40BA /* light-grey-single-divider.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5FBD461738A814008B40BA /* light-grey-single-divider.png */; };
+		AA5FBD4B1738A9D8008B40BA /* dark-grey-divider.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5FBD4A1738A9D6008B40BA /* dark-grey-divider.png */; };
 		AA9020C01725AE6D0074B857 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */; };
 		AA9020C11725AE6D0074B857 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */; };
 		AACADBC717287DDE00F9D765 /* thank-you-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC517287DDE00F9D765 /* thank-you-button.png */; };
@@ -279,6 +284,12 @@
 		AA5510DD170F10A3001CC718 /* RewardsNowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RewardsNowTests.m; sourceTree = "<group>"; };
 		AA5DF36017231B2D0093B7AC /* RNPreAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPreAuthViewController.h; sourceTree = "<group>"; };
 		AA5DF36117231B2D0093B7AC /* RNPreAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPreAuthViewController.m; sourceTree = "<group>"; };
+		AA5FBD3E1738688C008B40BA /* blue-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-button.png"; sourceTree = "<group>"; };
+		AA5FBD3F1738688E008B40BA /* blue-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-button@2x.png"; sourceTree = "<group>"; };
+		AA5FBD4317386C87008B40BA /* RNCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCartCell.h; sourceTree = "<group>"; };
+		AA5FBD4417386C87008B40BA /* RNCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCartCell.m; sourceTree = "<group>"; };
+		AA5FBD461738A814008B40BA /* light-grey-single-divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-grey-single-divider.png"; sourceTree = "<group>"; };
+		AA5FBD4A1738A9D6008B40BA /* dark-grey-divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark-grey-divider.png"; sourceTree = "<group>"; };
 		AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		AACADBC517287DDE00F9D765 /* thank-you-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button.png"; sourceTree = "<group>"; };
@@ -449,6 +460,7 @@
 		AA53FEC01710EE7C00041748 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				AA5FBD4217386C73008B40BA /* Cart Cell */,
 				AA53FEC11710EE9700041748 /* RNCartViewController.h */,
 				AA53FEC21710EE9700041748 /* RNCartViewController.m */,
 				AA53FEC41710EEBB00041748 /* RNCartAccountViewController.h */,
@@ -556,6 +568,10 @@
 		AA5510E7170F1134001CC718 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA5FBD4A1738A9D6008B40BA /* dark-grey-divider.png */,
+				AA5FBD461738A814008B40BA /* light-grey-single-divider.png */,
+				AA5FBD3E1738688C008B40BA /* blue-button.png */,
+				AA5FBD3F1738688E008B40BA /* blue-button@2x.png */,
 				AACADBC517287DDE00F9D765 /* thank-you-button.png */,
 				AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */,
 				AA2FF31E17273CC100E4FB26 /* blue-arrow-button.png */,
@@ -647,6 +663,15 @@
 				AA53FE7C170F78D900041748 /* RNRedeemCell.m */,
 			);
 			name = Redeem;
+			sourceTree = "<group>";
+		};
+		AA5FBD4217386C73008B40BA /* Cart Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AA5FBD4317386C87008B40BA /* RNCartCell.h */,
+				AA5FBD4417386C87008B40BA /* RNCartCell.m */,
+			);
+			name = "Cart Cell";
 			sourceTree = "<group>";
 		};
 		AAD9735C1726DBC900171240 /* Views */ = {
@@ -796,6 +821,10 @@
 				AACADBC817287DDE00F9D765 /* thank-you-button@2x.png in Resources */,
 				AA2259551731B03900F4C787 /* image 2.png in Resources */,
 				AA2259571731B05A00F4C787 /* image 22.png in Resources */,
+				AA5FBD4017386890008B40BA /* blue-button.png in Resources */,
+				AA5FBD4117386890008B40BA /* blue-button@2x.png in Resources */,
+				AA5FBD471738A817008B40BA /* light-grey-single-divider.png in Resources */,
+				AA5FBD4B1738A9D8008B40BA /* dark-grey-divider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,6 +925,7 @@
 				AAD973581725DB2E00171240 /* NSDate+Reporting.m in Sources */,
 				AAD9735B1726D6F300171240 /* RNAccountStatementDetailView.m in Sources */,
 				AA2493EF1731B701005B29E5 /* RNLocalDeal.m in Sources */,
+				AA5FBD4517386C87008B40BA /* RNCartCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
