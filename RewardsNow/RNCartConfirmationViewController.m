@@ -7,6 +7,10 @@
 //
 
 #import "RNCartConfirmationViewController.h"
+#import "RNRedeemObject.h"
+#import "RNCart.h"
+#import "MBProgressHUD.h"
+#import "RNCartThanksViewController.h"
 
 @interface RNCartConfirmationViewController ()
 
@@ -14,25 +18,72 @@
 
 @implementation RNCartConfirmationViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
+    
+    NSArray *items = [[RNCart sharedCart] items];
+    
+    for (NSInteger i = 0; i < items.count; i++) {
+        [self createLabelWithText:[items[i] descriptionName] points:[items[i] stringPriceInPoints] number:i];
+    }
+    
+    self.pointsTotal.text = [[RNCart sharedCart] stringTotal];
+
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (void)createLabelWithText:(NSString *)text points:(NSString *)points number:(NSUInteger)num {
+    
+    UILabel *left = [[UILabel alloc] initWithFrame:CGRectMake(10, 10 + (num * 35), 220, 30)];
+    left.text = text;
+    left.minimumScaleFactor = 0.5;
+    left.backgroundColor = [UIColor clearColor];
+    [_labelView addSubview:left];
+    
+    UILabel *right = [[UILabel alloc] initWithFrame:CGRectMake(230, 10 + (num * 35), 50, 30)];
+    right.textColor = [UIColor redColor];
+    right.textAlignment = NSTextAlignmentRight;
+    right.text = points;
+    right.backgroundColor = [UIColor clearColor];
+    [_labelView addSubview:right];
+    
+}
+
+- (IBAction)placeOrderTapped:(id)sender {
+    NSString *message = [NSString stringWithFormat:@"Are you sure you would like to place the order for %@?", [[RNCart sharedCart] stringTotal]];
+    [[[UIAlertView alloc] initWithTitle:@"Place Order" message:message delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil] show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (buttonIndex) {
+        case 1:
+        {
+            /// YES
+            //place order
+            
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.detailsLabelText = @"Ordering...";
+            
+            double delayInSeconds = 1.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
+                [self.navigationController pushViewController:thanks animated:YES];
+            });
+            
+            
+            break;
+        }
+            
+        default: { break; }
+    }
 }
 
 @end

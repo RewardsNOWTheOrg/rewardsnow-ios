@@ -10,4 +10,9 @@
 
 @interface RNCartConfirmationViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *labelView;
+@property (weak, nonatomic) IBOutlet UILabel *pointsTotal;
+@property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
+- (IBAction)placeOrderTapped:(id)sender;
+
 @end
