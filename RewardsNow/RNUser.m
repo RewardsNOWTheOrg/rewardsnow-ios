@@ -29,4 +29,8 @@
     }];
 }
 
+- (NSString *)stringBalance {
+    return [self formattedStringFromNumber:_balance];
+}
+
 @end

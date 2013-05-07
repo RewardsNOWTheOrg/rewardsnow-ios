@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSNumber *balance;
 @property (nonatomic, copy) NSArray *giftCards;
 
+- (NSString *)stringBalance;
 
 @end
