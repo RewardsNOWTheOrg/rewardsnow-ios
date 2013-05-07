@@ -21,4 +21,6 @@
 @property (nonatomic) double  priceInPoints;
 @property (nonatomic, strong) UIImage *image;
 
+- (NSString *)stringPriceInPoints;
+
 @end

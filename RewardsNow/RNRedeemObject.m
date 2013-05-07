@@ -28,4 +28,11 @@
     return fields;
 }
 
+- (NSString *)stringPriceInPoints {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setGroupingSeparator:[[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
+    return [formatter stringFromNumber:@(_priceInPoints)];
+}
+
 @end
