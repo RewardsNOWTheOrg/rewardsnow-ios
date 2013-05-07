@@ -14,25 +14,41 @@
 
 @implementation RNCartAccountViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+
+    if (textField.tag > 1) {
+        CGRect frame = self.view.frame;
+        frame.origin.y = -100;
+        [UIView animateWithDuration:0.25 animations:^{
+            self.view.frame = frame;
+        }];
+    }
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [self endEditing];
+    return YES;
+}
+
+- (void)endEditing {
+    [self.view endEditing:YES];
+    CGRect frame = self.view.frame;
+    frame.origin.y = 0;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.frame = frame;
+    }];
+}
+
 
 @end

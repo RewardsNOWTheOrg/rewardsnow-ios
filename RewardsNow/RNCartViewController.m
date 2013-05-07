@@ -40,7 +40,7 @@
     /// Is possible to order?
     ///
     
-    RNCartConfirmationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartConfirmationViewController"];
+    RNCartConfirmationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartAccountViewController"];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

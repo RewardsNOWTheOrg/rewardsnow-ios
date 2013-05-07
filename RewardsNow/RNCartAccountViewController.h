@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNCartAccountViewController : UIViewController
+@interface RNCartAccountViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressStreetTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressUnitTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressCityStateTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *defaultEmailSwitch;
 
 @end
