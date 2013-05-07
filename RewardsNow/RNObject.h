@@ -14,4 +14,6 @@
 + (NSUInteger)modelVersion;
 + (NSArray *)objectsFromJSON:(NSArray *)array;
 
+- (NSString *)formattedStringFromNumber:(NSNumber *)num;
+
 @end

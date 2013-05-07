@@ -36,4 +36,11 @@
     return [NSDictionary dictionary];
 }
 
+- (NSString *)formattedStringFromNumber:(NSNumber *)num {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setGroupingSeparator:[[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
+    return [formatter stringFromNumber:num];
+}
+
 @end
