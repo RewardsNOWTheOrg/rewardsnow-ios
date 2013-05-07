@@ -18,6 +18,10 @@
 + (instancetype)sharedCart;
 - (NSString *)getNamePoints;
 
+- (NSNumber *)total;
+- (NSString *)stringTotal;
+- (NSNumber *)pointsDifference;
+- (NSString *)stringPointsDifference;
 - (void)addToCart:(RNRedeemObject *)card;
 
 @end

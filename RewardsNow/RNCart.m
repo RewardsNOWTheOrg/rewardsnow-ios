@@ -32,12 +32,45 @@
     return self;
 }
 
+
+
+- (NSString *)pointsStringBalance {
+    return [self formattedStringFromNumber:_user.balance];
+}
+
 - (NSString *)getNamePoints {
-    return [NSString stringWithFormat:@"%@ Rewards: %@ points.", _user.firstName, _user.balance];
+    return [NSString stringWithFormat:@"%@ Rewards: %@ points.", _user.firstName, [self pointsStringBalance]];
 }
 
 - (void)addToCart:(RNRedeemObject *)card {
     [_items addObject:card];
+}
+
+- (NSNumber *)total {
+    double points = 0;
+    for (RNRedeemObject *redeem in _items) {
+        points += [redeem priceInPoints];
+    }
+    return @(points);
+}
+
+- (NSString *)stringTotal {
+    return [self formattedStringFromNumber:[self total]];
+}
+
+- (NSNumber *)pointsDifference {
+    return @(_user.balance.doubleValue - self.total.doubleValue);
+}
+
+- (NSString *)stringPointsDifference {
+    return [self formattedStringFromNumber:[self pointsDifference]];
+}
+
+- (NSString *)formattedStringFromNumber:(NSNumber *)num {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setGroupingSeparator:[[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
+    return [formatter stringFromNumber:num];
 }
 
 
