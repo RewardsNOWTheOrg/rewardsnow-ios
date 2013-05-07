@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *upperView;
 @property (weak, nonatomic) IBOutlet UIButton *thankYouButton;
+@property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
 
 - (IBAction)thankYouTapped:(id)sender;
 

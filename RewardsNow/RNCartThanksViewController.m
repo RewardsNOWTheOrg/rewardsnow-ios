@@ -8,6 +8,7 @@
 
 #import "RNCartThanksViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "RNCart.h"
 
 @interface RNCartThanksViewController ()
 
@@ -18,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
 
 }
 
