@@ -32,12 +32,10 @@
         [self presentViewController:auth animated:NO completion:nil];
     }
     
-    self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", _user.firstName, _user.balance];
-    
-    
+    self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
     self.nameLabel.text = self.user.fullName;
     self.emailLabel.text = self.user.email;
-    self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", self.user.firstName, self.user.balance];
+
     
     for (NSInteger i = 0; i < self.user.giftCards.count; i++) {
         RNGiftCard *card = self.user.giftCards[i];

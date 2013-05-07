@@ -21,9 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    RNUser *user = [[RNCart sharedCart] user];
-    self.topPointsLabel.text = [NSString stringWithFormat:@"%@ Rewards: You have %@ points.", user.firstName, user.balance];
+    self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
 
 }
 
