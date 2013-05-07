@@ -9,6 +9,7 @@
 #import "RNCartViewController.h"
 #import "RNCartConfirmationViewController.h"
 #import "RNCart.h"
+#import "RNUser.h"
 #import "RNCartCell.h"
 #import "RNRedeemObject.h"
 #import "UIImageView+AFNetworking.h"
@@ -26,7 +27,17 @@
     [super viewDidLoad];
     
     self.cart = [RNCart sharedCart];
+    self.topPointsLabel.text = [_cart getNamePoints];
 
+    self.pointsAvailableLabel.text = [_cart.user stringBalance];
+    self.pointsInCartLabel.text = [_cart stringTotal];
+    self.pointsLeftLabel.text = [_cart stringPointsDifference];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.checkoutButton.enabled = _cart.items.count > 0;
 }
 
 - (void)didReceiveMemoryWarning {
