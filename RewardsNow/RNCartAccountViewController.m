@@ -6,9 +6,17 @@
 //  Copyright (c) 2013 CloudMine LLC. All rights reserved.
 //
 
+#import "RNCart.h"
 #import "RNCartAccountViewController.h"
 
+#define kKeyboardHeight 216
+#define kStatusBarHeight 20
+#define kViewChangeForKeyboard 120
+#define kScrollToNearBottom 105
+
 @interface RNCartAccountViewController ()
+
+@property (nonatomic) CGRect scrollViewFrame;
 
 @end
 
@@ -16,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.scrollViewFrame = CGRectNull;
+    self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
 
 }
 
@@ -24,18 +34,38 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.scrollView setScrollEnabled:YES];
+    [self.scrollView setContentSize:self.innerView.frame.size];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.scrollView.contentOffset = CGPointZero;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 
     if (textField.tag > 1) {
+        if (CGRectEqualToRect(_scrollViewFrame, CGRectNull)) {
+            self.scrollViewFrame = self.scrollView.frame;
+        }
         CGRect frame = self.view.frame;
-        frame.origin.y = -100;
+        frame.origin.y = -kViewChangeForKeyboard;
         [UIView animateWithDuration:0.25 animations:^{
             self.view.frame = frame;
+            self.scrollView.frame = CGRectMake(0, kViewChangeForKeyboard, [[UIScreen mainScreen] bounds].size.width,
+                                               [[UIScreen mainScreen] bounds].size.height - (self.navigationController.navigationBar.frame.size.height + kKeyboardHeight + kStatusBarHeight));
+            CGPoint bottomOffset = CGPointMake(0, kScrollToNearBottom);
+            [self.scrollView setContentOffset:bottomOffset animated:YES];
+        } completion:^(BOOL finished) {
+            
         }];
     }
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     [self endEditing];
     return YES;
@@ -47,7 +77,19 @@
     frame.origin.y = 0;
     [UIView animateWithDuration:0.25 animations:^{
         self.view.frame = frame;
+        self.scrollView.frame = _scrollViewFrame;
     }];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"pushRNCartConfirmationViewController"]) {
+        //
+        // save info
+        //
+        
+    }
 }
 
 
