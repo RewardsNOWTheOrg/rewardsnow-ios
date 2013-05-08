@@ -1893,9 +1893,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="checkoutButton" destination="gEb-c6-V6L" id="J43-2Y-jVd"/>
+                        <outlet property="innerView" destination="Ifc-Tw-Jrc" id="IAJ-06-oKr"/>
+                        <outlet property="innerViewHeight" destination="ngQ-6C-LeA" id="ujs-qt-XBz"/>
                         <outlet property="pointsAvailableLabel" destination="vpS-md-0hk" id="Oxm-F5-Sxy"/>
                         <outlet property="pointsInCartLabel" destination="eUX-St-4LK" id="9Ui-Hx-ivh"/>
                         <outlet property="pointsLeftLabel" destination="zbi-5a-orV" id="fsW-RF-JRa"/>
+                        <outlet property="scrollView" destination="hQj-ve-LSl" id="bhc-2y-qNK"/>
+                        <outlet property="tableHeight" destination="Jkh-19-1Qs" id="tTn-1e-hFx"/>
+                        <outlet property="tableView" destination="pIp-he-0iY" id="vg0-P2-Zxj"/>
                         <outlet property="topPointsLabel" destination="SZd-uq-lMa" id="YIC-Nd-ZwJ"/>
                     </connections>
                 </viewController>
@@ -2898,9 +2903,14 @@
                 <relationship kind="action" name="cancelTapped:"/>
                 <relationship kind="action" name="confirmTapped:"/>
                 <relationship kind="outlet" name="checkoutButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="pointsAvailableLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pointsInCartLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pointsLeftLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="tableHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -2932,7 +2942,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalViewController.h"/>
             <relationships>
                 <relationship kind="action" name="filterTapped:"/>
-                <relationship kind="action" name="listTapped:"/>
                 <relationship kind="action" name="mapTapped:"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
