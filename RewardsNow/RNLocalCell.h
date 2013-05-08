@@ -12,7 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *upperTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lowerLabel;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UILabel *secondUpperLabel;
+@property (weak, nonatomic) IBOutlet UILabel *textAreaLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

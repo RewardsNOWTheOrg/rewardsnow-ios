@@ -77,8 +77,9 @@
     RNLocalDeal *deal = _deals[indexPath.row];
     
     cell.upperTitle.text = deal.businessName;
-    cell.textView.text = deal.localDealDescription;
-    cell.lowerLabel.text = deal.discountString;
+    cell.secondUpperLabel.text = deal.name;
+    cell.textAreaLabel.text = deal.localDealDescription;
+    cell.lowerLabel.text = [deal discountAsString];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:deal.imageURL];
@@ -86,7 +87,6 @@
     
     [cell.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         cell.imageView.image = image;
-//        [self.rewards[indexPath.row] setImage:image];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         DLog(@"Failed to get image!");
     }];
@@ -137,6 +137,9 @@
     
     if (!_gettingInformation) {
         self.gettingInformation = YES;
+//        ?lat=43.19553545049059&limit=20&lon=-70.87328000848159&offset=0&q=&radius=15
+//        CLLocation *locationHack = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
+        DLog(@"Location: %@", location);
         [[RNWebService sharedClient] getDeals:@"969" location:location query:@"" callback:^(id result) {
             if (result != nil) {
                 self.deals = result;
