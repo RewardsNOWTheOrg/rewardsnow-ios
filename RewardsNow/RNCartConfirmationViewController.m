@@ -36,10 +36,25 @@
 
 - (void)resizeView {
     CGFloat difference = self.innerViewHeight.constant - self.innerInnerViewHeight.constant;
-    self.innerInnerViewHeight.constant = (35 * [[[RNCart sharedCart] items] count]) + 30;
+
+    self.innerInnerViewHeight.constant = (30 * [[[RNCart sharedCart] items] count]) + 60;
+    
+    
     self.innerViewHeight.constant = self.innerInnerViewHeight.constant + difference;
-    self.scrollView.contentSize = CGSizeMake(320, self.innerViewHeight.constant);
+    self.scrollView.contentSize = CGSizeMake(320, self.innerInnerViewHeight.constant + 100);
     [self.view layoutIfNeeded];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.contentSize = CGSizeMake(320, self.innerInnerViewHeight.constant + 100);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.contentSize = CGSizeMake(320, self.innerViewHeight.constant);
 }
 
 - (void)didReceiveMemoryWarning {
