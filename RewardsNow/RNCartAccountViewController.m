@@ -77,7 +77,10 @@
     frame.origin.y = 0;
     [UIView animateWithDuration:0.25 animations:^{
         self.view.frame = frame;
-        self.scrollView.frame = _scrollViewFrame;
+        if (!CGRectEqualToRect(_scrollViewFrame, CGRectNull)) {
+            self.scrollView.frame = _scrollViewFrame;
+        }
+        
     }];
 }
 
