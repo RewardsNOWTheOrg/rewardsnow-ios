@@ -51,7 +51,6 @@
 }
 
 - (void)resizeView {
-    
     CGFloat difference = self.innerViewHeight.constant - self.tableHeight.constant;
     self.tableHeight.constant = self.tableView.rowHeight * _cart.items.count;
     self.innerViewHeight.constant = self.tableHeight.constant + difference;
