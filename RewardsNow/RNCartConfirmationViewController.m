@@ -30,7 +30,16 @@
     }
     
     self.pointsTotal.text = [[RNCart sharedCart] stringTotal];
+    [self resizeView];
 
+}
+
+- (void)resizeView {
+    CGFloat difference = self.innerViewHeight.constant - self.innerInnerViewHeight.constant;
+    self.innerInnerViewHeight.constant = (35 * [[[RNCart sharedCart] items] count]) + 30;
+    self.innerViewHeight.constant = self.innerInnerViewHeight.constant + difference;
+    self.scrollView.contentSize = CGSizeMake(320, self.innerViewHeight.constant);
+    [self.view layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,13 +48,13 @@
 
 - (void)createLabelWithText:(NSString *)text points:(NSString *)points number:(NSUInteger)num {
     
-    UILabel *left = [[UILabel alloc] initWithFrame:CGRectMake(10, 10 + (num * 35), 220, 30)];
+    UILabel *left = [[UILabel alloc] initWithFrame:CGRectMake(10, 5 + (num * 30), 220, 30)];
     left.text = text;
     left.minimumScaleFactor = 0.5;
     left.backgroundColor = [UIColor clearColor];
     [_labelView addSubview:left];
     
-    UILabel *right = [[UILabel alloc] initWithFrame:CGRectMake(230, 10 + (num * 35), 50, 30)];
+    UILabel *right = [[UILabel alloc] initWithFrame:CGRectMake(230, 5 + (num * 30), 50, 30)];
     right.textColor = [UIColor redColor];
     right.textAlignment = NSTextAlignmentRight;
     right.text = points;

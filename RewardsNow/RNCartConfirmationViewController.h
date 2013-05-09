@@ -13,6 +13,10 @@
 @property (weak, nonatomic) IBOutlet UIView *labelView;
 @property (weak, nonatomic) IBOutlet UILabel *pointsTotal;
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
-- (IBAction)placeOrderTapped:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerInnerViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerViewHeight;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *innerView;
 
+- (IBAction)placeOrderTapped:(id)sender;
 @end
