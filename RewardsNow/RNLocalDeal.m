@@ -51,4 +51,8 @@
     return _location;
 }
 
+- (NSString *)discountAsString {
+    return [NSString stringWithFormat:@"%@ Discount!", _discountString];
+}
+
 @end

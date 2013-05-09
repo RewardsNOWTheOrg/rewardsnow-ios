@@ -31,4 +31,6 @@
 @property (nonatomic, copy) NSString *website;
 @property (nonatomic, copy) NSString *zipCode;
 
+- (NSString *)discountAsString;
+
 @end
