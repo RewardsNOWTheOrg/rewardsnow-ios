@@ -84,16 +84,6 @@
     
     [cell.dealImageView setImageWithURL:deal.imageURL];
     
-//    
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:deal.imageURL];
-//    [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
-//    
-//    [cell.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-//        cell.imageView.image = image;
-//    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-//        DLog(@"Failed to get image!");
-//    }];
-    
     return cell;
 }
 
@@ -145,7 +135,6 @@
     
     if (!_gettingInformation) {
         self.gettingInformation = YES;
-//        ?lat=43.19553545049059&limit=20&lon=-70.87328000848159&offset=0&q=&radius=15
         location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
         DLog(@"Location: %@", location);
         [[RNWebService sharedClient] getDeals:@"969" location:location query:@"" callback:^(id result) {
