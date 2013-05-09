@@ -559,17 +559,18 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="9fR-Hc-S9N">
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9fR-Hc-S9N">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="181" id="DiH-Vk-UEf"/>
+                                    <constraint firstAttribute="height" constant="181" type="user" id="DiH-Vk-UEf"/>
+                                    <constraint firstAttribute="width" constant="320" type="user" id="VSi-4r-p3W"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCell" id="m2I-4l-Dhf">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCell" id="m2I-4l-Dhf">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -599,19 +600,36 @@
                                     <constraint firstItem="rFq-6B-VI6" firstAttribute="leading" secondItem="Cjb-1Z-dzi" secondAttribute="leading" type="user" id="zX1-e3-CqL"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWn-hT-WhK">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yEA-XW-ckC"/>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="yEA-XW-ckC" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="5iA-cV-c6j"/>
+                                    <constraint firstItem="yEA-XW-ckC" firstAttribute="leading" secondItem="zWn-hT-WhK" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7Zl-Ez-8KL"/>
+                                    <constraint firstAttribute="height" constant="115" type="user" id="Afo-kX-XOX"/>
+                                    <constraint firstAttribute="trailing" secondItem="yEA-XW-ckC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="bna-2c-Mm3"/>
+                                    <constraint firstItem="yEA-XW-ckC" firstAttribute="top" secondItem="zWn-hT-WhK" secondAttribute="top" constant="20" symbolic="YES" type="default" id="kxn-P7-EX5"/>
+                                    <constraint firstAttribute="width" constant="320" type="user" id="tJE-Pp-mdj"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="9fR-Hc-S9N" firstAttribute="centerY" secondItem="Cgk-8A-KEs" secondAttribute="centerY" type="default" id="605-wN-C9s"/>
-                            <constraint firstItem="Cjb-1Z-dzi" firstAttribute="top" secondItem="Cgk-8A-KEs" secondAttribute="top" type="default" id="I4p-dD-UJ2"/>
+                            <constraint firstItem="zWn-hT-WhK" firstAttribute="leading" secondItem="Cgk-8A-KEs" secondAttribute="leading" type="user" id="9f1-8A-EWQ"/>
+                            <constraint firstItem="zWn-hT-WhK" firstAttribute="top" secondItem="Cgk-8A-KEs" secondAttribute="top" constant="20" type="user" id="E47-35-VZl"/>
                             <constraint firstItem="Cjb-1Z-dzi" firstAttribute="trailing" secondItem="Cgk-8A-KEs" secondAttribute="trailing" type="default" id="PA9-U1-Z7w"/>
-                            <constraint firstItem="9fR-Hc-S9N" firstAttribute="leading" secondItem="Cgk-8A-KEs" secondAttribute="leading" type="default" id="RXL-SK-16d"/>
-                            <constraint firstItem="9fR-Hc-S9N" firstAttribute="trailing" secondItem="Cgk-8A-KEs" secondAttribute="trailing" type="default" id="fnk-fd-Hnc"/>
+                            <constraint firstItem="9fR-Hc-S9N" firstAttribute="leading" secondItem="Cgk-8A-KEs" secondAttribute="leading" type="user" id="RXL-SK-16d"/>
+                            <constraint firstItem="9fR-Hc-S9N" firstAttribute="top" secondItem="Cgk-8A-KEs" secondAttribute="top" constant="135" id="Xsw-rG-FyT"/>
+                            <constraint firstItem="zWn-hT-WhK" firstAttribute="trailing" secondItem="Cgk-8A-KEs" secondAttribute="trailing" type="user" id="gl5-tI-Meb"/>
                             <constraint firstItem="Cjb-1Z-dzi" firstAttribute="leading" secondItem="Cgk-8A-KEs" secondAttribute="leading" type="default" id="wdb-1n-VzQ"/>
+                            <constraint firstItem="Cjb-1Z-dzi" firstAttribute="top" secondItem="Cgk-8A-KEs" secondAttribute="top" type="default" id="wyo-5H-3UU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="v49-fL-bbM"/>
                     <connections>
+                        <outlet property="tableView" destination="9fR-Hc-S9N" id="tdf-Pp-nZk"/>
                         <outlet property="topPointsLabel" destination="rFq-6B-VI6" id="aoX-UW-Hrf"/>
                     </connections>
                 </viewController>
@@ -2830,6 +2848,7 @@
         <class className="RNAboutViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

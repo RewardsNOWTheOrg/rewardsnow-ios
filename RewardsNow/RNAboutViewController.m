@@ -12,8 +12,11 @@
 #import "RNAboutEarningViewController.h"
 #import "RNUser.h"
 #import "RNCart.h"
+#import "RNConstants.h"
 
 @interface RNAboutViewController ()
+
+@property (nonatomic, copy) NSArray *cellNames;
 
 @end
 
@@ -22,7 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
+    self.cellNames = @[@"FAQ", @"Program Rules", @"Earning Points", @"Contact Us"];
 
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,12 +37,9 @@
 
 #pragma mark - UITableView Methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return _cellNames.count;
+    tableView.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -45,9 +48,18 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.textLabel.text = @[@"FAQ", @"Program Rules", @"Earning Points"][indexPath.row];
+//    UIColor *lightGrey = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
+//    cell.contentView.backgroundColor = lightGrey;
+//    cell.textLabel.backgroundColor = lightGrey;
+    
+    cell.textLabel.text = _cellNames[indexPath.row];
     
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
