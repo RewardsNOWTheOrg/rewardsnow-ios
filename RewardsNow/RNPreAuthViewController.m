@@ -12,8 +12,6 @@
 #import "RNAuthViewController.h"
 #import "RNWebService.h"
 
-NSString *const BankCodeKey = @"BankCodeKey";
-
 @interface RNPreAuthViewController ()
 
 @property (nonatomic, copy) NSArray *fields;

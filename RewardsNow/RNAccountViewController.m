@@ -10,6 +10,7 @@
 #import "RNCart.h"
 #import "RNUser.h"
 #import "RNGiftCard.h"
+#import "RNConstants.h"
 
 @interface RNAccountViewController ()
 
@@ -67,6 +68,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
+}
+
+- (IBAction)logoutTapped:(id)sender {
+    
+    [[RNCart sharedCart] setUser:nil];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:BankCodeKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
+    [self presentViewController:auth animated:NO completion:nil];
 }
 
 @end

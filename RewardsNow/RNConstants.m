@@ -8,6 +8,8 @@
 
 #import "RNConstants.h"
 
+NSString *const BankCodeKey = @"BankCodeKey";
+
 @implementation RNConstants
 
 @end

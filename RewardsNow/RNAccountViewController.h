@@ -21,4 +21,5 @@
 @property (nonatomic, strong) RNUser *user;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *giftCardHeightConstraint;
 
+- (IBAction)logoutTapped:(id)sender;
 @end
