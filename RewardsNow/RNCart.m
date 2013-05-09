@@ -39,7 +39,7 @@
 }
 
 - (NSString *)getNamePoints {
-    return [NSString stringWithFormat:@"%@ Rewards: %@ points.", _user.firstName, [self pointsStringBalance]];
+    return [NSString stringWithFormat:@"%@ - %@ points.", _user.fullName, [self pointsStringBalance]];
 }
 
 - (void)addToCart:(RNRedeemObject *)card {
