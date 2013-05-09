@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface RNLocalViewController : UIViewController <CLLocationManagerDelegate>
+@interface RNLocalViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

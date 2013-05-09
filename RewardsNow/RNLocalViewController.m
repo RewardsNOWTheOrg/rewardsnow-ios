@@ -80,18 +80,26 @@
     cell.secondUpperLabel.text = deal.name;
     cell.textAreaLabel.text = deal.localDealDescription;
     cell.lowerLabel.text = [deal discountAsString];
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.dealImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:deal.imageURL];
-    [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
+    [cell.dealImageView setImageWithURL:deal.imageURL];
     
-    [cell.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        cell.imageView.image = image;
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        DLog(@"Failed to get image!");
-    }];
+//    
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:deal.imageURL];
+//    [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
+//    
+//    [cell.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//        cell.imageView.image = image;
+//    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+//        DLog(@"Failed to get image!");
+//    }];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    DLog(@"Fraem? %@", NSStringFromCGRect([[(RNLocalCell *)cell imageView] frame]));
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -138,7 +146,7 @@
     if (!_gettingInformation) {
         self.gettingInformation = YES;
 //        ?lat=43.19553545049059&limit=20&lon=-70.87328000848159&offset=0&q=&radius=15
-//        CLLocation *locationHack = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
+        location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
         DLog(@"Location: %@", location);
         [[RNWebService sharedClient] getDeals:@"969" location:location query:@"" callback:^(id result) {
             if (result != nil) {
