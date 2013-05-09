@@ -74,7 +74,7 @@ NSString *const kOffersKey = @"Offers";
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
 //                                                                                     DLog(@"Requst: %@", response);
-//                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     DLog(@"JSON: %@", JSON);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNRedeemObject objectsFromJSON:[JSON objectForKey:kResultsKey]];
@@ -106,7 +106,7 @@ NSString *const kOffersKey = @"Offers";
 
 - (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius callback:(RNResultCallback)callback {
     
-    NSString *url = [NSString stringWithFormat:@"GetLocalOffers/%@", tipFirst];
+    NSString *url = [NSString stringWithFormat:@"GetLocalOffers/%@/", tipFirst];
     NSDictionary *params = @{@"q": query,
                              @"limit" : @(lim),
                              @"offset" : @(offset),
@@ -119,7 +119,9 @@ NSString *const kOffersKey = @"Offers";
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:params]
                                                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                  [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-
+                                                                                 
+                                                                                 DLog(@"Respinse: %@", JSON);
+                                                                                 
                                                                                  if ([self wasSuccessful:JSON]) {
                                                                                      NSArray *objects = [RNLocalDeal objectsFromJSON:[JSON objectForKey:kOffersKey]];
                                                                                      // cache?
@@ -273,17 +275,5 @@ NSString *const kOffersKey = @"Offers";
     return [JSON isKindOfClass:[NSDictionary class]] && (JSON[kErrorKey] == nil || JSON[kErrorKey] == [NSNull null]);
 }
 
-//- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
-//                                      path:(NSString *)path
-//                                parameters:(NSDictionary *)parameters {
-//    ///
-//    /// Always add format=json
-//    ///
-//    NSMutableURLRequest *request = [super requestWithMethod:method path:path parameters:parameters];
-//    
-//    
-//    return request;
-//    
-//}
 
 @end
