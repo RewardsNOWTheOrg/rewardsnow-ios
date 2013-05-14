@@ -117,6 +117,11 @@
 		AA5FBD4B1738A9D8008B40BA /* dark-grey-divider.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5FBD4A1738A9D6008B40BA /* dark-grey-divider.png */; };
 		AA9020C01725AE6D0074B857 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */; };
 		AA9020C11725AE6D0074B857 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */; };
+		AA9B9A7C1742D18600EA5E33 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9A7B1742D18600EA5E33 /* NSString+Additions.m */; };
+		AA9B9A801742D45900EA5E33 /* grey-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9A7E1742D45100EA5E33 /* grey-button.png */; };
+		AA9B9A811742D45900EA5E33 /* grey-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9A7F1742D45500EA5E33 /* grey-button@2x.png */; };
+		AA9B9A841742D89800EA5E33 /* grey-hard-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9A821742D89100EA5E33 /* grey-hard-button.png */; };
+		AA9B9A851742D89800EA5E33 /* grey-hard-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9A831742D89400EA5E33 /* grey-hard-button@2x.png */; };
 		AACADBC717287DDE00F9D765 /* thank-you-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC517287DDE00F9D765 /* thank-you-button.png */; };
 		AACADBC817287DDE00F9D765 /* thank-you-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */; };
 		AAD9734E1725C48E00171240 /* account-back.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734A1725C48E00171240 /* account-back.png */; };
@@ -292,6 +297,12 @@
 		AA5FBD4A1738A9D6008B40BA /* dark-grey-divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark-grey-divider.png"; sourceTree = "<group>"; };
 		AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		AA9B9A7A1742D18500EA5E33 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		AA9B9A7B1742D18600EA5E33 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		AA9B9A7E1742D45100EA5E33 /* grey-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-button.png"; sourceTree = "<group>"; };
+		AA9B9A7F1742D45500EA5E33 /* grey-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-button@2x.png"; sourceTree = "<group>"; };
+		AA9B9A821742D89100EA5E33 /* grey-hard-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-hard-button.png"; sourceTree = "<group>"; };
+		AA9B9A831742D89400EA5E33 /* grey-hard-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-hard-button@2x.png"; sourceTree = "<group>"; };
 		AACADBC517287DDE00F9D765 /* thank-you-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button.png"; sourceTree = "<group>"; };
 		AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button@2x.png"; sourceTree = "<group>"; };
 		AAD9734A1725C48E00171240 /* account-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-back.png"; sourceTree = "<group>"; };
@@ -519,6 +530,7 @@
 				AA5510EA170F1155001CC718 /* Redeem */,
 				AA53FE38170F5D8400041748 /* Local Deals */,
 				AA53FE5A170F5EFE00041748 /* Account */,
+				AA9B9A7D1742D1B800EA5E33 /* Vendor */,
 				AA53FEC01710EE7C00041748 /* Cart */,
 				AA53FE5B170F5F1500041748 /* About */,
 				AA53FE84170F869C00041748 /* Networking */,
@@ -568,6 +580,8 @@
 		AA5510E7170F1134001CC718 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B9A821742D89100EA5E33 /* grey-hard-button.png */,
+				AA9B9A831742D89400EA5E33 /* grey-hard-button@2x.png */,
 				AA5FBD4A1738A9D6008B40BA /* dark-grey-divider.png */,
 				AA5FBD461738A814008B40BA /* light-grey-single-divider.png */,
 				AA5FBD3E1738688C008B40BA /* blue-button.png */,
@@ -600,6 +614,8 @@
 				AA355A68172199DD0014E01B /* divider-line@2x.png */,
 				AA355A63172199240014E01B /* red-button.png */,
 				AA355A64172199240014E01B /* red-button@2x.png */,
+				AA9B9A7E1742D45100EA5E33 /* grey-button.png */,
+				AA9B9A7F1742D45500EA5E33 /* grey-button@2x.png */,
 				AA355A5F17218E040014E01B /* grey-button-arrow.png */,
 				AA355A6017218E040014E01B /* grey-button-arrow@2x.png */,
 				AA355A541720A3BE0014E01B /* vertical-line.png */,
@@ -672,6 +688,15 @@
 				AA5FBD4417386C87008B40BA /* RNCartCell.m */,
 			);
 			name = "Cart Cell";
+			sourceTree = "<group>";
+		};
+		AA9B9A7D1742D1B800EA5E33 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				AA9B9A7A1742D18500EA5E33 /* NSString+Additions.h */,
+				AA9B9A7B1742D18600EA5E33 /* NSString+Additions.m */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 		AAD9735C1726DBC900171240 /* Views */ = {
@@ -825,6 +850,10 @@
 				AA5FBD4117386890008B40BA /* blue-button@2x.png in Resources */,
 				AA5FBD471738A817008B40BA /* light-grey-single-divider.png in Resources */,
 				AA5FBD4B1738A9D8008B40BA /* dark-grey-divider.png in Resources */,
+				AA9B9A801742D45900EA5E33 /* grey-button.png in Resources */,
+				AA9B9A811742D45900EA5E33 /* grey-button@2x.png in Resources */,
+				AA9B9A841742D89800EA5E33 /* grey-hard-button.png in Resources */,
+				AA9B9A851742D89800EA5E33 /* grey-hard-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,6 +955,7 @@
 				AAD9735B1726D6F300171240 /* RNAccountStatementDetailView.m in Sources */,
 				AA2493EF1731B701005B29E5 /* RNLocalDeal.m in Sources */,
 				AA5FBD4517386C87008B40BA /* RNCartCell.m in Sources */,
+				AA9B9A7C1742D18600EA5E33 /* NSString+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
