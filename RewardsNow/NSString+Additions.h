@@ -11,6 +11,7 @@
 @interface NSString (Additions)
 
 - (BOOL)isEmpty;
+- (BOOL)isNotEmpty;
 - (NSString *)leftPadding;
 - (NSString *)rightPadding;
 

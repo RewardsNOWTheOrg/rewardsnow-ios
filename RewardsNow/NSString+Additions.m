@@ -25,6 +25,10 @@
     return NO;
 }
 
+- (BOOL)isNotEmpty {
+    return ![self isEmpty];
+}
+
 - (NSString *)leftPadding {
     return [NSString stringWithFormat:@" %@", self];
 }
