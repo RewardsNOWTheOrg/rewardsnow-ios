@@ -37,7 +37,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.checkoutButton.enabled = _cart.items.count > 0;
+    self.checkoutButton.enabled = [self canMoveForwardInCheckout];
+    self.topButtonForward.enabled = [self canMoveForwardInCheckout];
+}
+
+- (BOOL)canMoveForwardInCheckout {
+    return _cart.items.count > 0;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -59,11 +64,6 @@
 }
 
 - (IBAction)confirmTapped:(id)sender {
-    
-    ///
-    /// Is possible to order?
-    ///
-    
     RNCartConfirmationViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartAccountViewController"];
     [self.navigationController pushViewController:controller animated:YES];
 }

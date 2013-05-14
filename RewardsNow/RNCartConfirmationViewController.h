@@ -18,5 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *innerView;
 
+- (IBAction)cartTapped:(id)sender;
+- (IBAction)deliveryTapped:(id)sender;
 - (IBAction)placeOrderTapped:(id)sender;
+
 @end

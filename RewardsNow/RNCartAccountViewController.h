@@ -20,4 +20,5 @@
 @property (weak, nonatomic) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
 
+- (IBAction)cartButtonTapped:(id)sender;
 @end

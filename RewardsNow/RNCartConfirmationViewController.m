@@ -78,6 +78,15 @@
     
 }
 
+- (IBAction)cartTapped:(id)sender {
+    UIViewController *controller = self.navigationController.viewControllers[0];
+    [self.navigationController popToViewController:controller animated:YES];
+}
+
+- (IBAction)deliveryTapped:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)placeOrderTapped:(id)sender {
     NSString *message = [NSString stringWithFormat:@"Are you sure you would like to place the order for %@?", [[RNCart sharedCart] stringTotal]];
     [[[UIAlertView alloc] initWithTitle:@"Place Order" message:message delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil] show];

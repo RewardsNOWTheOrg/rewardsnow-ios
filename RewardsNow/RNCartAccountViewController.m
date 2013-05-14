@@ -87,7 +87,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:@"pushRNCartConfirmationViewController"]) {
+    if ([[segue identifier] isEqualToString:@"pushRNCartConfirmationViewController"] || [[segue identifier] isEqualToString:@"pushRNCartConfirmationViewControllerFromConfirm"]) {
         //
         // save info
         //
@@ -96,4 +96,7 @@
 }
 
 
+- (IBAction)cartButtonTapped:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end
