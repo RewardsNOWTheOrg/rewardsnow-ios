@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNAboutQAViewController : UIViewController
+@interface RNAboutQAViewController : UIViewController <UIWebViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewHeight;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
