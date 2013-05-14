@@ -11,6 +11,7 @@
 #import "RNCart.h"
 #import "RNUser.h"
 #import "RNWebService.h"
+#import "NSString+Additions.h"
 
 @interface RNAccountEditViewController ()
 
@@ -30,17 +31,13 @@
     [super viewWillAppear:animated];
     
     RNUser *user = [[RNCart sharedCart] user];
-    self.nameLabel.text = user.fullName;
     self.emailTextField.text = user.email;
     self.saveButton.enabled = NO;
-
-
 }
 
 - (IBAction)saveTapped:(id)sender {
     
     [self.view endEditing:YES];
-    
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.detailsLabelText = @"Changing...";
@@ -48,9 +45,10 @@
     [[RNWebService sharedClient] putEmail:self.emailTextField.text callback:^(id result) {
         
         hud.mode = MBProgressHUDModeCustomView;
-        
         [hud hide:YES afterDelay:1.5];
         
+        //pop back to main account screen
+        // TODO
         if (result != nil) {
             RNUser *user = [[RNCart sharedCart] user];
             user.email = self.emailTextField.text;
@@ -59,15 +57,18 @@
         } else {
             hud.detailsLabelText = @"Error";
         }
+        
+        self.emailAgainTextField.text = nil;
     }];
-    
 }
 
-#pragma mark UITextFild Delegate
+- (IBAction)textFieldChanged:(id)sender {
+    self.saveButton.enabled = [self shouldEnableSaveButton];
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    self.saveButton.enabled = YES;
-    return YES;
+}
+
+- (BOOL)shouldEnableSaveButton {
+    return [self.emailTextField.text isNotEmpty] && [self.emailAgainTextField.text isNotEmpty] && [self.emailTextField.text isEqualToString:self.emailAgainTextField.text];
 }
 
 @end
