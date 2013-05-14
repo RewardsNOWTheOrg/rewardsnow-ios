@@ -11,8 +11,11 @@
 #import "RNUser.h"
 #import "RNGiftCard.h"
 #import "RNConstants.h"
+#import "NSString+Additions.h"
 
 @interface RNAccountViewController ()
+
+@property (nonatomic) CGPoint contentOffset;
 
 @end
 
@@ -20,7 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.contentOffset = CGPointZero;
+    
+    self.nameLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
+    self.accountNumberLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -34,8 +40,8 @@
     }
     
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
-    self.nameLabel.text = self.user.fullName;
-    self.emailLabel.text = self.user.email;
+    self.nameLabel.text = [self.user.fullName leftPadding];
+    [self.emailLabel setTitle:[self.user.email leftPadding] forState:UIControlStateNormal];
 
     
     for (NSInteger i = 0; i < self.user.giftCards.count; i++) {
@@ -63,6 +69,29 @@
         gcLabel.text = string;
         [self.giftCardView addSubview:gcLabel];
     }
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [self.scrollView setScrollEnabled:YES];
+    
+    CGSize size = self.scrollView.contentSize;
+    size.height = self.innerViewHeight.constant;
+    self.scrollView.contentSize = size;
+    self.scrollView.contentOffset = _contentOffset;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.scrollView.contentOffset = CGPointZero;
+    self.contentOffset = self.scrollView.contentOffset;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.scrollView.contentOffset = self.contentOffset;
 }
 
 - (void)didReceiveMemoryWarning {

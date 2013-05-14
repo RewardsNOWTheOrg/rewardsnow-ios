@@ -873,13 +873,22 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewC-I3-94W">
                                         <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="First &amp; Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aab-NX-NZc">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="302" type="user" id="azA-8H-4Wq"/>
+                                                    <constraint firstAttribute="height" constant="44" type="user" id="mNa-2g-lUc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLc-tI-omj">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" type="user" id="O40-BH-3de"/>
                                                     <constraint firstAttribute="width" constant="302" type="user" id="Rij-kl-A0o"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
-                                                <state key="normal" title="    Current Statement" backgroundImage="grey-button-arrow.png">
+                                                <state key="normal" title="  Current Statement" backgroundImage="grey-button-arrow.png">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -889,11 +898,10 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsZ-yG-QAZ">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" type="user" id="1Hu-tS-aSk"/>
                                                     <constraint firstAttribute="width" constant="280" type="user" id="k2B-Mz-6ch"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
-                                                <state key="normal" title="Logout" backgroundImage="red-button.png">
+                                                <state key="normal" title="Log Out" backgroundImage="grey-hard-button.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -904,31 +912,6 @@
                                                     <action selector="logoutTapped:" destination="gUY-rQ-BuF" eventType="touchUpInside" id="Ssd-It-v9u"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orM-4g-0I9">
-                                                <subviews>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="First &amp; Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aab-NX-NZc">
-                                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="anemail@email.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCA-96-8xd">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="WCA-96-8xd" firstAttribute="leading" secondItem="orM-4g-0I9" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="CbP-NZ-6ee"/>
-                                                    <constraint firstAttribute="trailing" secondItem="aab-NX-NZc" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="EyM-o0-1M0"/>
-                                                    <constraint firstItem="aab-NX-NZc" firstAttribute="top" secondItem="orM-4g-0I9" secondAttribute="top" constant="11" id="OAo-9T-e89"/>
-                                                    <constraint firstItem="WCA-96-8xd" firstAttribute="top" secondItem="aab-NX-NZc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QTP-3D-jvV"/>
-                                                    <constraint firstAttribute="trailing" secondItem="WCA-96-8xd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Shr-sp-zvi"/>
-                                                    <constraint firstItem="aab-NX-NZc" firstAttribute="leading" secondItem="orM-4g-0I9" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="TeQ-5g-BWZ"/>
-                                                    <constraint firstAttribute="width" constant="320" type="user" id="YmY-bt-kQ5"/>
-                                                    <constraint firstAttribute="height" constant="102" type="user" id="uvI-Fu-KKy"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DoB-8J-GfN">
                                                 <subviews>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Available eGift Cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLG-26-vBx">
@@ -949,29 +932,86 @@
                                                     <constraint firstItem="KLG-26-vBx" firstAttribute="leading" secondItem="DoB-8J-GfN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rjd-Jw-9uC"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MS-Av-hGS">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" type="user" id="221-G5-dwa"/>
+                                                    <constraint firstAttribute="width" constant="302" type="user" id="wnw-th-ZTM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="  Email" backgroundImage="grey-button-arrow.png">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="iNE-BX-4zM" kind="push" id="ISH-P4-OaY"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cYv-gu-j83">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="302" type="user" id="ZN6-Ep-NIb"/>
+                                                    <constraint firstAttribute="height" constant="44" type="user" id="iwE-CK-kDc"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="  Account Number: ">
+                                                        <attributes>
+                                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <font key="NSFont" size="17" name="Arial-BoldMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="REB000000000005">
+                                                        <attributes>
+                                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lb-YK-PHh">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="  Change Password" backgroundImage="grey-button-arrow.png">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="GWS-uR-rAQ" kind="push" id="nMv-8Y-DSD"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="orM-4g-0I9" firstAttribute="top" secondItem="ewC-I3-94W" secondAttribute="top" type="user" id="0qi-6h-62a"/>
                                             <constraint firstAttribute="width" constant="320" type="user" id="2aK-A8-LQe"/>
-                                            <constraint firstItem="DoB-8J-GfN" firstAttribute="top" secondItem="ewC-I3-94W" secondAttribute="top" constant="174" type="user" id="DLw-g7-1y8"/>
+                                            <constraint firstItem="VLc-tI-omj" firstAttribute="top" secondItem="cYv-gu-j83" secondAttribute="bottom" constant="10" type="user" id="5CR-li-5tD"/>
+                                            <constraint firstItem="0MS-Av-hGS" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="7ah-KN-LLA"/>
+                                            <constraint firstAttribute="height" constant="520" type="user" id="9Sj-2s-itW"/>
+                                            <constraint firstItem="0MS-Av-hGS" firstAttribute="top" secondItem="aab-NX-NZc" secondAttribute="bottom" constant="10" type="user" id="DOk-mr-dDD"/>
                                             <constraint firstItem="VLc-tI-omj" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="M96-E4-UwG"/>
-                                            <constraint firstItem="VLc-tI-omj" firstAttribute="top" secondItem="ewC-I3-94W" secondAttribute="top" constant="122" type="user" id="Maa-xa-q1M"/>
-                                            <constraint firstAttribute="height" constant="435" type="user" id="SV3-Ru-iKM"/>
-                                            <constraint firstItem="orM-4g-0I9" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" type="user" id="UM8-QU-PJw"/>
-                                            <constraint firstItem="HsZ-yG-QAZ" firstAttribute="top" secondItem="DoB-8J-GfN" secondAttribute="bottom" constant="18" type="user" id="WZc-Ce-3D6"/>
+                                            <constraint firstItem="cYv-gu-j83" firstAttribute="top" secondItem="0MS-Av-hGS" secondAttribute="bottom" constant="10" type="user" id="UAT-tt-iJc"/>
+                                            <constraint firstItem="HsZ-yG-QAZ" firstAttribute="top" secondItem="0lb-YK-PHh" secondAttribute="bottom" constant="10" type="user" id="ak0-MU-1Be"/>
+                                            <constraint firstItem="0lb-YK-PHh" firstAttribute="top" secondItem="DoB-8J-GfN" secondAttribute="bottom" constant="10" type="user" id="bRf-JU-QXG"/>
                                             <constraint firstItem="DoB-8J-GfN" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="dNI-Zq-4SR"/>
+                                            <constraint firstItem="aab-NX-NZc" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="lZP-JV-cZk"/>
+                                            <constraint firstItem="DoB-8J-GfN" firstAttribute="top" secondItem="VLc-tI-omj" secondAttribute="bottom" constant="10" type="user" id="q4v-IM-gQO"/>
                                             <constraint firstItem="HsZ-yG-QAZ" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="rCT-Zl-YiE"/>
-                                            <constraint firstItem="orM-4g-0I9" firstAttribute="trailing" secondItem="ewC-I3-94W" secondAttribute="trailing" type="user" id="tdy-jD-4Cd"/>
-                                            <constraint firstItem="orM-4g-0I9" firstAttribute="top" secondItem="ewC-I3-94W" secondAttribute="top" type="user" id="vSl-y3-dNr"/>
+                                            <constraint firstItem="aab-NX-NZc" firstAttribute="top" secondItem="ewC-I3-94W" secondAttribute="top" constant="10" type="user" id="s4N-WA-jWl"/>
+                                            <constraint firstItem="0lb-YK-PHh" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="uLj-zP-t1s"/>
+                                            <constraint firstItem="cYv-gu-j83" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="xWA-rt-NR0"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ewC-I3-94W" secondAttribute="bottom" constant="-85" id="0l4-RH-QIm"/>
+                                    <constraint firstItem="ewC-I3-94W" firstAttribute="top" secondItem="nC3-Al-Apa" secondAttribute="top" type="user" id="Fhh-sp-jLb"/>
                                     <constraint firstItem="ewC-I3-94W" firstAttribute="trailing" secondItem="nC3-Al-Apa" secondAttribute="trailing" type="default" id="Ngi-gA-06s"/>
                                     <constraint firstItem="ewC-I3-94W" firstAttribute="leading" secondItem="nC3-Al-Apa" secondAttribute="leading" type="user" id="QXF-9B-q7k"/>
-                                    <constraint firstItem="ewC-I3-94W" firstAttribute="top" secondItem="nC3-Al-Apa" secondAttribute="top" type="user" id="aMr-Nh-bfu"/>
-                                    <constraint firstItem="ewC-I3-94W" firstAttribute="bottom" secondItem="nC3-Al-Apa" secondAttribute="bottom" type="default" id="cV1-bp-eIp"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -988,17 +1028,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Account" id="mA2-pr-NUP">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Q2s-zN-RRe"/>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="JJk-vN-FO5">
-                            <connections>
-                                <segue destination="iNE-BX-4zM" kind="push" id="whQ-Wo-5mJ"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailLabel" destination="WCA-96-8xd" id="rBa-wJ-Q9y"/>
+                        <outlet property="accountNumberLabel" destination="cYv-gu-j83" id="BVL-Ob-EEb"/>
+                        <outlet property="emailLabel" destination="0MS-Av-hGS" id="jH3-Lz-Vrd"/>
                         <outlet property="giftCardHeightConstraint" destination="Fyr-t6-Wv8" id="QrZ-z8-TWn"/>
                         <outlet property="giftCardView" destination="DoB-8J-GfN" id="3lu-aF-q2N"/>
                         <outlet property="innerView" destination="ewC-I3-94W" id="luI-hT-zEO"/>
+                        <outlet property="innerViewHeight" destination="9Sj-2s-itW" id="3G7-fZ-Ulo"/>
                         <outlet property="nameLabel" destination="aab-NX-NZc" id="M2e-Tu-ZaL"/>
                         <outlet property="scrollView" destination="nC3-Al-Apa" id="tNa-aC-tzI"/>
                         <outlet property="topPointsLabel" destination="LRL-6u-WJI" id="FbQ-Xq-phx"/>
@@ -1261,7 +1298,7 @@
             <objects>
                 <viewController storyboardIdentifier="RNAccountEditPasswordViewController" id="GWS-uR-rAQ" customClass="RNAccountEditPasswordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kd5-hx-D4n">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Old Password" adjustsFontSizeToFit="NO" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="beu-Dc-iIH">
@@ -3024,15 +3061,260 @@
         <image name="delivery@2x.png" width="51" height="53"/>
         <image name="divider-line.png" width="279" height="3"/>
         <image name="grey-button-arrow.png" width="302" height="44"/>
+        <image name="grey-hard-button.png" width="278" height="46"/>
         <image name="light-grey-single-divider.png" width="300" height="1"/>
         <image name="localdeals.png" width="25" height="24"/>
-        <image name="red-button.png" width="278" height="46"/>
         <image name="redeem.png" width="23" height="23"/>
         <image name="rewardsnow-logo.png" width="255" height="57"/>
         <image name="smiley-face@2x.png" width="61" height="44"/>
         <image name="thank-you-button.png" width="141" height="141"/>
         <image name="vertical-line.png" width="1" height="110"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RNAboutEarningViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutEarningViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webViewHeight" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="RNAboutQAViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutQAViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webViewHeight" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="RNAboutRulesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutRulesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webViewHeight" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="RNAboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNAccountEditPasswordViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditPasswordViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveTapped:"/>
+                <relationship kind="outlet" name="passwordNewRetypeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordNewTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordOldTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="RNAccountEditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveTapped:"/>
+                <relationship kind="action" name="textFieldChanged:"/>
+                <relationship kind="outlet" name="emailAgainTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="RNAccountStatementViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountStatementViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backMonth:"/>
+                <relationship kind="action" name="forwardMonth:"/>
+                <relationship kind="action" name="swipeRecognized:"/>
+                <relationship kind="outlet" name="backMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="displayedDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="forwardMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsEndLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsStartLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RNAccountViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logoutTapped:"/>
+                <relationship kind="outlet" name="accountNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="emailLabel" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="giftCardHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="giftCardView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNAuthPasswordViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAuthPasswordViewController.h"/>
+        </class>
+        <class className="RNAuthViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAuthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="forgotPasswordTapped:"/>
+                <relationship kind="action" name="signInTapped:"/>
+                <relationship kind="outlet" name="forgotPasswordButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="logoTopConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signInButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="usernameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RNCartAccountViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartAccountViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cartButtonTapped:"/>
+                <relationship kind="outlet" name="addressCityStateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addressNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addressStreetTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addressUnitTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="defaultEmailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNCartCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lowerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upperLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNCartConfirmationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartConfirmationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cartTapped:"/>
+                <relationship kind="action" name="deliveryTapped:"/>
+                <relationship kind="action" name="placeOrderTapped:"/>
+                <relationship kind="outlet" name="innerInnerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="labelView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pointsTotal" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNCartThanksViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartThanksViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="thankYouTapped:"/>
+                <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upperView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="RNCartViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelTapped:"/>
+                <relationship kind="action" name="confirmTapped:"/>
+                <relationship kind="outlet" name="checkoutButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="pointsAvailableLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsInCartLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsLeftLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="tableHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topButtonForward" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNLocalAdditionalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalAdditionalViewController.h"/>
+        </class>
+        <class className="RNLocalCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dealImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lowerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="secondUpperLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textAreaLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upperTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNLocalDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="directionsTapped:"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="RNLocalMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalMapViewController.h"/>
+        </class>
+        <class className="RNLocalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="filterTapped:"/>
+                <relationship kind="action" name="mapTapped:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNPreAuthViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNPreAuthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="continueTapped:"/>
+                <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="continueButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoTopConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="redeemBottomLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redeemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="redeemTopLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addToCartTapped:"/>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="descriptionView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="redeemBottomLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redeemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="redeemTopLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
