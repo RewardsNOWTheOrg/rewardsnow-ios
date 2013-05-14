@@ -120,7 +120,7 @@ NSString *const kOffersKey = @"Offers";
                                                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                  [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                  
-                                                                                 DLog(@"Respinse: %@", JSON);
+                                                                                 DLog(@"Response: %@", JSON);
                                                                                  
                                                                                  if ([self wasSuccessful:JSON]) {
                                                                                      NSArray *objects = [RNLocalDeal objectsFromJSON:[JSON objectForKey:kOffersKey]];
