@@ -24,9 +24,6 @@
     
     [self.webView loadHTMLString:_html baseURL:nil];
     
-    
-    [self.view layoutIfNeeded];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -39,6 +36,7 @@
     _webViewHeight.constant = _webView.scrollView.contentSize.height;
     self.scrollView.contentSize = CGSizeMake(320, _webViewHeight.constant + topDiff);
     DLog(@"Size: %@", NSStringFromCGSize(self.scrollView.contentSize));
+    [self.view layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {
