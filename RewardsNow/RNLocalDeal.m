@@ -7,6 +7,7 @@
 //
 
 #import "RNLocalDeal.h"
+#import <AddressBook/AddressBook.h>
 
 @implementation RNLocalDeal
 
@@ -53,6 +54,21 @@
 
 - (NSString *)discountAsString {
     return [NSString stringWithFormat:@"%@ Discount!", _discountString];
+}
+
+- (CLLocationCoordinate2D)coordinate2D {
+    
+    return CLLocationCoordinate2DMake(_latitude.doubleValue, _longitude.doubleValue);
+}
+
+- (NSDictionary *)addressDictionary {
+
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    if (_address != nil) [dictionary setValue:_address forKey:(NSString *)kABPersonAddressStreetKey];
+    if (_country != nil) [dictionary setValue:_country forKey:(NSString *)kABPersonAddressCountryKey];
+    if (_state != nil) [dictionary setValue:_state forKey:(NSString *)kABPersonAddressStreetKey];
+    if (_zipCode != nil) [dictionary setValue:_zipCode forKey:(NSString *)kABPersonAddressZIPKey];
+    return dictionary;
 }
 
 @end

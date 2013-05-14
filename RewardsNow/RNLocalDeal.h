@@ -32,5 +32,7 @@
 @property (nonatomic, copy) NSString *zipCode;
 
 - (NSString *)discountAsString;
+- (CLLocationCoordinate2D)coordinate2D;
+- (NSDictionary *)addressDictionary;
 
 @end
