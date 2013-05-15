@@ -28,11 +28,12 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic, copy) NSString *state;
-@property (nonatomic, copy) NSString *website;
+@property (nonatomic, copy) NSURL *website;
 @property (nonatomic, copy) NSString *zipCode;
 
 - (NSString *)discountAsString;
 - (CLLocationCoordinate2D)coordinate2D;
 - (NSDictionary *)addressDictionary;
+- (NSURL *)phoneURL;
 
 @end

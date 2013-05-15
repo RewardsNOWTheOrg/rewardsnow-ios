@@ -45,6 +45,14 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
++ (NSValueTransformer *)websiteJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+- (NSURL *)phoneURL {
+    return [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", _phoneNumber]];
+}
+
 - (CLLocation *)location {
     if (_location == nil) {
         _location = [[CLLocation alloc] initWithLatitude:self.latitude.doubleValue longitude:self.longitude.doubleValue];
