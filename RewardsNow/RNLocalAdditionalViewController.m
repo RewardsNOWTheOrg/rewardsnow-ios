@@ -7,6 +7,8 @@
 //
 
 #import "RNLocalAdditionalViewController.h"
+#import "RNLocalDeal.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface RNLocalAdditionalViewController ()
 
@@ -14,25 +16,22 @@
 
 @implementation RNLocalAdditionalViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.upperTopLabel.text = _deal.businessName;
+    self.upperMiddleLabel.text = _deal.address;
+    self.upperLowerLabel.text = _deal.name;
+    [self.imageView setImageWithURL:_deal.imageURL];
+    self.textView.text = _deal.additionalInformation;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
+- (IBAction)directionsTapped:(id)sender {
+    [_deal openInMaps];
+}
 @end
