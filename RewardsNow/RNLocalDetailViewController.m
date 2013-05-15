@@ -64,6 +64,7 @@
     
     [rows addObject:@{@"title": @"Additional Information", @"action" : ^{
         RNLocalAdditionalViewController *more = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalAdditionalViewController"];
+        more.deal = _deal;
         [self.navigationController pushViewController:more animated:YES];
     }
      }];
@@ -104,11 +105,7 @@
 }
 
 - (IBAction)directionsTapped:(id)sender {
-    
-    MKPlacemark *place = [[MKPlacemark alloc] initWithCoordinate:_deal.coordinate2D addressDictionary:[_deal addressDictionary]];
-    MKMapItem* destination = [[MKMapItem alloc] initWithPlacemark:place];
-    destination.name = _deal.businessName;
-    [MKMapItem openMapsWithItems:@[destination] launchOptions:@{MKLaunchOptionsDirectionsModeDriving: MKLaunchOptionsDirectionsModeKey}];
+    [_deal openInMaps];
 }
 
 #pragma mark - UITableView Methods
