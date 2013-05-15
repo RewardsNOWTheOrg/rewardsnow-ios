@@ -8,6 +8,7 @@
 
 #import "RNLocalViewController.h"
 #import "RNLocalMapViewController.h"
+#import "RNLocalDetailViewController.h"
 #import "RNUser.h"
 #import "RNCart.h"
 #import "RNLocalDeal.h"
@@ -91,6 +92,17 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"pushRNLocalDetailViewController"]) {
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        RNLocalDetailViewController *vc = segue.destinationViewController;
+        vc.deal = _deals[indexPath.row];
+    }
+}
+
 #pragma mark - Bar Button Methods
 
 - (IBAction)filterTapped:(id)sender {
@@ -132,7 +144,7 @@
         self.gettingInformation = YES;
         location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
         DLog(@"Location: %@", location);
-        [[RNWebService sharedClient] getDeals:@"969" location:location query:@"deal" callback:^(id result) {
+        [[RNWebService sharedClient] getDeals:@"969" location:location query:@"" callback:^(id result) {
             if (result != nil) {
                 self.deals = result;
                 [self.tableView reloadData];
