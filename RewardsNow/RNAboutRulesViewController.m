@@ -29,7 +29,9 @@
     _webView.scrollView.scrollEnabled = NO;
     _webView.scrollView.showsVerticalScrollIndicator = NO;
     _webView.scrollView.showsHorizontalScrollIndicator = NO;
-    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
     CGFloat topDiff = _webView.frame.origin.y;
     _webViewHeight.constant = _webView.scrollView.contentSize.height;
     self.scrollView.contentSize = CGSizeMake(320, _webViewHeight.constant + topDiff);

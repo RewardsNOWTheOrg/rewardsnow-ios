@@ -796,6 +796,9 @@
                                                     <constraint firstAttribute="width" constant="320" type="user" id="DFK-Lv-eIA"/>
                                                     <constraint firstAttribute="height" constant="410" type="user" id="u3Z-1e-qvM"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="delegate" destination="xiY-So-3R1" id="Hid-Pp-8QE"/>
+                                                </connections>
                                             </webView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="SPs-BP-us9">
                                                 <constraints>

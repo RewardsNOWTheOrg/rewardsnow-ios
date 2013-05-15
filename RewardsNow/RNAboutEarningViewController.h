@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNAboutEarningViewController : UIViewController
+@interface RNAboutEarningViewController : UIViewController <UIWebViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewHeight;
