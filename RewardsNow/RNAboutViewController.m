@@ -73,8 +73,13 @@
         case 1:
             vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutRulesViewController"];
             break;
-        default:
+        case 2:
             vc = vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutEarningViewController"];
+            break;
+        case 3:
+            //cointact
+            break;
+        default:
             break;
     }
     
