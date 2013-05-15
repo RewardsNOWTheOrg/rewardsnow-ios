@@ -122,6 +122,10 @@
 		AA9B9A811742D45900EA5E33 /* grey-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9A7F1742D45500EA5E33 /* grey-button@2x.png */; };
 		AA9B9A841742D89800EA5E33 /* grey-hard-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9A821742D89100EA5E33 /* grey-hard-button.png */; };
 		AA9B9A851742D89800EA5E33 /* grey-hard-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B9A831742D89400EA5E33 /* grey-hard-button@2x.png */; };
+		AA9B9A881743018000EA5E33 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9B9A861743017C00EA5E33 /* AddressBook.framework */; };
+		AA9B9A891743018000EA5E33 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9B9A871743017E00EA5E33 /* AddressBookUI.framework */; };
+		AA9B9A8C1743051200EA5E33 /* RNAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9A8B1743051100EA5E33 /* RNAnnotation.m */; };
+		AA9B9A8F174308A300EA5E33 /* CMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B9A8E174308A300EA5E33 /* CMLabel.m */; };
 		AACADBC717287DDE00F9D765 /* thank-you-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC517287DDE00F9D765 /* thank-you-button.png */; };
 		AACADBC817287DDE00F9D765 /* thank-you-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */; };
 		AAD9734E1725C48E00171240 /* account-back.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734A1725C48E00171240 /* account-back.png */; };
@@ -303,6 +307,12 @@
 		AA9B9A7F1742D45500EA5E33 /* grey-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-button@2x.png"; sourceTree = "<group>"; };
 		AA9B9A821742D89100EA5E33 /* grey-hard-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-hard-button.png"; sourceTree = "<group>"; };
 		AA9B9A831742D89400EA5E33 /* grey-hard-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-hard-button@2x.png"; sourceTree = "<group>"; };
+		AA9B9A861743017C00EA5E33 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		AA9B9A871743017E00EA5E33 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		AA9B9A8A1743051100EA5E33 /* RNAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAnnotation.h; sourceTree = "<group>"; };
+		AA9B9A8B1743051100EA5E33 /* RNAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAnnotation.m; sourceTree = "<group>"; };
+		AA9B9A8D174308A300EA5E33 /* CMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLabel.h; sourceTree = "<group>"; };
+		AA9B9A8E174308A300EA5E33 /* CMLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMLabel.m; sourceTree = "<group>"; };
 		AACADBC517287DDE00F9D765 /* thank-you-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button.png"; sourceTree = "<group>"; };
 		AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button@2x.png"; sourceTree = "<group>"; };
 		AAD9734A1725C48E00171240 /* account-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-back.png"; sourceTree = "<group>"; };
@@ -323,6 +333,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA9B9A881743018000EA5E33 /* AddressBook.framework in Frameworks */,
+				AA9B9A891743018000EA5E33 /* AddressBookUI.framework in Frameworks */,
 				AA2493F11731B881005B29E5 /* CoreLocation.framework in Frameworks */,
 				AA53FEBF1710DDEA00041748 /* MapKit.framework in Frameworks */,
 				AA53FEB31710A5AB00041748 /* QuartzCore.framework in Frameworks */,
@@ -392,6 +404,8 @@
 				AA53FE61170F6F8000041748 /* RNLocalAdditionalViewController.m */,
 				AA53FEBB1710DC3600041748 /* RNLocalCell.h */,
 				AA53FEBC1710DC3600041748 /* RNLocalCell.m */,
+				AA9B9A8A1743051100EA5E33 /* RNAnnotation.h */,
+				AA9B9A8B1743051100EA5E33 /* RNAnnotation.m */,
 			);
 			name = "Local Deals";
 			sourceTree = "<group>";
@@ -507,6 +521,8 @@
 		AA5510A0170F10A3001CC718 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA9B9A861743017C00EA5E33 /* AddressBook.framework */,
+				AA9B9A871743017E00EA5E33 /* AddressBookUI.framework */,
 				AA2493F01731B881005B29E5 /* CoreLocation.framework */,
 				AA53FEBE1710DDE900041748 /* MapKit.framework */,
 				AA53FEB21710A5AB00041748 /* QuartzCore.framework */,
@@ -695,6 +711,8 @@
 			children = (
 				AA9B9A7A1742D18500EA5E33 /* NSString+Additions.h */,
 				AA9B9A7B1742D18600EA5E33 /* NSString+Additions.m */,
+				AA9B9A8D174308A300EA5E33 /* CMLabel.h */,
+				AA9B9A8E174308A300EA5E33 /* CMLabel.m */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -956,6 +974,8 @@
 				AA2493EF1731B701005B29E5 /* RNLocalDeal.m in Sources */,
 				AA5FBD4517386C87008B40BA /* RNCartCell.m in Sources */,
 				AA9B9A7C1742D18600EA5E33 /* NSString+Additions.m in Sources */,
+				AA9B9A8C1743051200EA5E33 /* RNAnnotation.m in Sources */,
+				AA9B9A8F174308A300EA5E33 /* CMLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
