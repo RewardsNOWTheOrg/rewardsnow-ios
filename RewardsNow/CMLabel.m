@@ -10,13 +10,24 @@
 
 @implementation CMLabel
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ( (self = [super initWithCoder:aDecoder]) ) {
+        self.textInsets = [self defaultInsets];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.textInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        self.textInsets = [self defaultInsets];
     }
     return self;
+}
+
+- (UIEdgeInsets)defaultInsets {
+    return UIEdgeInsetsMake(0, 2, 0, 2);
 }
 
 - (void)drawTextInRect:(CGRect)rect {
