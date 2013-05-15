@@ -8,6 +8,7 @@
 
 #import "RNLocalDeal.h"
 #import <AddressBook/AddressBook.h>
+#import <MapKit/MapKit.h>
 
 @implementation RNLocalDeal
 
@@ -62,6 +63,13 @@
 
 - (NSString *)discountAsString {
     return [NSString stringWithFormat:@"%@ Discount!", _discountString];
+}
+
+- (void)openInMaps {
+    MKPlacemark *place = [[MKPlacemark alloc] initWithCoordinate:self.coordinate2D addressDictionary:[self addressDictionary]];
+    MKMapItem* destination = [[MKMapItem alloc] initWithPlacemark:place];
+    destination.name = self.businessName;
+    [MKMapItem openMapsWithItems:@[destination] launchOptions:@{MKLaunchOptionsDirectionsModeDriving: MKLaunchOptionsDirectionsModeKey}];
 }
 
 - (CLLocationCoordinate2D)coordinate2D {

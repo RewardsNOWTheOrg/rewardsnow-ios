@@ -35,5 +35,6 @@
 - (CLLocationCoordinate2D)coordinate2D;
 - (NSDictionary *)addressDictionary;
 - (NSURL *)phoneURL;
+- (void)openInMaps;
 
 @end
