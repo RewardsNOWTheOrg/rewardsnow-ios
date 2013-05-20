@@ -12,11 +12,10 @@
 #import "UIImageView+AFNetworking.h"
 #import "RNAnnotation.h"
 #import "CMLabel.h"
+#import "RNConstants.h"
 #import "NSString+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 #import <AddressBookUI/AddressBookUI.h>
-
-#define MapSpanSize 0.05
 
 @interface RNLocalDetailViewController ()
 
@@ -180,6 +179,7 @@
     
     [self.mapView addAnnotation:annotation];
     [self.mapView selectAnnotation:annotation animated:YES];
+
 }
 
 
