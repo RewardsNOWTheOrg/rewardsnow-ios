@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *redeemImage;
 @property (weak, nonatomic) IBOutlet UILabel *redeemTopLabel;
 @property (weak, nonatomic) IBOutlet UILabel *redeemBottomLabel;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
 
 @end

@@ -83,6 +83,8 @@
     cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", (NSInteger)[self.rewards[indexPath.row] cashValue]];
     cell.redeemBottomLabel.text = [NSString stringWithFormat:@"%.0f Points", [self.rewards[indexPath.row] priceInPoints]];
     cell.redeemImage.contentMode = UIViewContentModeScaleAspectFit;
+    cell.addButton.tag = indexPath.row;
+    [cell.addButton addTarget:self action:@selector(addToCartButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[[self.rewards[indexPath.row] imageURL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
@@ -109,6 +111,10 @@
         RNRedeemDetailViewController *detail = [segue destinationViewController];
         detail.info = self.rewards[indexPath.row];
     }
+}
+
+- (void)addToCartButtonPressed:(id)sender {
+    [[RNCart sharedCart] addToCart:_rewards[[sender tag]]];
 }
 
 @end
