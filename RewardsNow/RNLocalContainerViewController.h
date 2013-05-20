@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNLocalContainerViewController : UIViewController
+@interface RNLocalContainerViewController : UIViewController <UITabBarControllerDelegate>
 
 @property (nonatomic, strong) UIViewController *displayedViewController;
 @property (weak, nonatomic) IBOutlet UIView *containerView;

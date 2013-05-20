@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIViewController *mapViewController;
 @property (nonatomic, strong) UIViewController *listViewController;
 @property (nonatomic, strong) UIViewController *filterViewController;
+@property (nonatomic) BOOL isVisible;
 
 @end
 
@@ -31,6 +32,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.tabBarController.delegate = self;
+    
     self.containerView.backgroundColor = [UIColor redColor];
     
     if (_displayedViewController != nil) {
@@ -38,6 +41,20 @@
         [self.containerView addSubview:_displayedViewController.view];
         [self.displayedViewController didMoveToParentViewController:self];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.isVisible = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.tabBarController.delegate = nil;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.isVisible = NO;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -52,7 +69,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 }
 
 - (void)transitionFromCurrentViewControllerToViewController:(UIViewController *)vc options:(UIViewAnimationOptions)options {
@@ -120,6 +136,21 @@
     } else {
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterTapped:)];
         self.navigationItem.leftBarButtonItem = barButton;
+    }
+}
+
+#pragma UITabBarController Delegate
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
+    DLog(@"Class: %@", viewController.class);
+    
+    if ([viewController isKindOfClass:[UINavigationController class]] &&
+        ((UINavigationController *)viewController).viewControllers.count > 0 &&
+        ((UINavigationController *)viewController).viewControllers[0] == self &&
+        _displayedViewController != self.listViewController &&
+        _isVisible ) {
+        [self listTapped:nil];
     }
 }
 
