@@ -271,6 +271,7 @@ NSString *const kOffersKey = @"Offers";
                                                                                      DLog(@"JSON: %@", JSON);                                                                                     
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNProgramInfo objectsFromJSON:@[JSON]];
+                                                                                         DLog(@"Objects: %@", objects);
                                                                                          callback([objects lastObject]);
                                                                                      } else {
                                                                                          callback(nil);
