@@ -7,8 +7,13 @@
 //
 
 #import "RNLocalContainerViewController.h"
+#import "RNLocalMapViewController.h"
 
 @interface RNLocalContainerViewController ()
+
+@property (nonatomic, strong) UIViewController *mapViewController;
+@property (nonatomic, strong) UIViewController *listViewController;
+@property (nonatomic, strong) UIViewController *filterViewController;
 
 @end
 
@@ -18,7 +23,8 @@
     [super viewDidLoad];
     
     if (_displayedViewController == nil) {
-        _displayedViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
+        self.listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
+        _displayedViewController = self.listViewController;
     }
 }
 
@@ -27,25 +33,22 @@
     
     self.containerView.backgroundColor = [UIColor redColor];
     
-    DLog(@"Frame: %@", NSStringFromCGRect(self.containerView.frame));
-    
     if (_displayedViewController != nil) {
         [self addChildViewController:_displayedViewController];
         [self.containerView addSubview:_displayedViewController.view];
-        CGRect frame = _displayedViewController.view.frame;
-        frame.origin.y = 0;
-        _displayedViewController.view.frame = frame;
-//        _displayedViewController.view.frame = CGRectMake(0, 0, _containerView.frame.size.width, _containerView.frame.size.height);
-//        [self.displayedViewController didMoveToParentViewController:self];
+        [self.displayedViewController didMoveToParentViewController:self];
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     
-    DLog(@"Frame: %@", NSStringFromCGRect(self.containerView.frame));
+    CGRect frame = _displayedViewController.view.frame;
+    frame.origin.y = 0;
+    frame.size.height = _containerView.frame.size.height;
+    _displayedViewController.view.frame = frame;
+    
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -56,10 +59,12 @@
     
     CGRect frame = vc.view.frame;
     frame.origin.y = 0;
+    frame.size.height = _containerView.frame.size.height;
     vc.view.frame = frame;
     
-    [self addChildViewController:vc];
+    self.navigationController.navigationBar.userInteractionEnabled = NO;
     
+    [self addChildViewController:vc];
     [self transitionFromViewController:_displayedViewController
                       toViewController:vc
                               duration:1.0
@@ -68,30 +73,54 @@
                             completion:^(BOOL finished) {
                                 [vc didMoveToParentViewController:self];
                                 self.displayedViewController = vc;
-                                
+                                self.navigationController.navigationBar.userInteractionEnabled = YES;
                             }];
 }
 
 - (IBAction)mapTapped:(id)sender {
-    UIViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalMapViewController"];
-    [self transitionFromCurrentViewControllerToViewController:newController options:UIViewAnimationOptionTransitionFlipFromLeft];
     
+    if (_mapViewController == nil) {
+        self.mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalMapViewController"];
+    }
+
+    [self transitionFromCurrentViewControllerToViewController:_mapViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listTapped:)];
     self.navigationItem.rightBarButtonItem = barButton;
-    
-    
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterTapped:)];
+    self.navigationItem.leftBarButtonItem = filterButton;
 }
 
 - (IBAction)filterTapped:(id)sender {
     
+    if (_filterViewController == nil) {
+        self.filterViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalFilterViewController"];
+    }
+    
+    [self transitionFromCurrentViewControllerToViewController:_filterViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
+    
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listTapped:)];
+    self.navigationItem.leftBarButtonItem = barButton;
+    UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapTapped:)];
+    self.navigationItem.rightBarButtonItem = mapButton;
+    
 }
 
 - (IBAction)listTapped:(id)sender {
-    UIViewController *newController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
-    [self transitionFromCurrentViewControllerToViewController:newController options:UIViewAnimationOptionTransitionFlipFromLeft];
     
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapTapped:)];
-    self.navigationItem.rightBarButtonItem = barButton;
+    if (_listViewController == nil) {
+        self.listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
+    }
+    
+    BOOL right = [_displayedViewController isKindOfClass:[RNLocalMapViewController class]];
+    [self transitionFromCurrentViewControllerToViewController:_listViewController options:UIViewAnimationOptionTransitionFlipFromRight];
+    
+    if (right) {
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapTapped:)];
+        self.navigationItem.rightBarButtonItem = barButton;
+    } else {
+        UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterTapped:)];
+        self.navigationItem.leftBarButtonItem = barButton;
+    }
 }
 
 @end
