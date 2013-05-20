@@ -10,4 +10,14 @@
 
 @implementation RNProgramInfo
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    
+    NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
+    [fields setValue:@"ProgramInfo.EarningPoints" forKey:@"earningPoints"];
+    [fields setValue:@"ProgramInfo.FAQ" forKey:@"frequentlyAskedQuestions"];
+    [fields setValue:@"ProgramInfo.Terms" forKey:@"terms"];
+    return fields;
+}
+
+
 @end

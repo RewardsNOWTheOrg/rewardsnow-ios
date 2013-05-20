@@ -51,7 +51,7 @@
 }
 
 - (NSURL *)phoneURL {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", _phoneNumber]];
+    return [NSURL URLWithString:[[NSString stringWithFormat:@"telprompt://%@", _phoneNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 - (CLLocation *)location {
@@ -85,6 +85,16 @@
     if (_state != nil) [dictionary setValue:_state forKey:(NSString *)kABPersonAddressStreetKey];
     if (_zipCode != nil) [dictionary setValue:_zipCode forKey:(NSString *)kABPersonAddressZIPKey];
     return dictionary;
+}
+
+- (BOOL)doesMatchQuery:(NSString *)query {
+    query = [query lowercaseString];
+    
+    return [_name.lowercaseString rangeOfString:query].location != NSNotFound ||
+    [_additionalInformation.lowercaseString rangeOfString:query].location != NSNotFound ||
+    [_address.lowercaseString rangeOfString:query].location != NSNotFound ||
+    [_businessName.lowercaseString rangeOfString:query].location != NSNotFound ||
+    [_localDealDescription.lowercaseString rangeOfString:query].location != NSNotFound;
 }
 
 @end

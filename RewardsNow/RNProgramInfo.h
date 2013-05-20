@@ -10,4 +10,8 @@
 
 @interface RNProgramInfo : RNObject
 
+@property (nonatomic, copy) NSString *earningPoints;
+@property (nonatomic, copy) NSString *frequentlyAskedQuestions;
+@property (nonatomic, copy) NSString *terms;
+
 @end

@@ -36,5 +36,6 @@
 - (NSDictionary *)addressDictionary;
 - (NSURL *)phoneURL;
 - (void)openInMaps;
+- (BOOL)doesMatchQuery:(NSString *)query;
 
 @end
