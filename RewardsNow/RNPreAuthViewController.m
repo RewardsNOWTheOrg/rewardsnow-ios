@@ -73,7 +73,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.detailsLabelText = @"loading...";
     
-    [[RNWebService sharedClient] getBankFromCode:self.codeTextField.text callback:^(id result) {
+    [[RNWebService sharedClient] getBranding:self.codeTextField.text callback:^(id result) {
         hud.detailsLabelText = @"skinning...";
         
         double delayInSeconds = 1.0;
