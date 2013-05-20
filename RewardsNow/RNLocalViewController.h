@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface RNLocalViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
+@protocol RNLocalViewDelegate <NSObject>
+- (void)refreshData;
 
+@end
+
+@interface RNLocalViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
+
+@property (nonatomic, weak) id<RNLocalViewDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, copy) NSArray *deals;
 
 @end

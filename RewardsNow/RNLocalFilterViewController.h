@@ -10,4 +10,6 @@
 
 @interface RNLocalFilterViewController : UIViewController
 
+@property (nonatomic, copy) NSArray *deals;
+
 @end

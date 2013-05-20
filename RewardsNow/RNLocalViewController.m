@@ -18,11 +18,7 @@
 
 @interface RNLocalViewController ()
 
-@property (nonatomic, strong) RNLocalMapViewController *mapController;
-@property (nonatomic, copy) NSArray *deals;
-@property (nonatomic, strong) CLLocationManager *manager;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (nonatomic) BOOL gettingInformation;
 
 @end
 
@@ -32,7 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
-    self.gettingInformation = NO;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
@@ -54,17 +49,18 @@
 #pragma mark - UITableView Methods
 
 - (void)refresh:(UIRefreshControl *)sender {
-    
-    self.manager = [[CLLocationManager alloc] init];
-    _manager.delegate = self;
-    _manager.distanceFilter = kCLDistanceFilterNone;
-    _manager.desiredAccuracy = kCLLocationAccuracyBest;
-    [_manager startUpdatingLocation];
+    [self.delegate refreshData];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+- (void)setDeals:(NSArray *)deals {
+    if (_deals != deals) {
+        _deals = [deals copy];
+    }
+    
+    [_refreshControl endRefreshing];
+    [self.tableView reloadData];
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _deals.count;
@@ -103,28 +99,5 @@
     }
 }
 
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    CLLocation *location = [locations lastObject];
-    
-    if (!_gettingInformation) {
-        self.gettingInformation = YES;
-        location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
-        DLog(@"Location: %@", location);
-        [[RNWebService sharedClient] getDeals:@"969" location:location query:@"" callback:^(id result) {
-            if (result != nil) {
-                self.deals = result;
-                [self.tableView reloadData];
-            } else {
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
-            }
-            [self.refreshControl endRefreshing];
-            self.gettingInformation = NO;
-        }];
-    }
-    
-    [manager stopUpdatingLocation];
-}
 
 @end

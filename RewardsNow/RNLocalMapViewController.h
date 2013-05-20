@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface RNLocalMapViewController : UIViewController
+@interface RNLocalMapViewController : UIViewController <MKMapViewDelegate, UISearchDisplayDelegate>
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, copy) NSArray *deals;
+@property (nonatomic) CLLocationCoordinate2D location;
 
 @end
