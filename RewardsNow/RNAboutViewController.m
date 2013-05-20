@@ -77,7 +77,7 @@
             vc.html = self.info.earningPoints;
             break;
         case 3:
-            //cointact
+            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutContactViewController"];
             break;
         default:
             break;
