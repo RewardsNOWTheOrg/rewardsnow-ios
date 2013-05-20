@@ -29,9 +29,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    RNUser *user = [[RNCart sharedCart] user];
-    self.emailTextField.text = user.email;
     self.saveButton.enabled = NO;
 }
 
@@ -39,7 +36,7 @@
     
     [self.view endEditing:YES];
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.detailsLabelText = @"Changing...";
     
     [[RNWebService sharedClient] putEmail:self.emailTextField.text callback:^(id result) {
@@ -58,7 +55,7 @@
             hud.detailsLabelText = @"Error";
         }
         
-        self.emailAgainTextField.text = nil;
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

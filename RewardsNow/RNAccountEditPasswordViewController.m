@@ -31,7 +31,7 @@
 - (IBAction)saveTapped:(id)sender {
     [self.view endEditing:YES];
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.detailsLabelText = @"Changing...";
     
     [[RNWebService sharedClient] putPasswordFrom:self.passwordOldTextField.text
@@ -48,6 +48,7 @@
                                                 hud.detailsLabelText = @"Error";
                                             }
                                             [hud hide:YES afterDelay:1.5];
+                                            [self.navigationController popViewControllerAnimated:YES];
                                         }];
     
 }
