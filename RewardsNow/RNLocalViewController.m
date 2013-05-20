@@ -103,38 +103,6 @@
     }
 }
 
-#pragma mark - Bar Button Methods
-
-- (IBAction)filterTapped:(id)sender {
-    
-}
-
-- (IBAction)mapTapped:(id)sender {
-    
-    if (self.mapController == nil) {
-        self.mapController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalMapViewController"];
-    }
-    
-    [UIView transitionFromView:self.view
-                        toView:self.mapController.view
-                      duration:0.8
-                       options:UIViewAnimationOptionTransitionFlipFromLeft
-                    completion:^(BOOL finished) {
-        
-        
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStyleBordered target:self action:@selector(listTapped:)];
-    }];
-    
-
-}
-
-- (IBAction)listTapped:(id)sender {
-    
-    [UIView transitionFromView:self.mapController.view toView:self.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStyleBordered target:self action:@selector(mapTapped:)];
-    }];
-}
-
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {

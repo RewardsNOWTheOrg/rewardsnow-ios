@@ -14,7 +14,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-- (IBAction)filterTapped:(id)sender;
-- (IBAction)mapTapped:(id)sender;
-
 @end
