@@ -38,9 +38,11 @@
     self.lowerUpperLabel.text = _deal.localDealDescription;
     self.lowerUpperLabel.layer.cornerRadius = 4.0;
     self.lowerUpperLabel.textInsets = UIEdgeInsetsMake(2, 4, 2, 4);
+    //chagne the size...
     
     _mapView.layer.cornerRadius = 4.0;
     _mapView.layer.masksToBounds = YES;
+    _mapView.scrollEnabled = NO;
     
     self.mapAddressLabel.text = ABCreateStringWithAddressDictionary(_deal.addressDictionary, NO);
     
@@ -149,6 +151,9 @@
             customPinView.pinColor = MKPinAnnotationColorRed;
             customPinView.animatesDrop = NO;
             customPinView.canShowCallout = YES;
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [button addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+            customPinView.rightCalloutAccessoryView = button;
             return customPinView;
         } else {
             pinView.annotation = annotation;
@@ -158,6 +163,10 @@
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    [((RNAnnotation *)view.annotation).deal openInMaps];
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
