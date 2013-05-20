@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define C(color) (float)color/255.0
-
+#define MapSpanSize 0.05
 #define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
 FOUNDATION_EXPORT NSString *const BankCodeKey;
