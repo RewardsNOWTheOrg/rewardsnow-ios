@@ -8,6 +8,7 @@
 
 #import "RNCart.h"
 #import "RNCartAccountViewController.h"
+#import "RNUser.h"
 
 #define kKeyboardHeight 216
 #define kStatusBarHeight 20
@@ -25,7 +26,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.scrollViewFrame = CGRectNull;
+    
+    RNUser *user = [[RNCart sharedCart] user];
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
+    self.emailTextField.text = user.email;
+    
+    self.addressNameTextField.text = user.fullName;
+
 
 }
 

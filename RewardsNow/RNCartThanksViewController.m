@@ -41,8 +41,6 @@
 }
 
 - (IBAction)thankYouTapped:(id)sender {
-    DLog(@"Button: %@", NSStringFromCGRect([sender frame]));
-    DLog(@"1: %d", [sender contentMode]);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
