@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface RNLocalMapViewController : UIViewController <MKMapViewDelegate, UISearchDisplayDelegate>
+@interface RNLocalMapViewController : UIViewController <MKMapViewDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, copy) NSArray *deals;
