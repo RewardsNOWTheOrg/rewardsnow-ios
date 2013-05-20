@@ -41,6 +41,8 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 
 @end
 
+#define kTableY 80
+
 @implementation RNAccountStatementViewController
 
 - (void)viewDidLoad {
@@ -57,10 +59,11 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     
     self.currentState = DetailViewTable;
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 121, 320, 44*4) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kTableY, 320, 44*4) style:UITableViewStylePlain];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:RNAccountStatementCell];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.scrollEnabled = NO;
     [self.innerView addSubview:self.tableView];
     self.displayedDetailView = self.tableView;
     
@@ -157,8 +160,8 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     [[RNWebService sharedClient] getAccountStatementForTip:@"969000000001099" From:self.firstDay to:self.lastDay callback:^(id result) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.statement = result;
-        self.pointsStartLabel.text = [self.statement.pointsBeginning description];
-        self.pointsEndLabel.text = [self.statement.pointsEnd description];
+        self.pointsStartLabel.text = [self.statement.pointsBeginning description] == nil ? @"0" : [self.statement.pointsBeginning description];
+        self.pointsEndLabel.text = [self.statement.pointsEnd description] == nil ? @"0" : [self.statement.pointsEnd description];
     }];
 }
 
@@ -221,7 +224,7 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 
 - (void)showPointsIncrease:(UISwipeGestureRecognizerDirection)direction {
     
-    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, 130, 300, (self.statement.pointsIncrease.count * 40) + 70)];
+    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, kTableY, 300, (self.statement.pointsIncrease.count * 40) + 70)];
     details.titleLabel.text = @"Points Increase";
 
     DLog(@"Info: %@", self.statement);
@@ -236,7 +239,7 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 
 - (void)showPointsDecrease:(UISwipeGestureRecognizerDirection)direction {
     
-    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, 130, 300, (self.statement.pointsDecrease.count * 40) + 70)];
+    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, kTableY, 300, (self.statement.pointsDecrease.count * 40) + 70)];
     details.titleLabel.text = @"Points Decrease";
     
     for (NSInteger i = 0; i < self.statement.pointsDecrease.count; i++) {
@@ -249,7 +252,7 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 }
 
 - (void)showActivityDetail:(UISwipeGestureRecognizerDirection)direction {
-    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, 130, 300, (self.statement.history.count * 40) + 70)];
+    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, kTableY, 300, (self.statement.history.count * 40) + 70)];
     details.titleLabel.text = @"Activity Detail";
     
     for (NSInteger i = 0; i < self.statement.history.count; i++) {
@@ -262,7 +265,7 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 
 - (void)showOther:(UISwipeGestureRecognizerDirection)direction {
     
-    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, 130, 300, 300)];
+    RNAccountStatementDetailView *details = [[RNAccountStatementDetailView alloc] initWithFrame:CGRectMake(10, kTableY, 300, 300)];
     details.titleLabel.text = @"Other";
 
     [self scrollDetailView:direction toView:details];
