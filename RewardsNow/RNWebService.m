@@ -14,7 +14,7 @@
 #import "RNCart.h"
 #import "RNAccountStatement.h"
 #import "RNLocalDeal.h"
-
+#import "RNProgramInfo.h"
 
 NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/FacadeService.svc/";
 NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3eb07bc74d5bc081";
@@ -258,7 +258,32 @@ NSString *const kOffersKey = @"Offers";
                                                                                      callback(nil);
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
+}
+
+- (void)getProgramInfo:(NSString *)tip callback:(RNResultCallback)callback {
+    NSString *url = [NSString stringWithFormat:@"GetProgramInfo/%@", tip];
     
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);                                                                                     
+                                                                                     if ([self wasSuccessful:JSON]) {
+                                                                                         NSArray *objects = [RNProgramInfo objectsFromJSON:@[JSON]];
+                                                                                         callback([objects lastObject]);
+                                                                                     } else {
+                                                                                         callback(nil);
+                                                                                     }
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     callback(nil);
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
 }
 
 - (void)putEmail:(NSString *)email callback:(RNResultCallback)callback {

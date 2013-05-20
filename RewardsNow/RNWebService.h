@@ -19,6 +19,7 @@ typedef void (^RNResultCallback)(id result);
 - (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query callback:(RNResultCallback)callback;
 - (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius callback:(RNResultCallback)callback;
 - (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback;
+- (void)getProgramInfo:(NSString *)tip callback:(RNResultCallback)callback;
 
 - (void)getAccountInfoWithTip:(NSNumber *)tip callback:(RNResultCallback)callback;
 - (void)getBranding:(NSString *)code callback:(RNResultCallback)callback;
