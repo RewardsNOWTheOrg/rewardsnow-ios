@@ -42,6 +42,13 @@
     [super viewDidAppear:animated];
 }
 
+- (void)setDeals:(NSArray *)deals {
+    if (_deals != deals) {
+        _deals = [deals copy];
+        [self loadMapInformation];
+    }
+}
+
 #pragma mark - MKMapView Methods
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation {
@@ -122,12 +129,15 @@
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
-    
     if (_isFirstLoad) {
+        [self loadMapInformation];
         self.isFirstLoad = NO;
-        [self.mapView setRegion:[self calculateRegionForDeals:_deals] animated:YES];
     }
+}
 
+- (void)loadMapInformation {
+    
+    [self.mapView setRegion:[self calculateRegionForDeals:_deals] animated:YES];
     
     for (NSInteger i = 0; i < _deals.count; i++) {
         RNLocalDeal *deal = _deals[i];
