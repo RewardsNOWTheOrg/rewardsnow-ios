@@ -7,16 +7,17 @@
 //
 
 #import "RNAboutViewController.h"
-#import "RNAboutQAViewController.h"
-#import "RNAboutRulesViewController.h"
-#import "RNAboutEarningViewController.h"
+#import "RNAboutDetailViewController.h"
 #import "RNUser.h"
 #import "RNCart.h"
 #import "RNConstants.h"
+#import "RNProgramInfo.h"
+#import "RNWebService.h"
 
 @interface RNAboutViewController ()
 
 @property (nonatomic, copy) NSArray *cellNames;
+@property (nonatomic, strong) RNProgramInfo *info;
 
 @end
 
@@ -29,6 +30,11 @@
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
+    
+    [[RNWebService sharedClient] getProgramInfo:@"969" callback:^(id result) {
+        self.info = result;
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +45,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _cellNames.count;
-    tableView.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,34 +52,29 @@
     NSString *CellIdentifier = @"AboutCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-//    UIColor *lightGrey = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
-//    cell.contentView.backgroundColor = lightGrey;
-//    cell.textLabel.backgroundColor = lightGrey;
-    
     cell.textLabel.text = _cellNames[indexPath.row];
     
     return cell;
 }
 
-- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UIViewController *vc;
+    RNAboutDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutDetailViewController"];
+    
     switch (indexPath.row) {
         case 0:
-            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutQAViewController"];
+            vc.html = self.info.frequentlyAskedQuestions;
             break;
         case 1:
-            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutRulesViewController"];
+            vc.html = self.info.terms;
             break;
         case 2:
-            vc = vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAboutEarningViewController"];
+            vc.html = self.info.earningPoints;
             break;
         case 3:
             //cointact

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 CloudMine LLC. All rights reserved.
 //
 
-#import "RNAboutEarningViewController.h"
+#import "RNAboutDetailViewController.h"
 
 @interface RNAboutDetailViewController ()
 
