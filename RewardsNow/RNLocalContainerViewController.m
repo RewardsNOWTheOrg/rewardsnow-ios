@@ -111,6 +111,7 @@
     if (_mapViewController == nil) {
         self.mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalMapViewController"];
         self.mapViewController.deals = _deals;
+        self.mapViewController.location = [[_manager location] coordinate];
     }
 
     [self transitionFromCurrentViewControllerToViewController:_mapViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
@@ -139,8 +140,8 @@
     
     if (_listViewController == nil) {
         self.listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
-        self.deals = _deals;
     }
+    self.deals = _deals;
     
     BOOL right = [_displayedViewController isKindOfClass:[RNLocalMapViewController class]];
     [self transitionFromCurrentViewControllerToViewController:_listViewController options:UIViewAnimationOptionTransitionFlipFromRight];
@@ -192,7 +193,10 @@
                 [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
             }
             
-            [(RNLocalMapViewController *)self.displayedViewController setDeals:_deals]; //hack the type just so it works. IT WORKS
+            if (self.displayedViewController == self.mapViewController) { //kind hackish :/
+                self.mapViewController.location = location.coordinate;
+            }
+            [(RNLocalMapViewController *)self.displayedViewController setDeals:_deals]; //they all have this property
             self.gettingInformation = NO;
         }];
     }
