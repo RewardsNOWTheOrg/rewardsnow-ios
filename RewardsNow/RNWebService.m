@@ -142,17 +142,37 @@ NSString *const kOffersKey = @"Offers";
 }
 
 
-- (void)getBankFromCode:(NSString *)code callback:(RNResultCallback)callback {
+- (void)getBranding:(NSString *)code callback:(RNResultCallback)callback {
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    NSString *url = [NSString stringWithFormat:@"GetBranding/%@", code];
     
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-        callback(@{@"success" : @"true"});
-    });
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     DLog(@"Response: %@", JSON);
+                                                                                     
+                                                                                     if ([self wasSuccessful:JSON]) {
+//                                                                                         NSArray *objects = [RNLocalDeal objectsFromJSON:[JSON objectForKey:kOffersKey]];
+                                                                                         // cache?
+                                                                                         callback(JSON);
+                                                                                     } else {
+                                                                                         callback(nil);
+                                                                                     }
+                                                                                     
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     DLog(@"Test: %@", request);
+                                                                                     callback(nil);
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
+
 }
+
+
 
 - (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback {
     static NSDateFormatter *formatter = nil;
