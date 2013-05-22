@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *redeemImage;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *innerView;
+@property (weak, nonatomic) IBOutlet UIButton *addToCartButton;
 
 @property (nonatomic, strong) RNRedeemObject *info;
 

@@ -40,6 +40,10 @@
     [super viewWillAppear:animated];
     
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:[[RNCart sharedCart] getCartImageName]]
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                             target:self
+                                                                             action:@selector(goToCart:)];
 
 }
 
@@ -63,6 +67,10 @@
         }
         [sender endRefreshing];
     }];
+}
+
+- (void)goToCart:(id)sender {
+    [self performSegueWithIdentifier:@"modalCartFromRedeemList" sender:self];
 }
 
 #pragma mark - UITableView Methods
