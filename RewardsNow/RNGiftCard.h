@@ -18,5 +18,6 @@
 
 @property (nonatomic, copy) NSString *cardDescription;
 @property (nonatomic, strong) NSNumber *cardNumber;
+@property (nonatomic, strong) NSURL *cardURL;
 
 @end

@@ -13,6 +13,7 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{@"cardDescription": @"Description",
              @"cardNumber" : @"GiftCardNumber",
+             @"cardURL" : @"GiftCardUrl"
              };
 }
 
@@ -22,6 +23,10 @@
     } reverseBlock:^(NSNumber *state) {
         return state;
     }];
+}
+
++ (NSValueTransformer *)cardURLJSONTransformer {
+    return [MTLValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
 @end
