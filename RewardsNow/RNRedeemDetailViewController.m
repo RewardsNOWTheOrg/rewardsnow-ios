@@ -84,10 +84,9 @@
 }
 
 - (void)animateCartAdd {
-    self.animatedImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cart-full.png"]];
+    self.animatedImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"thank-you-button"]];
     
     CGPoint center = [_addToCartButton.superview convertPoint:_addToCartButton.center toView:nil];
-    DLog(@"Center: %@", NSStringFromCGPoint(center));
     
     _animatedImageView.frame = CGRectMake(160, 190, 25, 25);
     _animatedImageView.center = center;
@@ -102,12 +101,6 @@
     _animatedImageView.frame = imageFrame;
     _animatedImageView.layer.position = viewOrigin;
     [self.navigationController.view addSubview:_animatedImageView];
-    
-    // Set up scaling
-//    CABasicAnimation *resizeAnimation = [CABasicAnimation animationWithKeyPath:@"bounds.size"];
-//    [resizeAnimation setToValue:[NSValue valueWithCGSize:CGSizeMake(40.0f, imageFrame.size.height * (40.0f / imageFrame.size.width))]];
-//    resizeAnimation.fillMode = kCAFillModeForwards;
-//    resizeAnimation.removedOnCompletion = NO;
     
     // Set up path movement
     CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -133,15 +126,14 @@
     CGFloat xDist = (endPoint.x - viewOrigin.x);
     CGFloat yDist = (endPoint.y - viewOrigin.y);
     CGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));
-    group.duration = distance / 180.0;
+    group.duration = distance / 300.0;
     group.delegate = self;
     [group setValue:_animatedImageView forKey:@"imageViewBeingAnimated"];
     
     [_animatedImageView.layer addAnimation:group forKey:@"savingAnimation"];
 }
 
-- (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)finished
-{
+- (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)finished {
     DLog(@"Animation Finished");
     self.addToCartButton.enabled = YES;
     
