@@ -76,9 +76,6 @@
 		AA53FE79170F741600041748 /* navbar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA53FE77170F741600041748 /* navbar-background.png */; };
 		AA53FE7A170F741600041748 /* navbar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA53FE78170F741600041748 /* navbar-background@2x.png */; };
 		AA53FE7D170F78D900041748 /* RNRedeemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE7C170F78D900041748 /* RNRedeemCell.m */; };
-		AA53FE81170F7F0E00041748 /* charitychoice.png in Resources */ = {isa = PBXBuildFile; fileRef = AA53FE7E170F7F0D00041748 /* charitychoice.png */; };
-		AA53FE82170F7F0E00041748 /* gap.png in Resources */ = {isa = PBXBuildFile; fileRef = AA53FE7F170F7F0D00041748 /* gap.png */; };
-		AA53FE83170F7F0E00041748 /* jcpenny.png in Resources */ = {isa = PBXBuildFile; fileRef = AA53FE80170F7F0E00041748 /* jcpenny.png */; };
 		AA53FEA5170F873C00041748 /* RNWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FEA4170F873C00041748 /* RNWebService.m */; };
 		AA53FEA7170F8ADC00041748 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA53FEA6170F8ADC00041748 /* SystemConfiguration.framework */; };
 		AA53FEA9170F8AE200041748 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA53FEA8170F8AE200041748 /* MobileCoreServices.framework */; };
@@ -135,6 +132,7 @@
 		AAD973551725C58200171240 /* account-point-divider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD973531725C58200171240 /* account-point-divider@2x.png */; };
 		AAD973581725DB2E00171240 /* NSDate+Reporting.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD973571725DB2E00171240 /* NSDate+Reporting.m */; };
 		AAD9735B1726D6F300171240 /* RNAccountStatementDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD9735A1726D6F300171240 /* RNAccountStatementDetailView.m */; };
+		AADD7887174FC5790070EE9C /* RNAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD7886174FC5770070EE9C /* RNAnimatedImageView.m */; };
 		AAE2BBB4174A713A001CAFA1 /* RNLocalFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2BBB3174A713A001CAFA1 /* RNLocalFilterViewController.m */; };
 		AAE2BBBF174AB55C001CAFA1 /* libCMUtilities-Combined.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE2BBBA174AB55C001CAFA1 /* libCMUtilities-Combined.a */; };
 		AAE2BBC3174AB675001CAFA1 /* RNProgramInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2BBC2174AB675001CAFA1 /* RNProgramInfo.m */; };
@@ -245,9 +243,6 @@
 		AA53FE78170F741600041748 /* navbar-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-background@2x.png"; sourceTree = "<group>"; };
 		AA53FE7B170F78D900041748 /* RNRedeemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemCell.h; sourceTree = "<group>"; };
 		AA53FE7C170F78D900041748 /* RNRedeemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRedeemCell.m; sourceTree = "<group>"; };
-		AA53FE7E170F7F0D00041748 /* charitychoice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = charitychoice.png; sourceTree = "<group>"; };
-		AA53FE7F170F7F0D00041748 /* gap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gap.png; sourceTree = "<group>"; };
-		AA53FE80170F7F0E00041748 /* jcpenny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jcpenny.png; sourceTree = "<group>"; };
 		AA53FEA3170F873C00041748 /* RNWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNWebService.h; sourceTree = "<group>"; };
 		AA53FEA4170F873C00041748 /* RNWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNWebService.m; sourceTree = "<group>"; };
 		AA53FEA6170F8ADC00041748 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -325,6 +320,8 @@
 		AAD973571725DB2E00171240 /* NSDate+Reporting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Reporting.m"; sourceTree = "<group>"; };
 		AAD973591726D6F200171240 /* RNAccountStatementDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountStatementDetailView.h; sourceTree = "<group>"; };
 		AAD9735A1726D6F300171240 /* RNAccountStatementDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountStatementDetailView.m; sourceTree = "<group>"; };
+		AADD7885174FC5760070EE9C /* RNAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAnimatedImageView.h; sourceTree = "<group>"; };
+		AADD7886174FC5770070EE9C /* RNAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAnimatedImageView.m; sourceTree = "<group>"; };
 		AAE2BBB2174A713A001CAFA1 /* RNLocalFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLocalFilterViewController.h; sourceTree = "<group>"; };
 		AAE2BBB3174A713A001CAFA1 /* RNLocalFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLocalFilterViewController.m; sourceTree = "<group>"; };
 		AAE2BBB7174AB55C001CAFA1 /* CMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLabel.h; sourceTree = "<group>"; };
@@ -656,9 +653,6 @@
 				AA53FEAB170F937A00041748 /* about@2x.png */,
 				AA53FEAC170F937A00041748 /* account.png */,
 				AA53FEAD170F937A00041748 /* account@2x.png */,
-				AA53FE7E170F7F0D00041748 /* charitychoice.png */,
-				AA53FE7F170F7F0D00041748 /* gap.png */,
-				AA53FE80170F7F0E00041748 /* jcpenny.png */,
 				AA53FE77170F741600041748 /* navbar-background.png */,
 				AA53FE78170F741600041748 /* navbar-background@2x.png */,
 				AA53FE6F170F736700041748 /* cart-empty.png */,
@@ -703,6 +697,8 @@
 				AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */,
 				AA53FE7B170F78D900041748 /* RNRedeemCell.h */,
 				AA53FE7C170F78D900041748 /* RNRedeemCell.m */,
+				AADD7885174FC5760070EE9C /* RNAnimatedImageView.h */,
+				AADD7886174FC5770070EE9C /* RNAnimatedImageView.m */,
 			);
 			name = Redeem;
 			sourceTree = "<group>";
@@ -861,9 +857,6 @@
 				AA53FE76170F736800041748 /* cart-full@2x.png in Resources */,
 				AA53FE79170F741600041748 /* navbar-background.png in Resources */,
 				AA53FE7A170F741600041748 /* navbar-background@2x.png in Resources */,
-				AA53FE81170F7F0E00041748 /* charitychoice.png in Resources */,
-				AA53FE82170F7F0E00041748 /* gap.png in Resources */,
-				AA53FE83170F7F0E00041748 /* jcpenny.png in Resources */,
 				AA53FEAE170F937A00041748 /* about.png in Resources */,
 				AA53FEAF170F937A00041748 /* about@2x.png in Resources */,
 				AA53FEB0170F937A00041748 /* account.png in Resources */,
@@ -1024,6 +1017,7 @@
 				AAE2BBB4174A713A001CAFA1 /* RNLocalFilterViewController.m in Sources */,
 				AAE2BBC3174AB675001CAFA1 /* RNProgramInfo.m in Sources */,
 				AA9D05AE174ABD3000739BA8 /* RNAboutContactViewController.m in Sources */,
+				AADD7887174FC5790070EE9C /* RNAnimatedImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
