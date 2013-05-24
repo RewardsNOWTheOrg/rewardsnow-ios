@@ -16,6 +16,11 @@
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, strong) NSNumber *balance;
 @property (nonatomic, copy) NSArray *giftCards;
+@property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *apt;
+@property (nonatomic, copy) NSString *city;
+@property (nonatomic, copy) NSString *state;
+@property (nonatomic, copy) NSString *zipCode;
 
 - (NSString *)stringBalance;
 
