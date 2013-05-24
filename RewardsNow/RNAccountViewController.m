@@ -36,7 +36,7 @@
     
     if (self.user == nil) {
         UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
-        [self presentViewController:auth animated:NO completion:nil];
+//        [self presentViewController:auth animated:NO completion:nil];
     }
     
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
