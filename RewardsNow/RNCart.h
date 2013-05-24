@@ -20,6 +20,7 @@
 
 - (NSNumber *)total;
 - (NSString *)stringTotal;
+- (NSString *)getCartImageName;
 - (NSNumber *)pointsDifference;
 - (NSString *)stringPointsDifference;
 - (void)addToCart:(RNRedeemObject *)card;

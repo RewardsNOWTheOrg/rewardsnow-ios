@@ -42,6 +42,10 @@
     return [NSString stringWithFormat:@"%@ - %@ points.", _user.fullName, [self pointsStringBalance]];
 }
 
+- (NSString *)getCartImageName {
+    return _items.count > 0 ? @"cart-full.png" : @"cart.png";
+}
+
 - (void)addToCart:(RNRedeemObject *)card {
     [_items addObject:card];
 }
