@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface RNAboutContactViewController : UIViewController
+@interface RNAboutContactViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *callButton;
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
-@property (weak, nonatomic) IBOutlet UITextField *messageTextField;
+
+- (IBAction)writeTapped:(id)sender;
+- (IBAction)callTapped:(id)sender;
 
 @end
