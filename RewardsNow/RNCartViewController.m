@@ -37,8 +37,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.checkoutButton.enabled = [self canMoveForwardInCheckout];
-    self.topButtonForward.enabled = [self canMoveForwardInCheckout];
     
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -54,13 +52,16 @@
 }
 
 - (BOOL)canMoveForwardInCheckout {
-    return _cart.items.count > 0;
+    return _cart.items.count > 0 && [[_cart pointsDifference] doubleValue] > 0;
 }
 
 - (void)updatePriceLabels {
     self.pointsAvailableLabel.text = [_cart.user stringBalance];
     self.pointsInCartLabel.text = [_cart stringTotal];
     self.pointsLeftLabel.text = [_cart stringPointsDifference];
+    
+    self.checkoutButton.enabled = [self canMoveForwardInCheckout];
+    self.topButtonForward.enabled = [self canMoveForwardInCheckout];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

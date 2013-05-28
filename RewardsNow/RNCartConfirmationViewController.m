@@ -11,8 +11,13 @@
 #import "RNCart.h"
 #import "MBProgressHUD.h"
 #import "RNCartThanksViewController.h"
+#import "RNCartObject.h"
+#import "RNUser.h"
 
 @interface RNCartConfirmationViewController ()
+
+
+@property (nonatomic, strong) RNUser *user;
 
 @end
 
@@ -22,16 +27,18 @@
     [super viewDidLoad];
     
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
+    self.user = [[RNCart sharedCart] user];
     
     NSArray *items = [[RNCart sharedCart] items];
     
     for (NSInteger i = 0; i < items.count; i++) {
-        [self createLabelWithText:[items[i] descriptionName] points:[items[i] stringPriceInPoints] number:i];
+        RNCartObject *cartObject = items[i];
+        NSString *title = [[cartObject.redeemObject descriptionName] stringByAppendingFormat:@" x%d", cartObject.count];
+        [self createLabelWithText:title points:[cartObject stringTotalPrice] number:i];
     }
     
     self.pointsTotal.text = [[RNCart sharedCart] stringTotal];
     [self resizeView];
-
 }
 
 - (void)resizeView {
@@ -64,14 +71,18 @@
 - (void)createLabelWithText:(NSString *)text points:(NSString *)points number:(NSUInteger)num {
     
     UILabel *left = [[UILabel alloc] initWithFrame:CGRectMake(10, 5 + (num * 30), 220, 30)];
+    left.font = [UIFont systemFontOfSize:16];
     left.text = text;
-    left.minimumScaleFactor = 0.5;
+    left.minimumScaleFactor = 0.25;
+    left.adjustsFontSizeToFitWidth = YES;
     left.backgroundColor = [UIColor clearColor];
     [_labelView addSubview:left];
     
     UILabel *right = [[UILabel alloc] initWithFrame:CGRectMake(230, 5 + (num * 30), 50, 30)];
     right.textColor = [UIColor redColor];
     right.textAlignment = NSTextAlignmentRight;
+    right.adjustsFontSizeToFitWidth = YES;
+    right.minimumScaleFactor = 0.5;
     right.text = points;
     right.backgroundColor = [UIColor clearColor];
     [_labelView addSubview:right];
@@ -107,6 +118,11 @@
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                
+                RNCart *cart = [RNCart sharedCart];
+                [_user subtractPoints:[cart total]]; //more application?
+                [cart emptyCart];
+                
                 RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
                 [self.navigationController pushViewController:thanks animated:YES];
             });

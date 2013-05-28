@@ -31,9 +31,12 @@
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
     self.emailTextField.text = user.email;
     
-    self.addressNameTextField.text = user.fullName;
-
-
+    _addressNameTextField.text = user.fullName;
+    _addressStreetTextField.text = user.address;
+    _addressUnitTextField.text = user.apt;
+    NSString *cityState = [[user.city stringByAppendingFormat:@" %@", user.state] stringByAppendingFormat:@" %@", user.zipCode];
+    cityState = [cityState stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    _addressCityStateTextField.text = cityState;
 }
 
 - (void)didReceiveMemoryWarning {
