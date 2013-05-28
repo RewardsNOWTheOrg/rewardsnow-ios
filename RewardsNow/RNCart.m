@@ -9,6 +9,7 @@
 #import "RNCart.h"
 #import "RNRedeemObject.h"
 #import "RNUser.h"
+#import "RNCartObject.h"
 
 @implementation RNCart
 
@@ -33,13 +34,12 @@
 }
 
 
-
 - (NSString *)pointsStringBalance {
     return [self formattedStringFromNumber:_user.balance];
 }
 
 - (NSString *)getNamePoints {
-    return [NSString stringWithFormat:@"%@ - %@ points.", _user.fullName, [self pointsStringBalance]];
+    return [NSString stringWithFormat:@"%@: %@ points.", _user.fullName, [self pointsStringBalance]];
 }
 
 - (NSString *)getCartImageName {
@@ -47,13 +47,29 @@
 }
 
 - (void)addToCart:(RNRedeemObject *)card {
-    [_items addObject:card];
+    
+    NSInteger index = [_items indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        RNCartObject *object = obj;
+        if (object.redeemObject == card) {
+            return YES;
+        }
+        return NO;
+    }];
+    
+    if (index != NSNotFound) {
+        [_items[index] addObject];
+    } else {
+        RNCartObject *cartObject = [[RNCartObject alloc] init];
+        cartObject.redeemObject = card;
+        cartObject.count = 1;
+        [_items addObject:cartObject];
+    }
 }
 
 - (NSNumber *)total {
     double points = 0;
-    for (RNRedeemObject *redeem in _items) {
-        points += [redeem priceInPoints];
+    for (RNCartObject *cartObject in _items) {
+        points += [cartObject getTotalPrice];
     }
     return @(points);
 }
