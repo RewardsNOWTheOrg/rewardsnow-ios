@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet UIButton *addToCartButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerViewHeight;
 
 @property (nonatomic, strong) RNRedeemObject *info;
 

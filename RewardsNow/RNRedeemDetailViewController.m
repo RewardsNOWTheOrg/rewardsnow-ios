@@ -35,32 +35,36 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    ///
-    /// On the fly resizing of components.
-    ///
-    CGFloat origDiff = _descriptionView.frame.size.height - _descriptionTextView.frame.size.height;
-    
-    NSString *details = _info.catagoryDescription;
-    CGSize size = [details sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(_descriptionTextView.frame.size.width, INFINITY) lineBreakMode:NSLineBreakByWordWrapping];
-    CGRect frame = _descriptionTextView.frame;
-    frame.size.height = size.height + 40;
-    _descriptionTextView.frame = frame;
-    
-    frame = _descriptionView.frame;
-    frame.size.height = _descriptionTextView.frame.size.height + origDiff;
-    _descriptionView.frame = frame;
-    
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:[[RNCart sharedCart] getCartImageName]]
                                                                               style:UIBarButtonItemStyleBordered
                                                                              target:self
                                                                              action:@selector(goToCart:)];
 }
 
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+    
+    _descriptionTextView.frame = CGRectMake(6, 47, 298, 100);
+    CGFloat height = _descriptionTextView.contentSize.height;
+    DLog(@"Height: %f", height);
+    _innerViewHeight.constant = height + 300;
+    [self.view layoutIfNeeded];
+
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.scrollView setScrollEnabled:YES];
     [self.scrollView setContentSize:self.innerView.frame.size];
+//    
+//    DLog(@"Height: %f", _descriptionTextView.frame.size.height);
+//    
+//    CGFloat height = _descriptionTextView.contentSize.height;
+//    DLog(@"Height: %f", height);
+////    _innerInnerViewHeight.constant = height;
+//    [self.view layoutIfNeeded];
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
