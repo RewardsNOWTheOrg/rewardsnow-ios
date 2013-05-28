@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNCartViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RNCartViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *pointsAvailableLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsInCartLabel;
@@ -24,5 +24,6 @@
 
 - (IBAction)confirmTapped:(id)sender;
 - (IBAction)cancelTapped:(id)sender;
+- (IBAction)stepperChanged:(UIStepper *)sender;
 
 @end
