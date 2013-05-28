@@ -31,6 +31,29 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateViewConstraints];
+    [self.view layoutSubviews];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    self.textView.frame = CGRectMake(5, 62, 310, 20);
+    _innerViewHeight.constant = _textView.contentSize.height + 270;
+    [self.view layoutIfNeeded];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.scrollView setScrollEnabled:YES];
+    CGSize size = _scrollView.contentSize;
+    size.height = _innerViewHeight.constant;
+    [self.scrollView setContentSize:size];
+}
+
 - (IBAction)directionsTapped:(id)sender {
     [_deal openInMaps];
 }

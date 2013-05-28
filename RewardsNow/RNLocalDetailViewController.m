@@ -36,9 +36,7 @@
     [self.topImageView setImageWithURL:_deal.imageURL];
     
     self.lowerUpperLabel.text = _deal.localDealDescription;
-    self.lowerUpperLabel.layer.cornerRadius = 4.0;
-    self.lowerUpperLabel.textInsets = UIEdgeInsetsMake(2, 4, 2, 4);
-    //chagne the size...
+    _lowerUpperLabel.layer.cornerRadius = 4.0;
     
     _mapView.layer.cornerRadius = 4.0;
     _mapView.layer.masksToBounds = YES;
@@ -63,12 +61,14 @@
          }];
     }
     
-    [rows addObject:@{@"title": @"Additional Information", @"action" : ^{
-        RNLocalAdditionalViewController *more = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalAdditionalViewController"];
-        more.deal = _deal;
-        [self.navigationController pushViewController:more animated:YES];
+    if ([_deal.additionalInformation isNotEmpty]) {
+        [rows addObject:@{@"title": @"Additional Information", @"action" : ^{
+            RNLocalAdditionalViewController *more = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalAdditionalViewController"];
+            more.deal = _deal;
+            [self.navigationController pushViewController:more animated:YES];
+        }
+    }];
     }
-     }];
     
     self.cellRows = rows;
 
@@ -81,14 +81,26 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    _descriptionHeight.constant = 50;
+    [self updateViewConstraints];
+    [self.view layoutSubviews];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     
+    _lowerUpperLabel.frame = CGRectMake(10, 6, 295, 20);
     
-//    
-//    UIGraphicsBeginImageContext(self.lowerUpperLabel.frame.size);
-//    [[UIImage imageNamed:@"grey-button.png"] drawInRect:self.lowerUpperLabel.bounds];
-//    UIImage *image2 = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-    self.lowerUpperLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"] ];
+    _descriptionHeight.constant = _lowerUpperLabel.contentSize.height;
+    self.lowerInnerViewHeight.constant = _descriptionHeight.constant + 230 + (_cellRows.count * 44);
+    [self.view layoutIfNeeded];
+    
+    DLog(@"Frame: %@", NSStringFromCGRect(_lowerUpperLabel.frame));
+}
+
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+    DLog(@"Frame: %@", NSStringFromCGRect(_lowerUpperLabel.frame));
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -169,6 +181,8 @@
     [((RNAnnotation *)view.annotation).deal openInMaps];
 }
 
+//- (void)mapview
+
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
     
     if (!_hasFinishedLoadingMap) {
@@ -185,6 +199,7 @@
     annotation.coordinate = location;
     annotation.title = _deal.businessName;
     annotation.subtitle = _deal.address;
+    annotation.deal = _deal;
     
     [self.mapView addAnnotation:annotation];
     [self.mapView selectAnnotation:annotation animated:YES];
