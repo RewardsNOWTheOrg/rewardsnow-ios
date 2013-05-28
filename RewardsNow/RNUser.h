@@ -23,5 +23,6 @@
 @property (nonatomic, copy) NSString *zipCode;
 
 - (NSString *)stringBalance;
+- (void)subtractPoints:(NSNumber *)points;
 
 @end

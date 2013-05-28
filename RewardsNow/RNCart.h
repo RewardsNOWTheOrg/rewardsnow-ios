@@ -24,5 +24,7 @@
 - (NSNumber *)pointsDifference;
 - (NSString *)stringPointsDifference;
 - (void)addToCart:(RNRedeemObject *)card;
+- (NSString *)formattedStringFromNumber:(NSNumber *)num;
+- (void)emptyCart;
 
 @end

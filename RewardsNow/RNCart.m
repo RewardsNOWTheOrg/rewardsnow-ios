@@ -33,6 +33,9 @@
     return self;
 }
 
+- (void)emptyCart {
+    [self.items removeAllObjects];
+}
 
 - (NSString *)pointsStringBalance {
     return [self formattedStringFromNumber:_user.balance];

@@ -38,4 +38,8 @@
     return [self formattedStringFromNumber:_balance];
 }
 
+- (void)subtractPoints:(NSNumber *)points {
+    self.balance = @(_balance.doubleValue - points.doubleValue);
+}
+
 @end

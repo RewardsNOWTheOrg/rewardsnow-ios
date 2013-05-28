@@ -18,5 +18,6 @@
 - (void)addObject;
 - (void)removeObject;
 - (double)getTotalPrice;
+- (NSString *)stringTotalPrice;
 
 @end

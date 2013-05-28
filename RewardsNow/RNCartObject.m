@@ -7,6 +7,7 @@
 //
 
 #import "RNCartObject.h"
+#import "RNCart.h"
 #import "RNRedeemObject.h"
 
 @implementation RNCartObject
@@ -24,6 +25,10 @@
 
 - (double)getTotalPrice {
     return _count * _redeemObject.priceInPoints;
+}
+
+- (NSString *)stringTotalPrice {
+    return [[RNCart sharedCart] formattedStringFromNumber:@([self getTotalPrice])];
 }
 
 @end
