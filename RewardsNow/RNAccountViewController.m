@@ -36,38 +36,25 @@
     
     if (self.user == nil) {
         UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
-//        [self presentViewController:auth animated:NO completion:nil];
+        [self presentViewController:auth animated:NO completion:nil];
     }
     
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
-    self.nameLabel.text = [self.user.fullName leftPadding];
-    [self.emailLabel setTitle:[self.user.email leftPadding] forState:UIControlStateNormal];
+    self.nameLabel.text = self.user.fullName;
+    [self.emailLabel setTitle:self.user.email forState:UIControlStateNormal];
 
     
     for (NSInteger i = 0; i < self.user.giftCards.count; i++) {
         RNGiftCard *card = self.user.giftCards[i];
-        UILabel *gcLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50 + (30 * i), 280, 30)];
-        gcLabel.backgroundColor = [UIColor clearColor];
         
-        NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
-        [mutParaStyle setAlignment:NSTextAlignmentLeft];
-        
-        NSMutableParagraphStyle *mutParaStyle2 = [[NSMutableParagraphStyle alloc] init];
-        [mutParaStyle2 setAlignment:NSTextAlignmentRight];
-        
-        
-        NSString *string = [NSString stringWithFormat:@"%@%@", card.cardDescription, card.cardNumber];
-//        DLog(@"D: %@ N: %@", card.cardDescription, card.cardNumber);
-//        DLog(@"Range: %@", NSStringFromRange(NSMakeRange([card.cardDescription length], [string length] - 3)));
-//        DLog(@"Length: %d", [string length]);
-//        
-//        
-//        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string];
-//        [text addAttributes:@{NSParagraphStyleAttributeName: mutParaStyle} range:NSMakeRange(0, [card.cardDescription length])];
-//        [text addAttributes:@{NSParagraphStyleAttributeName: mutParaStyle2} range:NSMakeRange([card.cardDescription length], [string length] - 3)];
-        
-        gcLabel.text = string;
-        [self.giftCardView addSubview:gcLabel];
+        UIButton *gcButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [gcButton setTitle:card.cardDescription forState:UIControlStateNormal];
+        [gcButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        gcButton.tag = i;
+        gcButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [gcButton setFrame:CGRectMake(10, 50 + (35 * i), 280, 30)];
+        [gcButton addTarget:self action:@selector(giftCardTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [self.giftCardView addSubview:gcButton];
     }
     
 }
@@ -108,6 +95,10 @@
     
     UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
     [self presentViewController:auth animated:NO completion:nil];
+}
+
+- (void)giftCardTapped:(UIButton *)sender {
+    [_user.giftCards[sender.tag] open];
 }
 
 @end
