@@ -207,64 +207,158 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="answer" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="HNW-V2-kvS">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bde-7g-hgX">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gxn-Dm-cdW">
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GNx-t9-jFG">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="hE4-e6-yZd"/>
+                                                    <constraint firstAttribute="width" constant="258" id="zJn-J4-uXy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="BgB-ho-hUW">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="255" type="user" id="Wsk-GW-hn9"/>
+                                                    <constraint firstAttribute="height" constant="57" type="user" id="hk6-ga-ams"/>
+                                                </constraints>
+                                            </imageView>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="answer" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="HNW-V2-kvS" customClass="CMTextField">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="264" type="user" id="qfm-FO-IBK"/>
+                                                    <constraint firstAttribute="height" constant="56" type="user" id="rR8-Fq-TH4"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="F5a-iH-xhg" eventType="editingChanged" id="Mlb-Lx-9yT"/>
+                                                    <outlet property="delegate" destination="eag-8K-4sh" id="UnM-V9-rmC"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFX-Cn-EAt">
+                                                <color key="backgroundColor" red="0.91372549020000005" green="0.92549019610000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" type="user" id="JTI-uk-SWZ"/>
+                                                    <constraint firstAttribute="width" constant="264" type="user" id="zhC-Jz-kH2"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                                <state key="normal" title="reset password" backgroundImage="auth-button.png">
+                                                    <color key="titleColor" red="0.91372549020000005" green="0.92549019610000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="new password" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xdd-4x-ybq" customClass="CMTextField">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="264" type="user" id="3Zq-fa-Z7p"/>
+                                                    <constraint firstAttribute="height" constant="56" type="user" id="gkN-cc-wsR"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="F5a-iH-xhg" eventType="editingChanged" id="FpZ-Wt-jYC"/>
+                                                    <outlet property="delegate" destination="eag-8K-4sh" id="TvX-e7-aXK"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="confirm password" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Ro-EB-7K4" customClass="CMTextField">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" type="user" id="TOh-t0-3ya"/>
+                                                    <constraint firstAttribute="width" constant="264" type="user" id="dJa-lh-WNo"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="F5a-iH-xhg" eventType="editingChanged" id="cTW-Ca-Drc"/>
+                                                    <outlet property="delegate" destination="eag-8K-4sh" id="eV6-4t-T5n"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="FXu-nj-oQd" customClass="CMTextField">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" type="user" id="kH3-rq-b2R"/>
+                                                    <constraint firstAttribute="width" constant="264" type="user" id="qJh-eg-OdZ"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="F5a-iH-xhg" eventType="editingChanged" id="R2u-z6-Uvy"/>
+                                                    <outlet property="delegate" destination="eag-8K-4sh" id="GUj-Tk-7a3"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="full name" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="qsA-TH-BAy" customClass="CMTextField">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" type="user" id="A1Z-iw-AMJ"/>
+                                                    <constraint firstAttribute="width" constant="264" type="user" id="pBz-Zn-CGk"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textDidChange:" destination="F5a-iH-xhg" eventType="editingChanged" id="0EC-0A-8M7"/>
+                                                    <outlet property="delegate" destination="eag-8K-4sh" id="gLy-bW-ubY"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.92156862750000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Xdd-4x-ybq" firstAttribute="leading" secondItem="BgB-ho-hUW" secondAttribute="leading" type="default" id="4SK-Wb-a37"/>
+                                            <constraint firstItem="HNW-V2-kvS" firstAttribute="top" secondItem="Gxn-Dm-cdW" secondAttribute="top" constant="160" type="user" id="4SZ-vg-b0R"/>
+                                            <constraint firstItem="eFX-Cn-EAt" firstAttribute="top" secondItem="qsA-TH-BAy" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="7Rj-QB-4Zq"/>
+                                            <constraint firstItem="eFX-Cn-EAt" firstAttribute="leading" secondItem="Gxn-Dm-cdW" secondAttribute="leading" constant="29" id="8pM-dK-Wgk"/>
+                                            <constraint firstItem="FXu-nj-oQd" firstAttribute="leading" secondItem="8Ro-EB-7K4" secondAttribute="leading" type="default" id="JgK-nw-L8S"/>
+                                            <constraint firstItem="GNx-t9-jFG" firstAttribute="leading" secondItem="Gxn-Dm-cdW" secondAttribute="leading" constant="34" id="KFd-Jc-Q5c"/>
+                                            <constraint firstItem="qsA-TH-BAy" firstAttribute="leading" secondItem="FXu-nj-oQd" secondAttribute="leading" type="default" id="Pu8-Yp-HYb"/>
+                                            <constraint firstItem="eFX-Cn-EAt" firstAttribute="leading" secondItem="qsA-TH-BAy" secondAttribute="leading" type="default" id="Tlc-0Q-aSF"/>
+                                            <constraint firstItem="BgB-ho-hUW" firstAttribute="top" secondItem="Gxn-Dm-cdW" secondAttribute="top" constant="30" id="Uya-aK-sop"/>
+                                            <constraint firstItem="GNx-t9-jFG" firstAttribute="trailing" secondItem="HNW-V2-kvS" secondAttribute="trailing" type="default" id="XMj-h8-f4f"/>
+                                            <constraint firstItem="8Ro-EB-7K4" firstAttribute="leading" secondItem="Xdd-4x-ybq" secondAttribute="leading" type="default" id="c3C-sg-bjp"/>
+                                            <constraint firstItem="Xdd-4x-ybq" firstAttribute="top" secondItem="HNW-V2-kvS" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="hg7-lW-imF"/>
+                                            <constraint firstItem="8Ro-EB-7K4" firstAttribute="top" secondItem="Xdd-4x-ybq" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="i2K-vJ-atL"/>
+                                            <constraint firstAttribute="height" constant="548" type="user" id="l4z-o1-16E"/>
+                                            <constraint firstAttribute="bottom" secondItem="eFX-Cn-EAt" secondAttribute="bottom" constant="12" type="user" id="lq3-4z-Lrb"/>
+                                            <constraint firstItem="FXu-nj-oQd" firstAttribute="top" secondItem="8Ro-EB-7K4" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="mHO-7W-Z88"/>
+                                            <constraint firstItem="GNx-t9-jFG" firstAttribute="top" secondItem="Gxn-Dm-cdW" secondAttribute="top" constant="110" id="tHp-8i-jHj"/>
+                                            <constraint firstItem="qsA-TH-BAy" firstAttribute="top" secondItem="FXu-nj-oQd" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="wkf-QD-ZZe"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="264" type="user" id="qfm-FO-IBK"/>
-                                    <constraint firstAttribute="height" constant="56" type="user" id="rR8-Fq-TH4"/>
+                                    <constraint firstItem="Gxn-Dm-cdW" firstAttribute="bottom" secondItem="Bde-7g-hgX" secondAttribute="bottom" type="default" id="8ga-bB-CZ4"/>
+                                    <constraint firstItem="Gxn-Dm-cdW" firstAttribute="trailing" secondItem="Bde-7g-hgX" secondAttribute="trailing" type="default" id="HSE-iF-V4n"/>
+                                    <constraint firstItem="Gxn-Dm-cdW" firstAttribute="top" secondItem="Bde-7g-hgX" secondAttribute="top" type="default" id="Pal-MU-hbu"/>
+                                    <constraint firstItem="Gxn-Dm-cdW" firstAttribute="centerX" secondItem="Bde-7g-hgX" secondAttribute="centerX" type="default" id="nfM-HP-BlG"/>
+                                    <constraint firstItem="Gxn-Dm-cdW" firstAttribute="leading" secondItem="Bde-7g-hgX" secondAttribute="leading" type="default" id="qwH-4F-EWy"/>
                                 </constraints>
-                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="eag-8K-4sh" id="UnM-V9-rmC"/>
-                                </connections>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="BgB-ho-hUW">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="255" type="user" id="Wsk-GW-hn9"/>
-                                    <constraint firstAttribute="height" constant="57" type="user" id="hk6-ga-ams"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Question from the bank..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNx-t9-jFG">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="258" id="zJn-J4-uXy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFX-Cn-EAt">
-                                <color key="backgroundColor" red="0.91372549020000005" green="0.92549019610000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" type="user" id="JTI-uk-SWZ"/>
-                                    <constraint firstAttribute="width" constant="264" type="user" id="zhC-Jz-kH2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
-                                <state key="normal" title="reset password" backgroundImage="auth-button.png">
-                                    <color key="titleColor" red="0.91372549020000005" green="0.92549019610000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signInTapped:" destination="eag-8K-4sh" eventType="touchUpInside" id="djL-AV-JNC"/>
-                                </connections>
-                            </button>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.91372549020000005" green="0.92549019610000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="HNW-V2-kvS" firstAttribute="trailing" secondItem="GNx-t9-jFG" secondAttribute="trailing" type="default" id="6KD-gN-sXX"/>
-                            <constraint firstItem="eFX-Cn-EAt" firstAttribute="leading" secondItem="HNW-V2-kvS" secondAttribute="leading" type="default" id="8n0-nr-eJw"/>
-                            <constraint firstItem="BgB-ho-hUW" firstAttribute="top" secondItem="w9n-re-MP3" secondAttribute="top" constant="30" type="user" id="AKu-3c-lKj"/>
-                            <constraint firstItem="HNW-V2-kvS" firstAttribute="top" secondItem="w9n-re-MP3" secondAttribute="top" constant="160" type="user" id="JjY-Rq-Y18"/>
-                            <constraint firstItem="eFX-Cn-EAt" firstAttribute="centerX" secondItem="w9n-re-MP3" secondAttribute="centerX" type="default" id="hmF-vb-jRm"/>
-                            <constraint firstItem="eFX-Cn-EAt" firstAttribute="top" secondItem="HNW-V2-kvS" secondAttribute="bottom" constant="8" type="user" id="l3m-NL-WBQ"/>
-                            <constraint firstItem="BgB-ho-hUW" firstAttribute="leading" secondItem="w9n-re-MP3" secondAttribute="leading" constant="29" id="x7F-0e-n2x"/>
-                            <constraint firstItem="GNx-t9-jFG" firstAttribute="top" secondItem="w9n-re-MP3" secondAttribute="top" constant="110" type="user" id="yPm-0j-tNz"/>
+                            <constraint firstItem="Bde-7g-hgX" firstAttribute="leading" secondItem="w9n-re-MP3" secondAttribute="leading" type="default" id="8lK-l5-VSv"/>
+                            <constraint firstItem="Bde-7g-hgX" firstAttribute="bottom" secondItem="w9n-re-MP3" secondAttribute="bottom" type="default" id="HFS-9n-va4"/>
+                            <constraint firstItem="Bde-7g-hgX" firstAttribute="top" secondItem="w9n-re-MP3" secondAttribute="top" type="default" id="hUD-58-hYr"/>
+                            <constraint firstItem="Bde-7g-hgX" firstAttribute="trailing" secondItem="w9n-re-MP3" secondAttribute="trailing" type="default" id="qal-9s-MkR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Reset Password" id="SGh-Dh-bXh"/>
+                    <connections>
+                        <outlet property="answerTextField" destination="HNW-V2-kvS" id="QmT-Jk-T3a"/>
+                        <outlet property="confirmPasswordTextField" destination="8Ro-EB-7K4" id="2Fy-kp-IAf"/>
+                        <outlet property="innerView" destination="Gxn-Dm-cdW" id="iUG-OE-s8B"/>
+                        <outlet property="nameTextField" destination="qsA-TH-BAy" id="m5r-I1-dn5"/>
+                        <outlet property="passwordTextField" destination="Xdd-4x-ybq" id="ECy-8i-D5x"/>
+                        <outlet property="questionLabel" destination="GNx-t9-jFG" id="oRK-ej-rmy"/>
+                        <outlet property="resetButton" destination="eFX-Cn-EAt" id="OQm-Mk-H8M"/>
+                        <outlet property="scrollView" destination="Bde-7g-hgX" id="NW8-9O-X3s"/>
+                        <outlet property="usernameTextField" destination="FXu-nj-oQd" id="sK0-xQ-jsP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Rj-D7-tEo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1773,7 +1867,6 @@
                                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Additional Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcZ-Ju-07T">
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="284" type="user" id="2pJ-Ga-eSR"/>
-                                                                    <constraint firstAttribute="height" constant="33" id="IaR-Z7-b8V"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1783,7 +1876,6 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="296" type="user" id="gR8-1I-V7p"/>
-                                                                    <constraint firstAttribute="height" constant="244" type="user" id="mXP-a0-Jre"/>
                                                                 </constraints>
                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1792,19 +1884,20 @@
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="divider-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hqc-2D-jYw">
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="272" type="user" id="Cqh-zx-ffa"/>
-                                                                    <constraint firstAttribute="height" constant="1" id="IwZ-CU-oE0"/>
+                                                                    <constraint firstAttribute="height" constant="1" type="user" id="IwZ-CU-oE0"/>
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.2470588235" green="0.33333333329999998" blue="0.41568627450000001" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstItem="Hqc-2D-jYw" firstAttribute="top" secondItem="Mbj-pV-cYJ" secondAttribute="top" constant="41" id="CzU-cj-wiz"/>
+                                                            <constraint firstItem="Hqc-2D-jYw" firstAttribute="top" secondItem="Mbj-pV-cYJ" secondAttribute="top" constant="41" type="user" id="2dT-Db-rpT"/>
                                                             <constraint firstItem="YcZ-Ju-07T" firstAttribute="top" secondItem="Mbj-pV-cYJ" secondAttribute="top" constant="6" type="user" id="GRy-Tz-enp"/>
                                                             <constraint firstAttribute="width" constant="310" type="user" id="Gak-1S-6t3"/>
                                                             <constraint firstItem="YcZ-Ju-07T" firstAttribute="leading" secondItem="Mbj-pV-cYJ" secondAttribute="leading" constant="18" type="user" id="Jen-vL-z8e"/>
-                                                            <constraint firstAttribute="height" constant="326" type="user" id="lxx-IJ-V52"/>
+                                                            <constraint firstItem="id6-0B-NhT" firstAttribute="top" secondItem="YcZ-Ju-07T" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QSm-H9-AwS"/>
+                                                            <constraint firstAttribute="bottom" secondItem="id6-0B-NhT" secondAttribute="bottom" constant="32" type="user" id="QVs-cm-sXG"/>
                                                             <constraint firstItem="id6-0B-NhT" firstAttribute="leading" secondItem="Mbj-pV-cYJ" secondAttribute="leading" constant="6" type="user" id="ncB-V8-AYv"/>
-                                                            <constraint firstItem="id6-0B-NhT" firstAttribute="top" secondItem="Mbj-pV-cYJ" secondAttribute="top" constant="62" type="user" id="wOO-LT-66h"/>
+                                                            <constraint firstItem="id6-0B-NhT" firstAttribute="top" secondItem="Mbj-pV-cYJ" secondAttribute="top" constant="50" type="user" id="ydZ-q4-R9c"/>
                                                             <constraint firstAttribute="trailing" secondItem="Hqc-2D-jYw" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="zWc-dB-NUF"/>
                                                         </constraints>
                                                     </view>
@@ -1813,7 +1906,7 @@
                                                 <constraints>
                                                     <constraint firstItem="Mbj-pV-cYJ" firstAttribute="top" secondItem="pvL-XY-aEG" secondAttribute="top" constant="7" type="user" id="Y7d-kS-NbZ"/>
                                                     <constraint firstItem="Mbj-pV-cYJ" firstAttribute="centerX" secondItem="pvL-XY-aEG" secondAttribute="centerX" type="default" id="fnV-Fo-yuY"/>
-                                                    <constraint firstItem="Mbj-pV-cYJ" firstAttribute="bottom" secondItem="pvL-XY-aEG" secondAttribute="bottom" type="user" id="ugT-T6-b8C"/>
+                                                    <constraint firstItem="Mbj-pV-cYJ" firstAttribute="bottom" secondItem="pvL-XY-aEG" secondAttribute="bottom" constant="-5" type="user" id="ugT-T6-b8C"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1825,6 +1918,7 @@
                                             <constraint firstItem="qwD-xY-oI9" firstAttribute="top" secondItem="Aa2-50-Afu" secondAttribute="top" type="default" id="66w-Ae-cm7"/>
                                             <constraint firstItem="pvL-XY-aEG" firstAttribute="top" secondItem="Aa2-50-Afu" secondAttribute="top" constant="157" type="user" id="CCf-T0-YRt"/>
                                             <constraint firstItem="b6K-yV-4M0" firstAttribute="leading" secondItem="Aa2-50-Afu" secondAttribute="leading" constant="21" type="user" id="Dm9-oO-Eul"/>
+                                            <constraint firstItem="pvL-XY-aEG" firstAttribute="bottom" secondItem="Aa2-50-Afu" secondAttribute="bottom" type="user" id="KuK-UD-1oE"/>
                                             <constraint firstAttribute="trailing" secondItem="qwD-xY-oI9" secondAttribute="trailing" constant="1" id="TIQ-qU-iL0"/>
                                             <constraint firstItem="MCt-0w-qse" firstAttribute="trailing" secondItem="TOG-SH-RyX" secondAttribute="trailing" type="default" id="VUl-5a-s2Q"/>
                                             <constraint firstItem="MCt-0w-qse" firstAttribute="leading" secondItem="TOG-SH-RyX" secondAttribute="leading" type="default" id="Vjg-1H-3Ou"/>
@@ -1858,11 +1952,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="imageView" destination="qwD-xY-oI9" id="lCa-tO-9tg"/>
-                        <outlet property="innerInnerViewHeight" destination="lxx-IJ-V52" id="cgB-sQ-Kri"/>
                         <outlet property="innerViewHeight" destination="3UB-MB-d2Q" id="57i-rh-xqp"/>
                         <outlet property="scrollView" destination="JwG-vo-JWI" id="FzD-NF-Zk2"/>
                         <outlet property="textView" destination="id6-0B-NhT" id="z1E-Kj-Jr5"/>
-                        <outlet property="textViewHeight" destination="mXP-a0-Jre" id="UaB-46-fBP"/>
                         <outlet property="upperLowerLabel" destination="D04-zD-gWV" id="nnT-pH-fx8"/>
                         <outlet property="upperMiddleLabel" destination="TOG-SH-RyX" id="1UX-ZJ-obo"/>
                         <outlet property="upperTopLabel" destination="MCt-0w-qse" id="8Bj-p8-3lW"/>
@@ -1930,22 +2022,40 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="IT WORKS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hK-ZG-pOm">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xKB-L3-Y4g">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RNFilterCell" id="mDj-TC-PmI">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2v9-sn-0ML" id="mXC-MR-3aX"/>
+                                    <outlet property="delegate" destination="2v9-sn-0ML" id="kwm-Cl-Wbc"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5hK-ZG-pOm" firstAttribute="leading" secondItem="nGN-m4-cDd" secondAttribute="leading" constant="115" id="Znr-QL-wbO"/>
-                            <constraint firstItem="5hK-ZG-pOm" firstAttribute="top" secondItem="nGN-m4-cDd" secondAttribute="top" constant="144" id="vTX-F0-ROR"/>
+                            <constraint firstItem="xKB-L3-Y4g" firstAttribute="bottom" secondItem="nGN-m4-cDd" secondAttribute="bottom" type="default" id="LS7-JL-II6"/>
+                            <constraint firstItem="xKB-L3-Y4g" firstAttribute="trailing" secondItem="nGN-m4-cDd" secondAttribute="trailing" type="default" id="Mkr-Ih-8zj"/>
+                            <constraint firstItem="xKB-L3-Y4g" firstAttribute="leading" secondItem="nGN-m4-cDd" secondAttribute="leading" type="default" id="ldG-5H-gYF"/>
+                            <constraint firstItem="xKB-L3-Y4g" firstAttribute="top" secondItem="nGN-m4-cDd" secondAttribute="top" type="default" id="woQ-sg-GGo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="xKB-L3-Y4g" id="DhA-F9-Ies"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pP0-Pf-sy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3288" y="129"/>
+            <point key="canvasLocation" x="3267" y="129"/>
         </scene>
         <!--Navigation Controller - Redeem-->
         <scene sceneID="PmZ-6T-t8u">
@@ -3116,6 +3226,9 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Thank you for your order." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="4Iu-eD-Qvc">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="101" id="2sH-LY-otr"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="40"/>
                                         <color key="textColor" red="0.090196078430000007" green="0.58823529409999997" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3124,10 +3237,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="4Iu-eD-Qvc" firstAttribute="leading" secondItem="tcD-bo-la6" secondAttribute="leading" type="user" id="EG5-t7-LKu"/>
-                                    <constraint firstAttribute="bottom" secondItem="4Iu-eD-Qvc" secondAttribute="bottom" constant="27" type="user" id="Hzf-HE-cFG"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" type="user" id="OXc-nQ-JvA"/>
                                     <constraint firstItem="4Iu-eD-Qvc" firstAttribute="trailing" secondItem="tcD-bo-la6" secondAttribute="trailing" type="user" id="U2U-Ja-vlM"/>
-                                    <constraint firstItem="4Iu-eD-Qvc" firstAttribute="top" secondItem="tcD-bo-la6" secondAttribute="top" constant="7" type="user" id="dUg-ne-9mP"/>
+                                    <constraint firstAttribute="centerY" secondItem="4Iu-eD-Qvc" secondAttribute="centerY" type="user" id="pzq-3b-7BN"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="You will receive an email shortly with details." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="196" translatesAutoresizingMaskIntoConstraints="NO" id="0Nx-EU-yUZ">
@@ -3358,6 +3470,304 @@
         <image name="thank-you-button.png" width="141" height="141"/>
         <image name="vertical-line.png" width="1" height="110"/>
     </resources>
+    <classes>
+        <class className="CMLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CMLabel.h"/>
+        </class>
+        <class className="CMTextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CMTextField.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RNAboutContactViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutContactViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="callTapped:"/>
+                <relationship kind="action" name="writeTapped:"/>
+                <relationship kind="outlet" name="callButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="RNAboutDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webViewHeight" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="RNAboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNAccountEditPasswordViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditPasswordViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveTapped:"/>
+                <relationship kind="outlet" name="passwordNewRetypeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordNewTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordOldTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="RNAccountEditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveTapped:"/>
+                <relationship kind="action" name="textFieldChanged:"/>
+                <relationship kind="outlet" name="emailAgainTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="RNAccountStatementViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountStatementViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backMonth:"/>
+                <relationship kind="action" name="forwardMonth:"/>
+                <relationship kind="action" name="swipeRecognized:"/>
+                <relationship kind="outlet" name="backMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="displayedDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="forwardMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsEndLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsStartLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RNAccountViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logoutTapped:"/>
+                <relationship kind="outlet" name="accountNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="emailLabel" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="giftCardHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="giftCardView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNAuthPasswordViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAuthPasswordViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetTapped:"/>
+                <relationship kind="action" name="textDidChange:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="answerTextField" candidateClass="CMTextField"/>
+                <relationship kind="outlet" name="confirmPasswordTextField" candidateClass="CMTextField"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="CMTextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="CMTextField"/>
+                <relationship kind="outlet" name="questionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="resetButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="usernameTextField" candidateClass="CMTextField"/>
+            </relationships>
+        </class>
+        <class className="RNAuthViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAuthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="forgotPasswordTapped:"/>
+                <relationship kind="action" name="signInTapped:"/>
+                <relationship kind="outlet" name="forgotPasswordButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="logoTopConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signInButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="usernameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RNCartAccountViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartAccountViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cartButtonTapped:"/>
+                <relationship kind="outlet" name="addressCityStateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addressNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addressStreetTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addressUnitTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="defaultEmailSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNCartCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lowerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="upperLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNCartConfirmationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartConfirmationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cartTapped:"/>
+                <relationship kind="action" name="deliveryTapped:"/>
+                <relationship kind="action" name="placeOrderTapped:"/>
+                <relationship kind="outlet" name="innerInnerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="labelView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pointsTotal" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNCartThanksViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartThanksViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="thankYouTapped:"/>
+                <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upperView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="RNCartViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNCartViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelTapped:"/>
+                <relationship kind="action" name="confirmTapped:"/>
+                <relationship kind="action" name="stepperChanged:" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="checkoutButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="pointsAvailableLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsInCartLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsLeftLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="tableHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topButtonForward" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNLocalAdditionalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalAdditionalViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="directionsTapped:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="innerInnerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="textViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="upperLowerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upperMiddleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upperTopLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNLocalCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dealImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lowerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="secondUpperLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textAreaLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upperTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNLocalContainerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalContainerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="filterTapped:"/>
+                <relationship kind="action" name="listTapped:"/>
+                <relationship kind="action" name="mapTapped:"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="RNLocalDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="directionsTapped:"/>
+                <relationship kind="outlet" name="descriptionHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="lowerInnerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="lowerInnerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="lowerUpperLabel" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="mapAddressLabel" candidateClass="CMLabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="upperLowerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upperMiddleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upperTopLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNLocalFilterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalFilterViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RNLocalMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="RNLocalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNLocalViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNPreAuthViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNPreAuthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="continueTapped:"/>
+                <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="continueButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoTopConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="redeemBottomLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redeemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="redeemTopLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addToCartTapped:"/>
+                <relationship kind="outlet" name="addToCartButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="descriptionView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="redeemBottomLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redeemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="redeemTopLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="RNRedeemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNRedeemViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

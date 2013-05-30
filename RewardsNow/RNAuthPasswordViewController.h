@@ -10,4 +10,16 @@
 
 @interface RNAuthPasswordViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *innerView;
+@property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
+@property (weak, nonatomic) IBOutlet CMTextField *answerTextField;
+@property (weak, nonatomic) IBOutlet CMTextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet CMTextField *confirmPasswordTextField;
+@property (weak, nonatomic) IBOutlet CMTextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet CMTextField *nameTextField;
+
+- (IBAction)textDidChange:(UITextField *)sender;
+- (IBAction)resetTapped:(id)sender;
 @end
