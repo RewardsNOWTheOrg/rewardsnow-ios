@@ -33,11 +33,15 @@
     self.searchResults = [NSMutableArray array];
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:_refreshControl];
-    [_refreshControl beginRefreshing];
-    
+    if (!_isPushed) {
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+        [self.tableView addSubview:_refreshControl];
+        [_refreshControl beginRefreshing];
+    } else {
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

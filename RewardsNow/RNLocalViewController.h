@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSArray *deals;
+@property (nonatomic) BOOL isPushed;
 
 @end

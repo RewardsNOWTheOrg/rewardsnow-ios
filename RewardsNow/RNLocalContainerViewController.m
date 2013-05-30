@@ -125,7 +125,7 @@
     
     if (_filterViewController == nil) {
         self.filterViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalFilterViewController"];
-        self.filterViewController.deals = _deals;
+        self.filterViewController.location = _manager.location;
     }
     
     [self transitionFromCurrentViewControllerToViewController:_filterViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
