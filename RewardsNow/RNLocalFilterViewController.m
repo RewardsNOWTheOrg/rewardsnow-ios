@@ -63,7 +63,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [[RNWebService sharedClient] getDeals:@"969"
-                                 location:_location
+                                 location:[[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159]
                                     query:nil
                                     limit:20
                                    offset:0
