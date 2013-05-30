@@ -28,7 +28,6 @@ typedef void (^RNResultCallback)(id result);
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password code:(NSNumber *)code callback:(RNResultCallback)callback;
 
 - (void)putEmail:(NSString *)email callback:(RNResultCallback)callback;
-- (void)putPasswordFrom:(NSString *)password oldPassword:(NSString *)oldPassword retyped:(NSString *)retypedPassword callback:(RNResultCallback)callback;
 
 - (void)postResetPassword:(NSString *)tip answer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback;
 - (void)postChangePassword:(NSString *)tip username:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback;

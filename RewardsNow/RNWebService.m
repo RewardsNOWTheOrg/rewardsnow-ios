@@ -28,6 +28,7 @@ NSString *const kOffersKey = @"Offers";
 @interface RNWebService()
 
 @property (nonatomic, strong) NSString *authorizationHeader;
+@property (nonatomic, copy) NSString *tip;
 
 @end
 
@@ -344,19 +345,6 @@ NSString *const kOffersKey = @"Offers";
 - (void)putEmail:(NSString *)email callback:(RNResultCallback)callback {
     
 //    NSString *url = [NSString stringWithFormat:@"email"];
-    
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    
-    
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-        callback(@{@"success" : @"true"});
-    });
-}
-
-- (void)putPasswordFrom:(NSString *)password oldPassword:(NSString *)oldPassword retyped:(NSString *)retypedPassword callback:(RNResultCallback)callback {
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
