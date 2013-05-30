@@ -149,7 +149,7 @@
     RNCartObject *co = _cart.items[indexPath.row];
     
     cell.upperLabel.text = [co.redeemObject descriptionName];
-    cell.lowerLabel.text = [NSString stringWithFormat:@"%d points", (NSInteger)[co getTotalPrice]];
+    cell.lowerLabel.text = [NSString stringWithFormat:@"%@ points", co.stringTotalPrice];
     [cell.cellImageView setImageWithURL:[NSURL URLWithString:[[co.redeemObject imageURL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     cell.stepper.value = co.count;
     cell.stepper.tag = indexPath.row;

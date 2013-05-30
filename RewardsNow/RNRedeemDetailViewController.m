@@ -28,8 +28,8 @@
     self.descriptionView.layer.cornerRadius = 5.0;
     
     self.redeemImage.image = self.info.image;
-    self.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", (NSInteger)self.info.cashValue];
-    self.redeemBottomLabel.text = [NSString stringWithFormat:@"%d Points", (NSInteger)_info.priceInPoints];
+    self.redeemTopLabel.text = [NSString stringWithFormat:@"$%d eGift Card", (NSInteger)self.info.cashValue];
+    self.redeemBottomLabel.text = [NSString stringWithFormat:@"%@ Points", _info.stringPriceInPoints];
     self.descriptionTextView.text = self.info.catagoryDescription;
 }
 

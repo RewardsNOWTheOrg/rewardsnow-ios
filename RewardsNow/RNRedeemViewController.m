@@ -103,8 +103,8 @@
     
     RNRedeemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d", (NSInteger)[self.rewards[indexPath.row] cashValue]];
-    cell.redeemBottomLabel.text = [NSString stringWithFormat:@"%.0f Points", [self.rewards[indexPath.row] priceInPoints]];
+    cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d eGift Card", (NSInteger)[self.rewards[indexPath.row] cashValue]];
+    cell.redeemBottomLabel.text = [NSString stringWithFormat:@"%@ Points", [self.rewards[indexPath.row] stringPriceInPoints]];
     cell.redeemImage.contentMode = UIViewContentModeScaleAspectFit;
     cell.addButton.tag = indexPath.row;
     [cell.addButton addTarget:self action:@selector(addToCartButtonPressed:) forControlEvents:UIControlEventTouchUpInside];

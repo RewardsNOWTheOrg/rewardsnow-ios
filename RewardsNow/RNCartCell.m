@@ -19,11 +19,14 @@
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    if(highlighted) {
+        self.contentView.backgroundColor = [UIColor colorWithRed:C(149) green:C(149) blue:C(149) alpha:.3];
+    } else {
+        self.contentView.backgroundColor = [UIColor whiteColor];
+    }
+    
+    [super setHighlighted:highlighted animated:animated];
 }
 
 @end

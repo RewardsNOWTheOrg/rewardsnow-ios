@@ -46,7 +46,7 @@
 }
 
 - (NSString *)getCartImageName {
-    return _items.count > 0 ? @"cart-full.png" : @"cart.png";
+    return _items.count > 0 ? @"cart-full.png" : @"cart-empty.png";
 }
 
 - (void)addToCart:(RNRedeemObject *)card {

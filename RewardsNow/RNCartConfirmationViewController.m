@@ -79,7 +79,7 @@
     [_labelView addSubview:left];
     
     UILabel *right = [[UILabel alloc] initWithFrame:CGRectMake(230, 5 + (num * 30), 50, 30)];
-    right.textColor = [UIColor redColor];
+    right.textColor = [UIColor colorWithRed:C(180) green:C(14) blue:C(14) alpha:1.0];
     right.textAlignment = NSTextAlignmentRight;
     right.adjustsFontSizeToFitWidth = YES;
     right.minimumScaleFactor = 0.5;
