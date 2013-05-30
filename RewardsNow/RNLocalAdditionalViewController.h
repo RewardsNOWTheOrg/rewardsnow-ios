@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerInnerViewHeight;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *additionalInfoView;
 
 
 - (IBAction)directionsTapped:(id)sender;

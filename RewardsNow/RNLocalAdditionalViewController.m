@@ -9,6 +9,7 @@
 #import "RNLocalAdditionalViewController.h"
 #import "RNLocalDeal.h"
 #import "UIImageView+AFNetworking.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface RNLocalAdditionalViewController ()
 
@@ -24,6 +25,8 @@
     self.upperLowerLabel.text = _deal.name;
     [self.imageView setImageWithURL:_deal.imageURL];
     self.textView.text = _deal.additionalInformation;
+    _additionalInfoView.layer.cornerRadius = 4.0;
+    _additionalInfoView.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
