@@ -17,16 +17,21 @@ typedef void (^RNResultCallback)(id result);
 
 - (void)getRewards:(NSString *)tipFirst WithCallback:(RNResultCallback)callback;
 - (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query callback:(RNResultCallback)callback;
-- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius callback:(RNResultCallback)callback;
+- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius category:(NSNumber *)category callback:(RNResultCallback)callback;
 - (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback;
 - (void)getProgramInfo:(NSString *)tip callback:(RNResultCallback)callback;
-
+- (void)getLocalCategories:(NSString *)tip callback:(RNResultCallback)callback;
 - (void)getAccountInfoWithTip:(NSNumber *)tip callback:(RNResultCallback)callback;
 - (void)getBranding:(NSString *)code callback:(RNResultCallback)callback;
+- (void)getSecretQuestion:(NSString *)tip callback:(RNResultCallback)callback;
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password code:(NSNumber *)code callback:(RNResultCallback)callback;
 
 - (void)putEmail:(NSString *)email callback:(RNResultCallback)callback;
 - (void)putPasswordFrom:(NSString *)password oldPassword:(NSString *)oldPassword retyped:(NSString *)retypedPassword callback:(RNResultCallback)callback;
+
+- (void)postResetPassword:(NSString *)tip answer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback;
+- (void)postChangePassword:(NSString *)tip username:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback;
+
 
 @end
