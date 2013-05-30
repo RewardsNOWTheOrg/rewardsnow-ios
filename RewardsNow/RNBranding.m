@@ -10,4 +10,11 @@
 
 @implementation RNBranding
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    
+    NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
+
+    return fields;
+}
+
 @end

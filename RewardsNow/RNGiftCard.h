@@ -20,4 +20,6 @@
 @property (nonatomic, strong) NSNumber *cardNumber;
 @property (nonatomic, strong) NSURL *cardURL;
 
+- (void)open;
+
 @end

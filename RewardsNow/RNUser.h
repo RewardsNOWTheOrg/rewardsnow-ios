@@ -21,6 +21,7 @@
 @property (nonatomic, copy) NSString *city;
 @property (nonatomic, copy) NSString *state;
 @property (nonatomic, copy) NSString *zipCode;
+@property (nonatomic, copy) NSString *username;
 
 - (NSString *)stringBalance;
 - (void)subtractPoints:(NSNumber *)points;

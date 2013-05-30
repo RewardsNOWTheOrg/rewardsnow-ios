@@ -29,4 +29,10 @@
     return [MTLValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
+- (void)open {
+    if (![[UIApplication sharedApplication] openURL:_cardURL]) {
+        DLog(@"Failed to open URL: %@", _cardURL);
+    }
+}
+
 @end
