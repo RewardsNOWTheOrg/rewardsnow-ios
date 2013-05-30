@@ -53,7 +53,7 @@
     
     NSInteger index = [_items indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         RNCartObject *object = obj;
-        if (object.redeemObject == card) {
+        if (object.redeemObject.catalogID == card.catalogID) {
             return YES;
         }
         return NO;
