@@ -177,6 +177,8 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:RNAccountStatementCell];
     
     cell.textLabel.text = @[@"Points Increased", @"Points Decreased", @"Activity Detail", @"Other"][indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -212,12 +214,15 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     }
 }
 
+#pragma mark - Swiping Methods
+
 - (void)showTable:(UISwipeGestureRecognizerDirection)direction {
     
     UITableView *aTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 121, 320, 44*4) style:UITableViewStylePlain];
     [aTable registerClass:[UITableViewCell class] forCellReuseIdentifier:RNAccountStatementCell];
     aTable.delegate = self;
     aTable.dataSource = self;
+    aTable.scrollEnabled = NO;
     
     [self scrollDetailView:direction toView:aTable];
 }
