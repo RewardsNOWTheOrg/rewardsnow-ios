@@ -48,8 +48,10 @@
         RNGiftCard *card = self.user.giftCards[i];
         
         UIButton *gcButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [gcButton setTitle:card.cardDescription forState:UIControlStateNormal];
-        [gcButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:card.cardDescription];
+        [string addAttribute:NSUnderlineStyleAttributeName value:@1 range:NSMakeRange(0, string.length)];
+        [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:C(0) green:C(94) blue:C(132) alpha:1.0] range:NSMakeRange(0, string.length)];
+        [gcButton setAttributedTitle:string forState:UIControlStateNormal];
         gcButton.tag = i;
         gcButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [gcButton setFrame:CGRectMake(10, 50 + (35 * i), 280, 30)];
