@@ -12,6 +12,7 @@
 #import "RNGiftCard.h"
 #import "RNConstants.h"
 #import "NSString+Additions.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface RNAccountViewController ()
 
@@ -27,6 +28,7 @@
     
     self.nameLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
     self.accountNumberLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
+    self.giftCardView.layer.cornerRadius = 5.0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,6 +44,12 @@
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
     self.nameLabel.text = self.user.fullName;
     [self.emailLabel setTitle:self.user.email forState:UIControlStateNormal];
+    
+    NSString *accountNumberString = @"Account Number:";
+    NSMutableAttributedString *accountNumberText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", accountNumberString, @"REB0000005"]];
+    [accountNumberText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial-BoldMT" size:17] range:NSMakeRange(0, accountNumberString.length)];
+    [accountNumberText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:14] range:NSMakeRange(accountNumberString.length, accountNumberText.length - accountNumberString.length)];
+    self.accountNumberLabel.attributedText = accountNumberText;
 
     
     for (NSInteger i = 0; i < self.user.giftCards.count; i++) {
