@@ -13,4 +13,9 @@
 #import "CMLabel.h"
 #import "UIColor+Additions.h"
 
+#pragma mark - Useful Macros
 
+#define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width;
+#define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height;
+#define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define C(color) (float)color/255.0
