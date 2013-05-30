@@ -200,6 +200,33 @@ NSString *const kOffersKey = @"Offers";
 
 }
 
+- (void)getCartWithCallback:(RNResultCallback)callback {
+    
+    NSString *url = [NSString stringWithFormat:@"GetCart/%@/0", _tip];
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     //                                                                                     DLog(@"Requst: %@", response);
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     
+                                                                                     if ([self wasSuccessful:JSON]) {
+                                                                                         callback([RNRedeemObject objectsFromJSON:JSON[@"ShoppingCart"]]);
+                                                                                     } else {
+                                                                                         callback(nil);
+                                                                                     }
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     DLog(@"Test: %@", request);
+                                                                                     callback(nil);
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
+}
+
 
 
 - (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback {
@@ -369,7 +396,7 @@ NSString *const kOffersKey = @"Offers";
                              @"username": username,
                              @"fullname": fullName};
     
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"/ResetPassword" parameters:params]
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"ResetPassword" parameters:params]
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
@@ -398,7 +425,11 @@ NSString *const kOffersKey = @"Offers";
                              @"newpasswordconfirm": confirmPassword,
                              @"username": username};
     
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"/ChangePassword" parameters:params]
+    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
+    NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:@"ChangePassword" parameters:nil];
+    [request setHTTPBody:data];
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
@@ -416,6 +447,40 @@ NSString *const kOffersKey = @"Offers";
                                                                                      callback(@NO);
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
+}
+
+- (void)postCatalogIDToCart:(NSNumber *)catalogID callback:(RNResultCallback)callback {
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    NSDictionary *params = @{@"tipnumber": _tip,
+                             @"catalogid": catalogID,
+                             @"wishlist": @0,
+                             @"active": @1};
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"AddToCart" parameters:nil];
+    [request setHTTPBody:data];
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     
+                                                                                     if ([self wasSuccessful:JSON]) {
+                                                                                         callback(@YES);
+                                                                                     } else {
+                                                                                         callback(@NO);
+                                                                                     }
+                                                                                     
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     callback(@NO);
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
+    
 }
 
 - (BOOL)wasSuccessful:(id)JSON {

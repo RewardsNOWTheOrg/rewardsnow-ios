@@ -127,6 +127,10 @@
 		AA9FB20E1755356C00B83B98 /* Green-Plus-Up.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB20C1755356C00B83B98 /* Green-Plus-Up.png */; };
 		AA9FB2111755509200B83B98 /* RNCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9FB2101755509100B83B98 /* RNCategory.m */; };
 		AA9FB23A1757EB0000B83B98 /* libCMUtilities-Combined.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9FB2351757EB0000B83B98 /* libCMUtilities-Combined.a */; };
+		AA9FB23F1758030F00B83B98 /* input-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23B1758030300B83B98 /* input-sm.png */; };
+		AA9FB2401758030F00B83B98 /* input-sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23C1758030600B83B98 /* input-sm@2x.png */; };
+		AA9FB2411758030F00B83B98 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23D1758030900B83B98 /* input.png */; };
+		AA9FB2421758030F00B83B98 /* input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23E1758030B00B83B98 /* input@2x.png */; };
 		AACADBC717287DDE00F9D765 /* thank-you-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC517287DDE00F9D765 /* thank-you-button.png */; };
 		AACADBC817287DDE00F9D765 /* thank-you-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */; };
 		AAD9734E1725C48E00171240 /* account-back.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734A1725C48E00171240 /* account-back.png */; };
@@ -327,6 +331,10 @@
 		AA9FB2371757EB0000B83B98 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		AA9FB2381757EB0000B83B98 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
 		AA9FB2391757EB0000B83B98 /* UIImage+additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+additions.h"; sourceTree = "<group>"; };
+		AA9FB23B1758030300B83B98 /* input-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-sm.png"; sourceTree = "<group>"; };
+		AA9FB23C1758030600B83B98 /* input-sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-sm@2x.png"; sourceTree = "<group>"; };
+		AA9FB23D1758030900B83B98 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
+		AA9FB23E1758030B00B83B98 /* input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input@2x.png"; sourceTree = "<group>"; };
 		AACADBC517287DDE00F9D765 /* thank-you-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button.png"; sourceTree = "<group>"; };
 		AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button@2x.png"; sourceTree = "<group>"; };
 		AAD9734A1725C48E00171240 /* account-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-back.png"; sourceTree = "<group>"; };
@@ -621,6 +629,10 @@
 		AA5510E7170F1134001CC718 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA9FB23B1758030300B83B98 /* input-sm.png */,
+				AA9FB23C1758030600B83B98 /* input-sm@2x.png */,
+				AA9FB23D1758030900B83B98 /* input.png */,
+				AA9FB23E1758030B00B83B98 /* input@2x.png */,
 				AA9FB20B1755356C00B83B98 /* Green-Plus-Down.png */,
 				AA9FB20C1755356C00B83B98 /* Green-Plus-Up.png */,
 				AA9B9A821742D89100EA5E33 /* grey-hard-button.png */,
@@ -934,6 +946,10 @@
 				AA9B9A851742D89800EA5E33 /* grey-hard-button@2x.png in Resources */,
 				AA9FB20D1755356C00B83B98 /* Green-Plus-Down.png in Resources */,
 				AA9FB20E1755356C00B83B98 /* Green-Plus-Up.png in Resources */,
+				AA9FB23F1758030F00B83B98 /* input-sm.png in Resources */,
+				AA9FB2401758030F00B83B98 /* input-sm@2x.png in Resources */,
+				AA9FB2411758030F00B83B98 /* input.png in Resources */,
+				AA9FB2421758030F00B83B98 /* input@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

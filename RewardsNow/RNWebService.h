@@ -24,6 +24,7 @@ typedef void (^RNResultCallback)(id result);
 - (void)getAccountInfoWithTip:(NSNumber *)tip callback:(RNResultCallback)callback;
 - (void)getBranding:(NSString *)code callback:(RNResultCallback)callback;
 - (void)getSecretQuestion:(NSString *)tip callback:(RNResultCallback)callback;
+- (void)getCartWithCallback:(RNResultCallback)callback;
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password code:(NSNumber *)code callback:(RNResultCallback)callback;
 
@@ -31,6 +32,7 @@ typedef void (^RNResultCallback)(id result);
 
 - (void)postResetPassword:(NSString *)tip answer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback;
 - (void)postChangePassword:(NSString *)tip username:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback;
+- (void)postCatalogIDToCart:(NSNumber *)catalogID callback:(RNResultCallback)callback;
 
 
 @end
