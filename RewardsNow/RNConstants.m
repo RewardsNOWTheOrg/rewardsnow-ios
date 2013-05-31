@@ -9,6 +9,7 @@
 #import "RNConstants.h"
 
 NSString *const BankCodeKey = @"BankCodeKey";
+NSString *const kImageDidFinishDownloadingNotification = @"ImageDidFinishDownloadingNotification";
 
 @implementation RNConstants
 

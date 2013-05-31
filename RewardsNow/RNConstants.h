@@ -13,6 +13,7 @@
 #define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
 FOUNDATION_EXPORT NSString *const BankCodeKey;
+FOUNDATION_EXPORT NSString *const kImageDidFinishDownloadingNotification;
 
 @interface RNConstants : NSCache
 
