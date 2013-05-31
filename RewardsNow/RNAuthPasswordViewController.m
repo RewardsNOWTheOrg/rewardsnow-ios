@@ -9,7 +9,7 @@
 #import "RNAuthPasswordViewController.h"
 #import "RNWebService.h"
 #import "MBProgressHUD.h"
-
+#import "RNBranding.h"
 
 @interface RNAuthPasswordViewController ()
 
@@ -24,10 +24,11 @@
     [super viewDidLoad];
     self.textFields = @[_answerTextField, _passwordTextField, _confirmPasswordTextField, _usernameTextField, _nameTextField];
     self.resetButton.enabled = [self canSubmit];
+    self.headerImageView.image = self.branding.headerImage;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[RNWebService sharedClient] getSecretQuestion:@"969999999999999" callback:^(id result) {
+    [[RNWebService sharedClient] getSecretQuestion:@"969" callback:^(id result) {
         DLog(@"Result: %@", result);
         if (result != nil) {
             self.questionLabel.text = result;

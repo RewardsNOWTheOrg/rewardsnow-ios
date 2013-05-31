@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
-@interface RNAuthPasswordViewController : UIViewController
+@interface RNAuthPasswordViewController : RNSkinableViewController
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *innerView;
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet CMTextField *confirmPasswordTextField;
 @property (weak, nonatomic) IBOutlet CMTextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet CMTextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 
 - (IBAction)textDidChange:(UITextField *)sender;
 - (IBAction)resetTapped:(id)sender;
