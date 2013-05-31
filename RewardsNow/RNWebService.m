@@ -489,7 +489,7 @@ NSString *const kOffersKey = @"Offers";
 }
 
 - (BOOL)wasSuccessful:(id)JSON {
-    return [JSON isKindOfClass:[NSDictionary class]] && (JSON[kErrorKey] == nil || JSON[kErrorKey] == [NSNull null]);
+    return JSON != nil && [JSON isKindOfClass:[NSDictionary class]] && (JSON[kErrorKey] == nil || JSON[kErrorKey] == [NSNull null]);
 }
 
 

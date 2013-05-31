@@ -7,8 +7,10 @@
 //
 
 #import "RNBranding.h"
+#import "RNConstants.h"
 
 #define kNumberOfColorValues 3
+#define kImageName @"header_image"
 
 @implementation RNBranding
 
@@ -32,7 +34,6 @@ static RNBranding *_sharedBranding;
 }
 
 + (instancetype)sharedBranding {
-    NSAssert(_sharedBranding != nil, @"You must instantiate the Branding Object before calling this method!");
     return _sharedBranding;
 }
 
@@ -90,6 +91,55 @@ static RNBranding *_sharedBranding;
 
 + (NSValueTransformer *)textColorJSONTransformer {
     return [self RGBColorTransformer];
+}
+
+- (void)setHeaderURL:(NSURL *)headerURL {
+    _headerURL = headerURL;
+    self.headerImage = [self getImageFromURL:_headerURL];
+    [self saveImage:_headerImage withFileName:kImageName ofType:_headerURL.lastPathComponent.pathExtension inDirectory:@"image"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kImageDidFinishDownloadingNotification object:self];
+}
+
+#pragma mark - Get Image
+
+- (UIImage *)getImageFromURL:(NSURL *)fileURL {
+    UIImage *result;
+    
+    NSData *data = [NSData dataWithContentsOfURL:fileURL];
+    result = [UIImage imageWithData:data];
+    
+    return result;
+}
+
+- (void)saveImage:(UIImage *)image withFileName:(NSString *)imageName ofType:(NSString *)extension inDirectory:(NSString *)directoryPath {
+    
+    if ([[extension lowercaseString] isEqualToString:@"png"]) {
+        [UIImagePNGRepresentation(image) writeToFile:[directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", imageName, @"png"]] options:NSAtomicWrite error:nil];
+    } else if ([[extension lowercaseString] isEqualToString:@"jpg"] || [[extension lowercaseString] isEqualToString:@"jpeg"]) {
+        [UIImageJPEGRepresentation(image, 1.0) writeToFile:[directoryPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", imageName, @"jpg"]] options:NSAtomicWrite error:nil];
+    } else {
+        DLog(@"Image Save Failed\nExtension: (%@) is not recognized, use (PNG/JPG)", extension);
+    }
+}
+
+- (UIImage *)loadImage:(NSString *)fileName ofType:(NSString *)extension inDirectory:(NSString *)directoryPath {
+    UIImage * result = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@.%@", directoryPath, fileName, extension]];
+    return result;
+}
+
+#pragma mark - Image Creation
+
+- (UIImage *)imageFromColor:(UIColor *)color withSize:(CGSize)size {
+    
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return img;
 }
 
 @end

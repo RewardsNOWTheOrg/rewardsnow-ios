@@ -31,7 +31,11 @@
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) NSURL *headerURL;
 
+@property (nonatomic, strong) UIImage *headerImage;
+
 + (instancetype)sharedBrandingFromDictionary:(NSDictionary *)dictionary;
 + (instancetype)sharedBranding;
+
+- (UIImage *)imageFromColor:(UIColor *)color withSize:(CGSize)size;
 
 @end
