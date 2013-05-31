@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
-@interface RNAuthViewController : UIViewController <UITextFieldDelegate>
+@interface RNAuthViewController : RNSkinableViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;

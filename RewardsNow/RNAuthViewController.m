@@ -13,6 +13,7 @@
 #import "RNUser.h"
 #import "RNCart.h"
 #import "RNConstants.h"
+#import "RNBranding.h"
 
 #define kUsernameTextFieldTag 1
 #define kPasswordTextFieldTag 2
@@ -32,6 +33,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.logoImageView.image = self.branding.headerImage;
+    
     _fields = @[self.usernameTextField, self.passwordTextField, self.signInButton, self.forgotPasswordButton];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     

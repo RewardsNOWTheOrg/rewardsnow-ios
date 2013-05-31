@@ -11,10 +11,13 @@
 #import "MBProgressHUD.h"
 #import "RNAuthViewController.h"
 #import "RNWebService.h"
+#import "RNBranding.h"
 
 @interface RNPreAuthViewController ()
 
 @property (nonatomic, copy) NSArray *fields;
+@property (atomic) BOOL hasFinishedDownloadingImage;
+@property (atomic) BOOL hasFinishedSkinning;
 
 @end
 
@@ -22,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.hasFinishedDownloadingImage = NO;
+    self.hasFinishedSkinning = NO;
     self.fields = @[self.codeTextField, self.continueButton];
     [self.navigationController setNavigationBarHidden:YES];
     
@@ -39,6 +44,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPosted:) name:kImageDidFinishDownloadingNotification object:nil];
+    
     for (NSInteger i = 0; i < _fields.count; i++) {
         UIView *view = _fields[i];
         
@@ -46,6 +53,11 @@
             view.alpha = 1.0;
         } completion:nil];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -74,18 +86,38 @@
     hud.detailsLabelText = @"loading...";
     
     [[RNWebService sharedClient] getBranding:self.codeTextField.text callback:^(id result) {
+        RNBranding *branding = result;
+        
         hud.detailsLabelText = @"skinning...";
         
-        double delayInSeconds = 1.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [UIView animateWithDuration:1.0 animations:^{
             
-            RNAuthViewController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthViewController"];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [self.navigationController pushViewController:auth animated:YES];
+            self.view.backgroundColor = branding.backgroundColor;
             
-        });
+            
+        } completion:^(BOOL finished) {
+            self.hasFinishedSkinning = YES;
+            
+            if (self.hasFinishedDownloadingImage) {
+                [self continueAfterProcessing];
+            }
+        }];
     }];
+}
+
+- (void)notificationPosted:(NSNotification *)note {
+    self.hasFinishedDownloadingImage = YES;
+    
+    if (self.hasFinishedSkinning) {
+        [self continueAfterProcessing];
+    }
+}
+
+- (void)continueAfterProcessing {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    RNAuthViewController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthViewController"];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self.navigationController pushViewController:auth animated:YES];
 }
 
 - (IBAction)backgroundTapped:(id)sender {
