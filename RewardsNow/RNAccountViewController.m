@@ -13,6 +13,7 @@
 #import "RNConstants.h"
 #import "NSString+Additions.h"
 #import <QuartzCore/QuartzCore.h>
+#import "RNBranding.h"
 
 @interface RNAccountViewController ()
 
@@ -34,6 +35,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    if ( (self.branding = [RNBranding sharedBranding]) ) {
+        [self brand];
+    }
+    
     self.user = [[RNCart sharedCart] user];
     
     if (self.user == nil) {
@@ -42,6 +47,7 @@
     }
     
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
+    self.topPointsLabel.textColor = self.branding.pointsColor;
     self.nameLabel.text = self.user.fullName;
     [self.emailLabel setTitle:self.user.email forState:UIControlStateNormal];
     

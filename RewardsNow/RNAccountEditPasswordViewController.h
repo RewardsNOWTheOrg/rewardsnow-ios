@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
-@interface RNAccountEditPasswordViewController : UIViewController
+@interface RNAccountEditPasswordViewController : RNSkinableViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordOldTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordNewTextField;

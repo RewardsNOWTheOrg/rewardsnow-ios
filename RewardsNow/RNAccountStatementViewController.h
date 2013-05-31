@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
-@interface RNAccountStatementViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RNAccountStatementViewController : RNSkinableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *pointsStartLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsEndLabel;

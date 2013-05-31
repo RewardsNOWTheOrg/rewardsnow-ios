@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
 @class RNUser;
 
-@interface RNAccountViewController : UIViewController
+@interface RNAccountViewController : RNSkinableViewController
 
 @property (weak, nonatomic) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerViewHeight;
