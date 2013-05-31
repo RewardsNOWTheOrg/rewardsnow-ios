@@ -15,6 +15,7 @@
 #import "RNAccountStatement.h"
 #import "RNLocalDeal.h"
 #import "RNProgramInfo.h"
+#import "RNBranding.h"
 #import "RNCategory.h"
 
 NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/";
@@ -177,16 +178,18 @@ NSString *const kOffersKey = @"Offers";
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     NSString *url = [NSString stringWithFormat:@"StsService.svc/GetBranding/%@", code];
     
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
+    NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:url parameters:nil];
+    [request setAllHTTPHeaderFields:@{@"X-RNI-ApiKey": kPAPISecret, @"Accept": @"application/json"}];
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
                                                                                      DLog(@"Response: %@", JSON);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
-//                                                                                         NSArray *objects = [RNLocalDeal objectsFromJSON:[JSON objectForKey:kOffersKey]];
-                                                                                         // cache?
-                                                                                         callback(JSON);
+                                                                                         RNBranding *branding = [RNBranding sharedBrandingFromDictionary:[JSON objectForKey:@"Brandings"]];
+                                                                                         callback(branding);
                                                                                      } else {
                                                                                          callback(nil);
                                                                                      }

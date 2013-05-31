@@ -8,16 +8,17 @@
 
 #import "RNObject.h"
 /*
- {
- "Brandings":[
- {"Name":"css_background_color","Value":"#8ab2d5"},
- {"Name":"css_header_image","Value":"https:\/\/www.rewardsnow.com\/programfiles\/images\/980header.jpg"},
- {"Name":"css_menu_bg_color","Value":"#5E80c0"},
- {"Name":"css_points_color","Value":"#CC0000"},
- {"Name":"css_submit_button_color","Value":"#8C9CB8"},
- {"Name":"css_tab_bar_text_color","Value":"#fff"},
- {"Name":"css_text_color","Value":"#333"}],"Error":null
- }
+ 
+ "Brandings": {
+ "css_background_color": "rgb(138,178,213)",
+ "css_header_image": "https://www.rewardsnow.com/programfiles/images/980header.jpg",
+ "css_menu_bg_color": "rgb(94,128,192)",
+ "css_points_color": "rgb(204,0,0)",
+ "css_submit_button_color": "rgb(140,156,184)",
+ "css_tab_bar_text_color": "rgb(255,240,0)",
+ "css_text_color": "rgb(51,48,0)"
+ },
+
  */
 
 @interface RNBranding : RNObject
@@ -28,5 +29,9 @@
 @property (nonatomic, strong) UIColor *submitButtonColor;
 @property (nonatomic, strong) UIColor *tabBarTextColor;
 @property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) NSURL *headerURL;
+
++ (instancetype)sharedBrandingFromDictionary:(NSDictionary *)dictionary;
++ (instancetype)sharedBranding;
 
 @end
