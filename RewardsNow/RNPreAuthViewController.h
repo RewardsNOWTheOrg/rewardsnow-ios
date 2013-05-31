@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 
 - (IBAction)continueTapped:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;

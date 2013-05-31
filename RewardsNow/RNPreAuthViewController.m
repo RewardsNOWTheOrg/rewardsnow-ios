@@ -17,7 +17,8 @@
 
 @property (nonatomic, copy) NSArray *fields;
 @property (atomic) BOOL hasFinishedDownloadingImage;
-@property (atomic) BOOL hasFinishedSkinning;
+@property (atomic) BOOL hasFinishedDownloadingBranding;
+@property (nonatomic, strong) RNBranding *branding;
 
 @end
 
@@ -26,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hasFinishedDownloadingImage = NO;
-    self.hasFinishedSkinning = NO;
+    self.hasFinishedDownloadingBranding = NO;
     self.fields = @[self.codeTextField, self.continueButton];
     [self.navigationController setNavigationBarHidden:YES];
     
@@ -86,31 +87,59 @@
     hud.detailsLabelText = @"loading...";
     
     [[RNWebService sharedClient] getBranding:self.codeTextField.text callback:^(id result) {
-        RNBranding *branding = result;
         
-        hud.detailsLabelText = @"skinning...";
-        
-        [UIView animateWithDuration:1.0 animations:^{
-            
-            self.view.backgroundColor = branding.backgroundColor;
-            
-            
-        } completion:^(BOOL finished) {
-            self.hasFinishedSkinning = YES;
-            
+        if (result != nil) {
+            self.branding = result;
+            self.hasFinishedDownloadingBranding = YES;
             if (self.hasFinishedDownloadingImage) {
-                [self continueAfterProcessing];
+                [self skin];
             }
-        }];
+            
+        } else {
+            hud.detailsLabelText = @"Error!";
+            hud.mode = MBProgressHUDModeCustomView;
+            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-XMark.png"]];
+            [hud hide:YES afterDelay:1.5];
+        }
     }];
 }
 
 - (void)notificationPosted:(NSNotification *)note {
     self.hasFinishedDownloadingImage = YES;
-    
-    if (self.hasFinishedSkinning) {
-        [self continueAfterProcessing];
+    if (self.hasFinishedDownloadingBranding) {
+        [self skin];
     }
+}
+
+- (void)skin {
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+    hud.detailsLabelText = @"skinning...";
+    
+    UIImageView *newHeader = [[UIImageView alloc] initWithFrame:_headerImageView.frame];
+    newHeader.image = _branding.headerImage;
+    newHeader.alpha = 0.0;
+    [self.view addSubview:newHeader];
+    
+    [UIView animateWithDuration:2.0 animations:^{
+        
+        self.view.backgroundColor = self.branding.backgroundColor;
+        self.headerImageView.alpha = 0.0;
+        newHeader.alpha = 1.0;
+        
+        [[UITabBar appearance] setTintColor:_branding.menuBackgroundColor];
+        [[UITabBar appearance] setBackgroundImage:[_branding imageFromColor:_branding.menuBackgroundColor withSize:CGSizeMake(1, 44)]];
+        //            [[UITabBar appearance] setShadowImage:[UIImage imageNamed:@"tabbar-shadow.png"]];
+        [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
+        [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : _branding.tabBarTextColor } forState:UIControlStateNormal];
+        [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : _branding.tabBarTextColor } forState:UIControlStateHighlighted]; //logs a warning.
+        [[UINavigationBar appearance] setBackgroundImage:[_branding imageFromColor:_branding.menuBackgroundColor withSize:CGSizeMake(1, 44)] forBarMetrics:UIBarMetricsDefault];
+        [[UIBarButtonItem appearance] setTintColor:_branding.menuBackgroundColor];
+        
+        
+    } completion:^(BOOL finished) {
+        [self continueAfterProcessing];
+    }];
+
 }
 
 - (void)continueAfterProcessing {
