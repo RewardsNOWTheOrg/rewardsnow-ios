@@ -87,6 +87,7 @@
                     <connections>
                         <outlet property="codeTextField" destination="I3Q-eY-uNc" id="zLm-Lf-e2r"/>
                         <outlet property="continueButton" destination="Pbb-dn-8kG" id="Lrs-R8-xva"/>
+                        <outlet property="headerImageView" destination="GUN-ah-3cS" id="3Ro-qv-8AD"/>
                         <outlet property="logoTopConstraint" destination="a7J-mu-Jnh" id="Olx-EA-Nyl"/>
                     </connections>
                 </viewController>
@@ -139,7 +140,7 @@
                                     <constraint firstAttribute="height" constant="56" type="user" id="rsq-vF-SAk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
-                                <state key="normal" title="sign in" backgroundImage="auth-button.png">
+                                <state key="normal" title="sign in">
                                     <color key="titleColor" red="0.9137254901960784" green="0.92549019607843142" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -172,14 +173,17 @@
                         <constraints>
                             <constraint firstItem="7nI-hI-wVx" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="28" type="user" id="0Fw-qw-ldn"/>
                             <constraint firstItem="Bgx-iy-dmg" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="28" type="user" id="1wD-Sm-waa"/>
-                            <constraint firstItem="p79-dq-AFG" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="95" type="user" id="BBg-cO-KQT" userLabel="Horizontal Space (≥95) - Button - Forgot Password? - View"/>
+                            <constraint firstAttribute="centerX" secondItem="HDi-k1-VY5" secondAttribute="centerX" type="user" id="8mG-hk-Vjy"/>
                             <constraint firstItem="MsD-vr-Sm8" firstAttribute="top" secondItem="bQN-T6-5nU" secondAttribute="top" constant="86" type="user" id="EGH-70-76f"/>
                             <constraint firstItem="HDi-k1-VY5" firstAttribute="top" secondItem="Bgx-iy-dmg" secondAttribute="bottom" constant="8" type="user" id="Hqx-LH-RcV"/>
+                            <constraint firstAttribute="centerX" secondItem="p79-dq-AFG" secondAttribute="centerX" type="user" id="JNP-iV-3eT"/>
+                            <constraint firstAttribute="centerX" secondItem="7nI-hI-wVx" secondAttribute="centerX" type="user" id="P62-tb-lsB"/>
                             <constraint firstItem="7nI-hI-wVx" firstAttribute="top" secondItem="HDi-k1-VY5" secondAttribute="bottom" constant="13" type="user" id="WkA-P1-NSs"/>
                             <constraint firstItem="Bgx-iy-dmg" firstAttribute="top" secondItem="MsD-vr-Sm8" secondAttribute="bottom" constant="64" type="user" id="dwy-QO-1jJ"/>
                             <constraint firstItem="HDi-k1-VY5" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="28" type="user" id="fRi-dA-NNf"/>
                             <constraint firstItem="p79-dq-AFG" firstAttribute="top" secondItem="7nI-hI-wVx" secondAttribute="bottom" constant="14" type="user" id="mN1-kZ-hrh"/>
-                            <constraint firstItem="MsD-vr-Sm8" firstAttribute="leading" secondItem="bQN-T6-5nU" secondAttribute="leading" constant="29" id="v2D-q6-XkK"/>
+                            <constraint firstAttribute="centerX" secondItem="MsD-vr-Sm8" secondAttribute="centerX" type="user" id="oQV-5P-8BC"/>
+                            <constraint firstAttribute="centerX" secondItem="Bgx-iy-dmg" secondAttribute="centerX" type="user" id="pIF-Jq-xNI"/>
                         </constraints>
                         <connections>
                             <action selector="backgroundTapped:" destination="eag-8K-4sh" eventType="touchUpInside" id="vnY-dq-hya"/>
@@ -211,13 +215,13 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gxn-Dm-cdW">
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GNx-t9-jFG">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GNx-t9-jFG" customClass="CMLabel">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="hE4-e6-yZd"/>
                                                     <constraint firstAttribute="width" constant="258" id="zJn-J4-uXy"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="BgB-ho-hUW">
@@ -309,22 +313,22 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.91372549020000005" green="0.92156862750000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="Xdd-4x-ybq" firstAttribute="leading" secondItem="BgB-ho-hUW" secondAttribute="leading" type="default" id="4SK-Wb-a37"/>
                                             <constraint firstItem="HNW-V2-kvS" firstAttribute="top" secondItem="Gxn-Dm-cdW" secondAttribute="top" constant="160" type="user" id="4SZ-vg-b0R"/>
                                             <constraint firstItem="eFX-Cn-EAt" firstAttribute="top" secondItem="qsA-TH-BAy" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="7Rj-QB-4Zq"/>
-                                            <constraint firstItem="eFX-Cn-EAt" firstAttribute="leading" secondItem="Gxn-Dm-cdW" secondAttribute="leading" constant="29" id="8pM-dK-Wgk"/>
-                                            <constraint firstItem="FXu-nj-oQd" firstAttribute="leading" secondItem="8Ro-EB-7K4" secondAttribute="leading" type="default" id="JgK-nw-L8S"/>
-                                            <constraint firstItem="GNx-t9-jFG" firstAttribute="leading" secondItem="Gxn-Dm-cdW" secondAttribute="leading" constant="34" id="KFd-Jc-Q5c"/>
-                                            <constraint firstItem="qsA-TH-BAy" firstAttribute="leading" secondItem="FXu-nj-oQd" secondAttribute="leading" type="default" id="Pu8-Yp-HYb"/>
+                                            <constraint firstAttribute="centerX" secondItem="qsA-TH-BAy" secondAttribute="centerX" type="user" id="9cI-Zl-WsX"/>
+                                            <constraint firstAttribute="centerX" secondItem="BgB-ho-hUW" secondAttribute="centerX" type="user" id="Gr6-jm-mAa"/>
+                                            <constraint firstAttribute="centerX" secondItem="FXu-nj-oQd" secondAttribute="centerX" type="user" id="NQY-cF-ICZ"/>
                                             <constraint firstItem="eFX-Cn-EAt" firstAttribute="leading" secondItem="qsA-TH-BAy" secondAttribute="leading" type="default" id="Tlc-0Q-aSF"/>
                                             <constraint firstItem="BgB-ho-hUW" firstAttribute="top" secondItem="Gxn-Dm-cdW" secondAttribute="top" constant="30" id="Uya-aK-sop"/>
                                             <constraint firstItem="GNx-t9-jFG" firstAttribute="trailing" secondItem="HNW-V2-kvS" secondAttribute="trailing" type="default" id="XMj-h8-f4f"/>
-                                            <constraint firstItem="8Ro-EB-7K4" firstAttribute="leading" secondItem="Xdd-4x-ybq" secondAttribute="leading" type="default" id="c3C-sg-bjp"/>
+                                            <constraint firstAttribute="centerX" secondItem="8Ro-EB-7K4" secondAttribute="centerX" type="user" id="b57-xg-NhB"/>
+                                            <constraint firstAttribute="centerX" secondItem="HNW-V2-kvS" secondAttribute="centerX" type="user" id="fMO-eB-gSN"/>
                                             <constraint firstItem="Xdd-4x-ybq" firstAttribute="top" secondItem="HNW-V2-kvS" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="hg7-lW-imF"/>
                                             <constraint firstItem="8Ro-EB-7K4" firstAttribute="top" secondItem="Xdd-4x-ybq" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="i2K-vJ-atL"/>
                                             <constraint firstAttribute="height" constant="548" type="user" id="l4z-o1-16E"/>
                                             <constraint firstAttribute="bottom" secondItem="eFX-Cn-EAt" secondAttribute="bottom" constant="12" type="user" id="lq3-4z-Lrb"/>
                                             <constraint firstItem="FXu-nj-oQd" firstAttribute="top" secondItem="8Ro-EB-7K4" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="mHO-7W-Z88"/>
+                                            <constraint firstAttribute="centerX" secondItem="Xdd-4x-ybq" secondAttribute="centerX" type="user" id="ptG-fW-yeO"/>
                                             <constraint firstItem="GNx-t9-jFG" firstAttribute="top" secondItem="Gxn-Dm-cdW" secondAttribute="top" constant="110" id="tHp-8i-jHj"/>
                                             <constraint firstItem="qsA-TH-BAy" firstAttribute="top" secondItem="FXu-nj-oQd" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="wkf-QD-ZZe"/>
                                         </constraints>
@@ -351,6 +355,7 @@
                     <connections>
                         <outlet property="answerTextField" destination="HNW-V2-kvS" id="QmT-Jk-T3a"/>
                         <outlet property="confirmPasswordTextField" destination="8Ro-EB-7K4" id="2Fy-kp-IAf"/>
+                        <outlet property="headerImageView" destination="BgB-ho-hUW" id="RGo-pn-033"/>
                         <outlet property="innerView" destination="Gxn-Dm-cdW" id="iUG-OE-s8B"/>
                         <outlet property="nameTextField" destination="qsA-TH-BAy" id="m5r-I1-dn5"/>
                         <outlet property="passwordTextField" destination="Xdd-4x-ybq" id="ECy-8i-D5x"/>
@@ -690,8 +695,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9fR-Hc-S9N">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="181" type="user" id="DiH-Vk-UEf"/>
                                     <constraint firstAttribute="width" constant="320" type="user" id="VSi-4r-p3W"/>
+                                    <constraint firstAttribute="height" constant="176" id="ymM-le-spW"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCell" id="m2I-4l-Dhf">
@@ -762,6 +767,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="NKs-ou-0vT"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="headerImageView" destination="yEA-XW-ckC" id="1Qh-g9-o0i"/>
                         <outlet property="tableView" destination="9fR-Hc-S9N" id="tdf-Pp-nZk"/>
                         <outlet property="topPointsLabel" destination="rFq-6B-VI6" id="aoX-UW-Hrf"/>
                     </connections>
@@ -829,6 +835,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="headerImageView" destination="SPs-BP-us9" id="T1J-s7-DTA"/>
                         <outlet property="innerViewHeight" destination="9k1-LQ-TEt" id="Tfm-1R-Us7"/>
                         <outlet property="scrollView" destination="Fkk-rT-da1" id="UZw-sz-tDV"/>
                         <outlet property="webView" destination="eZj-pQ-yX3" id="E5k-tz-F2n"/>
@@ -3484,9 +3491,10 @@
                 <relationship kind="outlet" name="callButton" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="RNAboutDetailViewController" superclassName="UIViewController">
+        <class className="RNAboutDetailViewController" superclassName="RNSkinableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutDetailViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="headerImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
@@ -3494,14 +3502,15 @@
                 <relationship kind="outlet" name="webViewHeight" candidateClass="NSLayoutConstraint"/>
             </relationships>
         </class>
-        <class className="RNAboutViewController" superclassName="UIViewController">
+        <class className="RNAboutViewController" superclassName="RNSkinableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAboutViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="headerImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="RNAccountEditPasswordViewController" superclassName="UIViewController">
+        <class className="RNAccountEditPasswordViewController" superclassName="RNSkinableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditPasswordViewController.h"/>
             <relationships>
                 <relationship kind="action" name="saveTapped:"/>
@@ -3511,7 +3520,7 @@
                 <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
-        <class className="RNAccountEditViewController" superclassName="UIViewController">
+        <class className="RNAccountEditViewController" superclassName="RNSkinableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountEditViewController.h"/>
             <relationships>
                 <relationship kind="action" name="saveTapped:"/>
@@ -3521,7 +3530,7 @@
                 <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
-        <class className="RNAccountStatementViewController" superclassName="UIViewController">
+        <class className="RNAccountStatementViewController" superclassName="RNSkinableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountStatementViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backMonth:"/>
@@ -3538,7 +3547,7 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
-        <class className="RNAccountViewController" superclassName="UIViewController">
+        <class className="RNAccountViewController" superclassName="RNSkinableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAccountViewController.h"/>
             <relationships>
                 <relationship kind="action" name="logoutTapped:"/>
@@ -3553,13 +3562,14 @@
                 <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="RNAuthPasswordViewController" superclassName="UIViewController">
+        <class className="RNAuthPasswordViewController" superclassName="RNSkinableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAuthPasswordViewController.h"/>
             <relationships>
                 <relationship kind="action" name="resetTapped:"/>
                 <relationship kind="action" name="textDidChange:" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="answerTextField" candidateClass="CMTextField"/>
                 <relationship kind="outlet" name="confirmPasswordTextField" candidateClass="CMTextField"/>
+                <relationship kind="outlet" name="headerImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="nameTextField" candidateClass="CMTextField"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="CMTextField"/>
@@ -3569,7 +3579,7 @@
                 <relationship kind="outlet" name="usernameTextField" candidateClass="CMTextField"/>
             </relationships>
         </class>
-        <class className="RNAuthViewController" superclassName="UIViewController">
+        <class className="RNAuthViewController" superclassName="RNSkinableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RNAuthViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTapped:"/>
@@ -3730,6 +3740,7 @@
                 <relationship kind="action" name="continueTapped:"/>
                 <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="continueButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="headerImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="logoTopConstraint" candidateClass="NSLayoutConstraint"/>
             </relationships>
         </class>
@@ -3763,6 +3774,9 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="RNSkinableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RNSkinableViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
