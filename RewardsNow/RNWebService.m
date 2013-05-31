@@ -17,7 +17,7 @@
 #import "RNProgramInfo.h"
 #import "RNCategory.h"
 
-NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/FacadeService.svc/";
+NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/";
 NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3eb07bc74d5bc081";
 
 NSString *const kResultsKey = @"Result";
@@ -68,7 +68,7 @@ NSString *const kOffersKey = @"Offers";
 
 - (void)getRewards:(NSString *)tipFirst WithCallback:(RNResultCallback)callback {
     
-    NSString *url = [NSString stringWithFormat:@"GetRedemptions/%@", tipFirst];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetRedemptions/%@", tipFirst];
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -108,7 +108,9 @@ NSString *const kOffersKey = @"Offers";
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"GetSecretQuestion" parameters:nil]
+    NSString *url = [NSString stringWithFormat:@"StsService.svc/GetSecretQuestion/%@", tip];
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                                                                                                           
@@ -131,7 +133,7 @@ NSString *const kOffersKey = @"Offers";
 
 - (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius category:(NSNumber *)category callback:(RNResultCallback)callback {
     
-    NSString *url = [NSString stringWithFormat:@"GetLocalOffers/%@/", tipFirst];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetLocalOffers/%@/", tipFirst];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"limit" : @(lim),
                                    @"offset" : @(offset),
@@ -173,7 +175,7 @@ NSString *const kOffersKey = @"Offers";
 - (void)getBranding:(NSString *)code callback:(RNResultCallback)callback {
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    NSString *url = [NSString stringWithFormat:@"GetBranding/%@", code];
+    NSString *url = [NSString stringWithFormat:@"StsService.svc/GetBranding/%@", code];
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -202,7 +204,7 @@ NSString *const kOffersKey = @"Offers";
 
 - (void)getCartWithCallback:(RNResultCallback)callback {
     
-    NSString *url = [NSString stringWithFormat:@"GetCart/%@/0", _tip];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetCart/%@/0", _tip];
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -238,7 +240,7 @@ NSString *const kOffersKey = @"Offers";
     
     [formatter setDateFormat:@"yyyy-M-d"];
     
-    NSString *url = [NSString stringWithFormat:@"GetMobileStatement/%@/%@/%@", tip, [formatter stringFromDate:from], [formatter stringFromDate:to]];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetMobileStatement/%@/%@/%@", tip, [formatter stringFromDate:from], [formatter stringFromDate:to]];
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -284,7 +286,7 @@ NSString *const kOffersKey = @"Offers";
 
 - (void)getAccountInfoWithTip:(NSNumber *)tip callback:(RNResultCallback)callback {
     
-    NSString *url = [NSString stringWithFormat:@"GetMyAccountInfo/%@", tip];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetMyAccountInfo/%@", tip];
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -316,7 +318,7 @@ NSString *const kOffersKey = @"Offers";
 }
 
 - (void)getProgramInfo:(NSString *)tip callback:(RNResultCallback)callback {
-    NSString *url = [NSString stringWithFormat:@"GetProgramInfo/%@", tip];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetProgramInfo/%@", tip];
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -344,7 +346,7 @@ NSString *const kOffersKey = @"Offers";
 
 
 - (void)getLocalCategories:(NSString *)tip callback:(RNResultCallback)callback {
-    NSString *url = [NSString stringWithFormat:@"GetLocalCategories/%@", tip];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetLocalCategories/%@", tip];
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -396,7 +398,7 @@ NSString *const kOffersKey = @"Offers";
                              @"username": username,
                              @"fullname": fullName};
     
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"ResetPassword" parameters:params]
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"StsService.svc/ResetPassword" parameters:params]
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
@@ -426,7 +428,7 @@ NSString *const kOffersKey = @"Offers";
                              @"username": username};
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
-    NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:@"ChangePassword" parameters:nil];
+    NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:@"StsService.svc/ChangePassword" parameters:nil];
     [request setHTTPBody:data];
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -459,7 +461,7 @@ NSString *const kOffersKey = @"Offers";
                              @"active": @1};
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
-    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"AddToCart" parameters:nil];
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/AddToCart" parameters:nil];
     [request setHTTPBody:data];
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request

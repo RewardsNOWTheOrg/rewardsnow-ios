@@ -27,8 +27,8 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[RNWebService sharedClient] getSecretQuestion:@"@969999999999999" callback:^(id result) {
-        
+    [[RNWebService sharedClient] getSecretQuestion:@"969999999999999" callback:^(id result) {
+        DLog(@"Result: %@", result);
         if (result != nil) {
             self.questionLabel.text = result;
         } else {
