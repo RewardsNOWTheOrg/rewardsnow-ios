@@ -15,15 +15,6 @@
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
-    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:C(19) green:C(149) blue:C(207) alpha:1.0]];
-    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar-background.png"]];
-    [[UITabBar appearance] setShadowImage:[UIImage imageNamed:@"tabbar-shadow.png"]];
-    [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] } forState:UIControlStateHighlighted]; //logs a warning.
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar-background.png"] forBarMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearance] setTintColor:[UIColor colorWithRed:C(16) green:C(108) blue:C(149) alpha:1.0]];
-    
     UITabBarController *root = (UITabBarController *)[[self window] rootViewController];
     [root setSelectedIndex:3];
     
