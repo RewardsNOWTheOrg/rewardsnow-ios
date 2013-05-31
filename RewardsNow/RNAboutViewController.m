@@ -13,6 +13,7 @@
 #import "RNConstants.h"
 #import "RNProgramInfo.h"
 #import "RNWebService.h"
+#import "RNBranding.h"
 
 @interface RNAboutViewController ()
 
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
     self.cellNames = @[@"FAQ", @"Program Rules", @"Earning Points", @"Contact Us"];
+    self.headerImageView.image = self.branding.headerImage;
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
@@ -58,7 +60,7 @@
 }
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
+    cell.backgroundColor = self.branding.backgroundColor;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

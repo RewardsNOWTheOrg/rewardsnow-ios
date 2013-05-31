@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
-@interface RNAboutViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RNAboutViewController : RNSkinableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 
 @end

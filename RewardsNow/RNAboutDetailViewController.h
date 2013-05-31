@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
-@interface RNAboutDetailViewController : UIViewController <UIWebViewDelegate>
+@interface RNAboutDetailViewController : RNSkinableViewController <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *innerView;
@@ -16,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerViewHeight;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, copy) NSString *html;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 
 @end

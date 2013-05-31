@@ -7,6 +7,7 @@
 //
 
 #import "RNAboutDetailViewController.h"
+#import "RNBranding.h"
 
 @interface RNAboutDetailViewController ()
 
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.headerImageView.image = self.branding.headerImage;
     [self.webView loadHTMLString:_html baseURL:nil];
 }
 
