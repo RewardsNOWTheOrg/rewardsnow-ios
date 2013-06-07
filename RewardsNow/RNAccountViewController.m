@@ -52,9 +52,10 @@
     [self.emailLabel setTitle:self.user.email forState:UIControlStateNormal];
     
     NSString *accountNumberString = @"Account Number:";
-    NSMutableAttributedString *accountNumberText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", accountNumberString, @"REB0000005"]];
+    NSString *tipNumber = _user.tipNumber;
+    NSMutableAttributedString *accountNumberText = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", accountNumberString, tipNumber]];
     [accountNumberText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial-BoldMT" size:17] range:NSMakeRange(0, accountNumberString.length)];
-    [accountNumberText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:14] range:NSMakeRange(accountNumberString.length, accountNumberText.length - accountNumberString.length)];
+    [accountNumberText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:14] range:NSMakeRange(accountNumberString.length+1, tipNumber.length)];
     self.accountNumberLabel.attributedText = accountNumberText;
 
     
@@ -72,6 +73,9 @@
         [gcButton addTarget:self action:@selector(giftCardTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self.giftCardView addSubview:gcButton];
     }
+    
+    _giftCardHeightConstraint.constant = 90 + (_user.giftCards.count * 30);
+    _innerViewHeight.constant = 360 + _giftCardHeightConstraint.constant;
     
 }
 
