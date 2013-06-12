@@ -13,25 +13,34 @@ typedef void (^RNResultCallback)(id result);
 
 @interface RNWebService : AFHTTPClient
 
+/**
+ * The 3 digit number that represents the FI the user is a part of.
+ * We will only be dealing with this number when making API calls, and it will never change
+ * once they have set it for the first time.
+ */
+@property (nonatomic, copy) NSString *tipNumber;
+
+
 + (instancetype)sharedClient;
 
-- (void)getRewards:(NSString *)tipFirst WithCallback:(RNResultCallback)callback;
-- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query callback:(RNResultCallback)callback;
-- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius category:(NSNumber *)category callback:(RNResultCallback)callback;
-- (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback;
-- (void)getProgramInfo:(NSString *)tip callback:(RNResultCallback)callback;
-- (void)getLocalCategories:(NSString *)tip callback:(RNResultCallback)callback;
-- (void)getAccountInfoWithTip:(NSNumber *)tip callback:(RNResultCallback)callback;
+- (void)getRewardsWithCallback:(RNResultCallback)callback;
+- (void)getDealsAtLocation:(CLLocation *)location query:(NSString *)query callback:(RNResultCallback)callback;
+- (void)getDealsAtLocation:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius category:(NSNumber *)category callback:(RNResultCallback)callback;
+- (void)getAccountStatementFrom:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback;
+- (void)getProgramInfoWithCallback:(RNResultCallback)callback;
+- (void)getLocalCategoriesWithCallback:(RNResultCallback)callback;
+- (void)getAccountInfoWithTipWithCallback:(RNResultCallback)callback;
 - (void)getBranding:(NSString *)code callback:(RNResultCallback)callback;
-- (void)getSecretQuestion:(NSString *)tip callback:(RNResultCallback)callback;
+- (void)getSecretQuestionWithCallback:(RNResultCallback)callback;
 - (void)getCartWithCallback:(RNResultCallback)callback;
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password code:(NSNumber *)code callback:(RNResultCallback)callback;
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password callback:(RNResultCallback)callback;
 
+//????
 - (void)putEmail:(NSString *)email callback:(RNResultCallback)callback;
 
-- (void)postResetPassword:(NSString *)tip answer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback;
-- (void)postChangePassword:(NSString *)tip username:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback;
+- (void)postResetPasswordWithAnswer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback;
+- (void)postChangePasswordWithUsername:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback;
 - (void)postCatalogIDToCart:(NSNumber *)catalogID callback:(RNResultCallback)callback;
 
 

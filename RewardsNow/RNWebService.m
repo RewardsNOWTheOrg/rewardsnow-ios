@@ -29,7 +29,6 @@ NSString *const kOffersKey = @"Offers";
 @interface RNWebService()
 
 @property (nonatomic, strong) NSString *authorizationHeader;
-@property (nonatomic, copy) NSString *tip;
 
 @end
 
@@ -57,9 +56,7 @@ NSString *const kOffersKey = @"Offers";
         ///
         [self setDefaultHeader:@"X-RNI-ApiKey" value:[NSString stringWithFormat:@"%@", kPAPISecret]];
         [self setDefaultHeader:@"Accept" value:@"application/json"];
-        self.authorizationHeader = @"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTE2Ij8+DQo8UmVzcG9uc2UgSXNzdWVJbnN0YW50PSIyMDEzLTA0LTA5VDIwOjE2OjE3LjcxMTFaIiBJRD0iXzM4ODFmNzYzLTU1YjQtNGIwZS05NjZiLWYxMWMzOWMzYjJkZiIgVmVyc2lvbj0iMi4wIiB4bWxucz0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnByb3RvY29sIj4NCiAgPFN0YXR1cz4NCiAgICA8U3RhdHVzQ29kZSBWYWx1ZT0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnN0YXR1czpTdWNjZXNzIiAvPg0KICA8L1N0YXR1cz4NCiAgPEFzc2VydGlvbiBJRD0iX2M4ODU2ZDhjLWQxZGYtNDMzMC04ODMyLWFiMTExMTMyNWEwMSIgSXNzdWVJbnN0YW50PSIyMDEzLTA0LTA5VDIwOjE2OjE3LjcxMVoiIFZlcnNpb249IjIuMCIgeG1sbnM9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDphc3NlcnRpb24iPg0KICAgIDxJc3N1ZXI+Z2F1LnJld2FyZHNub3cuY29tPC9Jc3N1ZXI+DQogICAgPGRzOlNpZ25hdHVyZSB4bWxuczpkcz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC8wOS94bWxkc2lnIyI+DQogICAgICA8ZHM6U2lnbmVkSW5mbz4NCiAgICAgICAgPGRzOkNhbm9uaWNhbGl6YXRpb25NZXRob2QgQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzEwL3htbC1leGMtYzE0biMiIC8+DQogICAgICAgIDxkczpTaWduYXR1cmVNZXRob2QgQWxnb3JpdGhtPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiAvPg0KICAgICAgICA8ZHM6UmVmZXJlbmNlIFVSST0iI19jODg1NmQ4Yy1kMWRmLTQzMzAtODgzMi1hYjExMTEzMjVhMDEiPg0KICAgICAgICAgIDxkczpUcmFuc2Zvcm1zPg0KICAgICAgICAgICAgPGRzOlRyYW5zZm9ybSBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvMDkveG1sZHNpZyNlbnZlbG9wZWQtc2lnbmF0dXJlIiAvPg0KICAgICAgICAgICAgPGRzOlRyYW5zZm9ybSBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMTAveG1sLWV4Yy1jMTRuIyIgLz4NCiAgICAgICAgICA8L2RzOlRyYW5zZm9ybXM+DQogICAgICAgICAgPGRzOkRpZ2VzdE1ldGhvZCBBbGdvcml0aG09Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvMDQveG1sZW5jI3NoYTI1NiIgLz4NCiAgICAgICAgICA8ZHM6RGlnZXN0VmFsdWU+dmExenJrL3NJSzVoVTdDd2JESHN6M3hwb1dscVZTUTdZamdTYk1taGs0bz08L2RzOkRpZ2VzdFZhbHVlPg0KICAgICAgICA8L2RzOlJlZmVyZW5jZT4NCiAgICAgIDwvZHM6U2lnbmVkSW5mbz4NCiAgICAgIDxkczpTaWduYXR1cmVWYWx1ZT5RMDB0ZnIvY3pvUTlEZHROc1BBS0cranJMRzI5V0RQUVVLUjhlbzIrSkpzdElsOFpjV3RiRG9XUEU0eFJNQW1JRWFGSzhUMDQ0SGxGT1lnVlY3djAwQSt0cXd2eDA2Y0lUTnBGc1BUN01YZTNIV2lPNmFaTnI3T1labzRRTXNva1NIVmgvRkRjTm1SSzR4R3NVcWM1Z1hyVTBYeXl4Ti9SNU05TlBRR1hMNUU9PC9kczpTaWduYXR1cmVWYWx1ZT4NCiAgICAgIDxLZXlJbmZvIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwLzA5L3htbGRzaWcjIj4NCiAgICAgICAgPFg1MDlEYXRhPg0KICAgICAgICAgIDxYNTA5Q2VydGlmaWNhdGU+TUlJREdqQ0NBb2VnQXdJQkFnSVFCaFNtamVHMGZwdENZU1AxU25SRkhqQUpCZ1VyRGdNQ0hRVUFNSUc2TVJzd0dRWURWUVFERXhKbllYVXVjbVYzWVhKa2MyNXZkeTVqYjIweFJEQkNCZ05WQkFzVE96Sm1JR013SUdNMElEUm1JRFkySURVMUlHTmtJR1UzSURJeklEazNJR0ZrSUdRMklEUXlJREJrSURNMklEVTVJR015SUdVNElHTTJJRGN4TVZVd1V3WURWUVFLSGt3QWV3QTNBRVVBUmdBeUFFSUFNUUExQUVVQUxRQTJBRUVBTmdBeUFDMEFOQUExQURnQU9BQXRBRUlBTmdBeEFFVUFMUUF6QUVNQVFnQkdBRFFBTVFBMkFFWUFRUUF4QURVQU5RQjlNQjRYRFRFeU1USXlOekUwTkRnMU9Gb1hEVEV6TVRJeU56RTBORGcxT0Zvd2dib3hHekFaQmdOVkJBTVRFbWRoZFM1eVpYZGhjbVJ6Ym05M0xtTnZiVEZFTUVJR0ExVUVDeE03TW1ZZ1l6QWdZelFnTkdZZ05qWWdOVFVnWTJRZ1pUY2dNak1nT1RjZ1lXUWdaRFlnTkRJZ01HUWdNellnTlRrZ1l6SWdaVGdnWXpZZ056RXhWVEJUQmdOVkJBb2VUQUI3QURjQVJRQkdBRElBUWdBeEFEVUFSUUF0QURZQVFRQTJBRElBTFFBMEFEVUFPQUE0QUMwQVFnQTJBREVBUlFBdEFETUFRd0JDQUVZQU5BQXhBRFlBUmdCQkFERUFOUUExQUgwd2daOHdEUVlKS29aSWh2Y05BUUVCQlFBRGdZMEFNSUdKQW9HQkFMZHh5RjRUc1lpVWt2b1JNM1drZkZDTlZxTUFnQzVnbkJ4TTdiT1ZraGgvYVFGK0JCL2dPRElacDRnYllyYXZNYjV4VlY2VFBzRXVGa0R5Z1Z6bTNTTm5ZeitvQTd2N2owaGtmLzVPT3EvaFRPNHRkMFlzYUVnWlQ4QTZqQjZGeEtzUjVjNzJqM1NiOVdoQkc4aENSUkZWemFVYkhkVFpMZFI1SnB1V2hYZzVBZ01CQUFHakp6QWxNQk1HQTFVZEpRUU1NQW9HQ0NzR0FRVUZCd01CTUE0R0ExVWREd1FIQXdVQXNBQUFBREFKQmdVckRnTUNIUVVBQTRHQkFCWENiaVRybUJRd084NVErSDU5QjZ3ZU9YZ251d1QvM1Z0aTg5Zi9XcFphbHJCRXZ1T3FqNUNqdk1nL3g3NGhYMkk3OGhQMnBTenZ4Z2JYVXZiQ1hibDUxUm5sZTdHbDNXVGlmZGZYVk9TcTFVNFUrVHpEV2o0RDBCajhWSDZhRmxabDVQUkVtckc5Uks0bEYyU3poV1ZMaHRlOWwxMnpKTmIrc2pXb1F5SmE8L1g1MDlDZXJ0aWZpY2F0ZT4NCiAgICAgICAgPC9YNTA5RGF0YT4NCiAgICAgIDwvS2V5SW5mbz4NCiAgICA8L2RzOlNpZ25hdHVyZT4NCiAgICA8U3ViamVjdD4NCiAgICAgIDxTdWJqZWN0Q29uZmlybWF0aW9uIE1ldGhvZD0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOmNtOmJlYXJlciI+DQogICAgICAgIDxTdWJqZWN0Q29uZmlybWF0aW9uRGF0YSBOb3RPbk9yQWZ0ZXI9IjIwMTMtMDQtMDlUMjA6MTc6MTcuNzA5WiIgUmVjaXBpZW50PSJodHRwOi8vbG9jYWxob3N0OjgwMDMvIiAvPg0KICAgICAgPC9TdWJqZWN0Q29uZmlybWF0aW9uPg0KICAgIDwvU3ViamVjdD4NCiAgICA8Q29uZGl0aW9ucyBOb3RCZWZvcmU9IjIwMTMtMDQtMDlUMjA6MTY6MTcuNzA5WiIgTm90T25PckFmdGVyPSIyMDEzLTA0LTA5VDIwOjE3OjE3LjcwOVoiPg0KICAgICAgPEF1ZGllbmNlUmVzdHJpY3Rpb24+DQogICAgICAgIDxBdWRpZW5jZT5odHRwOi8vbG9jYWxob3N0OjgwMDMvPC9BdWRpZW5jZT4NCiAgICAgIDwvQXVkaWVuY2VSZXN0cmljdGlvbj4NCiAgICA8L0NvbmRpdGlvbnM+DQogICAgPEF0dHJpYnV0ZVN0YXRlbWVudD4NCiAgICAgIDxBdHRyaWJ1dGUgTmFtZT0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI+DQogICAgICAgIDxBdHRyaWJ1dGVWYWx1ZT5GSVVzZXI8L0F0dHJpYnV0ZVZhbHVlPg0KICAgICAgPC9BdHRyaWJ1dGU+DQogICAgICA8QXR0cmlidXRlIE5hbWU9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI+DQogICAgICAgIDxBdHRyaWJ1dGVWYWx1ZT53ZWJAcmV3YXJkc25vdy5jb208L0F0dHJpYnV0ZVZhbHVlPg0KICAgICAgPC9BdHRyaWJ1dGU+DQogICAgICA8QXR0cmlidXRlIE5hbWU9Imh0dHA6Ly9SZXN0ZnVsVG9rZW5TZXJ2aWNlL3RpcG51bWJlciI+DQogICAgICAgIDxBdHRyaWJ1dGVWYWx1ZT5SRUI5OTk5OTk5OTk5MDAgICAgIDwvQXR0cmlidXRlVmFsdWU+DQogICAgICA8L0F0dHJpYnV0ZT4NCiAgICA8L0F0dHJpYnV0ZVN0YXRlbWVudD4NCiAgICA8QXV0aG5TdGF0ZW1lbnQgQXV0aG5JbnN0YW50PSIyMDEzLTA0LTA5VDIwOjE2OjE3LjcxMVoiPg0KICAgICAgPEF1dGhuQ29udGV4dD4NCiAgICAgICAgPEF1dGhuQ29udGV4dENsYXNzUmVmPnVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDphYzpjbGFzc2VzOlBhc3N3b3JkPC9BdXRobkNvbnRleHRDbGFzc1JlZj4NCiAgICAgIDwvQXV0aG5Db250ZXh0Pg0KICAgIDwvQXV0aG5TdGF0ZW1lbnQ+DQogIDwvQXNzZXJ0aW9uPg0KPC9SZXNwb25zZT4=";
-        
-        [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
+//        self.authorizationHeader;
         
         self.parameterEncoding = AFJSONParameterEncoding;
         
@@ -67,9 +64,9 @@ NSString *const kOffersKey = @"Offers";
     return self;
 }
 
-- (void)getRewards:(NSString *)tipFirst WithCallback:(RNResultCallback)callback {
+- (void)getRewardsWithCallback:(RNResultCallback)callback {
     
-    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetRedemptions/%@", tipFirst];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetRedemptions/%@", _tipNumber];
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -101,15 +98,15 @@ NSString *const kOffersKey = @"Offers";
     [self enqueueHTTPRequestOperation:op];
 }
 
-- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query callback:(RNResultCallback)callback {
-    [self getDeals:tipFirst location:location query:query limit:20 offset:0 radius:15.0 category:nil callback:callback];
+- (void)getDealsAtLocation:(CLLocation *)location query:(NSString *)query callback:(RNResultCallback)callback {
+    [self getDealsAtLocation:location query:query limit:20 offset:0 radius:15.0 category:nil callback:callback];
 }
 
-- (void)getSecretQuestion:(NSString *)tip callback:(RNResultCallback)callback {
+- (void)getSecretQuestionWithCallback:(RNResultCallback)callback {
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
-    NSString *url = [NSString stringWithFormat:@"StsService.svc/GetSecretQuestion/%@", tip];
+    NSString *url = [NSString stringWithFormat:@"StsService.svc/GetSecretQuestion/%@", _tipNumber];
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -132,9 +129,9 @@ NSString *const kOffersKey = @"Offers";
 }
 
 
-- (void)getDeals:(NSString *)tipFirst location:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius category:(NSNumber *)category callback:(RNResultCallback)callback {
+- (void)getDealsAtLocation:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius category:(NSNumber *)category callback:(RNResultCallback)callback {
     
-    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetLocalOffers/%@/", tipFirst];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetLocalOffers/%@/", _tipNumber];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"limit" : @(lim),
                                    @"offset" : @(offset),
@@ -207,7 +204,7 @@ NSString *const kOffersKey = @"Offers";
 
 - (void)getCartWithCallback:(RNResultCallback)callback {
     
-    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetCart/%@/0", _tip];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetCart/%@/0", _tipNumber];
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -234,7 +231,7 @@ NSString *const kOffersKey = @"Offers";
 
 
 
-- (void)getAccountStatementForTip:(NSString *)tip From:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback {
+- (void)getAccountStatementFrom:(NSDate *)from to:(NSDate *)to callback:(RNResultCallback)callback {
     static NSDateFormatter *formatter = nil;
     
     if (formatter == nil) {
@@ -243,7 +240,7 @@ NSString *const kOffersKey = @"Offers";
     
     [formatter setDateFormat:@"yyyy-M-d"];
     
-    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetMobileStatement/%@/%@/%@", tip, [formatter stringFromDate:from], [formatter stringFromDate:to]];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetMobileStatement/%@/%@/%@", _tipNumber, [formatter stringFromDate:from], [formatter stringFromDate:to]];
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -272,27 +269,56 @@ NSString *const kOffersKey = @"Offers";
     [self enqueueHTTPRequestOperation:op];
 }
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password code:(NSNumber *)code callback:(RNResultCallback)callback {
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password callback:(RNResultCallback)callback {
     ///
     /// Perform the authentication
     ///
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-        callback(@{@"success" : @"true"});
-    });
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"StsService.svc/Login" parameters:nil];
+    NSDictionary *params = @{@"tipfirst": _tipNumber};    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
+    [request setHTTPBody:data];
+    
+    NSString *base64Auth = [RNWebService encodeBase64WithString:[NSString stringWithFormat:@"%@:%@", username, password]];
+    // Set our own HTTP headers
+    [request setAllHTTPHeaderFields:@{@"X-RNI-ApiKey": kPAPISecret, @"Accept": @"application/json", @"Authorization" : base64Auth}];
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     
+                                                                                     if ([self wasSuccessful:JSON]) {
+                                                                                         self.authorizationHeader = JSON[@"LoginResult"][@"Token"];
+                                                                                         [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
+                                                                                         self.tipNumber = [JSON[@"LoginResult"][@"Tipnumber"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                                                                                         callback(@YES);
+                                                                                     } else {
+                                                                                         callback(@NO);
+                                                                                     }
 
+                                                                                     
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     callback(@NO);
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
 }
 
-- (void)getAccountInfoWithTip:(NSNumber *)tip callback:(RNResultCallback)callback {
+- (void)getAccountInfoWithTipWithCallback:(RNResultCallback)callback {
     
-    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetMyAccountInfo/%@", tip];
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetMyAccountInfo/%@", _tipNumber];
+    
+    NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:url parameters:nil];
+    DLog(@"Headers: %@", request.allHTTPHeaderFields);
+    
+    DLog(@"Request: %@", request);
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
@@ -320,8 +346,8 @@ NSString *const kOffersKey = @"Offers";
     [self enqueueHTTPRequestOperation:op];
 }
 
-- (void)getProgramInfo:(NSString *)tip callback:(RNResultCallback)callback {
-    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetProgramInfo/%@", tip];
+- (void)getProgramInfoWithCallback:(RNResultCallback)callback {
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetProgramInfo/%@", _tipNumber];
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -348,8 +374,8 @@ NSString *const kOffersKey = @"Offers";
 }
 
 
-- (void)getLocalCategories:(NSString *)tip callback:(RNResultCallback)callback {
-    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetLocalCategories/%@", tip];
+- (void)getLocalCategoriesWithCallback:(RNResultCallback)callback {
+    NSString *url = [NSString stringWithFormat:@"FacadeService.svc/GetLocalCategories/%@", _tipNumber];
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
@@ -391,10 +417,10 @@ NSString *const kOffersKey = @"Offers";
 
 #pragma mark - POST
 
-- (void)postResetPassword:(NSString *)tip answer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback {
+- (void)postResetPasswordWithAnswer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback {
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
-    NSDictionary *params = @{@"tipNumber": tip,
+    NSDictionary *params = @{@"tipNumber": _tipNumber,
                              @"answer": answer,
                              @"newpassword": password,
                              @"newpasswordconfirm": confirmed,
@@ -421,10 +447,10 @@ NSString *const kOffersKey = @"Offers";
     [self enqueueHTTPRequestOperation:op];
 }
 
-- (void)postChangePassword:(NSString *)tip username:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback {
+- (void)postChangePasswordWithUsername:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback {
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
-    NSDictionary *params = @{@"tipNumber": tip,
+    NSDictionary *params = @{@"tipNumber": _tipNumber,
                              @"oldpassword": oldPassword,
                              @"newpassword": newPassword,
                              @"newpasswordconfirm": confirmPassword,
@@ -458,7 +484,7 @@ NSString *const kOffersKey = @"Offers";
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
-    NSDictionary *params = @{@"tipnumber": _tip,
+    NSDictionary *params = @{@"tipnumber": _tipNumber,
                              @"catalogid": catalogID,
                              @"wishlist": @0,
                              @"active": @1};
@@ -490,6 +516,83 @@ NSString *const kOffersKey = @"Offers";
 
 - (BOOL)wasSuccessful:(id)JSON {
     return JSON != nil && [JSON isKindOfClass:[NSDictionary class]] && (JSON[kErrorKey] == nil || JSON[kErrorKey] == [NSNull null]);
+}
+
+#pragma mark - Base 64 Encoding
+
+static const char _base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+static const short _base64DecodingTable[256] = {
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -1, -1, -2, -1, -1, -2, -2,
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,
+    -1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 62, -2, -2, -2, 63,
+    52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -2, -2, -2, -2, -2, -2,
+    -2,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14,
+    15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -2, -2, -2, -2, -2,
+    -2, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -2, -2, -2, -2, -2,
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2,
+    -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2
+};
+
++ (NSString *)encodeBase64WithString:(NSString *)strData {
+    return [self encodeBase64WithData:[strData dataUsingEncoding:NSUTF8StringEncoding]];
+}
+
++ (NSString *)encodeBase64WithData:(NSData *)objData {
+    const unsigned char * objRawData = [objData bytes];
+    char * objPointer;
+    char * strResult;
+    
+    // Get the Raw Data length and ensure we actually have data
+    int intLength = [objData length];
+    if (intLength == 0) return nil;
+    
+    // Setup the String-based Result placeholder and pointer within that placeholder
+    strResult = (char *)calloc((((intLength + 2) / 3) * 4) + 1, sizeof(char));
+    objPointer = strResult;
+    
+    // Iterate through everything
+    while (intLength > 2) { // keep going until we have less than 24 bits
+        *objPointer++ = _base64EncodingTable[objRawData[0] >> 2];
+        *objPointer++ = _base64EncodingTable[((objRawData[0] & 0x03) << 4) + (objRawData[1] >> 4)];
+        *objPointer++ = _base64EncodingTable[((objRawData[1] & 0x0f) << 2) + (objRawData[2] >> 6)];
+        *objPointer++ = _base64EncodingTable[objRawData[2] & 0x3f];
+        
+        // we just handled 3 octets (24 bits) of data
+        objRawData += 3;
+        intLength -= 3;
+    }
+    
+    // now deal with the tail end of things
+    if (intLength != 0) {
+        *objPointer++ = _base64EncodingTable[objRawData[0] >> 2];
+        if (intLength > 1) {
+            *objPointer++ = _base64EncodingTable[((objRawData[0] & 0x03) << 4) + (objRawData[1] >> 4)];
+            *objPointer++ = _base64EncodingTable[(objRawData[1] & 0x0f) << 2];
+            *objPointer++ = '=';
+        } else {
+            *objPointer++ = _base64EncodingTable[(objRawData[0] & 0x03) << 4];
+            *objPointer++ = '=';
+            *objPointer++ = '=';
+        }
+    }
+    
+    // Terminate the string-based result
+    *objPointer = '\0';
+    
+    // Create result NSString object
+    NSString *base64String = [NSString stringWithCString:strResult encoding:NSASCIIStringEncoding];
+    
+    // Free memory
+    free(strResult);
+    
+    return base64String;
 }
 
 
