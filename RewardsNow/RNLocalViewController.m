@@ -15,6 +15,7 @@
 #import "RNWebService.h"
 #import "RNLocalCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "RNPopoverViewController.h"
 
 #define kSearchTable self.searchDisplayController.searchResultsTableView
 
@@ -22,6 +23,8 @@
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSMutableArray *searchResults;
+@property (nonatomic, strong) WEPopoverController *popOver;
+@property (nonatomic, strong) UISearchDisplayController * mySearchDisplayController;
 
 @end
 
@@ -42,6 +45,29 @@
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.rightBarButtonItem = nil;
     }
+    
+    // play with saerch bar
+    UINavigationBar *topBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+
+    UINavigationItem *item = [[UINavigationItem alloc] init];
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    searchBar.delegate = self;
+    DLog(@"test1: %@", self.searchDisplayController);
+    
+    self.mySearchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    _mySearchDisplayController.delegate = self;
+    _mySearchDisplayController.searchResultsDataSource = self;
+    _mySearchDisplayController.searchResultsDelegate = self;
+
+    DLog(@"test2: %@", self.searchDisplayController);
+    
+    UIBarButtonItem *radius = [[UIBarButtonItem alloc] initWithTitle:@"15 mi" style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
+    item.titleView = searchBar;
+    item.rightBarButtonItem = radius;
+    
+    [topBar pushNavigationItem:item animated:NO];
+    [self.tableView setTableHeaderView:topBar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,6 +77,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    DLog(@"What: %@", self.searchDisplayController);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,6 +109,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    DLog(@"Tableview: %@", tableView);
+    DLog(@"OThe: %@", self.searchDisplayController.searchResultsTableView);
     
     if (tableView == kSearchTable) {
         NSString *CellIdentifier = @"SearchResultCell";
@@ -148,6 +178,60 @@
             [_searchResults addObject:deal];
         }
     }
+}
+
+- (void)radiusBarButtonTapped:(UIBarButtonItem *)sender {
+    
+    if (_popOver == nil) {
+        
+//        CGRect frame = CGRectMake(0, 0, 70, 150);
+//        UIView *backView = [[UIView alloc] initWithFrame:frame];
+//        
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+//        label.backgroundColor = [UIColor greenColor];
+//        label.text = @"derp";
+//        [backView addSubview:label];
+//        
+//        UIViewController *viewCon = [[UIViewController alloc] init];
+//        viewCon.view = backView;
+//        viewCon.contentSizeForViewInPopover = frame.size;
+        
+        
+        RNPopoverViewController *popup = [self.storyboard instantiateViewControllerWithIdentifier:@"RNPopoverViewController"];
+        popup.contentSizeForViewInPopover = CGSizeMake(70, 4 * 44);
+        //delegate
+        
+        self.popOver = [[WEPopoverController alloc] initWithContentViewController:popup];
+        self.popOver.delegate = self;
+    }
+    
+    if ([_popOver isPopoverVisible]) {
+        
+        [_popOver dismissPopoverAnimated:YES];
+        [_popOver setDelegate:nil];
+        self.popOver = nil;
+    } else {
+        
+        CGRect screenBounds = [UIScreen mainScreen].bounds;
+        
+        [_popOver presentPopoverFromRect:CGRectMake(screenBounds.size.width, 0, 50, 38)
+                                  inView:self.view
+                permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
+                                animated:YES];
+    }
+    
+    
+    
+
+    
+}
+
+- (void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController {
+    
+}
+
+- (BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)popoverController {
+    return YES;
 }
 
 

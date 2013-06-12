@@ -38,23 +38,22 @@
     
     RNUser *user = [[RNCart sharedCart] user];
     
-    [[RNWebService sharedClient] postChangePassword:@"969"
-                                           username:user.username
-                                        oldPassword:_passwordOldTextField.text
-                                        newPassword:_passwordNewTextField.text
-                                    confirmPassword:_passwordNewRetypeTextField.text
-                                           callback:^(id result) {
-                                               hud.mode = MBProgressHUDModeCustomView;
-                                               
-                                               if ([result boolValue]) {
-                                                   hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-                                                   hud.detailsLabelText = @"Completed";
-                                               } else {
-                                                   hud.detailsLabelText = @"Error";
-                                               }
-                                               [hud hide:YES afterDelay:1.5];
-                                               [self.navigationController popViewControllerAnimated:YES];
-                                           }];    
+    [[RNWebService sharedClient] postChangePasswordWithUsername:user.username
+                                                    oldPassword:_passwordOldTextField.text
+                                                    newPassword:_passwordNewTextField.text
+                                                confirmPassword:_passwordNewRetypeTextField.text
+                                                       callback:^(id result) {
+                                                           hud.mode = MBProgressHUDModeCustomView;
+                                                           
+                                                           if ([result boolValue]) {
+                                                               hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+                                                               hud.detailsLabelText = @"Completed";
+                                                           } else {
+                                                               hud.detailsLabelText = @"Error";
+                                                           }
+                                                           [hud hide:YES afterDelay:1.5];
+                                                           [self.navigationController popViewControllerAnimated:YES];
+                                                       }];
 }
 
 - (BOOL)isRequiredInfoEntered {

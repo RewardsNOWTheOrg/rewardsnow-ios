@@ -71,21 +71,33 @@
 
 - (IBAction)signInTapped:(id)sender {
     [self backgroundTapped:nil];
-    ///
-    /// Perform authentication...
-    ///
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.detailsLabelText = @"signing in...";
-    [[RNWebService sharedClient] getAccountInfoWithTip:@[@969999999999999, @969999999999998, @969999999999997, @969999999999996][arc4random_uniform(3)] callback:^(RNUser *result) {
-
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (result != nil) {
-            [[RNCart sharedCart] setUser:result];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error authenticating, please try again." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+    
+    [[RNWebService sharedClient] loginWithUsername:_usernameTextField.text password:_passwordTextField.text callback:^(id result) {
+        
+        if ([result boolValue]) {
+            
+            [[RNWebService sharedClient] getAccountInfoWithTipWithCallback:^(id result) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                if (result != nil) {
+                    [[RNCart sharedCart] setUser:result];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                } else {
+                    [self presentError:@"There was an error getting your user profile, please try again."];
+                }
+            }];
+            
+        } else { //FAILED
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self presentError:@"Username or password was incorrect."];
         }
     }];
+}
+
+- (void)presentError:(NSString *)error {
+    [[[UIAlertView alloc] initWithTitle:@"Error" message:error delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
 }
 
 - (IBAction)forgotPasswordTapped:(id)sender {

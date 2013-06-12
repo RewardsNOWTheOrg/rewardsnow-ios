@@ -186,7 +186,7 @@
         self.gettingInformation = YES;
         location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
         DLog(@"Location: %@", location);
-        [[RNWebService sharedClient] getDeals:@"969" location:location query:@"" callback:^(id result) {
+        [[RNWebService sharedClient] getDealsAtLocation:location query:@"" callback:^(id result) {
             if (result != nil) {
                 self.deals = result;
             } else {

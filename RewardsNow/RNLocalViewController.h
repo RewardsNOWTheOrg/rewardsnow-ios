@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "WEPopoverController.h"
+#import "RNSkinableViewController.h"
 
 @protocol RNLocalViewDelegate <NSObject>
 - (void)refreshData;
 
 @end
 
-@interface RNLocalViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
+@interface RNLocalViewController : RNSkinableViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, PopoverControllerDelegate>
 
 @property (nonatomic, weak) id<RNLocalViewDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;

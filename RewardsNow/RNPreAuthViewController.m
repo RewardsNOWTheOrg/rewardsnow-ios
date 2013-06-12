@@ -91,6 +91,7 @@
         if (result != nil) {
             self.branding = result;
             self.hasFinishedDownloadingBranding = YES;
+            [[RNWebService sharedClient] setTipNumber:_codeTextField.text]; //SET FOREVER.
             if (self.hasFinishedDownloadingImage) {
                 [self skin];
             }
@@ -126,16 +127,7 @@
         self.headerImageView.alpha = 0.0;
         newHeader.alpha = 1.0;
         
-        [[UITabBar appearance] setTintColor:_branding.menuBackgroundColor];
-        [[UITabBar appearance] setBackgroundImage:[_branding imageFromColor:_branding.menuBackgroundColor withSize:CGSizeMake(1, 44)]];
-        //            [[UITabBar appearance] setShadowImage:[UIImage imageNamed:@"tabbar-shadow.png"]];
-        [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
-        [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : _branding.tabBarTextColor } forState:UIControlStateNormal];
-        [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : _branding.tabBarTextColor } forState:UIControlStateHighlighted]; //logs a warning.
-        [[UINavigationBar appearance] setBackgroundImage:[_branding imageFromColor:_branding.menuBackgroundColor withSize:CGSizeMake(1, 44)] forBarMetrics:UIBarMetricsDefault];
-        [[UIBarButtonItem appearance] setTintColor:_branding.menuBackgroundColor];
-        
-        
+        [self.branding globalBranding];
     } completion:^(BOOL finished) {
         [self continueAfterProcessing];
     }];

@@ -157,7 +157,7 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     
     self.monthLabel.text = [NSString stringWithFormat:@"%@ Balance", [formatter stringFromDate:self.firstDay]];
     
-    [[RNWebService sharedClient] getAccountStatementForTip:@"969000000001099" From:self.firstDay to:self.lastDay callback:^(id result) {
+    [[RNWebService sharedClient] getAccountStatementFrom:self.firstDay to:self.lastDay callback:^(id result) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.statement = result;
         self.pointsStartLabel.text = [self.statement.pointsBeginning description] == nil ? @"0" : [self.statement.pointsBeginning description];

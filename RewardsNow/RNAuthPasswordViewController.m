@@ -28,17 +28,16 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[RNWebService sharedClient] getSecretQuestion:@"969" callback:^(id result) {
+    [[RNWebService sharedClient] getSecretQuestionWithCallback:^(id result) {
         DLog(@"Result: %@", result);
         if (result != nil) {
             self.questionLabel.text = result;
         } else {
             //error
         }
-
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,21 +126,20 @@
 
 - (IBAction)resetTapped:(id)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[RNWebService sharedClient] postResetPassword:@"969"
-                                            answer:_answerTextField.text
-                                          password:_passwordTextField.text
-                                   passwordConfirm:_confirmPasswordTextField.text
-                                          username:_usernameTextField.text
-                                          fullName:_nameTextField.text
-                                          callback:^(id result) {
-        DLog(@"Result %@", result);
-                                              if ([result boolValue]) {
-                                                  
-                                              } else {
-                                                  
-                                              }
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-    }];
+    [[RNWebService sharedClient] postResetPasswordWithAnswer:_answerTextField.text
+                                                    password:_passwordTextField.text
+                                             passwordConfirm:_confirmPasswordTextField.text
+                                                    username:_usernameTextField.text
+                                                    fullName:_nameTextField.text
+                                                    callback:^(id result) {
+                                                        DLog(@"Result %@", result);
+                                                        if ([result boolValue]) {
+                                                            
+                                                        } else {
+                                                            
+                                                        }
+                                                        
+                                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                    }];
 }
 @end

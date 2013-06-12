@@ -132,10 +132,23 @@
 		AA9FB2411758030F00B83B98 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23D1758030900B83B98 /* input.png */; };
 		AA9FB2421758030F00B83B98 /* input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23E1758030B00B83B98 /* input@2x.png */; };
 		AA9FB2451759050E00B83B98 /* RNSkinableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9FB2441759050E00B83B98 /* RNSkinableViewController.m */; };
+		AAC191681762865300E08FD2 /* RNPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC191671762865300E08FD2 /* RNPopoverViewController.m */; };
 		AACADBC717287DDE00F9D765 /* thank-you-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC517287DDE00F9D765 /* thank-you-button.png */; };
 		AACADBC817287DDE00F9D765 /* thank-you-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */; };
 		AAD2310C17592A3D0061C5B9 /* 37x-XMark.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2310A17592A3D0061C5B9 /* 37x-XMark.png */; };
 		AAD2310D17592A3D0061C5B9 /* 37x-XMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2310B17592A3D0061C5B9 /* 37x-XMark@2x.png */; };
+		AAD3A9AB175CF63000E5392E /* popoverArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9A1175CF63000E5392E /* popoverArrowDown.png */; };
+		AAD3A9AC175CF63000E5392E /* popoverArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9A2175CF63000E5392E /* popoverArrowDown@2x.png */; };
+		AAD3A9AD175CF63000E5392E /* popoverArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9A3175CF63000E5392E /* popoverArrowLeft.png */; };
+		AAD3A9AE175CF63000E5392E /* popoverArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9A4175CF63000E5392E /* popoverArrowLeft@2x.png */; };
+		AAD3A9AF175CF63000E5392E /* popoverArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9A5175CF63000E5392E /* popoverArrowRight.png */; };
+		AAD3A9B0175CF63000E5392E /* popoverArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9A6175CF63000E5392E /* popoverArrowRight@2x.png */; };
+		AAD3A9B1175CF63000E5392E /* popoverArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9A7175CF63000E5392E /* popoverArrowUp.png */; };
+		AAD3A9B2175CF63000E5392E /* popoverArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9A8175CF63000E5392E /* popoverArrowUp@2x.png */; };
+		AAD3A9B3175CF63000E5392E /* popoverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9A9175CF63000E5392E /* popoverBg.png */; };
+		AAD3A9B4175CF63000E5392E /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9AA175CF63000E5392E /* popoverBg@2x.png */; };
+		AAD3A9B9175CF64900E5392E /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD3A9B6175CF64900E5392E /* WEPopoverContainerView.m */; };
+		AAD3A9BA175CF64900E5392E /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD3A9B8175CF64900E5392E /* WEPopoverController.m */; };
 		AAD9734E1725C48E00171240 /* account-back.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734A1725C48E00171240 /* account-back.png */; };
 		AAD9734F1725C48E00171240 /* account-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734B1725C48E00171240 /* account-back@2x.png */; };
 		AAD973501725C48E00171240 /* account-forward.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734C1725C48E00171240 /* account-forward.png */; };
@@ -340,10 +353,27 @@
 		AA9FB23E1758030B00B83B98 /* input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input@2x.png"; sourceTree = "<group>"; };
 		AA9FB2431759050E00B83B98 /* RNSkinableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSkinableViewController.h; sourceTree = "<group>"; };
 		AA9FB2441759050E00B83B98 /* RNSkinableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSkinableViewController.m; sourceTree = "<group>"; };
+		AAC191661762865300E08FD2 /* RNPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPopoverViewController.h; sourceTree = "<group>"; };
+		AAC191671762865300E08FD2 /* RNPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPopoverViewController.m; sourceTree = "<group>"; };
 		AACADBC517287DDE00F9D765 /* thank-you-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button.png"; sourceTree = "<group>"; };
 		AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button@2x.png"; sourceTree = "<group>"; };
 		AAD2310A17592A3D0061C5B9 /* 37x-XMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-XMark.png"; sourceTree = "<group>"; };
 		AAD2310B17592A3D0061C5B9 /* 37x-XMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-XMark@2x.png"; sourceTree = "<group>"; };
+		AAD3A9A1175CF63000E5392E /* popoverArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowDown.png; sourceTree = "<group>"; };
+		AAD3A9A2175CF63000E5392E /* popoverArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowDown@2x.png"; sourceTree = "<group>"; };
+		AAD3A9A3175CF63000E5392E /* popoverArrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowLeft.png; sourceTree = "<group>"; };
+		AAD3A9A4175CF63000E5392E /* popoverArrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowLeft@2x.png"; sourceTree = "<group>"; };
+		AAD3A9A5175CF63000E5392E /* popoverArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowRight.png; sourceTree = "<group>"; };
+		AAD3A9A6175CF63000E5392E /* popoverArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowRight@2x.png"; sourceTree = "<group>"; };
+		AAD3A9A7175CF63000E5392E /* popoverArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverArrowUp.png; sourceTree = "<group>"; };
+		AAD3A9A8175CF63000E5392E /* popoverArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverArrowUp@2x.png"; sourceTree = "<group>"; };
+		AAD3A9A9175CF63000E5392E /* popoverBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverBg.png; sourceTree = "<group>"; };
+		AAD3A9AA175CF63000E5392E /* popoverBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverBg@2x.png"; sourceTree = "<group>"; };
+		AAD3A9B5175CF64900E5392E /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
+		AAD3A9B6175CF64900E5392E /* WEPopoverContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContainerView.m; sourceTree = "<group>"; };
+		AAD3A9B7175CF64900E5392E /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
+		AAD3A9B8175CF64900E5392E /* WEPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverController.m; sourceTree = "<group>"; };
+		AAD3A9BB175CF6D300E5392E /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
 		AAD9734A1725C48E00171240 /* account-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-back.png"; sourceTree = "<group>"; };
 		AAD9734B1725C48E00171240 /* account-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-back@2x.png"; sourceTree = "<group>"; };
 		AAD9734C1725C48E00171240 /* account-forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-forward.png"; sourceTree = "<group>"; };
@@ -586,12 +616,12 @@
 				AA5510EA170F1155001CC718 /* Redeem */,
 				AA53FE38170F5D8400041748 /* Local Deals */,
 				AA53FE5A170F5EFE00041748 /* Account */,
-				AA9B9A7D1742D1B800EA5E33 /* Vendor */,
 				AA53FEC01710EE7C00041748 /* Cart */,
 				AA53FE5B170F5F1500041748 /* About */,
 				AA53FE84170F869C00041748 /* Networking */,
 				AA355A5B1720ACDC0014E01B /* Cart Model */,
 				AA53FEB41710CFDE00041748 /* Model */,
+				AA9B9A7D1742D1B800EA5E33 /* Vendor */,
 				AA5510A8170F10A3001CC718 /* Supporting Files */,
 			);
 			path = RewardsNow;
@@ -758,9 +788,41 @@
 		AA9B9A7D1742D1B800EA5E33 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				AAD3A9A0175CF60B00E5392E /* WEPopover */,
 				AAE2BBC0174AB560001CAFA1 /* CMUtilities */,
 			);
 			name = Vendor;
+			sourceTree = "<group>";
+		};
+		AAC191651762850800E08FD2 /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				AAC191661762865300E08FD2 /* RNPopoverViewController.h */,
+				AAC191671762865300E08FD2 /* RNPopoverViewController.m */,
+			);
+			name = Popover;
+			sourceTree = "<group>";
+		};
+		AAD3A9A0175CF60B00E5392E /* WEPopover */ = {
+			isa = PBXGroup;
+			children = (
+				AAD3A9BB175CF6D300E5392E /* WEPopoverParentView.h */,
+				AAD3A9B5175CF64900E5392E /* WEPopoverContainerView.h */,
+				AAD3A9B6175CF64900E5392E /* WEPopoverContainerView.m */,
+				AAD3A9B7175CF64900E5392E /* WEPopoverController.h */,
+				AAD3A9B8175CF64900E5392E /* WEPopoverController.m */,
+				AAD3A9A1175CF63000E5392E /* popoverArrowDown.png */,
+				AAD3A9A2175CF63000E5392E /* popoverArrowDown@2x.png */,
+				AAD3A9A3175CF63000E5392E /* popoverArrowLeft.png */,
+				AAD3A9A4175CF63000E5392E /* popoverArrowLeft@2x.png */,
+				AAD3A9A5175CF63000E5392E /* popoverArrowRight.png */,
+				AAD3A9A6175CF63000E5392E /* popoverArrowRight@2x.png */,
+				AAD3A9A7175CF63000E5392E /* popoverArrowUp.png */,
+				AAD3A9A8175CF63000E5392E /* popoverArrowUp@2x.png */,
+				AAD3A9A9175CF63000E5392E /* popoverBg.png */,
+				AAD3A9AA175CF63000E5392E /* popoverBg@2x.png */,
+			);
+			name = WEPopover;
 			sourceTree = "<group>";
 		};
 		AAD9735C1726DBC900171240 /* Views */ = {
@@ -775,6 +837,7 @@
 		AAE2BBB5174A7BDD001CAFA1 /* Top Level */ = {
 			isa = PBXGroup;
 			children = (
+				AAC191651762850800E08FD2 /* Popover */,
 				AAE2BBB6174A9C0E001CAFA1 /* Map */,
 				AA953D89174415680077E2A1 /* RNLocalContainerViewController.h */,
 				AA953D8A174415680077E2A1 /* RNLocalContainerViewController.m */,
@@ -963,6 +1026,16 @@
 				AA9FB2421758030F00B83B98 /* input@2x.png in Resources */,
 				AAD2310C17592A3D0061C5B9 /* 37x-XMark.png in Resources */,
 				AAD2310D17592A3D0061C5B9 /* 37x-XMark@2x.png in Resources */,
+				AAD3A9AB175CF63000E5392E /* popoverArrowDown.png in Resources */,
+				AAD3A9AC175CF63000E5392E /* popoverArrowDown@2x.png in Resources */,
+				AAD3A9AD175CF63000E5392E /* popoverArrowLeft.png in Resources */,
+				AAD3A9AE175CF63000E5392E /* popoverArrowLeft@2x.png in Resources */,
+				AAD3A9AF175CF63000E5392E /* popoverArrowRight.png in Resources */,
+				AAD3A9B0175CF63000E5392E /* popoverArrowRight@2x.png in Resources */,
+				AAD3A9B1175CF63000E5392E /* popoverArrowUp.png in Resources */,
+				AAD3A9B2175CF63000E5392E /* popoverArrowUp@2x.png in Resources */,
+				AAD3A9B3175CF63000E5392E /* popoverBg.png in Resources */,
+				AAD3A9B4175CF63000E5392E /* popoverBg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,6 +1145,9 @@
 				AA9FB20A1754FCDE00B83B98 /* RNCartObject.m in Sources */,
 				AA9FB2111755509200B83B98 /* RNCategory.m in Sources */,
 				AA9FB2451759050E00B83B98 /* RNSkinableViewController.m in Sources */,
+				AAD3A9B9175CF64900E5392E /* WEPopoverContainerView.m in Sources */,
+				AAD3A9BA175CF64900E5392E /* WEPopoverController.m in Sources */,
+				AAC191681762865300E08FD2 /* RNPopoverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

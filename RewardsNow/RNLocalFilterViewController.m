@@ -24,8 +24,7 @@
     [super viewDidLoad];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [[RNWebService sharedClient] getLocalCategories:@"969" callback:^(id result) {
+    [[RNWebService sharedClient] getLocalCategoriesWithCallback:^(id result) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.categories = result;
         DLog(@"What: %@", _categories);
@@ -62,21 +61,19 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[RNWebService sharedClient] getDeals:@"969"
-                                 location:[[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159]
-                                    query:nil
-                                    limit:20
-                                   offset:0
-                                   radius:15.0
-                                 category:[_categories[indexPath.row] merchantCategory]
-                                 callback:^(id result) {
-                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                     RNLocalViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
-                                     vc.deals = result;
-                                     vc.isPushed = YES;
-                                     [self.navigationController pushViewController:vc animated:YES];
-                                 }];
-    
+    [[RNWebService sharedClient] getDealsAtLocation:[[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159]
+                                              query:nil
+                                              limit:20
+                                             offset:0
+                                             radius:15
+                                           category:[_categories[indexPath.row] merchantCategory]
+                                           callback:^(id result) {
+                                               [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                               RNLocalViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
+                                               vc.deals = result;
+                                               vc.isPushed = YES;
+                                               [self.navigationController pushViewController:vc animated:YES];
+                                           }];
 }
 
 

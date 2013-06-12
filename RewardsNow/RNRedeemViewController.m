@@ -73,7 +73,8 @@
 }
 
 - (void)refresh:(UIRefreshControl *)sender {
-    [[RNWebService sharedClient] getRewards:@"969" WithCallback:^(id result) {
+    
+    [[RNWebService sharedClient] getRewardsWithCallback:^(id result) {
         if (result) {
             self.rewards = result;
             [self.tableView reloadData];

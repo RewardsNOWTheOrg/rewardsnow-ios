@@ -29,6 +29,14 @@
     self.navigationController.navigationBar.tintColor = _branding.menuBackgroundColor;
     [self.tabBarController.tabBarItem setTitleTextAttributes:@{UITextAttributeTextColor: _branding.tabBarTextColor} forState:UIControlStateNormal];
     [self.tabBarController.tabBarItem setTitleTextAttributes:@{UITextAttributeTextColor: _branding.tabBarTextColor} forState:UIControlStateNormal];
+    
+    if ([self respondsToSelector:@selector(innerView)]) {
+        [[self performSelector:@selector(innerView)] setBackgroundColor:_branding.backgroundColor];
+    }
+    
+    if ([self respondsToSelector:@selector(topPointsLabel)]) {
+//        [[self performSelector:@selector(topPointsLabel)] setTextColor:_branding.pointsColor];
+    }
 }
 
 @end

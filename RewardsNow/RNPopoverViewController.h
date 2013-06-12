@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNPopoverViewController : UIViewController
+@interface RNPopoverViewController : UITableViewController
 
 @end

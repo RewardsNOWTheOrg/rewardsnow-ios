@@ -47,7 +47,6 @@
     }
     
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
-    self.topPointsLabel.textColor = self.branding.pointsColor;
     self.nameLabel.text = self.user.fullName;
     [self.emailLabel setTitle:self.user.email forState:UIControlStateNormal];
     

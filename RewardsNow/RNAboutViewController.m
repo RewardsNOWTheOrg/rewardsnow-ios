@@ -33,10 +33,9 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
     
-    [[RNWebService sharedClient] getProgramInfo:@"969" callback:^(id result) {
+    [[RNWebService sharedClient] getProgramInfoWithCallback:^(id result) {
         self.info = result;
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning {
