@@ -33,6 +33,8 @@
 
 @property (nonatomic, strong) UIImage *headerImage;
 
+- (void)globalBranding;
+
 + (instancetype)sharedBrandingFromDictionary:(NSDictionary *)dictionary;
 + (instancetype)sharedBranding;
 

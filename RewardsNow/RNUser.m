@@ -25,6 +25,7 @@
     [fields setValue:@"Info.ZipCode" forKey:@"zipCode"];
     [fields setValue:@"Info.AvailableBalance" forKey:@"balance"];
     [fields setValue:@"GiftCards" forKey:@"giftCards"];
+    [fields setValue:@"Info.Tipnumber" forKey:@"tipNumber"];
     return fields;
 }
 
