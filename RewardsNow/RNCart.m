@@ -51,12 +51,11 @@
 
 - (void)addToCart:(RNRedeemObject *)card {
     
+    DLog(@"Added: %@", card);
+    
     NSInteger index = [_items indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         RNCartObject *object = obj;
-        if (object.redeemObject.catalogID == card.catalogID) {
-            return YES;
-        }
-        return NO;
+        return object.redeemObject.catalogID == card.catalogID;
     }];
     
     if (index != NSNotFound) {
@@ -97,17 +96,17 @@
 }
 
 - (NSArray *)arrayForPlaceOrderItems {
-    NSMutableArray *dictionaries = [NSMutableDictionary dictionary];
+    NSMutableArray *array = [NSMutableArray array];
     
     for (RNCartObject *cartObject in _items) {
         @try {
-            [dictionaries addObject:[cartObject dictionaryForPlaceOrder]];
+            [array addObject:[cartObject dictionaryForPlaceOrder]];
         }
         @catch (NSException *exception) {
             NSLog(@"There was an error creating a dictionary in place order: %@", exception);
         }
     }
-    return dictionaries;
+    return array;
 }
 
 

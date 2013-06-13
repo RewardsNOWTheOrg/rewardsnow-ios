@@ -18,7 +18,7 @@
     NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
     [fields setValue:@"CashValue" forKey:@"cashValue"];
     [fields setValue:@"CatagoryDesc" forKey:@"catagoryDescription"];
-    [fields setValue:@"CatalogCodeKey" forKey:@"catalogCode"];
+    [fields setValue:@"CatalogCode" forKey:@"catalogCode"];
     [fields setValue:@"CatalogId" forKey:@"catalogID"];
     [fields setValue:@"CategoryId" forKey:@"categoryID"];
     [fields setValue:@"Description" forKey:@"objectDescription"];
