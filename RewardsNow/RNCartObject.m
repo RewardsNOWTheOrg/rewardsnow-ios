@@ -31,4 +31,8 @@
     return [[RNCart sharedCart] formattedStringFromNumber:@([self getTotalPrice])];
 }
 
+- (NSDictionary *)dictionaryForPlaceOrder {
+    return @{@"Item": _redeemObject.catalogCode, @"Quantity" : [NSString stringWithFormat:@"%d", _count]};
+}
+
 @end

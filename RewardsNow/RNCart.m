@@ -96,5 +96,19 @@
     return [formatter stringFromNumber:num];
 }
 
+- (NSArray *)arrayForPlaceOrderItems {
+    NSMutableArray *dictionaries = [NSMutableDictionary dictionary];
+    
+    for (RNCartObject *cartObject in _items) {
+        @try {
+            [dictionaries addObject:[cartObject dictionaryForPlaceOrder]];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"There was an error creating a dictionary in place order: %@", exception);
+        }
+    }
+    return dictionaries;
+}
+
 
 @end

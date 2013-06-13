@@ -19,5 +19,6 @@
 - (void)removeObject;
 - (double)getTotalPrice;
 - (NSString *)stringTotalPrice;
+- (NSDictionary *)dictionaryForPlaceOrder;
 
 @end

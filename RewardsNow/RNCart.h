@@ -27,4 +27,7 @@
 - (NSString *)formattedStringFromNumber:(NSNumber *)num;
 - (void)emptyCart;
 
+// used to get the dictionaries for the cart for checkout
+- (NSArray *)arrayForPlaceOrderItems;
+
 @end

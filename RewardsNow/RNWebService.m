@@ -511,6 +511,65 @@ NSString *const kOffersKey = @"Offers";
                                                                                      callback(@NO);
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
+}
+
+- (void)postPlaceOrderForUser:(RNUser *)user items:(NSArray *)redemptions  callback:(RNResultCallback)callback {
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    /*
+     {
+     "tipnumber":"969999999999999",
+     "Redemptions":[ { "Item":"EGC-LLBEAN", "Quantity":"1" } ],
+     "CustomerEmail":"ssmith@rewardsnow.com",
+     "saddress1":"380 Central Ave",
+     "saddress2":"Suite 350",
+     "scity":"Dover",
+     "sstate":"NH",
+     "szipcode":"03820",
+     "scountry":"USA",
+     "hphone":"603-516-3440",
+     "wphone":""
+     }
+     
+     */
+    
+    NSMutableDictionary *postParameters = [NSMutableDictionary dictionary];
+    [postParameters setValue:_tipNumber forKey:@"tipNumber"];
+    [postParameters setValue:user.email forKey:@"CustomerEmail"];
+    [postParameters setValue:user.address forKey:@"saddress1"];
+    [postParameters setValue:user.apt forKey:@"saddress2"];
+    [postParameters setValue:user.city forKey:@"scity"];
+    [postParameters setValue:user.state forKey:@"sstate"];
+    [postParameters setValue:user.zipCode forKey:@"szipcode"];
+    [postParameters setValue:redemptions forKey:@"Redemptions"];
+//    [postParameters setValue:user.country forKey:@"scountry"];
+//    [postParameters setValue:user. forKey:@"hphone"];
+    
+    //set redemptions
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:postParameters options:0 error:NULL];
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/PlaceOrder" parameters:nil];
+    [request setHTTPBody:data];
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     
+                                                                                     if ([JSON[@"PlaceOrderResult"] boolValue]) {
+                                                                                         callback(@YES);
+                                                                                     } else {
+                                                                                         callback(@NO);
+                                                                                     }
+                                                                                     
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     callback(@NO);
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
     
 }
 
