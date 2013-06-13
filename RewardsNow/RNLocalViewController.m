@@ -230,7 +230,7 @@
 
 - (void)popoverDidFinishWithIndexPathSelected:(NSIndexPath *)indexPath {
     
-    NSString *title = [[RNConstants radii][indexPath.row] description];
+    NSString *title = [NSString stringWithFormat:@"%@ mi", [RNConstants radii][indexPath.row]];
     self.lowerNavigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
     [self hidePopover];
     
