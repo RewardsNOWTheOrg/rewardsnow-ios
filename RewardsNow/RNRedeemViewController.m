@@ -124,6 +124,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DLog(@"Clicked: %@", _rewards[indexPath.row]);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
