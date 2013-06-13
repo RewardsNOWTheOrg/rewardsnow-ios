@@ -13,6 +13,7 @@
 #import "RNCartThanksViewController.h"
 #import "RNCartObject.h"
 #import "RNUser.h"
+#import "RNWebService.h"
 
 @interface RNCartConfirmationViewController ()
 
@@ -114,19 +115,29 @@
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.detailsLabelText = @"Ordering...";
             
-            double delayInSeconds = 1.0;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                
-                RNCart *cart = [RNCart sharedCart];
-                [_user subtractPoints:[cart total]]; //more application?
-                [cart emptyCart];
-                
-                RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
-                [self.navigationController pushViewController:thanks animated:YES];
-            });
+            // may need to add them to the cart?
             
+            // should we add them to the cart as they do? Or just... all at once during the final checkout. How to remove them?
+            
+            [[RNWebService sharedClient] postPlaceOrderForUser:_user items:[[RNCart sharedCart] arrayForPlaceOrderItems] callback:^(id result) {
+                
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                if ([result boolValue]) { //succcess
+                    RNCart *cart = [RNCart sharedCart];
+                    [_user subtractPoints:[cart total]]; //more application?
+                    [cart emptyCart];
+                    
+                    RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
+                    [self.navigationController pushViewController:thanks animated:YES];
+                    
+                    //if we are waiting for the checkout process to be done...
+                    // we should show the thank you screen...
+                    // and then drop it down automaticalyl wit hthe new gift cards?
+                } else { //fail
+                    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, an error occurred during checkout." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+                }
+                
+            }];
             
             break;
         }
