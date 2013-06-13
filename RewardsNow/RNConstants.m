@@ -13,4 +13,8 @@ NSString *const kImageDidFinishDownloadingNotification = @"ImageDidFinishDownloa
 
 @implementation RNConstants
 
++ (NSArray *)radii {
+    return @[@15, @30, @45, @60];
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "RNPopoverViewController.h"
+#import "RNConstants.h"
 
 @interface RNPopoverViewController ()
 
@@ -36,10 +37,18 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = @[@">15", @"30", @"45", @"<60"][indexPath.row];
+    cell.textLabel.text = [[RNConstants radii][indexPath.row] description];
     
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(popoverDidFinishWithIndexPathSelected:)]) {
+        [self.delegate popoverDidFinishWithIndexPathSelected:indexPath];
+    }
 }
 
 @end

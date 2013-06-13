@@ -10,6 +10,7 @@
 #import "RNLocalMapViewController.h"
 #import "RNLocalFilterViewController.h"
 #import "RNWebService.h"
+#import "RNConstants.h"
 
 @interface RNLocalContainerViewController ()
 
@@ -20,6 +21,7 @@
 @property (nonatomic, copy) NSArray *deals;
 @property (nonatomic, strong) CLLocationManager *manager;
 @property (atomic) BOOL gettingInformation;
+@property (nonatomic, strong) NSNumber *radius;
 
 @end
 
@@ -28,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.gettingInformation = NO;
+    self.radius = [self defaultRadius];
     
     if (_displayedViewController == nil) {
         self.listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
@@ -82,6 +85,10 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (NSNumber *)defaultRadius {
+    return [RNConstants radii][0];
 }
 
 - (void)transitionFromCurrentViewControllerToViewController:(UIViewController *)vc options:(UIViewAnimationOptions)options {
@@ -172,7 +179,13 @@
 
 #pragma mark - RNLocalViewDelegate
 
-- (void)refreshData {
+- (void)refreshDataWithRadius:(NSNumber *)radius {
+    
+    if (radius != nil) {
+        self.radius = radius;
+    }
+    
+    
     self.gettingInformation = NO;
     [_manager startUpdatingLocation];
 }
@@ -186,7 +199,8 @@
         self.gettingInformation = YES;
         location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
         DLog(@"Location: %@", location);
-        [[RNWebService sharedClient] getDealsAtLocation:location query:@"" callback:^(id result) {
+        DLog(@"Radius: %@", _radius);
+        [[RNWebService sharedClient] getDealsAtLocation:location query:@"" limit:50 offset:0 radius:_radius.doubleValue category:nil callback:^(id result) {
             if (result != nil) {
                 self.deals = result;
             } else {

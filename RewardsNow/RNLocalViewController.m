@@ -15,7 +15,7 @@
 #import "RNWebService.h"
 #import "RNLocalCell.h"
 #import "UIImageView+AFNetworking.h"
-#import "RNPopoverViewController.h"
+#import "RNConstants.h"
 
 #define kSearchTable self.searchDisplayController.searchResultsTableView
 
@@ -25,6 +25,8 @@
 @property (nonatomic, strong) NSMutableArray *searchResults;
 @property (nonatomic, strong) WEPopoverController *popOver;
 @property (nonatomic, strong) UISearchDisplayController * mySearchDisplayController;
+@property (nonatomic, strong) UINavigationItem *lowerNavigationBar;
+@property (nonatomic, strong) UINavigationBar *topBar;
 
 @end
 
@@ -47,9 +49,9 @@
     }
     
     // play with saerch bar
-    UINavigationBar *topBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.topBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
 
-    UINavigationItem *item = [[UINavigationItem alloc] init];
+    self.lowerNavigationBar = [[UINavigationItem alloc] init];
     
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     searchBar.delegate = self;
@@ -63,11 +65,11 @@
     DLog(@"test2: %@", self.searchDisplayController);
     
     UIBarButtonItem *radius = [[UIBarButtonItem alloc] initWithTitle:@"15 mi" style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
-    item.titleView = searchBar;
-    item.rightBarButtonItem = radius;
+    _lowerNavigationBar.titleView = searchBar;
+    _lowerNavigationBar.rightBarButtonItem = radius;
     
-    [topBar pushNavigationItem:item animated:NO];
-    [self.tableView setTableHeaderView:topBar];
+    [_topBar pushNavigationItem:_lowerNavigationBar animated:NO];
+    [self.tableView setTableHeaderView:_topBar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +90,7 @@
 #pragma mark - UITableView Methods
 
 - (void)refresh:(UIRefreshControl *)sender {
-    [self.delegate refreshData];
+    [self.delegate refreshDataWithRadius:nil];
 }
 
 - (void)setDeals:(NSArray *)deals {
@@ -156,6 +158,10 @@
 
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self hidePopover];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"pushRNLocalDetailViewController"]) {
@@ -182,48 +188,54 @@
 
 - (void)radiusBarButtonTapped:(UIBarButtonItem *)sender {
     
+    if (self.searchDisplayController.isActive) {
+        return;
+    }
+    
     if (_popOver == nil) {
-        
-//        CGRect frame = CGRectMake(0, 0, 70, 150);
-//        UIView *backView = [[UIView alloc] initWithFrame:frame];
-//        
-//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-//        label.backgroundColor = [UIColor greenColor];
-//        label.text = @"derp";
-//        [backView addSubview:label];
-//        
-//        UIViewController *viewCon = [[UIViewController alloc] init];
-//        viewCon.view = backView;
-//        viewCon.contentSizeForViewInPopover = frame.size;
-        
         
         RNPopoverViewController *popup = [self.storyboard instantiateViewControllerWithIdentifier:@"RNPopoverViewController"];
         popup.contentSizeForViewInPopover = CGSizeMake(70, 4 * 44);
-        //delegate
+        popup.delegate = self;
         
         self.popOver = [[WEPopoverController alloc] initWithContentViewController:popup];
         self.popOver.delegate = self;
     }
     
     if ([_popOver isPopoverVisible]) {
-        
-        [_popOver dismissPopoverAnimated:YES];
-        [_popOver setDelegate:nil];
-        self.popOver = nil;
+        [self hidePopover];
     } else {
         
         CGRect screenBounds = [UIScreen mainScreen].bounds;
         
-        [_popOver presentPopoverFromRect:CGRectMake(screenBounds.size.width, 0, 50, 38)
+        CGPoint center = [_topBar convertPoint:_topBar.center toView:nil];
+
+        center.x = screenBounds.size.width;
+        
+        [_popOver presentPopoverFromRect:CGRectMake(center.x, center.y - 90, 50, 38)
                                   inView:self.view
                 permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
                                 animated:YES];
     }
-    
-    
-    
+}
 
+- (void)hidePopover {
+    if ([_popOver isPopoverVisible]) {
+        
+        [_popOver dismissPopoverAnimated:YES];
+        [_popOver setDelegate:nil];
+        self.popOver = nil;
+    }
+}
+
+- (void)popoverDidFinishWithIndexPathSelected:(NSIndexPath *)indexPath {
     
+    NSString *title = [[RNConstants radii][indexPath.row] description];
+    self.lowerNavigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
+    [self hidePopover];
+    
+    [self.delegate refreshDataWithRadius:[RNConstants radii][indexPath.row]];
+    [_refreshControl beginRefreshing];
 }
 
 - (void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController {

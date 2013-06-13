@@ -10,13 +10,15 @@
 #import <CoreLocation/CoreLocation.h>
 #import "WEPopoverController.h"
 #import "RNSkinableViewController.h"
+#import "RNPopoverViewController.h"
 
 @protocol RNLocalViewDelegate <NSObject>
-- (void)refreshData;
+
+- (void)refreshDataWithRadius:(NSNumber *)radius;
 
 @end
 
-@interface RNLocalViewController : RNSkinableViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, PopoverControllerDelegate>
+@interface RNLocalViewController : RNSkinableViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, PopoverControllerDelegate, RNPopoverDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, weak) id<RNLocalViewDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;

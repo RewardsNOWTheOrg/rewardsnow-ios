@@ -15,6 +15,8 @@
 FOUNDATION_EXPORT NSString *const BankCodeKey;
 FOUNDATION_EXPORT NSString *const kImageDidFinishDownloadingNotification;
 
-@interface RNConstants : NSCache
+@interface RNConstants : NSObject
+
++ (NSArray *)radii;
 
 @end
