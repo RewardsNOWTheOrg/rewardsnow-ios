@@ -36,8 +36,6 @@
     [super viewDidLoad];
     
     self.logoImageView.image = self.branding.headerImage;
-    self.signInButton.backgroundColor = self.branding.submitButtonColor;
-    self.signInButton.layer.cornerRadius = 2.0;
     
     _fields = @[self.usernameTextField, self.passwordTextField, self.signInButton, self.forgotPasswordButton];
     [self.navigationController setNavigationBarHidden:YES animated:NO];

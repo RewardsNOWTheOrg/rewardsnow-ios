@@ -7,6 +7,7 @@
 //
 
 #import "RNButton.h"
+#import "RNBranding.h"
 
 @implementation RNButton
 
@@ -23,8 +24,8 @@
     UIColor* gradientColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
     UIColor* color4 = [UIColor colorWithRed: 0.667 green: 0.667 blue: 0.667 alpha: 1];
     UIColor* color5 = [UIColor colorWithRed: 0.027 green: 0.027 blue: 0.027 alpha: 0.2];
-    UIColor* color6 = [UIColor colorWithRed: 0.075 green: 0.584 blue: 0.812 alpha: 1];
-    UIColor* color7 = [UIColor colorWithRed: 0.055 green: 0.408 blue: 0.565 alpha: 1];
+    UIColor* color6 = [[RNBranding sharedBranding] menuBackgroundColor]; //[UIColor colorWithRed: 0.075 green: 0.584 blue: 0.812 alpha: 1]; //front, bigger
+    UIColor* color7 = [[RNBranding sharedBranding] pointsColor]; //[UIColor colorWithRed: 0.055 green: 0.408 blue: 0.565 alpha: 1]; //back, outline
     
     //// Gradient Declarations
     NSArray* gradientColors = [NSArray arrayWithObjects:
