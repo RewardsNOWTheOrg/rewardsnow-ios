@@ -62,12 +62,12 @@
 }
 
 //remove
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.usernameTextField.text = @"969test";
-    self.passwordTextField.text = @"sample";
-    [self signInTapped:nil];
-}
+//- (void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//    self.usernameTextField.text = @"969test";
+//    self.passwordTextField.text = @"sample";
+//    [self signInTapped:nil];
+//}
 
 
 - (IBAction)backgroundTapped:(id)sender {
