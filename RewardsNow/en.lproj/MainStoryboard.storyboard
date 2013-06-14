@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -381,7 +381,6 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Name] Rewards: You have 100,000 points." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="z3U-es-Kn6" customClass="CMLabel">
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                        <color key="textColor" red="1" green="0.80000000000000004" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -692,7 +691,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9fR-Hc-S9N">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9fR-Hc-S9N">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" type="user" id="VSi-4r-p3W"/>
@@ -719,7 +718,6 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Name] Rewards: You have 100,000 points." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="rFq-6B-VI6" customClass="CMLabel">
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="1" green="0.80000000000000004" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -735,18 +733,15 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWn-hT-WhK">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleAspectFit" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yEA-XW-ckC">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="280" type="user" id="R0x-0w-6Dl"/>
-                                            <constraint firstAttribute="height" constant="75" type="user" id="u8d-hP-TCG"/>
-                                        </constraints>
-                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleAspectFit" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yEA-XW-ckC"/>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="yEA-XW-ckC" firstAttribute="leading" secondItem="zWn-hT-WhK" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="7Zl-Ez-8KL"/>
                                     <constraint firstAttribute="height" constant="115" type="user" id="Afo-kX-XOX"/>
-                                    <constraint firstItem="yEA-XW-ckC" firstAttribute="top" secondItem="zWn-hT-WhK" secondAttribute="top" constant="20" type="user" id="kxn-P7-EX5"/>
+                                    <constraint firstItem="yEA-XW-ckC" firstAttribute="bottom" secondItem="zWn-hT-WhK" secondAttribute="bottom" type="default" id="Tut-97-raB"/>
+                                    <constraint firstItem="yEA-XW-ckC" firstAttribute="leading" secondItem="zWn-hT-WhK" secondAttribute="leading" type="default" id="kh5-DM-3nI"/>
+                                    <constraint firstItem="yEA-XW-ckC" firstAttribute="top" secondItem="zWn-hT-WhK" secondAttribute="top" type="default" id="pig-tL-Wj6"/>
+                                    <constraint firstItem="yEA-XW-ckC" firstAttribute="trailing" secondItem="zWn-hT-WhK" secondAttribute="trailing" type="default" id="sxE-79-w0k"/>
                                     <constraint firstAttribute="width" constant="320" type="user" id="tJE-Pp-mdj"/>
                                 </constraints>
                             </view>
@@ -768,6 +763,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="headerImageView" destination="yEA-XW-ckC" id="1Qh-g9-o0i"/>
+                        <outlet property="innerView" destination="zWn-hT-WhK" id="kMM-XY-bU6"/>
                         <outlet property="tableView" destination="9fR-Hc-S9N" id="tdf-Pp-nZk"/>
                         <outlet property="topPointsLabel" destination="rFq-6B-VI6" id="aoX-UW-Hrf"/>
                     </connections>
@@ -791,7 +787,6 @@
                                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZj-pQ-yX3">
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="320" type="user" id="DFK-Lv-eIA"/>
                                                     <constraint firstAttribute="height" constant="410" type="user" id="u3Z-1e-qvM"/>
                                                 </constraints>
                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
@@ -801,18 +796,19 @@
                                             </webView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="SPs-BP-us9">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="75" type="user" id="hPA-Ok-Z48"/>
-                                                    <constraint firstAttribute="width" constant="280" type="user" id="mB3-H5-nhj"/>
+                                                    <constraint firstAttribute="width" constant="320" id="MDx-D9-eTX"/>
+                                                    <constraint firstAttribute="height" constant="135" id="fFo-4J-z0P"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="SPs-BP-us9" firstAttribute="trailing" secondItem="AU8-1I-l2B" secondAttribute="trailing" type="default" id="1JK-qI-G55"/>
                                             <constraint firstAttribute="height" constant="504" type="user" id="9k1-LQ-TEt"/>
                                             <constraint firstItem="eZj-pQ-yX3" firstAttribute="top" secondItem="AU8-1I-l2B" secondAttribute="top" constant="135" type="user" id="HLM-8u-tad"/>
-                                            <constraint firstItem="SPs-BP-us9" firstAttribute="leading" secondItem="AU8-1I-l2B" secondAttribute="leading" constant="20" type="user" id="Lop-Xg-IrK"/>
-                                            <constraint firstAttribute="trailing" secondItem="SPs-BP-us9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Rqp-hz-MIS"/>
-                                            <constraint firstItem="SPs-BP-us9" firstAttribute="top" secondItem="AU8-1I-l2B" secondAttribute="top" constant="40" type="user" id="WXP-qs-i12"/>
+                                            <constraint firstItem="eZj-pQ-yX3" firstAttribute="trailing" secondItem="AU8-1I-l2B" secondAttribute="trailing" type="default" id="MJc-Q9-4a0"/>
+                                            <constraint firstItem="SPs-BP-us9" firstAttribute="top" secondItem="AU8-1I-l2B" secondAttribute="top" type="default" id="dgs-W1-7cI"/>
+                                            <constraint firstItem="SPs-BP-us9" firstAttribute="leading" secondItem="AU8-1I-l2B" secondAttribute="leading" type="default" id="f2p-Up-Zq8"/>
                                             <constraint firstItem="eZj-pQ-yX3" firstAttribute="leading" secondItem="AU8-1I-l2B" secondAttribute="leading" type="user" id="xyC-k6-FK2"/>
                                         </constraints>
                                     </view>
@@ -836,6 +832,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="headerImageView" destination="SPs-BP-us9" id="T1J-s7-DTA"/>
+                        <outlet property="innerView" destination="AU8-1I-l2B" id="OO7-p7-XBj"/>
                         <outlet property="innerViewHeight" destination="9k1-LQ-TEt" id="Tfm-1R-Us7"/>
                         <outlet property="scrollView" destination="Fkk-rT-da1" id="UZw-sz-tDV"/>
                         <outlet property="webView" destination="eZj-pQ-yX3" id="E5k-tz-F2n"/>
@@ -856,8 +853,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="rewardsnow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="WuF-6R-aBL">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" type="user" id="ZFr-gz-GiL"/>
-                                    <constraint firstAttribute="width" constant="280" type="user" id="pXY-10-cbO"/>
+                                    <constraint firstAttribute="height" constant="135" id="Rd6-iJ-EJ7"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5NN-1a-sCY">
@@ -867,7 +863,7 @@
                                             <constraint firstAttribute="height" constant="46" id="9xY-iS-Qmt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
-                                        <state key="normal" title="Call" backgroundImage="grey-button.png">
+                                        <state key="normal" title="Call">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -905,10 +901,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="01E-qK-jtY" firstAttribute="centerX" secondItem="5NN-1a-sCY" secondAttribute="centerX" type="default" id="125-i7-u3d"/>
                                     <constraint firstItem="T0a-2M-Pb9" firstAttribute="centerX" secondItem="01E-qK-jtY" secondAttribute="centerX" type="default" id="JOP-py-bPp"/>
                                     <constraint firstItem="01E-qK-jtY" firstAttribute="top" secondItem="5NN-1a-sCY" secondAttribute="top" constant="11" id="SIB-Ex-VCb"/>
+                                    <constraint firstItem="01E-qK-jtY" firstAttribute="trailing" secondItem="EaD-T7-t5o" secondAttribute="trailing" type="default" id="Wgt-GQ-Uwa"/>
                                     <constraint firstItem="EaD-T7-t5o" firstAttribute="top" secondItem="5NN-1a-sCY" secondAttribute="top" constant="96" id="gDC-tq-qeX"/>
-                                    <constraint firstItem="T0a-2M-Pb9" firstAttribute="centerX" secondItem="5NN-1a-sCY" secondAttribute="centerX" type="default" id="i1a-2J-V6P"/>
                                     <constraint firstItem="T0a-2M-Pb9" firstAttribute="top" secondItem="5NN-1a-sCY" secondAttribute="top" constant="66" id="mMh-mk-eNf"/>
                                     <constraint firstItem="EaD-T7-t5o" firstAttribute="leading" secondItem="01E-qK-jtY" secondAttribute="leading" type="default" id="pOW-EX-Lkj"/>
                                 </constraints>
@@ -916,10 +913,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WuF-6R-aBL" firstAttribute="leading" secondItem="xTO-tR-Rtw" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9PI-Yp-cJK"/>
-                            <constraint firstItem="WuF-6R-aBL" firstAttribute="top" secondItem="xTO-tR-Rtw" secondAttribute="top" constant="40" id="Dt1-la-k5l"/>
+                            <constraint firstItem="WuF-6R-aBL" firstAttribute="top" secondItem="xTO-tR-Rtw" secondAttribute="top" type="default" id="ETL-H1-cwg"/>
+                            <constraint firstItem="WuF-6R-aBL" firstAttribute="trailing" secondItem="xTO-tR-Rtw" secondAttribute="trailing" type="default" id="IQC-WA-khe"/>
+                            <constraint firstItem="WuF-6R-aBL" firstAttribute="leading" secondItem="xTO-tR-Rtw" secondAttribute="leading" type="default" id="JKb-2c-hY6"/>
                             <constraint firstItem="5NN-1a-sCY" firstAttribute="leading" secondItem="xTO-tR-Rtw" secondAttribute="leading" type="default" id="KTc-6c-jgk"/>
-                            <constraint firstItem="5NN-1a-sCY" firstAttribute="top" secondItem="xTO-tR-Rtw" secondAttribute="top" constant="135" type="user" id="aYV-ax-K8z"/>
+                            <constraint firstItem="5NN-1a-sCY" firstAttribute="top" secondItem="xTO-tR-Rtw" secondAttribute="top" constant="135" id="kVL-XB-Y5b"/>
                             <constraint firstItem="5NN-1a-sCY" firstAttribute="trailing" secondItem="xTO-tR-Rtw" secondAttribute="trailing" type="default" id="vtv-oh-IsZ"/>
                             <constraint firstItem="5NN-1a-sCY" firstAttribute="bottom" secondItem="xTO-tR-Rtw" secondAttribute="bottom" type="default" id="zri-cf-XLD"/>
                         </constraints>
@@ -927,6 +925,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="callButton" destination="01E-qK-jtY" id="6d9-V2-p8f"/>
+                        <outlet property="headerImageView" destination="WuF-6R-aBL" id="l0l-fb-tSd"/>
+                        <outletCollection property="skinnableButtons" destination="EaD-T7-t5o" id="R0x-Lf-ocS"/>
+                        <outletCollection property="skinnableButtons" destination="01E-qK-jtY" id="jaO-qR-FDk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fl3-6J-v7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -944,18 +945,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UpB-NY-26M">
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Name] Rewards: You have 100,000 points." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="LRL-6u-WJI" customClass="CMLabel">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="ELC-xc-IRp"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                        <color key="textColor" red="1" green="0.80000000000000004" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUD-N7-Tek">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="LRL-6u-WJI" firstAttribute="bottom" secondItem="UpB-NY-26M" secondAttribute="bottom" type="user" id="CW2-cP-DBn"/>
+                                    <constraint firstItem="tUD-N7-Tek" firstAttribute="bottom" secondItem="UpB-NY-26M" secondAttribute="bottom" type="default" id="0sK-8I-EdU"/>
                                     <constraint firstItem="LRL-6u-WJI" firstAttribute="top" secondItem="UpB-NY-26M" secondAttribute="top" type="user" id="D27-SK-oj7"/>
                                     <constraint firstItem="LRL-6u-WJI" firstAttribute="leading" secondItem="UpB-NY-26M" secondAttribute="leading" type="user" id="KYV-Zl-MTr"/>
-                                    <constraint firstItem="LRL-6u-WJI" firstAttribute="bottom" secondItem="UpB-NY-26M" secondAttribute="bottom" type="user" id="MR0-mx-jgl"/>
                                     <constraint firstAttribute="height" constant="20" type="user" id="OcF-cL-aFO"/>
+                                    <constraint firstItem="tUD-N7-Tek" firstAttribute="top" secondItem="UpB-NY-26M" secondAttribute="top" constant="19" id="Qok-uO-sM0"/>
+                                    <constraint firstItem="tUD-N7-Tek" firstAttribute="trailing" secondItem="UpB-NY-26M" secondAttribute="trailing" type="default" id="To4-mZ-6To"/>
+                                    <constraint firstItem="tUD-N7-Tek" firstAttribute="leading" secondItem="UpB-NY-26M" secondAttribute="leading" type="default" id="g2R-7N-xyi"/>
                                     <constraint firstItem="LRL-6u-WJI" firstAttribute="trailing" secondItem="UpB-NY-26M" secondAttribute="trailing" type="user" id="tCI-E9-8qR"/>
                                 </constraints>
                             </view>
@@ -987,12 +995,13 @@
                                                     <segue destination="FLe-xl-Gmw" kind="push" id="aJV-sn-kHe"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsZ-yG-QAZ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsZ-yG-QAZ" customClass="RNButton">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="280" type="user" id="k2B-Mz-6ch"/>
+                                                    <constraint firstAttribute="height" constant="46" id="vSu-us-cC4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
-                                                <state key="normal" title="Log Out" backgroundImage="grey-hard-button.png">
+                                                <state key="normal" title="Log Out">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -1132,6 +1141,9 @@
                         <outlet property="nameLabel" destination="aab-NX-NZc" id="M2e-Tu-ZaL"/>
                         <outlet property="scrollView" destination="nC3-Al-Apa" id="tNa-aC-tzI"/>
                         <outlet property="topPointsLabel" destination="LRL-6u-WJI" id="FbQ-Xq-phx"/>
+                        <outletCollection property="skinningButtons" destination="VLc-tI-omj" id="CrR-zk-K9U"/>
+                        <outletCollection property="skinningButtons" destination="0MS-Av-hGS" id="oml-MN-OjX"/>
+                        <outletCollection property="skinningButtons" destination="0lb-YK-PHh" id="UZ4-4H-d9J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YI-Sg-Pah" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1313,6 +1325,7 @@
                         <outlet property="forwardMonthButton" destination="BKK-cS-g1X" id="ebT-kR-6Hf"/>
                         <outlet property="innerView" destination="LKT-c4-AQF" id="0VL-Kz-pg7"/>
                         <outlet property="monthLabel" destination="yny-TC-u29" id="iUE-cy-3M3"/>
+                        <outlet property="pointsAreaView" destination="RGo-MC-Kuf" id="4vL-HQ-8b0"/>
                         <outlet property="pointsEndLabel" destination="ulV-Pj-TRf" id="bjc-eU-SA2"/>
                         <outlet property="pointsStartLabel" destination="WSX-Z6-sb5" id="zBA-6F-qTf"/>
                         <outlet property="scrollView" destination="5Dj-se-ENC" id="t00-Ta-vz8"/>
@@ -1340,7 +1353,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Email" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="zQf-ic-gj2" customClass="CMTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zQf-ic-gj2" customClass="RNTextField">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="IEK-xb-FnV"/>
                                     <constraint firstAttribute="width" constant="300" id="tIL-ex-WDH"/>
@@ -1352,7 +1365,7 @@
                                     <outlet property="delegate" destination="iNE-BX-4zM" id="KGf-Tn-glu"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-Type New Email" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="jRP-2S-UZb" customClass="CMTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-Type New Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRP-2S-UZb" customClass="RNTextField">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="DbR-Bm-aOc"/>
                                 </constraints>
@@ -1569,7 +1582,6 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Name] Rewards: You have 100,000 points." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="i9a-G2-JUI" customClass="CMLabel">
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                        <color key="textColor" red="1" green="0.80000000000000004" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1807,13 +1819,13 @@
                                                 <color key="textColor" red="0.12941176469999999" green="0.25098039220000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6K-yV-4M0">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6K-yV-4M0" customClass="RNButton">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="46" id="hZk-kS-vpm"/>
                                                     <constraint firstAttribute="width" constant="278" type="user" id="hwL-2f-B7x"/>
+                                                    <constraint firstAttribute="height" constant="46" id="tYT-Gv-xdG"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
-                                                <state key="normal" title="Directions" backgroundImage="blue-button.png">
+                                                <state key="normal" title="Directions">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -1922,6 +1934,7 @@
                     <connections>
                         <outlet property="additionalInfoView" destination="Mbj-pV-cYJ" id="veN-vd-INM"/>
                         <outlet property="imageView" destination="qwD-xY-oI9" id="lCa-tO-9tg"/>
+                        <outlet property="innerView" destination="Aa2-50-Afu" id="EcX-sD-Sdd"/>
                         <outlet property="innerViewHeight" destination="3UB-MB-d2Q" id="57i-rh-xqp"/>
                         <outlet property="scrollView" destination="JwG-vo-JWI" id="FzD-NF-Zk2"/>
                         <outlet property="textView" destination="id6-0B-NhT" id="z1E-Kj-Jr5"/>
@@ -2087,7 +2100,6 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Name] Rewards: You have 100,000 points." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="SZd-uq-lMa" customClass="CMLabel">
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                        <color key="textColor" red="1" green="0.80000000000000004" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2460,7 +2472,6 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Name] Rewards: You have 100,000 points." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="MR6-8q-fYf" customClass="CMLabel">
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                        <color key="textColor" red="1" green="0.80000000000000004" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2967,7 +2978,6 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Name] Rewards: You have 100,000 points." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KwI-lv-v8a" customClass="CMLabel">
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                        <color key="textColor" red="1" green="0.80000000000000004" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -3126,7 +3136,6 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Name] Rewards: You have 100,000 points." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="HrS-lc-AgS" customClass="CMLabel">
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                        <color key="textColor" red="1" green="0.80000000000000004" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -3473,7 +3482,6 @@
         <image name="divider-line.png" width="279" height="3"/>
         <image name="grey-button-arrow.png" width="302" height="44"/>
         <image name="grey-button.png" width="302" height="44"/>
-        <image name="grey-hard-button.png" width="278" height="46"/>
         <image name="input-sm.png" width="45" height="30"/>
         <image name="input.png" width="290" height="30"/>
         <image name="light-grey-single-divider.png" width="300" height="1"/>

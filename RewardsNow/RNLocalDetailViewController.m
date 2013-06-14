@@ -13,7 +13,7 @@
 #import "RNAnnotation.h"
 #import "CMLabel.h"
 #import "RNConstants.h"
-#import "NSString+Additions.h"
+#import "RNBranding.h"
 #import <QuartzCore/QuartzCore.h>
 #import <AddressBookUI/AddressBookUI.h>
 
@@ -25,6 +25,14 @@
 @end
 
 @implementation RNLocalDetailViewController
+
+- (void)brand {
+    [super brand];
+    self.lowerInnerView.backgroundColor = [self.branding.backgroundColor colorWithAlphaComponent:.9]; //need another color pl0x
+    self.lowerUpperLabel.backgroundColor = self.branding.pointsColor;
+    
+    self.tableView.backgroundColor = self.branding.backgroundColor;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

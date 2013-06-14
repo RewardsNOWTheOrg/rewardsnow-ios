@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "RNSkinableViewController.h"
 
 @class RNLocalDeal, CMLabel;
 
-@interface RNLocalDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
+@interface RNLocalDetailViewController : RNSkinableViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
 
 @property (nonatomic, strong) RNLocalDeal *deal;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

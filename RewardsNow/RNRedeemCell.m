@@ -8,14 +8,14 @@
 
 #import "RNRedeemCell.h"
 #import "RNConstants.h"
-
-#define kGrayIshColor [UIColor colorWithRed:C(233) green:C(236) blue:C(238) alpha:1.0]
+#import "RNBranding.h"
 
 @implementation RNRedeemCell
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ( (self = [super initWithCoder:aDecoder]) ) {
-        self.contentView.backgroundColor = kGrayIshColor;
+        self.contentView.backgroundColor = [[RNBranding sharedBranding] backgroundColor];
+        self.flipBackgroundView.backgroundColor = [[RNBranding sharedBranding] backgroundColor];
     }
     return self;
 }
@@ -23,8 +23,10 @@
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
     if(highlighted) {
         self.contentView.backgroundColor = [UIColor colorWithRed:C(149) green:C(149) blue:C(149) alpha:.3];
+        self.flipBackgroundView.backgroundColor = [UIColor colorWithRed:C(149) green:C(149) blue:C(149) alpha:.3];
     } else {
-        self.contentView.backgroundColor = kGrayIshColor;
+        self.contentView.backgroundColor = [[RNBranding sharedBranding] backgroundColor];
+        self.flipBackgroundView.backgroundColor = [[RNBranding sharedBranding] backgroundColor];
     }
     
     [super setHighlighted:highlighted animated:animated];

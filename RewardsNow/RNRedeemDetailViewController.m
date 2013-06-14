@@ -11,6 +11,7 @@
 #import "RNRedeemCell.h"
 #import "RNRedeemObject.h"
 #import "RNCart.h"
+#import "RNBranding.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -21,6 +22,11 @@
 @end
 
 @implementation RNRedeemDetailViewController
+
+- (void)brand {
+    [super brand];
+    self.descriptionTextView.backgroundColor = self.branding.pointsColor;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

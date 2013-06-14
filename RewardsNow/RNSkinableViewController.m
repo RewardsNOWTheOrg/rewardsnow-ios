@@ -35,6 +35,7 @@
     }
     
     if ([self respondsToSelector:@selector(topPointsLabel)]) {
+        [[self performSelector:@selector(topPointsLabel)] setBackgroundColor:_branding.pointsColor];
 //        [[self performSelector:@selector(topPointsLabel)] setTextColor:_branding.pointsColor];
     }
 }

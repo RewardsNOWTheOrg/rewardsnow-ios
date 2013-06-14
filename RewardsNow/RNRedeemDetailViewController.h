@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
 @class RNRedeemObject;
 
-@interface RNRedeemDetailViewController : UIViewController
+@interface RNRedeemDetailViewController : RNSkinableViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *redeemBottomLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;

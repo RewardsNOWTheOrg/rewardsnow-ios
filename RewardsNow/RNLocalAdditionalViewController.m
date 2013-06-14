@@ -17,6 +17,13 @@
 
 @implementation RNLocalAdditionalViewController
 
+- (void)brand {
+    [super brand];
+    
+    //need another color :(
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

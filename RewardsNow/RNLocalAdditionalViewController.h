@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
 @class RNLocalDeal;
 
-@interface RNLocalAdditionalViewController : UIViewController
+@interface RNLocalAdditionalViewController : RNSkinableViewController
 
 @property (nonatomic, strong) RNLocalDeal *deal;
+@property (weak, nonatomic) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet UILabel *upperTopLabel;
 @property (weak, nonatomic) IBOutlet UILabel *upperMiddleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *upperLowerLabel;

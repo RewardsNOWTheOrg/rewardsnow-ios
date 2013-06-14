@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import "RNSkinableViewController.h"
 
-@interface RNAboutContactViewController : UIViewController <MFMailComposeViewControllerDelegate>
+@interface RNAboutContactViewController : RNSkinableViewController <MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *callButton;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *skinnableButtons;
 
 - (IBAction)writeTapped:(id)sender;
 - (IBAction)callTapped:(id)sender;

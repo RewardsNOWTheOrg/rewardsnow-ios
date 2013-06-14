@@ -15,6 +15,7 @@
 #import "RNTransaction.h"
 #import "RNPointChange.h"
 #import "RNAccountStatementDetailView.h"
+#import "RNBranding.h"
 
 #define kNumberOfMonthsVisible 4
 
@@ -44,6 +45,12 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 #define kTableY 80
 
 @implementation RNAccountStatementViewController
+
+- (void)brand {
+    [super brand];
+    
+    self.pointsAreaView.backgroundColor = self.branding.menuBackgroundColor;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

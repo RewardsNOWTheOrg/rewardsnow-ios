@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *redeemTopLabel;
 @property (weak, nonatomic) IBOutlet UILabel *redeemBottomLabel;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UIView *flipBackgroundView;
 
 @end

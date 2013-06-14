@@ -133,6 +133,8 @@
 		AA9FB2421758030F00B83B98 /* input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23E1758030B00B83B98 /* input@2x.png */; };
 		AA9FB2451759050E00B83B98 /* RNSkinableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9FB2441759050E00B83B98 /* RNSkinableViewController.m */; };
 		AAC191681762865300E08FD2 /* RNPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC191671762865300E08FD2 /* RNPopoverViewController.m */; };
+		AAC806B9176A835100BE9F72 /* RNTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC806B8176A835100BE9F72 /* RNTextField.m */; };
+		AAC806BC176A851000BE9F72 /* RNButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC806BB176A851000BE9F72 /* RNButton.m */; };
 		AACADBC717287DDE00F9D765 /* thank-you-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC517287DDE00F9D765 /* thank-you-button.png */; };
 		AACADBC817287DDE00F9D765 /* thank-you-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */; };
 		AAD2310C17592A3D0061C5B9 /* 37x-XMark.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2310A17592A3D0061C5B9 /* 37x-XMark.png */; };
@@ -355,6 +357,10 @@
 		AA9FB2441759050E00B83B98 /* RNSkinableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSkinableViewController.m; sourceTree = "<group>"; };
 		AAC191661762865300E08FD2 /* RNPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPopoverViewController.h; sourceTree = "<group>"; };
 		AAC191671762865300E08FD2 /* RNPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPopoverViewController.m; sourceTree = "<group>"; };
+		AAC806B7176A835100BE9F72 /* RNTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTextField.h; sourceTree = "<group>"; };
+		AAC806B8176A835100BE9F72 /* RNTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTextField.m; sourceTree = "<group>"; };
+		AAC806BA176A851000BE9F72 /* RNButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNButton.h; sourceTree = "<group>"; };
+		AAC806BB176A851000BE9F72 /* RNButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNButton.m; sourceTree = "<group>"; };
 		AACADBC517287DDE00F9D765 /* thank-you-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button.png"; sourceTree = "<group>"; };
 		AACADBC617287DDE00F9D765 /* thank-you-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thank-you-button@2x.png"; sourceTree = "<group>"; };
 		AAD2310A17592A3D0061C5B9 /* 37x-XMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-XMark.png"; sourceTree = "<group>"; };
@@ -746,6 +752,10 @@
 				AA5510B9170F10A3001CC718 /* MainStoryboard.storyboard */,
 				AA9FB2431759050E00B83B98 /* RNSkinableViewController.h */,
 				AA9FB2441759050E00B83B98 /* RNSkinableViewController.m */,
+				AAC806B7176A835100BE9F72 /* RNTextField.h */,
+				AAC806B8176A835100BE9F72 /* RNTextField.m */,
+				AAC806BA176A851000BE9F72 /* RNButton.h */,
+				AAC806BB176A851000BE9F72 /* RNButton.m */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -1148,6 +1158,8 @@
 				AAD3A9B9175CF64900E5392E /* WEPopoverContainerView.m in Sources */,
 				AAD3A9BA175CF64900E5392E /* WEPopoverController.m in Sources */,
 				AAC191681762865300E08FD2 /* RNPopoverViewController.m in Sources */,
+				AAC806B9176A835100BE9F72 /* RNTextField.m in Sources */,
+				AAC806BC176A851000BE9F72 /* RNButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

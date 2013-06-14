@@ -7,6 +7,8 @@
 //
 
 #import "RNAboutContactViewController.h"
+#import "RNBranding.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface RNAboutContactViewController ()
 
@@ -14,9 +16,19 @@
 
 @implementation RNAboutContactViewController
 
+- (void)brand {
+    [super brand];
+    
+    for (UIButton *button in _skinnableButtons) {
+        button.backgroundColor = self.branding.pointsColor;
+        button.layer.cornerRadius = 5.0;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.headerImageView.image = self.branding.headerImage;
 }
 
 - (void)didReceiveMemoryWarning {

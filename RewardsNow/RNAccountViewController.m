@@ -23,12 +23,30 @@
 
 @implementation RNAccountViewController
 
+- (void)brand {
+    [super brand];
+    
+    self.nameLabel.backgroundColor = self.branding.pointsColor;
+    self.nameLabel.layer.cornerRadius = 5.0;
+    
+    self.accountNumberLabel.backgroundColor = self.branding.pointsColor;
+    self.accountNumberLabel.layer.cornerRadius = 5.0;
+    
+    self.giftCardView.backgroundColor = self.branding.pointsColor;
+    
+    for (UIButton *button in _skinningButtons) {
+        button.backgroundColor = self.branding.pointsColor;
+        button.layer.cornerRadius = 5.0;
+    }
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.contentOffset = CGPointZero;
     
-    self.nameLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
-    self.accountNumberLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
+//    self.nameLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
+//    self.accountNumberLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
     self.giftCardView.layer.cornerRadius = 5.0;
 }
 

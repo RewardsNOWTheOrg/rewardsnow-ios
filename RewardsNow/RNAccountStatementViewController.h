@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *backMonthButton;
 @property (weak, nonatomic) IBOutlet UIButton *forwardMonthButton;
+@property (weak, nonatomic) IBOutlet UIView *pointsAreaView;
 
 - (IBAction)backMonth:(id)sender;
 - (IBAction)forwardMonth:(id)sender;

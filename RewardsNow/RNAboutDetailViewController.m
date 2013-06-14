@@ -15,6 +15,13 @@
 
 @implementation RNAboutDetailViewController
 
+- (void)brand {
+    [super brand];
+//    self.webView.backgroundColor = self.branding.backgroundColor;
+    [self.webView setOpaque:NO];
+    [self.webView setBackgroundColor:[UIColor clearColor]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.headerImageView.image = self.branding.headerImage;

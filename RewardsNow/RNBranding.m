@@ -109,28 +109,24 @@ static RNBranding *_sharedBranding;
     [[UINavigationBar appearance] setBackgroundImage:[self imageFromColor:self.menuBackgroundColor withSize:CGSizeMake(1, 44)] forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setTintColor:self.menuBackgroundColor];
     
-    [[UILabel appearance] setTextColor:self.textColor];
-    [[UILabel appearance] setBackgroundColor:self.pointsColor];
-    [[UILabel appearanceWhenContainedIn:[UITextField class], nil] setBackgroundColor:[UIColor clearColor]];
-    [[UILabel appearanceWhenContainedIn:[UIButton class], nil] setBackgroundColor:[UIColor clearColor]];
-    [[UILabel appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundColor:[UIColor clearColor]];
+//    [[UILabel appearance] setTextColor:self.textColor];
+//    [[UILabel appearance] setBackgroundColor:self.pointsColor];
+//    [[UILabel appearanceWhenContainedIn:[UITextField class], nil] setBackgroundColor:[UIColor clearColor]];
+//    [[UILabel appearanceWhenContainedIn:[UIButton class], nil] setBackgroundColor:[UIColor clearColor]];
+//    [[UILabel appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundColor:[UIColor clearColor]];
+//    
+//    [[UITextView appearance] setTextColor:self.textColor];
+//    
+//    [[UITextField appearance] setTextColor:self.pointsColor];
+//    [[UITextField appearance] setBackgroundColor:self.tabBarTextColor];
+//    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setBackgroundColor:[UIColor clearColor]];
+//    
+//    [[UIButton appearance] setBackgroundColor:self.pointsColor];
+//    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundColor:[UIColor clearColor]];
     
-    [[UITextView appearance] setTextColor:self.textColor];
     
-    [[UITextField appearance] setTextColor:self.pointsColor];
-    [[UITextField appearance] setBackgroundColor:self.tabBarTextColor];
-    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setBackgroundColor:[UIColor clearColor]];
-    
-    [[UIButton appearance] setBackgroundColor:self.pointsColor];
-    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundColor:[UIColor clearColor]];
-    
-    
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : self.tabBarTextColor, NSBackgroundColorAttributeName : [UIColor clearColor] } forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : self.tabBarTextColor, NSBackgroundColorAttributeName : [UIColor clearColor] } forState:UIControlStateHighlighted]; //logs a warning.
-
-    
-    //set submit/logout button background color;
-    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : self.tabBarTextColor } forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : self.tabBarTextColor } forState:UIControlStateHighlighted];    
 }
 
 #pragma mark - Get Image
