@@ -7,6 +7,7 @@
 //
 
 #import "RNTextField.h"
+#import "RNBranding.h"
 
 @implementation RNTextField
 
@@ -16,11 +17,12 @@
     //// General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = UIGraphicsGetCurrentContext();
+//    UIRectFill(self.bounds);
     
     //// Color Declarations
     UIColor* color = [UIColor colorWithRed: 0.114 green: 1 blue: 0.41 alpha: 1];
     UIColor* gradientColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
-    UIColor* color3 = [UIColor colorWithRed: 0.286 green: 0.353 blue: 0.408 alpha: 0.2];
+    UIColor* color3 = [[RNBranding sharedBranding] pointsColor]; //[UIColor colorWithRed: 0.286 green: 0.353 blue: 0.408 alpha: 0.2]; //main background color
     UIColor* color4 = [UIColor colorWithRed: 0.667 green: 0.667 blue: 0.667 alpha: 1];
     UIColor* color5 = [UIColor colorWithRed: 0.027 green: 0.027 blue: 0.027 alpha: 0.2];
     
@@ -37,8 +39,22 @@
     CGSize shadowOffset = CGSizeMake(0.1, -0.1);
     CGFloat shadowBlurRadius = 6;
     
+    //// Frames
+    CGRect frame = self.bounds; //CGRectMake(0, 0, 550, 130);
+    
+    
     //// RN_input Drawing
-    UIBezierPath* rN_inputPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(12, 9.5, 528, 112) cornerRadius: 4];
+    UIBezierPath* rN_inputPath = [UIBezierPath bezierPath];
+    [rN_inputPath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 3, CGRectGetMaxY(frame) - 7)];
+    [rN_inputPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 7, CGRectGetMaxY(frame) - 3) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 3, CGRectGetMaxY(frame) - 4.79) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 4.79, CGRectGetMaxY(frame) - 3)];
+    [rN_inputPath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 7, CGRectGetMaxY(frame) - 3)];
+    [rN_inputPath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 3, CGRectGetMaxY(frame) - 7) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 4.79, CGRectGetMaxY(frame) - 3) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 3, CGRectGetMaxY(frame) - 4.79)];
+    [rN_inputPath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 3, CGRectGetMinY(frame) + 6.5)];
+    [rN_inputPath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 7, CGRectGetMinY(frame) + 2.5) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 3, CGRectGetMinY(frame) + 4.29) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 4.79, CGRectGetMinY(frame) + 2.5)];
+    [rN_inputPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 7, CGRectGetMinY(frame) + 2.5)];
+    [rN_inputPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 3, CGRectGetMinY(frame) + 6.5) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 4.79, CGRectGetMinY(frame) + 2.5) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 3, CGRectGetMinY(frame) + 4.29)];
+    [rN_inputPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 3, CGRectGetMaxY(frame) - 7)];
+    [rN_inputPath closePath];
     [color3 setFill];
     [rN_inputPath fill];
     
@@ -118,7 +134,7 @@
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
     
-
+    
 }
 
 
