@@ -13,8 +13,8 @@
 @property (nonatomic) double cashValue;
 @property (nonatomic, copy) NSString *catagoryDescription;
 @property (nonatomic, copy) NSString *catalogCode;
-@property (nonatomic) NSInteger catalogID;
-@property (nonatomic) NSInteger categoryID;
+@property (nonatomic, strong) NSNumber *catalogID;
+@property (nonatomic, strong) NSNumber *categoryID;
 @property (nonatomic, copy) NSString *objectDescription;
 @property (nonatomic, copy) NSString *descriptionName;
 @property (nonatomic, copy) NSString *imageURL;
