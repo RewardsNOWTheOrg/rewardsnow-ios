@@ -91,7 +91,7 @@
         [self.giftCardView addSubview:gcButton];
     }
     
-    _giftCardHeightConstraint.constant = 90 + (_user.giftCards.count * 30);
+    _giftCardHeightConstraint.constant = 70 + (_user.giftCards.count * 35);
     _innerViewHeight.constant = 360 + _giftCardHeightConstraint.constant;
     
 }
