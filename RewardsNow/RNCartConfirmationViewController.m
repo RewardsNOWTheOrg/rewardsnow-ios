@@ -115,35 +115,53 @@
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.detailsLabelText = @"Ordering...";
             
-            // may need to add them to the cart?
+            ///
+            /// The Checkout Process
+            /// 1: Add all items to the cart
+            /// 2: When finished, call checkout with the same items.
+            ///
             
-            // should we add them to the cart as they do? Or just... all at once during the final checkout. How to remove them?
+            RNCart *cart = [RNCart sharedCart];
+            __block NSInteger count = 0;
             
-            [[RNWebService sharedClient] postPlaceOrderForUser:_user items:[[RNCart sharedCart] arrayForPlaceOrderItems] callback:^(id result) {
+            for (RNCartObject *object in cart.items) {
                 
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                if ([result boolValue]) { //succcess
-                    RNCart *cart = [RNCart sharedCart];
-                    [_user subtractPoints:[cart total]]; //more application?
-                    [cart emptyCart];
-                    
-                    RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
-                    [self.navigationController pushViewController:thanks animated:YES];
-                    
-                    //if we are waiting for the checkout process to be done...
-                    // we should show the thank you screen...
-                    // and then drop it down automaticalyl wit hthe new gift cards?
-                } else { //fail
-                    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, an error occurred during checkout." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
-                }
-                
-            }];
+                [[RNWebService sharedClient] postCatalogIDToCart:object.redeemObject.catalogID callback:^(id result) {
+                    count++;
+                    if (count == cart.items.count) {
+                        [self checkoutCartItems];
+                    }
+                }];
+            }
             
             break;
         }
             
         default: { break; }
     }
+}
+
+- (void)checkoutCartItems {
+    
+    [[RNWebService sharedClient] postPlaceOrderForUser:_user items:[[RNCart sharedCart] arrayForPlaceOrderItems] callback:^(id result) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if ([result boolValue]) { //succcess
+            RNCart *cart = [RNCart sharedCart];
+            [_user subtractPoints:[cart total]]; //more application?
+            [cart emptyCart];
+                        
+            RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
+            [self.navigationController pushViewController:thanks animated:YES];
+            
+            //if we are waiting for the checkout process to be done...
+            // we should show the thank you screen...
+            // and then drop it down automaticalyl wit hthe new gift cards?
+        } else { //fail
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, an error occurred during checkout." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+        }
+        
+    }];
 }
 
 @end

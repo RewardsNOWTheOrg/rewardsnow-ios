@@ -493,6 +493,8 @@ NSString *const kOffersKey = @"Offers";
     NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/AddToCart" parameters:nil];
     [request setHTTPBody:data];
     
+    DLog(@"Request: %@", request);
+    
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
@@ -535,7 +537,7 @@ NSString *const kOffersKey = @"Offers";
      */
     
     NSMutableDictionary *postParameters = [NSMutableDictionary dictionary];
-    [postParameters setValue:_tipNumber forKey:@"tipNumber"];
+    [postParameters setValue:_tipNumber forKey:@"tipnumber"];
     [postParameters setValue:user.email forKey:@"CustomerEmail"];
     [postParameters setValue:user.address forKey:@"saddress1"];
     [postParameters setValue:user.apt forKey:@"saddress2"];
@@ -551,6 +553,10 @@ NSString *const kOffersKey = @"Offers";
     NSData *data = [NSJSONSerialization dataWithJSONObject:postParameters options:0 error:NULL];
     NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/PlaceOrder" parameters:nil];
     [request setHTTPBody:data];
+    
+    DLog(@"Request: %@",  request);
+    DLog(@"Request1: %@",  request.allHTTPHeaderFields);
+    DLog(@"Request2: %@",  postParameters);
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
