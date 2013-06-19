@@ -11,8 +11,132 @@
 
 @implementation RNButton
 
+- (id)initWithFrame:(CGRect)frame
+{
+    if ( (self = [super initWithFrame:frame]) ) {
+        [self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:NULL];
+    }
+    
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    
+    if ( (self = [super initWithCoder:aDecoder]) ) {
+        [self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:NULL];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"highlighted"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self setNeedsDisplay];
+}
+
+- (UIColor *)darkerColorForColor:(UIColor *)c
+{
+    float r, g, b, a;
+    if ([c getRed:&r green:&g blue:&b alpha:&a])
+        return [UIColor colorWithRed:MAX(r - 0.1, 0.0)
+                               green:MAX(g - 0.1, 0.0)
+                                blue:MAX(b - 0.1, 0.0)
+                               alpha:a];
+    return nil;
+}
 
 - (void)drawRect:(CGRect)rect {
+    
+    UIColor* color6 = [RNBranding sharedBranding] != nil ? [[RNBranding sharedBranding] menuBackgroundColor] : RGB(73, 89, 103);
+    UIColor* color7 = [RNBranding sharedBranding] != nil ? [[RNBranding sharedBranding] pointsColor] : RGB(83, 99, 113);
+    
+    if (self.isHighlighted) {
+        //// General Declarations
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        //// Color Declarations
+
+        UIColor* color5 = [UIColor colorWithRed: 0.027 green: 0.027 blue: 0.027 alpha: 0.2];
+        UIColor* strokeColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 0.3];
+        color6 = [self darkerColorForColor:color6];//[UIColor colorWithRed: 0.075 green: 0.584 blue: 0.812 alpha: 0.3];
+//        UIColor *color7 = [UIColor colorWithRed: 0.055 green: 0.408 blue: 0.565 alpha: 1];
+        
+        //// Shadow Declarations
+        UIColor* shadow2 = strokeColor;
+        CGSize shadow2Offset = CGSizeMake(0.1, -0.1);
+        CGFloat shadow2BlurRadius = 3.5;
+        
+        //// Frames
+        CGRect frame = self.bounds;
+        
+        
+        //// RN_input Drawing
+        UIBezierPath* rN_inputPath = [UIBezierPath bezierPath];
+        [rN_inputPath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 1, CGRectGetMaxY(frame) - 4.5)];
+        [rN_inputPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 5, CGRectGetMaxY(frame) - 0.5) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 1, CGRectGetMaxY(frame) - 2.29) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 2.79, CGRectGetMaxY(frame) - 0.5)];
+        [rN_inputPath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 4.5, CGRectGetMaxY(frame) - 0.5)];
+        [rN_inputPath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMaxY(frame) - 4.5) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 2.29, CGRectGetMaxY(frame) - 0.5) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMaxY(frame) - 2.29)];
+        [rN_inputPath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMinY(frame) + 5)];
+        [rN_inputPath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 4.5, CGRectGetMinY(frame) + 1) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMinY(frame) + 2.79) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 2.29, CGRectGetMinY(frame) + 1)];
+        [rN_inputPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 5, CGRectGetMinY(frame) + 1)];
+        [rN_inputPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 1, CGRectGetMinY(frame) + 5) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 2.79, CGRectGetMinY(frame) + 1) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 1, CGRectGetMinY(frame) + 2.79)];
+        [rN_inputPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 1, CGRectGetMaxY(frame) - 4.5)];
+        [rN_inputPath closePath];
+        [color7 setFill];
+        [rN_inputPath fill];
+        
+        ////// RN_input Inner Shadow
+        CGRect rN_inputBorderRect = CGRectInset([rN_inputPath bounds], -shadow2BlurRadius, -shadow2BlurRadius);
+        rN_inputBorderRect = CGRectOffset(rN_inputBorderRect, -shadow2Offset.width, -shadow2Offset.height);
+        rN_inputBorderRect = CGRectInset(CGRectUnion(rN_inputBorderRect, [rN_inputPath bounds]), -1, -1);
+        
+        UIBezierPath* rN_inputNegativePath = [UIBezierPath bezierPathWithRect: rN_inputBorderRect];
+        [rN_inputNegativePath appendPath: rN_inputPath];
+        rN_inputNegativePath.usesEvenOddFillRule = YES;
+        
+        CGContextSaveGState(context);
+        {
+            CGFloat xOffset = shadow2Offset.width + round(rN_inputBorderRect.size.width);
+            CGFloat yOffset = shadow2Offset.height;
+            CGContextSetShadowWithColor(context,
+                                        CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)),
+                                        shadow2BlurRadius,
+                                        shadow2.CGColor);
+            
+            [rN_inputPath addClip];
+            CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(rN_inputBorderRect.size.width), 0);
+            [rN_inputNegativePath applyTransform: transform];
+            [[UIColor grayColor] setFill];
+            [rN_inputNegativePath fill];
+        }
+        CGContextRestoreGState(context);
+        
+        [color5 setStroke];
+        rN_inputPath.lineWidth = 0.5;
+        [rN_inputPath stroke];
+        
+        
+        //// RN_input 2 Drawing
+        UIBezierPath* rN_input2Path = [UIBezierPath bezierPath];
+        [rN_input2Path moveToPoint: CGPointMake(CGRectGetMinX(frame) + 4.5, CGRectGetMaxY(frame) - 8)];
+        [rN_input2Path addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 8.5, CGRectGetMaxY(frame) - 4) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 4.5, CGRectGetMaxY(frame) - 5.79) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 6.29, CGRectGetMaxY(frame) - 4)];
+        [rN_input2Path addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 8, CGRectGetMaxY(frame) - 4)];
+        [rN_input2Path addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 4, CGRectGetMaxY(frame) - 8) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 5.79, CGRectGetMaxY(frame) - 4) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 4, CGRectGetMaxY(frame) - 5.79)];
+        [rN_input2Path addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 4, CGRectGetMinY(frame) + 8)];
+        [rN_input2Path addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 8, CGRectGetMinY(frame) + 4) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 4, CGRectGetMinY(frame) + 5.79) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 5.79, CGRectGetMinY(frame) + 4)];
+        [rN_input2Path addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 8.5, CGRectGetMinY(frame) + 4)];
+        [rN_input2Path addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 4.5, CGRectGetMinY(frame) + 8) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 6.29, CGRectGetMinY(frame) + 4) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 4.5, CGRectGetMinY(frame) + 5.79)];
+        [rN_input2Path addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 4.5, CGRectGetMaxY(frame) - 8)];
+        [rN_input2Path closePath];
+        [color6 setFill];
+        [rN_input2Path fill];
+        
+        
+
+    } else {
 
     //// General Declarations
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -24,8 +148,6 @@
     UIColor* gradientColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
     UIColor* color4 = [UIColor colorWithRed: 0.667 green: 0.667 blue: 0.667 alpha: 1];
     UIColor* color5 = [UIColor colorWithRed: 0.027 green: 0.027 blue: 0.027 alpha: 0.2];
-    UIColor* color6 = [[RNBranding sharedBranding] menuBackgroundColor]; //[UIColor colorWithRed: 0.075 green: 0.584 blue: 0.812 alpha: 1]; //front, bigger
-    UIColor* color7 = [[RNBranding sharedBranding] pointsColor]; //[UIColor colorWithRed: 0.055 green: 0.408 blue: 0.565 alpha: 1]; //back, outline
     
     //// Gradient Declarations
     NSArray* gradientColors = [NSArray arrayWithObjects:
@@ -161,6 +283,7 @@
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
     
+    }
 
    
 }

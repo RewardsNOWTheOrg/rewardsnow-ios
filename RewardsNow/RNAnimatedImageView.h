@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define kAnimationDidStopNotification @"AnimationDidStopNotification"
-
 @interface RNAnimatedImageView : UIImageView
 
 @end

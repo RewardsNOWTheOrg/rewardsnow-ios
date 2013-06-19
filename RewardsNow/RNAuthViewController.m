@@ -37,6 +37,9 @@
     
     self.logoImageView.image = self.branding.headerImage;
     
+    self.logoImageView.layer.borderWidth = 1.0;
+    self.logoImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+    
     self.fields = @[self.usernameTextField, self.passwordTextField, self.signInButton, self.forgotPasswordButton];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
@@ -62,7 +65,7 @@
 //remove
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.usernameTextField.text = @"969test";
+//    self.usernameTextField.text = @"969test";
     self.passwordTextField.text = @"sample";
 //    [self signInTapped:nil];
 }

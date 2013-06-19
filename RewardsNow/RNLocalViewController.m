@@ -50,6 +50,7 @@
         [self.tableView addSubview:_refreshControl];
         [_refreshControl beginRefreshing];
     } else {
+        [self addTableFooter];
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.rightBarButtonItem = nil;
     }
@@ -109,8 +110,28 @@
         _deals = [deals copy];
     }
     
+    [self addTableFooter];
+    
     [_refreshControl endRefreshing];
     [self.tableView reloadData];
+}
+
+- (void)addTableFooter {
+    
+    if (_deals.count == 0) {
+        UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+        footer.backgroundColor = self.branding.commonBackgroundColor;
+        
+        UILabel *noResponse = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 300, 40)];
+        noResponse.text = @"Sorry, no deals are available in this area.";
+        noResponse.font = [UIFont fontWithName:@"Arial" size:15];
+        noResponse.backgroundColor = self.branding.commonBackgroundColor;
+        [footer addSubview:noResponse];
+        
+        self.tableView.tableFooterView = footer;
+    } else {
+        self.tableView.tableFooterView = nil;
+    }
 }
 
 

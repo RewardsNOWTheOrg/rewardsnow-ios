@@ -12,6 +12,7 @@
 #import "RNAuthViewController.h"
 #import "RNWebService.h"
 #import "RNBranding.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface RNPreAuthViewController ()
 

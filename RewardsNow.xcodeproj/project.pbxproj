@@ -52,6 +52,9 @@
 		AA355A6A172199DD0014E01B /* divider-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A68172199DD0014E01B /* divider-line@2x.png */; };
 		AA458D911772118E00B906A7 /* RNLeftArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AA458D901772118E00B906A7 /* RNLeftArrow.m */; };
 		AA458D9417723A6400B906A7 /* RNRightArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AA458D9317723A6400B906A7 /* RNRightArrow.m */; };
+		AA458DA81772592E00B906A7 /* libCMUtilities-Combined.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA458D9A1772592E00B906A7 /* libCMUtilities-Combined.a */; };
+		AA458DA91772592E00B906A7 /* NBPhoneNumberMetadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA458DA11772592E00B906A7 /* NBPhoneNumberMetadata.plist */; };
+		AA458DAA1772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA458DA21772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist */; };
 		AA53FE34170F5D6A00041748 /* RNRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */; };
 		AA53FE37170F5D7E00041748 /* RNRedeemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */; };
 		AA53FE3B170F5D9200041748 /* RNLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE3A170F5D9200041748 /* RNLocalViewController.m */; };
@@ -128,7 +131,6 @@
 		AA9FB20D1755356C00B83B98 /* Green-Plus-Down.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB20B1755356C00B83B98 /* Green-Plus-Down.png */; };
 		AA9FB20E1755356C00B83B98 /* Green-Plus-Up.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB20C1755356C00B83B98 /* Green-Plus-Up.png */; };
 		AA9FB2111755509200B83B98 /* RNCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9FB2101755509100B83B98 /* RNCategory.m */; };
-		AA9FB23A1757EB0000B83B98 /* libCMUtilities-Combined.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9FB2351757EB0000B83B98 /* libCMUtilities-Combined.a */; };
 		AA9FB23F1758030F00B83B98 /* input-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23B1758030300B83B98 /* input-sm.png */; };
 		AA9FB2401758030F00B83B98 /* input-sm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23C1758030600B83B98 /* input-sm@2x.png */; };
 		AA9FB2411758030F00B83B98 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9FB23D1758030900B83B98 /* input.png */; };
@@ -236,6 +238,25 @@
 		AA458D901772118E00B906A7 /* RNLeftArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLeftArrow.m; sourceTree = "<group>"; };
 		AA458D9217723A6300B906A7 /* RNRightArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRightArrow.h; sourceTree = "<group>"; };
 		AA458D9317723A6400B906A7 /* RNRightArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRightArrow.m; sourceTree = "<group>"; };
+		AA458D951772592E00B906A7 /* CMAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMAnimatedImageView.h; sourceTree = "<group>"; };
+		AA458D961772592E00B906A7 /* CMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLabel.h; sourceTree = "<group>"; };
+		AA458D971772592E00B906A7 /* CMPhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPhoneNumberFormatter.h; sourceTree = "<group>"; };
+		AA458D981772592E00B906A7 /* CMTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMTextField.h; sourceTree = "<group>"; };
+		AA458D991772592E00B906A7 /* CMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMUtilities.h; sourceTree = "<group>"; };
+		AA458D9A1772592E00B906A7 /* libCMUtilities-Combined.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCMUtilities-Combined.a"; sourceTree = "<group>"; };
+		AA458D9B1772592E00B906A7 /* NBNumberFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBNumberFormat.h; sourceTree = "<group>"; };
+		AA458D9C1772592E00B906A7 /* NBPhoneMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaData.h; sourceTree = "<group>"; };
+		AA458D9D1772592E00B906A7 /* NBPhoneMetaDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaDataGenerator.h; sourceTree = "<group>"; };
+		AA458D9E1772592E00B906A7 /* NBPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumber.h; sourceTree = "<group>"; };
+		AA458D9F1772592E00B906A7 /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDefines.h; sourceTree = "<group>"; };
+		AA458DA01772592E00B906A7 /* NBPhoneNumberDesc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDesc.h; sourceTree = "<group>"; };
+		AA458DA11772592E00B906A7 /* NBPhoneNumberMetadata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadata.plist; sourceTree = "<group>"; };
+		AA458DA21772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadataForTesting.plist; sourceTree = "<group>"; };
+		AA458DA31772592E00B906A7 /* NBPhoneNumberUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberUtil.h; sourceTree = "<group>"; };
+		AA458DA41772592E00B906A7 /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
+		AA458DA51772592E00B906A7 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		AA458DA61772592E00B906A7 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
+		AA458DA71772592E00B906A7 /* UIImage+additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+additions.h"; sourceTree = "<group>"; };
 		AA53FE32170F5D6A00041748 /* RNRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemViewController.h; sourceTree = "<group>"; };
 		AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRedeemViewController.m; sourceTree = "<group>"; };
 		AA53FE35170F5D7E00041748 /* RNRedeemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemDetailViewController.h; sourceTree = "<group>"; };
@@ -347,14 +368,6 @@
 		AA9FB20C1755356C00B83B98 /* Green-Plus-Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Plus-Up.png"; sourceTree = "<group>"; };
 		AA9FB20F1755509100B83B98 /* RNCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCategory.h; sourceTree = "<group>"; };
 		AA9FB2101755509100B83B98 /* RNCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCategory.m; sourceTree = "<group>"; };
-		AA9FB2321757EB0000B83B98 /* CMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLabel.h; sourceTree = "<group>"; };
-		AA9FB2331757EB0000B83B98 /* CMTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMTextField.h; sourceTree = "<group>"; };
-		AA9FB2341757EB0000B83B98 /* CMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMUtilities.h; sourceTree = "<group>"; };
-		AA9FB2351757EB0000B83B98 /* libCMUtilities-Combined.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCMUtilities-Combined.a"; sourceTree = "<group>"; };
-		AA9FB2361757EB0000B83B98 /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
-		AA9FB2371757EB0000B83B98 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
-		AA9FB2381757EB0000B83B98 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
-		AA9FB2391757EB0000B83B98 /* UIImage+additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+additions.h"; sourceTree = "<group>"; };
 		AA9FB23B1758030300B83B98 /* input-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-sm.png"; sourceTree = "<group>"; };
 		AA9FB23C1758030600B83B98 /* input-sm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-sm@2x.png"; sourceTree = "<group>"; };
 		AA9FB23D1758030900B83B98 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
@@ -423,7 +436,7 @@
 				AA5510A4170F10A3001CC718 /* Foundation.framework in Frameworks */,
 				AA5510A6170F10A3001CC718 /* CoreGraphics.framework in Frameworks */,
 				BEE78D9760F24F3DB6FAB95F /* libPods.a in Frameworks */,
-				AA9FB23A1757EB0000B83B98 /* libCMUtilities-Combined.a in Frameworks */,
+				AA458DA81772592E00B906A7 /* libCMUtilities-Combined.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,14 +896,25 @@
 		AAE2BBC0174AB560001CAFA1 /* CMUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				AA9FB2321757EB0000B83B98 /* CMLabel.h */,
-				AA9FB2331757EB0000B83B98 /* CMTextField.h */,
-				AA9FB2341757EB0000B83B98 /* CMUtilities.h */,
-				AA9FB2351757EB0000B83B98 /* libCMUtilities-Combined.a */,
-				AA9FB2361757EB0000B83B98 /* NSArray+Additions.h */,
-				AA9FB2371757EB0000B83B98 /* NSString+Additions.h */,
-				AA9FB2381757EB0000B83B98 /* UIColor+Additions.h */,
-				AA9FB2391757EB0000B83B98 /* UIImage+additions.h */,
+				AA458D951772592E00B906A7 /* CMAnimatedImageView.h */,
+				AA458D961772592E00B906A7 /* CMLabel.h */,
+				AA458D971772592E00B906A7 /* CMPhoneNumberFormatter.h */,
+				AA458D981772592E00B906A7 /* CMTextField.h */,
+				AA458D991772592E00B906A7 /* CMUtilities.h */,
+				AA458D9A1772592E00B906A7 /* libCMUtilities-Combined.a */,
+				AA458D9B1772592E00B906A7 /* NBNumberFormat.h */,
+				AA458D9C1772592E00B906A7 /* NBPhoneMetaData.h */,
+				AA458D9D1772592E00B906A7 /* NBPhoneMetaDataGenerator.h */,
+				AA458D9E1772592E00B906A7 /* NBPhoneNumber.h */,
+				AA458D9F1772592E00B906A7 /* NBPhoneNumberDefines.h */,
+				AA458DA01772592E00B906A7 /* NBPhoneNumberDesc.h */,
+				AA458DA11772592E00B906A7 /* NBPhoneNumberMetadata.plist */,
+				AA458DA21772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist */,
+				AA458DA31772592E00B906A7 /* NBPhoneNumberUtil.h */,
+				AA458DA41772592E00B906A7 /* NSArray+Additions.h */,
+				AA458DA51772592E00B906A7 /* NSString+Additions.h */,
+				AA458DA61772592E00B906A7 /* UIColor+Additions.h */,
+				AA458DA71772592E00B906A7 /* UIImage+additions.h */,
 			);
 			name = CMUtilities;
 			sourceTree = "<group>";
@@ -1056,6 +1080,8 @@
 				AAD3A9B2175CF63000E5392E /* popoverArrowUp@2x.png in Resources */,
 				AAD3A9B3175CF63000E5392E /* popoverBg.png in Resources */,
 				AAD3A9B4175CF63000E5392E /* popoverBg@2x.png in Resources */,
+				AA458DA91772592E00B906A7 /* NBPhoneNumberMetadata.plist in Resources */,
+				AA458DAA1772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
