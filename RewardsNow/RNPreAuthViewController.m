@@ -56,11 +56,11 @@
     }
     
 //    //testing
-//    double delayInSeconds = 1.0;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//        [self continueTapped:nil];
-//    });
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self continueTapped:nil];
+    });
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -129,8 +129,7 @@
     [self.view addSubview:newHeader];
     
     [UIView animateWithDuration:2.0 animations:^{
-        
-        self.view.backgroundColor = self.branding.backgroundColor;
+
         self.headerImageView.alpha = 0.0;
         newHeader.alpha = 1.0;
         

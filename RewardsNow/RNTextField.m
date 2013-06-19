@@ -12,6 +12,15 @@
 @implementation RNTextField
 
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    
+    if ( (self = [super initWithCoder:aDecoder]) ) {
+        self.shouldHaveDefaultColor = NO;
+    }
+    return self;
+}
+
+
 - (void)drawRect:(CGRect)rect {
     
     //// General Declarations
@@ -22,7 +31,7 @@
     //// Color Declarations
     UIColor* color = [UIColor colorWithRed: 0.114 green: 1 blue: 0.41 alpha: 1];
     UIColor* gradientColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
-    UIColor* color3 = [[RNBranding sharedBranding] pointsColor]; //[UIColor colorWithRed: 0.286 green: 0.353 blue: 0.408 alpha: 0.2]; //main background color
+    UIColor *color3 = _shouldHaveDefaultColor ? [UIColor colorWithRed: 0.286 green: 0.353 blue: 0.408 alpha: 0.2] : [[RNBranding sharedBranding] pointsColor];
     UIColor* color4 = [UIColor colorWithRed: 0.667 green: 0.667 blue: 0.667 alpha: 1];
     UIColor* color5 = [UIColor colorWithRed: 0.027 green: 0.027 blue: 0.027 alpha: 0.2];
     

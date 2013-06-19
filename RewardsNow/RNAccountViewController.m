@@ -34,6 +34,10 @@
     
     self.giftCardView.backgroundColor = self.branding.pointsColor;
     
+    self.pointsLabel.backgroundColor = self.branding.pointsColor;
+    self.pointsLabel.layer.cornerRadius = 5.0;
+
+    
     for (UIButton *button in _skinningButtons) {
         button.backgroundColor = self.branding.pointsColor;
         button.layer.cornerRadius = 5.0;
@@ -64,7 +68,6 @@
         [self presentViewController:auth animated:NO completion:nil];
     }
     
-    self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
     self.nameLabel.text = self.user.fullName;
     [self.emailLabel setTitle:self.user.email forState:UIControlStateNormal];
     
@@ -74,6 +77,15 @@
     [accountNumberText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial-BoldMT" size:17] range:NSMakeRange(0, accountNumberString.length)];
     [accountNumberText addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:14] range:NSMakeRange(accountNumberString.length+1, tipNumber.length)];
     self.accountNumberLabel.attributedText = accountNumberText;
+    
+    
+    NSString *title = @"Points: ";
+    NSString *points = [NSString stringWithFormat:@"%@", [self.user stringBalance]];
+    
+    NSMutableAttributedString *pointsNumberLabel = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@", title, points]];
+    [pointsNumberLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial-BoldMT" size:17] range:NSMakeRange(0, title.length)];
+    [pointsNumberLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:14] range:NSMakeRange(title.length, points.length)];
+    self.pointsLabel.attributedText = pointsNumberLabel;
 
     
     for (NSInteger i = 0; i < self.user.giftCards.count; i++) {
@@ -92,7 +104,7 @@
     }
     
     _giftCardHeightConstraint.constant = 70 + (_user.giftCards.count * 35);
-    _innerViewHeight.constant = 360 + _giftCardHeightConstraint.constant;
+    _innerViewHeight.constant = 400 + _giftCardHeightConstraint.constant;
     
 }
 
@@ -130,7 +142,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:BankCodeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
+    UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLoginViewController"];
     [self presentViewController:auth animated:NO completion:nil];
 }
 

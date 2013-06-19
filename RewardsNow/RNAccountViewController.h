@@ -17,10 +17,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerViewHeight;
 @property (weak, nonatomic) IBOutlet UIView *giftCardView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *accountNumberLabel;
+@property (weak, nonatomic) IBOutlet CMLabel *pointsLabel;
 @property (nonatomic, strong) RNUser *user;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *giftCardHeightConstraint;
 

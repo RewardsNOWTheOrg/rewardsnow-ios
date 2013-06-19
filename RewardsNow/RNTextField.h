@@ -10,4 +10,6 @@
 
 @interface RNTextField : CMTextField
 
+@property (nonatomic) BOOL shouldHaveDefaultColor;
+
 @end

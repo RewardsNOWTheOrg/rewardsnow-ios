@@ -25,13 +25,13 @@
 
 - (void)brand {
     
-    self.view.backgroundColor = _branding.backgroundColor;
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.tintColor = _branding.menuBackgroundColor;
     [self.tabBarController.tabBarItem setTitleTextAttributes:@{UITextAttributeTextColor: _branding.tabBarTextColor} forState:UIControlStateNormal];
     [self.tabBarController.tabBarItem setTitleTextAttributes:@{UITextAttributeTextColor: _branding.tabBarTextColor} forState:UIControlStateNormal];
     
     if ([self respondsToSelector:@selector(innerView)]) {
-        [[self performSelector:@selector(innerView)] setBackgroundColor:_branding.backgroundColor];
+        [[self performSelector:@selector(innerView)] setBackgroundColor:[UIColor whiteColor]];
     }
     
     if ([self respondsToSelector:@selector(topPointsLabel)]) {

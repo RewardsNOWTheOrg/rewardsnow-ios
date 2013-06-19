@@ -39,14 +39,16 @@
                                     <constraint firstAttribute="height" constant="57" type="user" id="jgh-Qm-AZe"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="3 letter code" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="I3Q-eY-uNc">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="3 letter code" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="I3Q-eY-uNc" customClass="RNTextField">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="264" type="user" id="f1k-yJ-ZCn"/>
                                     <constraint firstAttribute="height" constant="56" type="user" id="pze-Oq-s5a"/>
                                 </constraints>
-                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldHaveDefaultColor" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="T28-ai-f5K" id="fP0-IQ-OfO"/>
                                 </connections>
@@ -100,7 +102,7 @@
             <objects>
                 <viewController storyboardIdentifier="RNAuthViewController" id="eag-8K-4sh" customClass="RNAuthViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bQN-T6-5nU" customClass="UIControl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bgx-iy-dmg" customClass="RNTextField">
@@ -108,7 +110,6 @@
                                     <constraint firstAttribute="height" constant="56" type="user" id="OwY-IS-bWy"/>
                                     <constraint firstAttribute="width" constant="264" type="user" id="pWC-0s-e0A"/>
                                 </constraints>
-                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -126,7 +127,6 @@
                                     <constraint firstAttribute="height" constant="56" type="user" id="P8j-Ad-Mco"/>
                                     <constraint firstAttribute="width" constant="264" type="user" id="W1T-8g-vjS"/>
                                 </constraints>
-                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
@@ -203,12 +203,27 @@
             </objects>
             <point key="canvasLocation" x="106" y="844"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Eoe-nv-7wG">
+            <objects>
+                <navigationController storyboardIdentifier="RNLoginViewController" definesPresentationContext="YES" id="dWn-pe-GF6" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3oR-e0-Aw8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eag-8K-4sh" kind="relationship" relationship="rootViewController" id="WIj-US-Qhw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tu1-pv-sWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-406" y="1516"/>
+        </scene>
         <!--Auth Password View Controller - Reset Password-->
         <scene sceneID="oQ2-pX-U1L">
             <objects>
                 <viewController storyboardIdentifier="RNAuthPasswordViewController" title="Reset Password" id="F5a-iH-xhg" customClass="RNAuthPasswordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w9n-re-MP3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bde-7g-hgX">
@@ -942,31 +957,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UpB-NY-26M">
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Name] Rewards: You have 100,000 points." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="LRL-6u-WJI" customClass="CMLabel">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="19" id="ELC-xc-IRp"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUD-N7-Tek">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="tUD-N7-Tek" firstAttribute="bottom" secondItem="UpB-NY-26M" secondAttribute="bottom" type="default" id="0sK-8I-EdU"/>
-                                    <constraint firstItem="LRL-6u-WJI" firstAttribute="top" secondItem="UpB-NY-26M" secondAttribute="top" type="user" id="D27-SK-oj7"/>
-                                    <constraint firstItem="LRL-6u-WJI" firstAttribute="leading" secondItem="UpB-NY-26M" secondAttribute="leading" type="user" id="KYV-Zl-MTr"/>
-                                    <constraint firstAttribute="height" constant="20" type="user" id="OcF-cL-aFO"/>
-                                    <constraint firstItem="tUD-N7-Tek" firstAttribute="top" secondItem="UpB-NY-26M" secondAttribute="top" constant="19" id="Qok-uO-sM0"/>
-                                    <constraint firstItem="tUD-N7-Tek" firstAttribute="trailing" secondItem="UpB-NY-26M" secondAttribute="trailing" type="default" id="To4-mZ-6To"/>
-                                    <constraint firstItem="tUD-N7-Tek" firstAttribute="leading" secondItem="UpB-NY-26M" secondAttribute="leading" type="default" id="g2R-7N-xyi"/>
-                                    <constraint firstItem="LRL-6u-WJI" firstAttribute="trailing" secondItem="UpB-NY-26M" secondAttribute="trailing" type="user" id="tCI-E9-8qR"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nC3-Al-Apa">
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewC-I3-94W">
@@ -998,7 +988,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsZ-yG-QAZ" customClass="RNButton">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="280" type="user" id="k2B-Mz-6ch"/>
-                                                    <constraint firstAttribute="height" constant="46" id="vSu-us-cC4"/>
+                                                    <constraint firstAttribute="height" constant="44" type="user" id="vSu-us-cC4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
                                                 <state key="normal" title="Log Out">
@@ -1074,6 +1064,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lb-YK-PHh">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" type="user" id="E64-5e-hAP"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
                                                 <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Change Password" backgroundImage="grey-button-arrow.png">
@@ -1087,33 +1080,50 @@
                                                     <segue destination="GWS-uR-rAQ" kind="push" id="nMv-8Y-DSD"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozU-ig-hZc" customClass="CMLabel">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" type="user" id="4yF-eG-i2n"/>
+                                                    <constraint firstAttribute="width" constant="302" type="user" id="MJj-mY-CI3"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Points: 14,003">
+                                                        <attributes>
+                                                            <font key="NSFont" metaFont="toolTip"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="ozU-ig-hZc" firstAttribute="leading" secondItem="aab-NX-NZc" secondAttribute="leading" type="default" id="0wh-0H-OPP"/>
                                             <constraint firstAttribute="width" constant="320" type="user" id="2aK-A8-LQe"/>
-                                            <constraint firstItem="VLc-tI-omj" firstAttribute="top" secondItem="cYv-gu-j83" secondAttribute="bottom" constant="10" type="user" id="5CR-li-5tD"/>
-                                            <constraint firstItem="0lb-YK-PHh" firstAttribute="top" secondItem="0MS-Av-hGS" secondAttribute="bottom" constant="10" type="user" id="6ii-Dm-glc"/>
                                             <constraint firstItem="0MS-Av-hGS" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="7ah-KN-LLA"/>
-                                            <constraint firstAttribute="height" constant="520" type="user" id="9Sj-2s-itW"/>
-                                            <constraint firstItem="cYv-gu-j83" firstAttribute="top" secondItem="aab-NX-NZc" secondAttribute="bottom" constant="10" type="user" id="KoM-hk-lgc"/>
+                                            <constraint firstItem="0MS-Av-hGS" firstAttribute="top" secondItem="DoB-8J-GfN" secondAttribute="bottom" constant="10" type="user" id="9Q1-Ux-3Od"/>
+                                            <constraint firstItem="0lb-YK-PHh" firstAttribute="top" secondItem="0MS-Av-hGS" secondAttribute="bottom" constant="10" type="user" id="Em9-pz-saU"/>
                                             <constraint firstItem="VLc-tI-omj" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="M96-E4-UwG"/>
-                                            <constraint firstItem="HsZ-yG-QAZ" firstAttribute="top" secondItem="0lb-YK-PHh" secondAttribute="bottom" constant="10" type="user" id="ak0-MU-1Be"/>
+                                            <constraint firstItem="cYv-gu-j83" firstAttribute="top" secondItem="ozU-ig-hZc" secondAttribute="bottom" constant="10" type="user" id="WtL-cP-bPR"/>
+                                            <constraint firstItem="HsZ-yG-QAZ" firstAttribute="top" secondItem="0lb-YK-PHh" secondAttribute="bottom" constant="10" type="user" id="Y06-Rp-ska"/>
                                             <constraint firstItem="DoB-8J-GfN" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="dNI-Zq-4SR"/>
-                                            <constraint firstItem="0MS-Av-hGS" firstAttribute="top" secondItem="DoB-8J-GfN" secondAttribute="bottom" constant="10" type="user" id="jG0-1C-LeP"/>
                                             <constraint firstItem="aab-NX-NZc" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="lZP-JV-cZk"/>
-                                            <constraint firstItem="DoB-8J-GfN" firstAttribute="top" secondItem="VLc-tI-omj" secondAttribute="bottom" constant="10" type="user" id="q4v-IM-gQO"/>
+                                            <constraint firstItem="DoB-8J-GfN" firstAttribute="top" secondItem="VLc-tI-omj" secondAttribute="bottom" constant="10" type="user" id="oTw-j0-q1U"/>
+                                            <constraint firstItem="ozU-ig-hZc" firstAttribute="top" secondItem="aab-NX-NZc" secondAttribute="bottom" constant="10" type="user" id="qFH-bX-HiO"/>
                                             <constraint firstItem="HsZ-yG-QAZ" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="rCT-Zl-YiE"/>
                                             <constraint firstItem="aab-NX-NZc" firstAttribute="top" secondItem="ewC-I3-94W" secondAttribute="top" constant="10" type="user" id="s4N-WA-jWl"/>
                                             <constraint firstItem="0lb-YK-PHh" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="uLj-zP-t1s"/>
+                                            <constraint firstAttribute="height" constant="570" type="user" id="wDM-F6-vht"/>
                                             <constraint firstItem="cYv-gu-j83" firstAttribute="leading" secondItem="ewC-I3-94W" secondAttribute="leading" constant="9" type="user" id="xWA-rt-NR0"/>
+                                            <constraint firstItem="VLc-tI-omj" firstAttribute="top" secondItem="cYv-gu-j83" secondAttribute="bottom" constant="10" type="user" id="z1z-BF-bqF"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ewC-I3-94W" secondAttribute="bottom" constant="-85" id="0l4-RH-QIm"/>
-                                    <constraint firstItem="ewC-I3-94W" firstAttribute="top" secondItem="nC3-Al-Apa" secondAttribute="top" type="user" id="Fhh-sp-jLb"/>
+                                    <constraint firstItem="ewC-I3-94W" firstAttribute="top" secondItem="nC3-Al-Apa" secondAttribute="top" type="default" id="3PS-bD-kGY"/>
                                     <constraint firstItem="ewC-I3-94W" firstAttribute="trailing" secondItem="nC3-Al-Apa" secondAttribute="trailing" type="default" id="Ngi-gA-06s"/>
                                     <constraint firstItem="ewC-I3-94W" firstAttribute="leading" secondItem="nC3-Al-Apa" secondAttribute="leading" type="user" id="QXF-9B-q7k"/>
+                                    <constraint firstAttribute="bottom" secondItem="ewC-I3-94W" secondAttribute="bottom" constant="-115" id="eUD-fE-8Xc"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -1121,10 +1131,7 @@
                         <constraints>
                             <constraint firstItem="nC3-Al-Apa" firstAttribute="trailing" secondItem="DY4-0e-dKy" secondAttribute="trailing" type="user" id="2wm-kR-ngZ"/>
                             <constraint firstItem="nC3-Al-Apa" firstAttribute="leading" secondItem="DY4-0e-dKy" secondAttribute="leading" type="user" id="DJz-j9-uxy"/>
-                            <constraint firstItem="UpB-NY-26M" firstAttribute="top" secondItem="DY4-0e-dKy" secondAttribute="top" type="default" id="KEs-cW-YNo"/>
-                            <constraint firstItem="UpB-NY-26M" firstAttribute="leading" secondItem="DY4-0e-dKy" secondAttribute="leading" type="default" id="NcX-xQ-8A0"/>
-                            <constraint firstItem="nC3-Al-Apa" firstAttribute="top" secondItem="DY4-0e-dKy" secondAttribute="top" constant="20" symbolic="YES" type="user" id="VcH-fd-Vsm"/>
-                            <constraint firstItem="UpB-NY-26M" firstAttribute="trailing" secondItem="DY4-0e-dKy" secondAttribute="trailing" type="default" id="oNI-zZ-v90"/>
+                            <constraint firstItem="nC3-Al-Apa" firstAttribute="top" secondItem="DY4-0e-dKy" secondAttribute="top" type="user" id="VcH-fd-Vsm"/>
                             <constraint firstItem="nC3-Al-Apa" firstAttribute="bottom" secondItem="DY4-0e-dKy" secondAttribute="bottom" type="user" id="ppE-Cd-kBb"/>
                         </constraints>
                     </view>
@@ -1137,10 +1144,10 @@
                         <outlet property="giftCardHeightConstraint" destination="Fyr-t6-Wv8" id="QrZ-z8-TWn"/>
                         <outlet property="giftCardView" destination="DoB-8J-GfN" id="3lu-aF-q2N"/>
                         <outlet property="innerView" destination="ewC-I3-94W" id="luI-hT-zEO"/>
-                        <outlet property="innerViewHeight" destination="9Sj-2s-itW" id="3G7-fZ-Ulo"/>
+                        <outlet property="innerViewHeight" destination="wDM-F6-vht" id="pP4-0c-0qT"/>
                         <outlet property="nameLabel" destination="aab-NX-NZc" id="M2e-Tu-ZaL"/>
+                        <outlet property="pointsLabel" destination="ozU-ig-hZc" id="OR8-FR-UPl"/>
                         <outlet property="scrollView" destination="nC3-Al-Apa" id="tNa-aC-tzI"/>
-                        <outlet property="topPointsLabel" destination="LRL-6u-WJI" id="FbQ-Xq-phx"/>
                         <outletCollection property="skinningButtons" destination="VLc-tI-omj" id="CrR-zk-K9U"/>
                         <outletCollection property="skinningButtons" destination="0MS-Av-hGS" id="oml-MN-OjX"/>
                         <outletCollection property="skinningButtons" destination="0lb-YK-PHh" id="UZ4-4H-d9J"/>
@@ -3592,8 +3599,8 @@
                 <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsLabel" candidateClass="CMLabel"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="topPointsLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="skinningButtons" candidateClass="UIButton"/>
             </relationships>
         </class>
