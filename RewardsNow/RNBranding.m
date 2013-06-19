@@ -129,6 +129,10 @@ static RNBranding *_sharedBranding;
     [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : self.tabBarTextColor } forState:UIControlStateHighlighted];    
 }
 
+- (UIColor *)commonBackgroundColor {
+    return [UIColor whiteColor];
+}
+
 #pragma mark - Get Image
 
 - (UIImage *)getImageFromURL:(NSURL *)fileURL {

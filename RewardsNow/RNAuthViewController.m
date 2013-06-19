@@ -37,7 +37,7 @@
     
     self.logoImageView.image = self.branding.headerImage;
     
-    _fields = @[self.usernameTextField, self.passwordTextField, self.signInButton, self.forgotPasswordButton];
+    self.fields = @[self.usernameTextField, self.passwordTextField, self.signInButton, self.forgotPasswordButton];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     if (!IS_WIDESCREEN) {
@@ -52,7 +52,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     CGRect frame = self.view.frame;
-    frame.origin.y = IS_WIDESCREEN ? -(135 + kStatusBarHeight) : -(110 + kStatusBarHeight);
+    frame.origin.y = IS_WIDESCREEN ? -(135 + kStatusBarHeight) : -(120 + kStatusBarHeight);
     
     [UIView animateWithDuration:0.25 animations:^{
         self.view.frame = frame;
@@ -64,7 +64,7 @@
     [super viewDidAppear:animated];
     self.usernameTextField.text = @"969test";
     self.passwordTextField.text = @"sample";
-    [self signInTapped:nil];
+//    [self signInTapped:nil];
 }
 
 

@@ -10,8 +10,37 @@
 
 @implementation RNLeftArrow
 
-- (void)drawRect:(CGRect)rect {
+- (id)initWithFrame:(CGRect)frame
+{
+    if ( (self = [super initWithFrame:frame]) ) {
+        [self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:NULL];
+    }
+    
+    return self;
+}
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    
+    if ( (self = [super initWithCoder:aDecoder]) ) {
+        [self addObserver:self forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:NULL];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"highlighted"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self setNeedsDisplay];
+}
+
+- (void)drawRect:(CGRect)rect {
+    
+    CGRect frame = self.bounds;
+
+    // Down
     if (self.isHighlighted) {
         //// General Declarations
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -39,11 +68,26 @@
         CGSize shadow2Offset = CGSizeMake(0.1, 1.1);
         CGFloat shadow2BlurRadius = 1;
         
+        
         //// Rounded Rectangle Drawing
-        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(3.5, 3.5, 64, 58) cornerRadius: 4];
+        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPath];
+        [roundedRectanglePath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMaxY(frame) - 4.5)];
+        [roundedRectanglePath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 4.5, CGRectGetMaxY(frame) - 0.5) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMaxY(frame) - 2.29) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 2.29, CGRectGetMaxY(frame) - 0.5)];
+        [roundedRectanglePath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 4.5, CGRectGetMaxY(frame) - 0.5)];
+        [roundedRectanglePath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMaxY(frame) - 4.5) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 2.29, CGRectGetMaxY(frame) - 0.5) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMaxY(frame) - 2.29)];
+        [roundedRectanglePath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMinY(frame) + 4.5)];
+        [roundedRectanglePath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 4.5, CGRectGetMinY(frame) + 0.5) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMinY(frame) + 2.29) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 2.29, CGRectGetMinY(frame) + 0.5)];
+        [roundedRectanglePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 4.5, CGRectGetMinY(frame) + 0.5)];
+        [roundedRectanglePath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 4.5) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 2.29, CGRectGetMinY(frame) + 0.5) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 2.29)];
+        [roundedRectanglePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMaxY(frame) - 4.5)];
+        [roundedRectanglePath closePath];
         CGContextSaveGState(context);
         [roundedRectanglePath addClip];
-        CGContextDrawLinearGradient(context, gradient, CGPointMake(35.5, 3.5), CGPointMake(35.5, 61.5), 0);
+        CGRect roundedRectangleBounds = CGPathGetPathBoundingBox(roundedRectanglePath.CGPath);
+        CGContextDrawLinearGradient(context, gradient,
+                                    CGPointMake(CGRectGetMidX(roundedRectangleBounds), CGRectGetMinY(roundedRectangleBounds)),
+                                    CGPointMake(CGRectGetMidX(roundedRectangleBounds), CGRectGetMaxY(roundedRectangleBounds)),
+                                    0);
         CGContextRestoreGState(context);
         
         ////// Rounded Rectangle Inner Shadow
@@ -79,10 +123,10 @@
         
         //// Bezier Drawing
         UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-        [bezierPath moveToPoint: CGPointMake(44.5, 19.5)];
-        [bezierPath addLineToPoint: CGPointMake(22.5, 32.5)];
-        [bezierPath addLineToPoint: CGPointMake(44.5, 45.5)];
-        [bezierPath addLineToPoint: CGPointMake(44.5, 19.5)];
+        [bezierPath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 41.5, CGRectGetMinY(frame) + 16.5)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 19.5, CGRectGetMinY(frame) + 29.5)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 41.5, CGRectGetMinY(frame) + 42.5)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 41.5, CGRectGetMinY(frame) + 16.5)];
         [bezierPath closePath];
         [fillColor2 setFill];
         [bezierPath fill];
@@ -119,10 +163,10 @@
         CGGradientRelease(gradient);
         CGColorSpaceRelease(colorSpace);
         
-
         
         
     } else {
+        
         //// General Declarations
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
         CGContextRef context = UIGraphicsGetCurrentContext();
@@ -141,10 +185,24 @@
         CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradientColors, gradientLocations);
         
         //// Rounded Rectangle Drawing
-        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(3.5, 3.5, 64, 58) cornerRadius: 4];
+        UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPath];
+        [roundedRectanglePath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMaxY(frame) - 4.5)];
+        [roundedRectanglePath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 4.5, CGRectGetMaxY(frame) - 0.5) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMaxY(frame) - 2.29) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 2.29, CGRectGetMaxY(frame) - 0.5)];
+        [roundedRectanglePath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 4.5, CGRectGetMaxY(frame) - 0.5)];
+        [roundedRectanglePath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMaxY(frame) - 4.5) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 2.29, CGRectGetMaxY(frame) - 0.5) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMaxY(frame) - 2.29)];
+        [roundedRectanglePath addLineToPoint: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMinY(frame) + 4.5)];
+        [roundedRectanglePath addCurveToPoint: CGPointMake(CGRectGetMaxX(frame) - 4.5, CGRectGetMinY(frame) + 0.5) controlPoint1: CGPointMake(CGRectGetMaxX(frame) - 0.5, CGRectGetMinY(frame) + 2.29) controlPoint2: CGPointMake(CGRectGetMaxX(frame) - 2.29, CGRectGetMinY(frame) + 0.5)];
+        [roundedRectanglePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 4.5, CGRectGetMinY(frame) + 0.5)];
+        [roundedRectanglePath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 4.5) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 2.29, CGRectGetMinY(frame) + 0.5) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMinY(frame) + 2.29)];
+        [roundedRectanglePath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 0.5, CGRectGetMaxY(frame) - 4.5)];
+        [roundedRectanglePath closePath];
         CGContextSaveGState(context);
         [roundedRectanglePath addClip];
-        CGContextDrawLinearGradient(context, gradient, CGPointMake(35.5, 3.5), CGPointMake(35.5, 61.5), 0);
+        CGRect roundedRectangleBounds = CGPathGetPathBoundingBox(roundedRectanglePath.CGPath);
+        CGContextDrawLinearGradient(context, gradient,
+                                    CGPointMake(CGRectGetMidX(roundedRectangleBounds), CGRectGetMinY(roundedRectangleBounds)),
+                                    CGPointMake(CGRectGetMidX(roundedRectangleBounds), CGRectGetMaxY(roundedRectangleBounds)),
+                                    0);
         CGContextRestoreGState(context);
         [color2 setStroke];
         roundedRectanglePath.lineWidth = 0.5;
@@ -153,10 +211,10 @@
         
         //// Bezier Drawing
         UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-        [bezierPath moveToPoint: CGPointMake(44.5, 45.5)];
-        [bezierPath addLineToPoint: CGPointMake(22.5, 32.5)];
-        [bezierPath addLineToPoint: CGPointMake(44.5, 19.5)];
-        [bezierPath addLineToPoint: CGPointMake(44.5, 45.5)];
+        [bezierPath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 41.5, CGRectGetMinY(frame) + 42.5)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 19.5, CGRectGetMinY(frame) + 29.5)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 41.5, CGRectGetMinY(frame) + 16.5)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 41.5, CGRectGetMinY(frame) + 42.5)];
         [bezierPath closePath];
         [fillColor2 setFill];
         [bezierPath fill];
@@ -165,6 +223,8 @@
         //// Cleanup
         CGGradientRelease(gradient);
         CGColorSpaceRelease(colorSpace);
+        
+
         
 
     }

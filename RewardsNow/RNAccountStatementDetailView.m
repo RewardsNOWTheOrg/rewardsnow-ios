@@ -23,14 +23,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        UIColor *backgroundColor = [UIColor colorWithRed:C(227) green:C(228) blue:C(228) alpha:1.0];
-        
-        self.backgroundColor = backgroundColor;
         self.layer.cornerRadius = 3;
         self.numLabels = 0;
         
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 290, 40)];
-        self.titleLabel.backgroundColor = backgroundColor;
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 280, 40)];
+        self.titleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:_titleLabel];
         
         UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(5, 55, 280, 2)];
@@ -44,16 +41,16 @@
 - (void)addLeftText:(NSString *)left rightText:(NSString *)right {
     
     UILabel *detail = [[UILabel alloc] initWithFrame:CGRectMake(5, 60 + (40 * _numLabels), 160, 40)];
-    detail.backgroundColor = [UIColor colorWithRed:C(227) green:C(228) blue:C(228) alpha:1.0];
+    detail.backgroundColor = [UIColor clearColor];
     detail.font = [UIFont fontWithName:@"Arial" size:12];
     detail.text = left;
     [self addSubview:detail];
     
     UILabel *detailRight = [[UILabel alloc] initWithFrame:CGRectMake(160, 60 + (40 * _numLabels), 160, 40)];
-    detailRight.backgroundColor = [UIColor colorWithRed:C(227) green:C(228) blue:C(228) alpha:1.0];
+    detailRight.backgroundColor = [UIColor clearColor];
     detailRight.text = right;
     detail.font = [UIFont fontWithName:@"Arial" size:12];
-    detailRight.textColor = [UIColor redColor];
+    detailRight.textColor = [UIColor blackColor];
     [self addSubview:detailRight];
     _numLabels++;
 }

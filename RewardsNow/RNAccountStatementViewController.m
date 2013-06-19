@@ -49,7 +49,7 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 - (void)brand {
     [super brand];
     
-    self.pointsAreaView.backgroundColor = self.branding.menuBackgroundColor;
+    self.pointsAreaView.backgroundColor = self.branding.commonBackgroundColor;
 }
 
 - (void)viewDidLoad {
@@ -284,6 +284,8 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 }
 
 - (void)scrollDetailView:(UISwipeGestureRecognizerDirection)direction toView:(UIView *)aView {
+    
+    aView.backgroundColor = self.branding.backgroundColor;
     
     CGFloat modifier = direction == UISwipeGestureRecognizerDirectionLeft ? 320 : -320;
     

@@ -16,9 +16,7 @@ typedef void (^RNResultCallback)(id result);
 @interface RNWebService : AFHTTPClient
 
 /**
- * The 3 digit number that represents the FI the user is a part of.
- * We will only be dealing with this number when making API calls, and it will never change
- * once they have set it for the first time.
+ * 
  */
 @property (nonatomic, copy) NSString *tipNumber;
 

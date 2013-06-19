@@ -50,6 +50,8 @@
 		AA355A66172199240014E01B /* red-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A64172199240014E01B /* red-button@2x.png */; };
 		AA355A69172199DD0014E01B /* divider-line.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A67172199DD0014E01B /* divider-line.png */; };
 		AA355A6A172199DD0014E01B /* divider-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A68172199DD0014E01B /* divider-line@2x.png */; };
+		AA458D911772118E00B906A7 /* RNLeftArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AA458D901772118E00B906A7 /* RNLeftArrow.m */; };
+		AA458D9417723A6400B906A7 /* RNRightArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AA458D9317723A6400B906A7 /* RNRightArrow.m */; };
 		AA53FE34170F5D6A00041748 /* RNRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */; };
 		AA53FE37170F5D7E00041748 /* RNRedeemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */; };
 		AA53FE3B170F5D9200041748 /* RNLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE3A170F5D9200041748 /* RNLocalViewController.m */; };
@@ -230,6 +232,10 @@
 		AA355A64172199240014E01B /* red-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-button@2x.png"; sourceTree = "<group>"; };
 		AA355A67172199DD0014E01B /* divider-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "divider-line.png"; sourceTree = "<group>"; };
 		AA355A68172199DD0014E01B /* divider-line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "divider-line@2x.png"; sourceTree = "<group>"; };
+		AA458D8F1772118E00B906A7 /* RNLeftArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLeftArrow.h; sourceTree = "<group>"; };
+		AA458D901772118E00B906A7 /* RNLeftArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLeftArrow.m; sourceTree = "<group>"; };
+		AA458D9217723A6300B906A7 /* RNRightArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRightArrow.h; sourceTree = "<group>"; };
+		AA458D9317723A6400B906A7 /* RNRightArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRightArrow.m; sourceTree = "<group>"; };
 		AA53FE32170F5D6A00041748 /* RNRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemViewController.h; sourceTree = "<group>"; };
 		AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRedeemViewController.m; sourceTree = "<group>"; };
 		AA53FE35170F5D7E00041748 /* RNRedeemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemDetailViewController.h; sourceTree = "<group>"; };
@@ -756,6 +762,10 @@
 				AAC806B8176A835100BE9F72 /* RNTextField.m */,
 				AAC806BA176A851000BE9F72 /* RNButton.h */,
 				AAC806BB176A851000BE9F72 /* RNButton.m */,
+				AA458D8F1772118E00B906A7 /* RNLeftArrow.h */,
+				AA458D901772118E00B906A7 /* RNLeftArrow.m */,
+				AA458D9217723A6300B906A7 /* RNRightArrow.h */,
+				AA458D9317723A6400B906A7 /* RNRightArrow.m */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -1160,6 +1170,8 @@
 				AAC191681762865300E08FD2 /* RNPopoverViewController.m in Sources */,
 				AAC806B9176A835100BE9F72 /* RNTextField.m in Sources */,
 				AAC806BC176A851000BE9F72 /* RNButton.m in Sources */,
+				AA458D911772118E00B906A7 /* RNLeftArrow.m in Sources */,
+				AA458D9417723A6400B906A7 /* RNRightArrow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

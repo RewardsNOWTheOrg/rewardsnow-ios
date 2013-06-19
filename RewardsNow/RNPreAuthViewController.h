@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *helperLabel;
 
 - (IBAction)continueTapped:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;

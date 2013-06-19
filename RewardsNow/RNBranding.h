@@ -30,6 +30,7 @@
 @property (nonatomic, strong) UIColor *tabBarTextColor;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) NSURL *headerURL;
+@property (nonatomic, strong) UIColor *commonBackgroundColor;
 
 @property (nonatomic, strong) UIImage *headerImage;
 

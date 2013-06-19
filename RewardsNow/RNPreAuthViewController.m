@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.hasFinishedDownloadingImage = NO;
     self.hasFinishedDownloadingBranding = NO;
-    self.fields = @[self.codeTextField, self.continueButton];
+    self.fields = @[self.helperLabel, self.codeTextField, self.continueButton];
     [self.navigationController setNavigationBarHidden:YES];
     
     if (!IS_WIDESCREEN) {
@@ -56,10 +56,10 @@
     }
     
 //    //testing
-    double delayInSeconds = 1.0;
+    double delayInSeconds = .5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self continueTapped:nil];
+//        [self continueTapped:nil];
     });
 }
 
@@ -70,15 +70,13 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     
-    if (!IS_WIDESCREEN) {
-        
-        CGRect frame = self.view.frame;
-        frame.origin.y = -30;
-        
-        [UIView animateWithDuration:0.25 animations:^{
-            self.view.frame = frame;
-        }];
-    }
+    CGRect frame = self.view.frame;
+    frame.origin.y = IS_WIDESCREEN ? -60 : -100;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.frame = frame;
+    }];
+
 }
 
 - (IBAction)continueTapped:(id)sender {
