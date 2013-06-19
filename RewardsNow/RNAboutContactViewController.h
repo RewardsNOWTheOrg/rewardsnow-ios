@@ -13,6 +13,7 @@
 @interface RNAboutContactViewController : RNSkinableViewController <MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *callButton;
+@property (weak, nonatomic) IBOutlet UIView *lowerView;
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *skinnableButtons;
 

@@ -28,7 +28,7 @@
 
 - (void)brand {
     [super brand];
-    self.lowerInnerView.backgroundColor = [self.branding.backgroundColor colorWithAlphaComponent:.9]; //need another color pl0x
+    self.lowerInnerView.backgroundColor = self.branding.backgroundColor;
     self.lowerUpperLabel.backgroundColor = self.branding.pointsColor;
     
     self.tableView.backgroundColor = self.branding.backgroundColor;

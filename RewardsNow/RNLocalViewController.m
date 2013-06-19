@@ -16,6 +16,7 @@
 #import "RNLocalCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "RNConstants.h"
+#import "RNBranding.h"
 
 #define kSearchTable self.searchDisplayController.searchResultsTableView
 
@@ -31,6 +32,11 @@
 @end
 
 @implementation RNLocalViewController
+
+- (void)brand {
+    [super brand];
+
+}
 
 
 - (void)viewDidLoad {
@@ -85,6 +91,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self refresh:_refreshControl];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self hidePopover];
 }
 
 #pragma mark - UITableView Methods

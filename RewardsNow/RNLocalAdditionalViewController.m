@@ -9,6 +9,7 @@
 #import "RNLocalAdditionalViewController.h"
 #import "RNLocalDeal.h"
 #import "UIImageView+AFNetworking.h"
+#import "RNBranding.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface RNLocalAdditionalViewController ()
@@ -20,7 +21,8 @@
 - (void)brand {
     [super brand];
     
-    //need another color :(
+    self.lowerView.backgroundColor = self.branding.backgroundColor;
+    self.additionalInfoView.backgroundColor = self.branding.pointsColor;
 
 }
 

@@ -19,6 +19,8 @@
 - (void)brand {
     [super brand];
     
+    self.lowerView.backgroundColor = self.branding.backgroundColor;
+    
     for (UIButton *button in _skinnableButtons) {
         button.backgroundColor = self.branding.pointsColor;
         button.layer.cornerRadius = 5.0;

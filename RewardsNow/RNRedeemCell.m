@@ -14,8 +14,8 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ( (self = [super initWithCoder:aDecoder]) ) {
-        self.contentView.backgroundColor = [[RNBranding sharedBranding] backgroundColor];
-        self.flipBackgroundView.backgroundColor = [[RNBranding sharedBranding] backgroundColor];
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.flipBackgroundView.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -25,8 +25,8 @@
         self.contentView.backgroundColor = [UIColor colorWithRed:C(149) green:C(149) blue:C(149) alpha:.3];
         self.flipBackgroundView.backgroundColor = [UIColor colorWithRed:C(149) green:C(149) blue:C(149) alpha:.3];
     } else {
-        self.contentView.backgroundColor = [[RNBranding sharedBranding] backgroundColor];
-        self.flipBackgroundView.backgroundColor = [[RNBranding sharedBranding] backgroundColor];
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.flipBackgroundView.backgroundColor = [UIColor whiteColor];
     }
     
     [super setHighlighted:highlighted animated:animated];
