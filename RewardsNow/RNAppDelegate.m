@@ -18,7 +18,6 @@
     UITabBarController *root = (UITabBarController *)[[self window] rootViewController];
     [root setSelectedIndex:3];
     
-    
     return YES;
 }
 
