@@ -1326,8 +1326,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: CloudMine LLC";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CloudMine LLC";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: RewardsNOW,  Inc. (Z3K2J9XMAA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: RewardsNOW,  Inc. (Z3K2J9XMAA)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
 				INFOPLIST_FILE = "RewardsNow/RewardsNow-Info.plist";
@@ -1337,7 +1337,8 @@
 					"\"$(SRCROOT)/RewardsNow\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "DE63406D-57AD-4777-9BB4-54D8491FFDC8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DE63406D-57AD-4777-9BB4-54D8491FFDC8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
