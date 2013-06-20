@@ -14,6 +14,7 @@
 #import "RNCartObject.h"
 #import "RNUser.h"
 #import "RNWebService.h"
+#import "RNBranding.h"
 
 @interface RNCartConfirmationViewController ()
 
@@ -23,6 +24,13 @@
 @end
 
 @implementation RNCartConfirmationViewController
+
+- (void)brand {
+    [super brand];
+    
+    self.upperOuterView.backgroundColor = self.branding.backgroundColor;
+    self.labelView.backgroundColor = self.branding.pointsColor;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,7 +56,7 @@
     self.innerInnerViewHeight.constant = (30 * [[[RNCart sharedCart] items] count]) + 60;
     
     
-    self.innerViewHeight.constant = self.innerInnerViewHeight.constant + difference;
+    self.innerViewHeight.constant = self.innerInnerViewHeight.constant + difference + 100;
     self.scrollView.contentSize = CGSizeMake(320, self.innerInnerViewHeight.constant + 100);
     [self.view layoutIfNeeded];
 }
@@ -102,6 +110,10 @@
 - (IBAction)placeOrderTapped:(id)sender {
     NSString *message = [NSString stringWithFormat:@"Are you sure you would like to place the order for %@?", [[RNCart sharedCart] stringTotal]];
     [[[UIAlertView alloc] initWithTitle:@"Place Order" message:message delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil] show];
+}
+
+- (IBAction)cancelTapped:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

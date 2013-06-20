@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
-@interface RNCartViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface RNCartViewController : RNSkinableViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *pointsAvailableLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsInCartLabel;
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerViewHeight;
 @property (weak, nonatomic) IBOutlet UIButton *topButtonForward;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *skinnableLabels;
 
 - (IBAction)confirmTapped:(id)sender;
 - (IBAction)cancelTapped:(id)sender;

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSkinableViewController.h"
 
-@interface RNCartConfirmationViewController : UIViewController
+@interface RNCartConfirmationViewController : RNSkinableViewController
 
 @property (weak, nonatomic) IBOutlet UIView *labelView;
 @property (weak, nonatomic) IBOutlet UILabel *pointsTotal;
@@ -17,9 +18,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerViewHeight;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *innerView;
+@property (weak, nonatomic) IBOutlet UIView *upperOuterView;
 
 - (IBAction)cartTapped:(id)sender;
 - (IBAction)deliveryTapped:(id)sender;
 - (IBAction)placeOrderTapped:(id)sender;
+- (IBAction)cancelTapped:(id)sender;
 
 @end

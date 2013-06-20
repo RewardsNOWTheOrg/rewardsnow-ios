@@ -9,6 +9,7 @@
 #import "RNCart.h"
 #import "RNCartAccountViewController.h"
 #import "RNUser.h"
+#import "RNBranding.h"
 
 #define kKeyboardHeight 216
 #define kStatusBarHeight 20
@@ -22,6 +23,16 @@
 @end
 
 @implementation RNCartAccountViewController
+
+- (void)brand {
+    [super brand];
+    
+    self.upperOuterView.backgroundColor = self.branding.backgroundColor;
+    self.upperInnerView.backgroundColor = self.branding.pointsColor;
+    
+    self.lowerOuterView.backgroundColor = self.branding.backgroundColor;
+    self.lowerInnerView.backgroundColor = self.branding.pointsColor;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

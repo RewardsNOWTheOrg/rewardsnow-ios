@@ -14,6 +14,7 @@
 #import "RNRedeemObject.h"
 #import "UIImageView+AFNetworking.h"
 #import "RNCartObject.h"
+#import "RNBranding.h"
 
 #define kCellIsBeingDeletedTag NSIntegerMax
 
@@ -26,6 +27,14 @@
 
 @implementation RNCartViewController
 
+- (void)brand {
+    [super brand];
+    
+    for (UILabel *label in _skinnableLabels) {
+        label.backgroundColor = self.branding.menuBackgroundColor;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -33,6 +42,8 @@
     self.topPointsLabel.text = [_cart getNamePoints];
     [self updatePriceLabels];
     [self resizeView:NO];
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,7 +63,7 @@
 }
 
 - (BOOL)canMoveForwardInCheckout {
-    return _cart.items.count > 0 && [[_cart pointsDifference] doubleValue] > 0;
+    return [_cart canCheckout];
 }
 
 - (void)updatePriceLabels {
@@ -101,6 +112,11 @@
     } else {
         animations();
     }
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:animated];
 }
 
 - (IBAction)confirmTapped:(id)sender {
