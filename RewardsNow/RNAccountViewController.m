@@ -113,7 +113,7 @@
         _noCardsLabel.text = @"No eGift Cards Yet!";
         [self.giftCardView addSubview:_noCardsLabel];
         _giftCardHeightConstraint.constant = 100;
-    } else {g
+    } else {
         [_noCardsLabel removeFromSuperview];
         self.noCardsLabel = nil;
     }
