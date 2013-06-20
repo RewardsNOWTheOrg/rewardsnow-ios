@@ -19,6 +19,7 @@
 @interface RNAccountViewController ()
 
 @property (nonatomic) CGPoint contentOffset;
+@property (nonatomic, strong) UILabel *noCardsLabel;
 
 @end
 
@@ -107,11 +108,14 @@
     _giftCardHeightConstraint.constant = 70 + (_user.giftCards.count * 35);
     
     if (_user.giftCards.count == 0) {
-        UILabel *noCardsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 280, 30)];
-        noCardsLabel.backgroundColor = [UIColor clearColor];
-        noCardsLabel.text = @"No eGift Cards Yet!";
-        [self.giftCardView addSubview:noCardsLabel];
+        self.noCardsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 280, 30)];
+        _noCardsLabel.backgroundColor = [UIColor clearColor];
+        _noCardsLabel.text = @"No eGift Cards Yet!";
+        [self.giftCardView addSubview:_noCardsLabel];
         _giftCardHeightConstraint.constant = 100;
+    } else {g
+        [_noCardsLabel removeFromSuperview];
+        self.noCardsLabel = nil;
     }
     
     _innerViewHeight.constant = 400 + _giftCardHeightConstraint.constant;
