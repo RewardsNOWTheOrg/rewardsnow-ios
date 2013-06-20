@@ -14,6 +14,7 @@
 #import "NSString+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RNBranding.h"
+#import "RNWebService.h"
 
 @interface RNAccountViewController ()
 
@@ -104,8 +105,16 @@
     }
     
     _giftCardHeightConstraint.constant = 70 + (_user.giftCards.count * 35);
-    _innerViewHeight.constant = 400 + _giftCardHeightConstraint.constant;
     
+    if (_user.giftCards.count == 0) {
+        UILabel *noCardsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 280, 30)];
+        noCardsLabel.backgroundColor = [UIColor clearColor];
+        noCardsLabel.text = @"No eGift Cards Yet!";
+        [self.giftCardView addSubview:noCardsLabel];
+        _giftCardHeightConstraint.constant = 100;
+    }
+    
+    _innerViewHeight.constant = 400 + _giftCardHeightConstraint.constant;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -138,12 +147,10 @@
 - (IBAction)logoutTapped:(id)sender {
     
     [[RNCart sharedCart] setUser:nil];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:BankCodeKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[RNWebService sharedClient] setTipNumber:[[NSUserDefaults standardUserDefaults] objectForKey:BankCodeKey]];
     
     UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLoginViewController"];
-    [self presentViewController:auth animated:NO completion:nil];
+    [self presentViewController:auth animated:YES completion:nil];
 }
 
 - (void)giftCardTapped:(UIButton *)sender {
