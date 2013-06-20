@@ -37,4 +37,8 @@
     return @{@"Item": _redeemObject.catalogCode, @"Quantity" : [NSString stringWithFormat:@"%d", _count]};
 }
 
+- (BOOL)isEmpty {
+    return self.count <= 0;
+}
+
 @end

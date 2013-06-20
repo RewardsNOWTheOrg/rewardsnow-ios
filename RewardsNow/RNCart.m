@@ -109,5 +109,19 @@
     return array;
 }
 
+- (BOOL)hasItemsInCart {
+    
+    for (RNCartObject *cartObject in _items) {
+        if (![cartObject isEmpty]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL)canCheckout {
+    return [self hasItemsInCart] && [[self pointsDifference] doubleValue] > 0;
+}
+
 
 @end

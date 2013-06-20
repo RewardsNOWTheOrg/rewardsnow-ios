@@ -545,8 +545,9 @@ NSString *const kOffersKey = @"Offers";
     [postParameters setValue:user.state forKey:@"sstate"];
     [postParameters setValue:user.zipCode forKey:@"szipcode"];
     [postParameters setValue:redemptions forKey:@"Redemptions"];
-//    [postParameters setValue:user.country forKey:@"scountry"];
-//    [postParameters setValue:user. forKey:@"hphone"];
+    [postParameters setValue:@"" forKey:@"scountry"];
+    [postParameters setValue:@"" forKey:@"hphone"];
+    [postParameters setValue:@"" forKey:@"wphone"];
     
     //set redemptions
     
@@ -557,6 +558,9 @@ NSString *const kOffersKey = @"Offers";
     DLog(@"Request: %@",  request);
     DLog(@"Request1: %@",  request.allHTTPHeaderFields);
     DLog(@"Request2: %@",  postParameters);
+    
+    DLog(@"What we sent: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {

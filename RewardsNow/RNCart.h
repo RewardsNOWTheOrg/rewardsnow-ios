@@ -26,6 +26,8 @@
 - (void)addToCart:(RNRedeemObject *)card;
 - (NSString *)formattedStringFromNumber:(NSNumber *)num;
 - (void)emptyCart;
+- (BOOL)hasItemsInCart;
+- (BOOL)canCheckout;
 
 // used to get the dictionaries for the cart for checkout
 - (NSArray *)arrayForPlaceOrderItems;

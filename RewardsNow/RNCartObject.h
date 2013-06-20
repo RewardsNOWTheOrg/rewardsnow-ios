@@ -20,5 +20,6 @@
 - (double)getTotalPrice;
 - (NSString *)stringTotalPrice;
 - (NSDictionary *)dictionaryForPlaceOrder;
+- (BOOL)isEmpty;
 
 @end

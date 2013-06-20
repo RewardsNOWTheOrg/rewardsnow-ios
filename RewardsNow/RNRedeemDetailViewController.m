@@ -25,13 +25,13 @@
 
 - (void)brand {
     [super brand];
-    self.descriptionTextView.backgroundColor = self.branding.pointsColor;
+    self.descriptionTextView.backgroundColor = self.branding.backgroundColor;
+    self.descriptionView.backgroundColor = self.branding.backgroundColor;
+    self.descriptionView.layer.cornerRadius = 5.0;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.descriptionView.layer.cornerRadius = 5.0;
     
     self.redeemImage.image = self.info.image;
     self.redeemTopLabel.text = [NSString stringWithFormat:@"$%d eGift Card", (NSInteger)self.info.cashValue];
