@@ -125,6 +125,7 @@
 
         self.headerImageView.alpha = 0.0;
         newHeader.alpha = 1.0;
+        self.view.backgroundColor = [UIColor whiteColor];
         
         [self.branding globalBranding];
     } completion:^(BOOL finished) {
