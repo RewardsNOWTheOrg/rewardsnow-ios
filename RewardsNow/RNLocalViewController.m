@@ -35,7 +35,6 @@
 
 - (void)brand {
     [super brand];
-
 }
 
 
@@ -62,14 +61,11 @@
     
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     searchBar.delegate = self;
-    DLog(@"test1: %@", self.searchDisplayController);
     
     self.mySearchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
     _mySearchDisplayController.delegate = self;
     _mySearchDisplayController.searchResultsDataSource = self;
     _mySearchDisplayController.searchResultsDelegate = self;
-
-    DLog(@"test2: %@", self.searchDisplayController);
     
     UIBarButtonItem *radius = [[UIBarButtonItem alloc] initWithTitle:@"15 mi" style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
     _lowerNavigationBar.titleView = searchBar;
@@ -82,16 +78,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    DLog(@"What: %@", self.searchDisplayController);
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self refresh:_refreshControl];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
