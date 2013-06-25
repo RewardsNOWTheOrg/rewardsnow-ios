@@ -14,7 +14,7 @@
 
 @end
 
-NSString *const RNSupportPhoneNumber = @"(585) 354 - 3779";
+NSString *const RNSupportPhoneNumber = @"1 (866) 445-9495";
 
 @implementation RNAboutContactViewController
 
