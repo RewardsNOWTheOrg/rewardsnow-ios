@@ -457,7 +457,7 @@ NSString *const kOffersKey = @"Offers";
                              @"username": username};
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
-    NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:@"StsService.svc/ChangePassword" parameters:nil];
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/ChangePassword" parameters:nil];
     [request setHTTPBody:data];
     
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
