@@ -50,7 +50,7 @@ NSString *const RNSupportPhoneNumber = @"1 (866) 445-9495";
 }
 
 - (IBAction)callTapped:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", RNSupportPhoneNumber]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", [RNSupportPhoneNumber stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
