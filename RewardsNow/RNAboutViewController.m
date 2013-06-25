@@ -14,6 +14,7 @@
 #import "RNProgramInfo.h"
 #import "RNWebService.h"
 #import "RNBranding.h"
+#import "MBProgressHUD.h"
 
 @interface RNAboutViewController ()
 
@@ -33,8 +34,11 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = [UIColor colorWithRed:C(235) green:C(235) blue:C(235) alpha:1.0];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [[RNWebService sharedClient] getProgramInfoWithCallback:^(id result) {
         self.info = result;
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
@@ -84,6 +88,7 @@
             break;
     }
     
+    vc.title = _cellNames[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 
 }
