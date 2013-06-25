@@ -120,7 +120,8 @@
         self.mapViewController.deals = _deals;
         self.mapViewController.location = [[_manager location] coordinate];
     }
-
+    
+    self.title = @"Map";
     [self transitionFromCurrentViewControllerToViewController:_mapViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listTapped:)];
     self.navigationItem.rightBarButtonItem = barButton;
@@ -135,6 +136,8 @@
         self.filterViewController.location = _manager.location;
     }
     
+    self.title = @"Filter";
+    
     [self transitionFromCurrentViewControllerToViewController:_filterViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listTapped:)];
@@ -148,6 +151,8 @@
     if (_listViewController == nil) {
         self.listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
     }
+    self.title = @"Deals";
+    
     self.deals = _deals;
     
     BOOL right = [_displayedViewController isKindOfClass:[RNLocalMapViewController class]];
@@ -197,9 +202,6 @@
     
     if (!_gettingInformation) {
         self.gettingInformation = YES;
-        location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
-        DLog(@"Location: %@", location);
-        DLog(@"Radius: %@", _radius);
         [[RNWebService sharedClient] getDealsAtLocation:location query:@"" limit:50 offset:0 radius:_radius.doubleValue category:nil callback:^(id result) {
             if (result != nil) {
                 self.deals = result;

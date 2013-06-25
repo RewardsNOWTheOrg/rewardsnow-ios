@@ -138,11 +138,12 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         }
         
         RNLocalDeal *deal = _searchResults[indexPath.row];
         cell.textLabel.text = deal.businessName;
+        cell.detailTextLabel.text = deal.name;
         return cell;
 
     } else {
