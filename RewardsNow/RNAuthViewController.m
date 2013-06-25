@@ -87,6 +87,7 @@
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                 if (result != nil) {
                     [[RNCart sharedCart] setUser:result];
+                    [[[RNCart sharedCart] user] setUsername:_usernameTextField.text];
                     [self dismissViewControllerAnimated:YES completion:nil];
                 } else {
                     [self presentError:@"There was an error getting your user profile, please try again."];
