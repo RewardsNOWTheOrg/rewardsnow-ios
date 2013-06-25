@@ -38,6 +38,7 @@
     [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:_refreshControl];
     [_refreshControl beginRefreshing];
+    [self refresh:_refreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

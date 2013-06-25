@@ -137,7 +137,6 @@
 - (void)continueAfterProcessing {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     RNAuthViewController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthViewController"];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self.navigationController pushViewController:auth animated:YES];
 }
 

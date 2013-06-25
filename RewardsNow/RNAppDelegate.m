@@ -8,6 +8,8 @@
 
 #import "RNAppDelegate.h"
 #import "RNConstants.h"
+#import "RNBranding.h"
+#import "RNWebService.h"
 
 @implementation RNAppDelegate
 
@@ -17,6 +19,20 @@
     
     UITabBarController *root = (UITabBarController *)[[self window] rootViewController];
     [root setSelectedIndex:3];
+    
+    ///
+    /// All the branding starts here.
+    ///
+    RNBranding *branding = [RNBranding sharedBranding];
+    
+    if (branding == nil) { //user has never branded app before
+        
+    } else {
+        [branding globalBranding];
+        NSString *tipNumber = [[NSUserDefaults standardUserDefaults] objectForKey:BankCodeKey];
+        [[RNWebService sharedClient] setTipNumber:tipNumber];
+    }
+    
     
     return YES;
 }
