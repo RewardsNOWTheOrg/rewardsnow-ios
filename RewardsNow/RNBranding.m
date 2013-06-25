@@ -12,6 +12,8 @@
 #define kNumberOfColorValues 3
 #define kImageName @"header_image"
 
+NSString *const RNBrandingPersistenceKey = @"com.rewardsnow.RNBrandingPersistenceKey";
+
 @implementation RNBranding
 
 static RNBranding *_sharedBranding;
@@ -25,6 +27,9 @@ static RNBranding *_sharedBranding;
         id object = [MTLJSONAdapter modelOfClass:[self class] fromJSONDictionary:dictionary error:&error];
         if (error) {
             DLog(@"Error Creating Object: %@", error);
+        } else {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:object] forKey:RNBrandingPersistenceKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
         
         _sharedBranding = object;
@@ -34,6 +39,12 @@ static RNBranding *_sharedBranding;
 }
 
 + (instancetype)sharedBranding {
+    
+    if (_sharedBranding == nil) {
+        id object = [[NSUserDefaults standardUserDefaults] objectForKey:RNBrandingPersistenceKey];
+        _sharedBranding = [NSKeyedUnarchiver unarchiveObjectWithData:object];
+    }
+    
     return _sharedBranding;
 }
 
