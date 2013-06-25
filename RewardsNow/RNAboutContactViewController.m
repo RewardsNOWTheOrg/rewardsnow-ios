@@ -14,12 +14,15 @@
 
 @end
 
+NSString *const RNSupportPhoneNumber = @"(585) 354 - 3779";
+
 @implementation RNAboutContactViewController
 
 - (void)brand {
     [super brand];
     
     self.lowerView.backgroundColor = self.branding.backgroundColor;
+    [self.callButton setTitle:[NSString stringWithFormat:@"Call %@", RNSupportPhoneNumber] forState:UIControlStateNormal];
     
     for (UIButton *button in _skinnableButtons) {
         button.backgroundColor = self.branding.pointsColor;
@@ -47,7 +50,7 @@
 }
 
 - (IBAction)callTapped:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://5853543779"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", RNSupportPhoneNumber]]];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
