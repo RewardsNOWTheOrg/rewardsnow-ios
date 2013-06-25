@@ -46,7 +46,11 @@
     if (!IS_WIDESCREEN) {
         self.logoTopConstraint.constant = 35;
     }
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.signInButton.enabled = [self canSignIn];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,15 +65,6 @@
         self.view.frame = frame;
     }];
 }
-
-//remove
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-//    self.usernameTextField.text = @"969test";
-    self.passwordTextField.text = @"sample";
-//    [self signInTapped:nil];
-}
-
 
 - (IBAction)backgroundTapped:(id)sender {
     [self.view endEditing:YES];
@@ -112,4 +107,13 @@
 - (IBAction)forgotPasswordTapped:(id)sender {
     
 }
+
+- (IBAction)textFieldChanged:(UITextField *)sender {
+    self.signInButton.enabled = [self canSignIn];
+}
+
+- (BOOL)canSignIn {
+    return [self.usernameTextField.text isNotEmpty] && [self.passwordTextField.text isNotEmpty];
+}
+
 @end

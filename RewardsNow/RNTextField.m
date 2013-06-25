@@ -20,6 +20,11 @@
     return self;
 }
 
+- (void)drawPlaceholderInRect:(CGRect)rect {
+    [[UIColor whiteColor] setFill];
+    [self.placeholder drawInRect:rect withFont:self.font lineBreakMode:NSLineBreakByTruncatingTail alignment:self.textAlignment];
+}
+
 
 - (void)drawRect:(CGRect)rect {
     

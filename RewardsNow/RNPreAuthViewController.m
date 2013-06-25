@@ -37,6 +37,7 @@
     }
     
     self.codeTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:BankCodeKey];
+    self.continueButton.enabled = [self canContinue];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,13 +56,6 @@
             view.alpha = 1.0;
         } completion:nil];
     }
-    
-//    //testing
-    double delayInSeconds = .5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//        [self continueTapped:nil];
-    });
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -152,4 +146,13 @@
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
+
+- (IBAction)textFieldChanged:(UITextField *)sender {
+    self.continueButton.enabled = [self canContinue];
+}
+
+- (BOOL)canContinue {
+    return [self.codeTextField.text isNotEmpty];
+}
+
 @end

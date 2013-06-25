@@ -50,6 +50,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shouldHaveDefaultColor" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="textFieldChanged:" destination="T28-ai-f5K" eventType="editingChanged" id="TuQ-f8-Z1e"/>
                                     <outlet property="delegate" destination="T28-ai-f5K" id="fP0-IQ-OfO"/>
                                 </connections>
                             </textField>
@@ -125,6 +126,7 @@
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="textFieldChanged:" destination="eag-8K-4sh" eventType="editingChanged" id="Jhj-I1-erZ"/>
                                     <outlet property="delegate" destination="eag-8K-4sh" id="jZa-QI-PEu"/>
                                 </connections>
                             </textField>
@@ -142,6 +144,7 @@
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
+                                    <action selector="textFieldChanged:" destination="eag-8K-4sh" eventType="editingChanged" id="vJb-PQ-TFc"/>
                                     <outlet property="delegate" destination="eag-8K-4sh" id="tG3-fD-0A2"/>
                                 </connections>
                             </textField>
@@ -180,7 +183,7 @@
                                     <segue destination="F5a-iH-xhg" kind="push" id="Rq8-Pg-vwD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you need to create a user name and password, please visit your rewards program website or your institution’s website." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-hH-U97">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you need to create a user name and password, please visit your rewards program website or your institution’s website." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="259" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-hH-U97">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" type="user" id="9hO-x7-Yez"/>
                                 </constraints>

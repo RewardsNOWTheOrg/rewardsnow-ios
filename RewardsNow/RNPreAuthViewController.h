@@ -18,5 +18,6 @@
 
 - (IBAction)continueTapped:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
+- (IBAction)textFieldChanged:(UITextField *)sender;
 
 @end

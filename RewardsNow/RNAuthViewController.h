@@ -22,5 +22,6 @@
 - (IBAction)backgroundTapped:(id)sender;
 - (IBAction)signInTapped:(id)sender;
 - (IBAction)forgotPasswordTapped:(id)sender;
+- (IBAction)textFieldChanged:(UITextField *)sender;
 
 @end
