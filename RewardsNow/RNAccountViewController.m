@@ -66,8 +66,9 @@
     self.user = [[RNCart sharedCart] user];
     
     if (self.user == nil) {
-        UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthNavigationController"];
-        [self presentViewController:auth animated:NO completion:nil];
+        NSString *authName = self.branding == nil ? @"RNAuthNavigationController" : @"RNLoginViewController";
+        UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:authName];
+        [self presentViewController:navController animated:NO completion:nil];
     }
     
     self.nameLabel.text = self.user.fullName;

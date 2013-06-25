@@ -46,7 +46,7 @@
     detail.text = left;
     [self addSubview:detail];
     
-    UILabel *detailRight = [[UILabel alloc] initWithFrame:CGRectMake(160, 60 + (40 * _numLabels), 160, 40)];
+    UILabel *detailRight = [[UILabel alloc] initWithFrame:CGRectMake(250, 60 + (40 * _numLabels), 160, 40)];
     detailRight.backgroundColor = [UIColor clearColor];
     detailRight.text = right;
     detail.font = [UIFont fontWithName:@"Arial" size:12];
