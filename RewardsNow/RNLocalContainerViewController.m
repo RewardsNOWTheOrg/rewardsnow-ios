@@ -171,8 +171,6 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     
-    DLog(@"Class: %@", viewController.class);
-    
     if ([viewController isKindOfClass:[UINavigationController class]] &&
         ((UINavigationController *)viewController).viewControllers.count > 0 &&
         ((UINavigationController *)viewController).viewControllers[0] == self &&
@@ -199,6 +197,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = [locations lastObject];
+    
+    location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
     
     if (!_gettingInformation) {
         self.gettingInformation = YES;
