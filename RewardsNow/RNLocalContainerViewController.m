@@ -11,6 +11,7 @@
 #import "RNLocalFilterViewController.h"
 #import "RNWebService.h"
 #import "RNConstants.h"
+#import "RNResponse.h"
 
 @interface RNLocalContainerViewController ()
 
@@ -199,14 +200,15 @@
     CLLocation *location = [locations lastObject];
     
     location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
-    
+#warning Hard Coded Location Here
     if (!_gettingInformation) {
         self.gettingInformation = YES;
-        [[RNWebService sharedClient] getDealsAtLocation:location query:@"" limit:50 offset:0 radius:_radius.doubleValue category:nil callback:^(id result) {
-            if (result != nil) {
-                self.deals = result;
+        [[RNWebService sharedClient] getDealsAtLocation:location query:@"" limit:50 offset:0 radius:_radius.doubleValue category:nil callback:^(RNResponse *response) {
+            
+            if ([response wasSuccessful]) {
+                self.deals = response.result;
             } else {
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
             }
             
             if (self.displayedViewController == self.mapViewController) { //kind hackish :/

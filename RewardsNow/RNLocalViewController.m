@@ -54,7 +54,7 @@
         self.navigationItem.rightBarButtonItem = nil;
     }
     
-    // play with saerch bar
+    // play with Search bar
     self.topBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
 
     self.lowerNavigationBar = [[UINavigationItem alloc] init];
@@ -73,11 +73,6 @@
     
     [_topBar pushNavigationItem:_lowerNavigationBar animated:NO];
     [self.tableView setTableHeaderView:_topBar];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -130,9 +125,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    DLog(@"Tableview: %@", tableView);
-    DLog(@"OThe: %@", self.searchDisplayController.searchResultsTableView);
-    
     if (tableView == kSearchTable) {
         NSString *CellIdentifier = @"SearchResultCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -171,10 +163,7 @@
         RNLocalDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalDetailViewController"];
         vc.deal = _searchResults[indexPath.row];
         [self.navigationController pushViewController:vc animated:YES];
-    } else {
-
     }
-
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

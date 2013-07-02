@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import "RNLocalViewController.h"
 #import "RNCategory.h"
+#import "RNResponse.h"
 
 @interface RNLocalFilterViewController ()
 
@@ -24,18 +25,17 @@
     [super viewDidLoad];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[RNWebService sharedClient] getLocalCategoriesWithCallback:^(id result) {
+    [[RNWebService sharedClient] getLocalCategoriesWithCallback:^(RNResponse *response) {
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.categories = result;
-        DLog(@"What: %@", _categories);
-        [self.tableView reloadData];
-
+        
+        if ([response wasSuccessful]) {
+            self.categories = response.result;
+            [self.tableView reloadData];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+        }
     }];
-
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 
 }
 
@@ -60,6 +60,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+#warning HardCoded Location Here
     
     [[RNWebService sharedClient] getDealsAtLocation:[[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159]
                                               query:nil
@@ -67,12 +68,17 @@
                                              offset:0
                                              radius:15
                                            category:[_categories[indexPath.row] merchantCategory]
-                                           callback:^(id result) {
+                                           callback:^(RNResponse *response) {
+                                               
                                                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                               RNLocalViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
-                                               vc.deals = result;
-                                               vc.isPushed = YES;
-                                               [self.navigationController pushViewController:vc animated:YES];
+                                               if ([response wasSuccessful]) {
+                                                   RNLocalViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
+                                                   vc.deals = response.result;
+                                                   vc.isPushed = YES;
+                                                   [self.navigationController pushViewController:vc animated:YES];
+                                               } else {
+                                                   [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+                                               }
                                            }];
 }
 

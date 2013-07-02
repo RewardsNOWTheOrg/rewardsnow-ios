@@ -189,8 +189,6 @@
     [((RNAnnotation *)view.annotation).deal openInMaps];
 }
 
-//- (void)mapview
-
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
     
     if (!_hasFinishedLoadingMap) {
