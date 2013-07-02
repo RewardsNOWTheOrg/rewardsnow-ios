@@ -10,6 +10,14 @@
 
 @implementation RNResponse
 
++ (instancetype)responseWithResult:(id)aResult statusCode:(NSInteger)statusCode {
+    return [[RNResponse alloc] initWithResult:aResult statusCode:statusCode];
+}
+
++ (instancetype)responseWithError:(NSError *)error errorString:(NSString *)errorString statusCode:(NSInteger)statusCode {
+    return [[RNResponse alloc] initWithError:error errorString:errorString statusCode:statusCode];
+}
+
 - (id)init {
     
     if ( (self = [super init]) ) {

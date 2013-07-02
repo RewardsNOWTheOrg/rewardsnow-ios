@@ -9,9 +9,9 @@
 #import "AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
 
-@class RNUser;
+@class RNUser, RNResponse;
 
-typedef void (^RNResultCallback)(id result);
+typedef void (^RNResultCallback)(RNResponse *result);
 
 @interface RNWebService : AFHTTPClient
 
@@ -31,7 +31,6 @@ typedef void (^RNResultCallback)(id result);
 - (void)getLocalCategoriesWithCallback:(RNResultCallback)callback;
 - (void)getAccountInfoWithTipWithCallback:(RNResultCallback)callback;
 - (void)getBranding:(NSString *)code callback:(RNResultCallback)callback;
-- (void)getSecretQuestionWithCallback:(RNResultCallback)callback;
 - (void)getCartWithCallback:(RNResultCallback)callback;
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password callback:(RNResultCallback)callback;

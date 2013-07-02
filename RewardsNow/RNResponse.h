@@ -36,7 +36,10 @@
 @property (nonatomic) NSInteger statusCode;
 
 
-- (id)initWithResult:(id)aResult statusCode:(NSInteger)statusCode;
-- (id)initWithError:(NSError *)error errorString:(NSString *)errorString statusCode:(NSInteger)statusCode;
++ (instancetype)responseWithResult:(id)aResult statusCode:(NSInteger)statusCode;
++ (instancetype)responseWithError:(NSError *)error errorString:(NSString *)errorString statusCode:(NSInteger)statusCode;
+
+- (instancetype)initWithResult:(id)aResult statusCode:(NSInteger)statusCode;
+- (instancetype)initWithError:(NSError *)error errorString:(NSString *)errorString statusCode:(NSInteger)statusCode;
 
 @end
