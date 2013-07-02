@@ -387,36 +387,6 @@ NSString *const kOffersKey = @"Offers";
 
 #pragma mark - POST
 
-- (void)postResetPasswordWithAnswer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback {
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    
-    NSDictionary *params = @{@"tipNumber": _tipNumber,
-                             @"answer": answer,
-                             @"newpassword": password,
-                             @"newpasswordconfirm": confirmed,
-                             @"username": username,
-                             @"fullname": fullName};
-    
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"StsService.svc/ResetPassword" parameters:params]
-                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                                                                     
-                                                                                     DLog(@"JSON: %@", JSON);
-                                                                                     
-                                                                                     if (JSON[@"IsValid"]) {
-                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
-                                                                                     } else {
-                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
-                                                                                     }
-                                                                                     
-                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                                                                     DLog(@"FAILURE: %@", error);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
-                                                                                 }];
-    [self enqueueHTTPRequestOperation:op];
-}
-
 - (void)postChangePasswordWithUsername:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback {
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
@@ -436,7 +406,7 @@ NSString *const kOffersKey = @"Offers";
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     if (JSON[@"IsValid"]) {
+                                                                                     if (JSON[@"ChangePasswordResult"][@"IsValid"]) {
                                                                                          SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
                                                                                      } else {
                                                                                          UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;

@@ -38,7 +38,6 @@ typedef void (^RNResultCallback)(RNResponse *result);
 //????
 - (void)putEmail:(NSString *)email callback:(RNResultCallback)callback;
 
-- (void)postResetPasswordWithAnswer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback;
 - (void)postChangePasswordWithUsername:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback;
 - (void)postCatalogIDToCart:(NSNumber *)catalogID callback:(RNResultCallback)callback;
 - (void)postPlaceOrderForUser:(RNUser *)user items:(NSArray *)redemptions  callback:(RNResultCallback)callback;
