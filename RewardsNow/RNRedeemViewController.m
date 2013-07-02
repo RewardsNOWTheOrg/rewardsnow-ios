@@ -17,6 +17,7 @@
 #import "RNCart.h"
 #import "RNUser.h"
 #import "RNAnimatedImageView.h"
+#import "RNResponse.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface RNRedeemViewController ()
@@ -70,13 +71,15 @@
 
 - (void)refresh:(UIRefreshControl *)sender {
     
-    [[RNWebService sharedClient] getRewardsWithCallback:^(id result) {
-        if (result) {
-            self.rewards = result;
+    [[RNWebService sharedClient] getRewardsWithCallback:^(RNResponse *response) {
+        
+        if ([response wasSuccessful]) {
+            self.rewards = response.result;
             [self.tableView reloadData];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
         }
+        
         [sender endRefreshing];
     }];
 }

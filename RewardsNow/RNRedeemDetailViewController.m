@@ -63,24 +63,11 @@
     [super viewDidAppear:animated];
     [self.scrollView setScrollEnabled:YES];
     [self.scrollView setContentSize:self.innerView.frame.size];
-//    
-//    DLog(@"Height: %f", _descriptionTextView.frame.size.height);
-//    
-//    CGFloat height = _descriptionTextView.contentSize.height;
-//    DLog(@"Height: %f", height);
-////    _innerInnerViewHeight.constant = height;
-//    [self.view layoutIfNeeded];
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     self.scrollView.contentOffset = CGPointZero;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
 }
 
 - (void)goToCart:(id)sender {
@@ -120,10 +107,8 @@
     //Setting Endpoint of the animation
     CGPoint endPoint = CGPointMake(290.0f, 35.0f);
     //to end animation in last tab use
-    //CGPoint endPoint = CGPointMake( 320-40.0f, 480.0f);
     CGMutablePathRef curvedPath = CGPathCreateMutable();
     CGPathMoveToPoint(curvedPath, NULL, viewOrigin.x, viewOrigin.y);
-//    CGPathAddCurveToPoint(curvedPath, NULL, endPoint.x, viewOrigin.y, endPoint.x, viewOrigin.y, endPoint.x, endPoint.y);
     CGPathAddCurveToPoint(curvedPath, NULL, 200, 50, 200, 50, endPoint.x, endPoint.y);
     pathAnimation.path = curvedPath;
     CGPathRelease(curvedPath);
@@ -131,7 +116,7 @@
     CAAnimationGroup *group = [CAAnimationGroup animation];
     group.fillMode = kCAFillModeForwards;
     group.removedOnCompletion = NO;
-    [group setAnimations:[NSArray arrayWithObjects:/*fadeOutAnimation, pathAnimation,*/ pathAnimation, nil]];
+    [group setAnimations:@[pathAnimation]];
     
     CGFloat xDist = (endPoint.x - viewOrigin.x);
     CGFloat yDist = (endPoint.y - viewOrigin.y);
