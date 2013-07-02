@@ -17,7 +17,6 @@
 
 - (void)brand {
     [super brand];
-//    self.webView.backgroundColor = self.branding.backgroundColor;
     [self.webView setOpaque:NO];
     [self.webView setBackgroundColor:[UIColor clearColor]];
 }
@@ -49,11 +48,6 @@
         return NO;
     }
     return YES;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
 }
 
 @end
