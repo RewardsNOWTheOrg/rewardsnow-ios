@@ -23,12 +23,6 @@
     [super viewDidLoad];
     [self.passwordOldTextField becomeFirstResponder];
     self.saveButton.enabled = NO;
-
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
 }
 
 - (IBAction)saveTapped:(id)sender {
@@ -58,15 +52,12 @@
                                                        }];
 }
 
-- (BOOL)isRequiredInfoEntered {
-    return [_passwordOldTextField.text isNotEmpty] && [_passwordNewTextField.text isNotEmpty] && [_passwordNewRetypeTextField.text isNotEmpty] && [_passwordNewTextField.text isEqualToString:_passwordNewRetypeTextField.text];
+- (IBAction)textFieldChanged:(UITextField *)sender {
+    self.saveButton.enabled = [self isRequiredInfoEntered];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if ([self isRequiredInfoEntered]) {
-        self.saveButton.enabled = YES;
-    }
-    return YES;
+- (BOOL)isRequiredInfoEntered {
+    return [_passwordOldTextField.text isNotEmpty] && [_passwordNewTextField.text isNotEmpty] && [_passwordNewRetypeTextField.text isNotEmpty] && [_passwordNewTextField.text isEqualToString:_passwordNewRetypeTextField.text];
 }
 
 

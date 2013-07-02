@@ -1288,6 +1288,7 @@
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
+                                    <action selector="textFieldChanged:" destination="GWS-uR-rAQ" eventType="editingChanged" id="AoX-YL-DiQ"/>
                                     <outlet property="delegate" destination="GWS-uR-rAQ" id="6MM-co-G6P"/>
                                 </connections>
                             </textField>
@@ -1298,6 +1299,7 @@
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
+                                    <action selector="textFieldChanged:" destination="GWS-uR-rAQ" eventType="editingChanged" id="OEM-he-fTI"/>
                                     <outlet property="delegate" destination="GWS-uR-rAQ" id="lWj-7s-7Ss"/>
                                 </connections>
                             </textField>
@@ -1308,6 +1310,7 @@
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
+                                    <action selector="textFieldChanged:" destination="GWS-uR-rAQ" eventType="editingChanged" id="mHO-m3-gy3"/>
                                     <outlet property="delegate" destination="GWS-uR-rAQ" id="6LL-GM-JTD"/>
                                 </connections>
                             </textField>

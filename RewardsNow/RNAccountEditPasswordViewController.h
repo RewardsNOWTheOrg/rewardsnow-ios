@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 - (IBAction)saveTapped:(id)sender;
+- (IBAction)textFieldChanged:(UITextField *)sender;
 
 @end
