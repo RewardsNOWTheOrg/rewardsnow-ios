@@ -53,6 +53,8 @@
     UIColor* color6 = [RNBranding sharedBranding] != nil ? [[RNBranding sharedBranding] menuBackgroundColor] : RGB(73, 89, 103);
     UIColor* color7 = [RNBranding sharedBranding] != nil ? [[RNBranding sharedBranding] pointsColor] : RGB(83, 99, 113);
     
+    self.alpha = self.isEnabled ? 1.0 : 0.5;
+    
     if (self.isHighlighted) {
         //// General Declarations
         CGContextRef context = UIGraphicsGetCurrentContext();

@@ -40,6 +40,8 @@
 
 - (void)drawRect:(CGRect)rect {
     
+    self.alpha = self.enabled ? 1.0 : 0.5;
+    
     if (self.isHighlighted) {
         //// General Declarations
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();

@@ -38,6 +38,8 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+    
+    self.alpha = self.enabled ? 1.0 : 0.5;
 
     // Down
     if (self.isHighlighted) {
