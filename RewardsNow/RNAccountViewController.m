@@ -50,9 +50,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.contentOffset = CGPointZero;
-    
-//    self.nameLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
-//    self.accountNumberLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
     self.giftCardView.layer.cornerRadius = 5.0;
 }
 

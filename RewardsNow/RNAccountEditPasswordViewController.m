@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import "RNUser.h"
 #import "RNCart.h"
+#import "RNResponse.h"
 
 @interface RNAccountEditPasswordViewController ()
 
@@ -42,35 +43,23 @@
                                                     oldPassword:_passwordOldTextField.text
                                                     newPassword:_passwordNewTextField.text
                                                 confirmPassword:_passwordNewRetypeTextField.text
-                                                       callback:^(id result) {
+                                                       callback:^(RNResponse *response) {
                                                            hud.mode = MBProgressHUDModeCustomView;
                                                            
-                                                           if ([result boolValue]) {
+                                                           if ([response wasSuccessful]) {
                                                                hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
                                                                hud.detailsLabelText = @"Completed";
+                                                               [hud hide:YES afterDelay:1.5];
+                                                               [self.navigationController popViewControllerAnimated:YES];
                                                            } else {
-                                                               hud.detailsLabelText = @"Error";
+                                                               [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+                                                               [hud hide:YES];
                                                            }
-                                                           [hud hide:YES afterDelay:1.5];
-                                                           [self.navigationController popViewControllerAnimated:YES];
                                                        }];
 }
 
 - (BOOL)isRequiredInfoEntered {
-    return ![self isEmpty:self.passwordOldTextField.text] && ![self isEmpty:self.passwordNewTextField.text] && ![self isEmpty:self.passwordNewRetypeTextField.text];
-}
-
-- (BOOL)isEmpty:(NSString *)string {
-    
-    if([string length] == 0) {
-        return YES;
-    }
-    
-    if(![[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]) {
-        return YES;
-    }
-    
-    return NO;
+    return [_passwordOldTextField.text isNotEmpty] && [_passwordNewTextField.text isNotEmpty] && [_passwordNewRetypeTextField.text isNotEmpty] && [_passwordNewTextField.text isEqualToString:_passwordNewRetypeTextField.text];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

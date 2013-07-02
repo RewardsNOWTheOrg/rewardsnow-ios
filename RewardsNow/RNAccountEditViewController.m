@@ -12,6 +12,7 @@
 #import "RNUser.h"
 #import "RNWebService.h"
 #import "NSString+Additions.h"
+#import "RNResponse.h"
 
 @interface RNAccountEditViewController ()
 
@@ -39,23 +40,23 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.detailsLabelText = @"Changing...";
     
-    [[RNWebService sharedClient] putEmail:self.emailTextField.text callback:^(id result) {
+    [[RNWebService sharedClient] putEmail:self.emailTextField.text callback:^(RNResponse *response) {
         
         hud.mode = MBProgressHUDModeCustomView;
-        [hud hide:YES afterDelay:1.5];
         
         //pop back to main account screen
         // TODO
-        if (result != nil) {
+        if ([response wasSuccessful]) {
             RNUser *user = [[RNCart sharedCart] user];
             user.email = self.emailTextField.text;
             hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
             hud.detailsLabelText = @"Completed";
+            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
         } else {
-            hud.detailsLabelText = @"Error";
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+            [hud hide:YES];
         }
-        
-        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

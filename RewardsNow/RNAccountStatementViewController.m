@@ -16,6 +16,7 @@
 #import "RNPointChange.h"
 #import "RNAccountStatementDetailView.h"
 #import "RNBranding.h"
+#import "RNResponse.h"
 
 #define kNumberOfMonthsVisible 4
 
@@ -164,11 +165,17 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     
     self.monthLabel.text = [NSString stringWithFormat:@"%@ Balance", [formatter stringFromDate:self.firstDay]];
     
-    [[RNWebService sharedClient] getAccountStatementFrom:self.firstDay to:self.lastDay callback:^(id result) {
+    [[RNWebService sharedClient] getAccountStatementFrom:self.firstDay to:self.lastDay callback:^(RNResponse *response) {
+
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.statement = result;
-        self.pointsStartLabel.text = [self.statement.pointsBeginning description] == nil ? @"0" : [self.statement.pointsBeginning description];
-        self.pointsEndLabel.text = [self.statement.pointsEnd description] == nil ? @"0" : [self.statement.pointsEnd description];
+        
+        if ([response wasSuccessful]) {
+            self.statement = response.result;
+            self.pointsStartLabel.text = [self.statement.pointsBeginning description] == nil ? @"0" : [self.statement.pointsBeginning description];
+            self.pointsEndLabel.text = [self.statement.pointsEnd description] == nil ? @"0" : [self.statement.pointsEnd description];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+        }
     }];
 }
 
