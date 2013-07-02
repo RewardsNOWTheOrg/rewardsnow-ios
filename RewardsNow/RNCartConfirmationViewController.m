@@ -15,6 +15,7 @@
 #import "RNUser.h"
 #import "RNWebService.h"
 #import "RNBranding.h"
+#import "RNResponse.h"
 
 @interface RNCartConfirmationViewController ()
 
@@ -138,7 +139,7 @@
             
             for (RNCartObject *object in cart.items) {
                 
-                [[RNWebService sharedClient] postCatalogIDToCart:object.redeemObject.catalogID callback:^(id result) {
+                [[RNWebService sharedClient] postCatalogIDToCart:object.redeemObject.catalogID callback:^(RNResponse *response) {
                     count++;
                     if (count == cart.items.count) {
                         [self checkoutCartItems];
@@ -155,10 +156,11 @@
 
 - (void)checkoutCartItems {
     
-    [[RNWebService sharedClient] postPlaceOrderForUser:_user items:[[RNCart sharedCart] arrayForPlaceOrderItems] callback:^(id result) {
+    [[RNWebService sharedClient] postPlaceOrderForUser:_user items:[[RNCart sharedCart] arrayForPlaceOrderItems] callback:^(RNResponse *response) {
         
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        if ([result boolValue]) { //succcess
+        
+        if ([response.result boolValue]) { //succcess
             RNCart *cart = [RNCart sharedCart];
             [_user subtractPoints:[cart total]]; //more application?
             [cart emptyCart];
@@ -170,9 +172,8 @@
             // we should show the thank you screen...
             // and then drop it down automaticalyl wit hthe new gift cards?
         } else { //fail
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, an error occurred during checkout." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
         }
-        
     }];
 }
 

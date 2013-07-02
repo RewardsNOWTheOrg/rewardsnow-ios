@@ -187,9 +187,6 @@
     RNCartCell *cell = (RNCartCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.textView.tag = kCellIsBeingDeletedTag;
     [_cart.items removeObjectAtIndex:indexPath.row];
-//    [tableView beginUpdates];
-//    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    [tableView endUpdates];
     [self.tableView reloadData];
     [self updatePriceLabels];
     [self resizeView:YES];
