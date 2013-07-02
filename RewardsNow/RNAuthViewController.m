@@ -14,6 +14,7 @@
 #import "RNCart.h"
 #import "RNConstants.h"
 #import "RNBranding.h"
+#import "RNResponse.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define kUsernameTextFieldTag 1
@@ -79,24 +80,23 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.detailsLabelText = @"signing in...";
     
-    [[RNWebService sharedClient] loginWithUsername:_usernameTextField.text password:_passwordTextField.text callback:^(id result) {
+    [[RNWebService sharedClient] loginWithUsername:_usernameTextField.text password:_passwordTextField.text callback:^(RNResponse *response) {
         
-        if ([result boolValue]) {
+        if ([response.result boolValue]) {
             
-            [[RNWebService sharedClient] getAccountInfoWithTipWithCallback:^(id result) {
+            [[RNWebService sharedClient] getAccountInfoWithTipWithCallback:^(RNResponse *accountInfoResponse) {
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                if (result != nil) {
-                    [[RNCart sharedCart] setUser:result];
+                if ([accountInfoResponse wasSuccessful]) {
+                    [[RNCart sharedCart] setUser:accountInfoResponse.result];
                     [[[RNCart sharedCart] user] setUsername:_usernameTextField.text];
                     [self dismissViewControllerAnimated:YES completion:nil];
                 } else {
-                    [self presentError:@"There was an error getting your user profile, please try again."];
+                    [self presentError:response.errorString];
                 }
             }];
-            
         } else { //FAILED
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [self presentError:@"Username or password was incorrect."];
+            [self presentError:response.errorString];
         }
     }];
 }
@@ -106,7 +106,7 @@
 }
 
 - (IBAction)forgotPasswordTapped:(id)sender {
-    
+    [[[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Please visit  your rewards program website or your financial institution's website to reset your password." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
 }
 
 - (IBAction)textFieldChanged:(UITextField *)sender {

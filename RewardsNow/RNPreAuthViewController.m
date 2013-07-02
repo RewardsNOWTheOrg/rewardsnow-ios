@@ -12,6 +12,7 @@
 #import "RNAuthViewController.h"
 #import "RNWebService.h"
 #import "RNBranding.h"
+#import "RNResponse.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface RNPreAuthViewController ()
@@ -86,21 +87,19 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.detailsLabelText = @"loading...";
     
-    [[RNWebService sharedClient] getBranding:self.codeTextField.text callback:^(id result) {
+    [[RNWebService sharedClient] getBranding:self.codeTextField.text callback:^(RNResponse *response) {
         
-        if (result != nil) {
-            self.branding = result;
+        if ([response wasSuccessful]) {
+            self.branding = response.result;
             self.hasFinishedDownloadingBranding = YES;
-            [[RNWebService sharedClient] setTipNumber:_codeTextField.text]; //SET FOREVER.
+            [[RNWebService sharedClient] setTipNumber:_codeTextField.text];
             if (self.hasFinishedDownloadingImage) {
                 [self skin];
             }
             
         } else {
-            hud.detailsLabelText = @"Error!";
-            hud.mode = MBProgressHUDModeCustomView;
-            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-XMark.png"]];
-            [hud hide:YES afterDelay:1.5];
+            [[[UIAlertView alloc] initWithTitle:@"Error!" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+            [hud hide:YES];
         }
     }];
 }

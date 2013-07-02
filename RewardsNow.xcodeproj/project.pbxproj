@@ -39,7 +39,6 @@
 		AA31022F1720816800E44D44 /* rewardsnow-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31022D1720816800E44D44 /* rewardsnow-logo@2x.png */; };
 		AA3102321720826A00E44D44 /* auth-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3102301720826A00E44D44 /* auth-button.png */; };
 		AA3102331720826A00E44D44 /* auth-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3102311720826A00E44D44 /* auth-button@2x.png */; };
-		AA355A53172095FD0014E01B /* RNAuthPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA355A52172095FD0014E01B /* RNAuthPasswordViewController.m */; };
 		AA355A561720A3BE0014E01B /* vertical-line.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A541720A3BE0014E01B /* vertical-line.png */; };
 		AA355A571720A3BE0014E01B /* vertical-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A551720A3BE0014E01B /* vertical-line@2x.png */; };
 		AA355A5A1720A7D90014E01B /* RNGiftCard.m in Sources */ = {isa = PBXBuildFile; fileRef = AA355A591720A7D90014E01B /* RNGiftCard.m */; };
@@ -167,6 +166,7 @@
 		AADD7889174FD1620070EE9C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AADD7888174FD15C0070EE9C /* MessageUI.framework */; };
 		AAE2BBB4174A713A001CAFA1 /* RNLocalFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2BBB3174A713A001CAFA1 /* RNLocalFilterViewController.m */; };
 		AAE2BBC3174AB675001CAFA1 /* RNProgramInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2BBC2174AB675001CAFA1 /* RNProgramInfo.m */; };
+		AAF75C4C1783585200F18812 /* RNResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF75C4B1783585200F18812 /* RNResponse.m */; };
 		BEE78D9760F24F3DB6FAB95F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B69993D8124244B8A76580AB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -220,8 +220,6 @@
 		AA31022D1720816800E44D44 /* rewardsnow-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewardsnow-logo@2x.png"; sourceTree = "<group>"; };
 		AA3102301720826A00E44D44 /* auth-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth-button.png"; sourceTree = "<group>"; };
 		AA3102311720826A00E44D44 /* auth-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth-button@2x.png"; sourceTree = "<group>"; };
-		AA355A51172095FD0014E01B /* RNAuthPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAuthPasswordViewController.h; sourceTree = "<group>"; };
-		AA355A52172095FD0014E01B /* RNAuthPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAuthPasswordViewController.m; sourceTree = "<group>"; };
 		AA355A541720A3BE0014E01B /* vertical-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vertical-line.png"; sourceTree = "<group>"; };
 		AA355A551720A3BE0014E01B /* vertical-line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vertical-line@2x.png"; sourceTree = "<group>"; };
 		AA355A581720A7D90014E01B /* RNGiftCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGiftCard.h; sourceTree = "<group>"; };
@@ -416,6 +414,8 @@
 		AAE2BBB3174A713A001CAFA1 /* RNLocalFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLocalFilterViewController.m; sourceTree = "<group>"; };
 		AAE2BBC1174AB675001CAFA1 /* RNProgramInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNProgramInfo.h; sourceTree = "<group>"; };
 		AAE2BBC2174AB675001CAFA1 /* RNProgramInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNProgramInfo.m; sourceTree = "<group>"; };
+		AAF75C4A1783585200F18812 /* RNResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNResponse.h; sourceTree = "<group>"; };
+		AAF75C4B1783585200F18812 /* RNResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNResponse.m; sourceTree = "<group>"; };
 		B69993D8124244B8A76580AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -460,8 +460,6 @@
 				AA5DF36117231B2D0093B7AC /* RNPreAuthViewController.m */,
 				AA31021B1720782000E44D44 /* RNAuthViewController.h */,
 				AA31021C1720782000E44D44 /* RNAuthViewController.m */,
-				AA355A51172095FD0014E01B /* RNAuthPasswordViewController.h */,
-				AA355A52172095FD0014E01B /* RNAuthPasswordViewController.m */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -544,6 +542,8 @@
 				AAD973571725DB2E00171240 /* NSDate+Reporting.m */,
 				AA53FEA3170F873C00041748 /* RNWebService.h */,
 				AA53FEA4170F873C00041748 /* RNWebService.m */,
+				AAF75C4A1783585200F18812 /* RNResponse.h */,
+				AAF75C4B1783585200F18812 /* RNResponse.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -1173,7 +1173,6 @@
 				AA2E3EE11718C192005ACE36 /* RNPointChange.m in Sources */,
 				AA31021D1720782000E44D44 /* RNAuthViewController.m in Sources */,
 				AA31022617207FD100E44D44 /* RNUser.m in Sources */,
-				AA355A53172095FD0014E01B /* RNAuthPasswordViewController.m in Sources */,
 				AA355A5A1720A7D90014E01B /* RNGiftCard.m in Sources */,
 				AA355A5E1720ACFA0014E01B /* RNCart.m in Sources */,
 				AA5DF36217231B2D0093B7AC /* RNPreAuthViewController.m in Sources */,
@@ -1198,6 +1197,7 @@
 				AAC806BC176A851000BE9F72 /* RNButton.m in Sources */,
 				AA458D911772118E00B906A7 /* RNLeftArrow.m in Sources */,
 				AA458D9417723A6400B906A7 /* RNRightArrow.m in Sources */,
+				AAF75C4C1783585200F18812 /* RNResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
