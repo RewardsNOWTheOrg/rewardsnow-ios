@@ -23,6 +23,8 @@
 @property (nonatomic, copy) NSString *zipCode;
 @property (nonatomic, copy) NSString *tipNumber;
 
+@property (nonatomic, copy) NSString *customerServicePhoneNumber;
+
 //set upon login
 @property (nonatomic, copy) NSString *username;
 

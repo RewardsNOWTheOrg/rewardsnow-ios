@@ -26,6 +26,7 @@
     [fields setValue:@"Info.AvailableBalance" forKey:@"balance"];
     [fields setValue:@"GiftCards" forKey:@"giftCards"];
     [fields setValue:@"Info.Tipnumber" forKey:@"tipNumber"];
+    [fields setValue:@"Info.CustomerServicePhone" forKey:@"customerServicePhoneNumber"];
     return fields;
 }
 
