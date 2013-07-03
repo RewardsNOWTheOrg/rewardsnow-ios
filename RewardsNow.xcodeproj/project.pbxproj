@@ -1307,8 +1307,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ethan Mick (EDMS7P324S)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ethan Mick (EDMS7P324S)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ethan Mick (TD45EV92NH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ethan Mick (TD45EV92NH)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
 				INFOPLIST_FILE = "RewardsNow/RewardsNow-Info.plist";
@@ -1318,8 +1318,8 @@
 					"\"$(SRCROOT)/RewardsNow\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0629F54E-49E4-41E1-92E6-122BAAC36317";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0629F54E-49E4-41E1-92E6-122BAAC36317";
+				PROVISIONING_PROFILE = "A7AE7D87-563D-499C-ADEA-336B97AD0164";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A7AE7D87-563D-499C-ADEA-336B97AD0164";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
