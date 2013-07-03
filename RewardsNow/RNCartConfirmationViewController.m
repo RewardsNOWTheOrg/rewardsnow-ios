@@ -56,6 +56,7 @@
 
     self.innerInnerViewHeight.constant = (_checkoutItems.count) + 60;
     
+#warning All this is broken, need to redo & fix.
     
     self.innerViewHeight.constant = self.innerInnerViewHeight.constant + difference + 100;
     self.scrollView.contentSize = CGSizeMake(320, self.innerInnerViewHeight.constant + 100);
