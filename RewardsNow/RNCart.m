@@ -98,7 +98,7 @@
 - (NSArray *)arrayForPlaceOrderItems {
     NSMutableArray *array = [NSMutableArray array];
     
-    for (RNCartObject *cartObject in _items) {
+    for (RNCartObject *cartObject in [self itemsThatHaveQuantity]) {
         @try {
             [array addObject:[cartObject dictionaryForPlaceOrder]];
         }
@@ -121,6 +121,18 @@
 
 - (BOOL)canCheckout {
     return [self hasItemsInCart] && [[self pointsDifference] doubleValue] > 0;
+}
+
+- (NSArray *)itemsThatHaveQuantity {
+    NSMutableArray *items = [NSMutableArray array];
+    
+    for (RNCartObject *object in _items) {
+        if (![object isEmpty]) {
+            [items addObject:object];
+        }
+    }
+    
+    return items;
 }
 
 

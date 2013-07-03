@@ -19,7 +19,7 @@
 
 @interface RNCartConfirmationViewController ()
 
-
+@property (nonatomic, copy) NSArray *checkoutItems;
 @property (nonatomic, strong) RNUser *user;
 
 @end
@@ -39,10 +39,10 @@
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
     self.user = [[RNCart sharedCart] user];
     
-    NSArray *items = [[RNCart sharedCart] items];
+    self.checkoutItems = [[RNCart sharedCart] itemsThatHaveQuantity];
     
-    for (NSInteger i = 0; i < items.count; i++) {
-        RNCartObject *cartObject = items[i];
+    for (NSInteger i = 0; i < _checkoutItems.count; i++) {
+        RNCartObject *cartObject = _checkoutItems[i];
         NSString *title = [[cartObject.redeemObject descriptionName] stringByAppendingFormat:@" x%d", cartObject.count];
         [self createLabelWithText:title points:[cartObject stringTotalPrice] number:i];
     }
@@ -54,7 +54,7 @@
 - (void)resizeView {
     CGFloat difference = self.innerViewHeight.constant - self.innerInnerViewHeight.constant;
 
-    self.innerInnerViewHeight.constant = (30 * [[[RNCart sharedCart] items] count]) + 60;
+    self.innerInnerViewHeight.constant = (_checkoutItems.count) + 60;
     
     
     self.innerViewHeight.constant = self.innerInnerViewHeight.constant + difference + 100;
@@ -133,15 +133,14 @@
             /// 1: Add all items to the cart
             /// 2: When finished, call checkout with the same items.
             ///
-            
-            RNCart *cart = [RNCart sharedCart];
+
             __block NSInteger count = 0;
             
-            for (RNCartObject *object in cart.items) {
+            for (RNCartObject *object in _checkoutItems) {
                 
                 [[RNWebService sharedClient] postCatalogIDToCart:object.redeemObject.catalogID callback:^(RNResponse *response) {
                     count++;
-                    if (count == cart.items.count) {
+                    if (count == _checkoutItems.count) {
                         [self checkoutCartItems];
                     }
                 }];
@@ -171,6 +170,7 @@
             //if we are waiting for the checkout process to be done...
             // we should show the thank you screen...
             // and then drop it down automaticalyl wit hthe new gift cards?
+#warning Not Finished
         } else { //fail
             [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
         }
