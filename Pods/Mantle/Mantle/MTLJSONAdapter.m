@@ -8,9 +8,10 @@
 
 #import "MTLJSONAdapter.h"
 #import "MTLModel.h"
+#import "MTLReflection.h"
 
 NSString * const MTLJSONAdapterErrorDomain = @"MTLJSONAdapterErrorDomain";
-NSInteger const MTLJSONAdapterErrorNoClassFound = 2;
+const NSInteger MTLJSONAdapterErrorNoClassFound = 2;
 
 // An exception was thrown and caught.
 static const NSInteger MTLJSONAdapterErrorExceptionThrown = 1;
@@ -198,7 +199,7 @@ static NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapter
 - (NSValueTransformer *)JSONTransformerForKey:(NSString *)key {
 	NSParameterAssert(key != nil);
 
-	SEL selector = NSSelectorFromString([key stringByAppendingString:@"JSONTransformer"]);
+	SEL selector = MTLSelectorWithKeyPattern(key, "JSONTransformer");
 	if ([self.modelClass respondsToSelector:selector]) {
 		NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[self.modelClass methodSignatureForSelector:selector]];
 		invocation.target = self.modelClass;
