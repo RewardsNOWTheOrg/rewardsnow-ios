@@ -22,8 +22,10 @@
 @property (nonatomic, copy) NSString *state;
 @property (nonatomic, copy) NSString *zipCode;
 @property (nonatomic, copy) NSString *tipNumber;
-
 @property (nonatomic, copy) NSString *customerServicePhoneNumber;
+
+//not synced
+@property (nonatomic) BOOL shouldSetCurrenetEmailToDefault;
 
 //set upon login
 @property (nonatomic, copy) NSString *username;

@@ -155,18 +155,14 @@
         
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
-        if ([response.result boolValue]) { //succcess
+        if ([response.result boolValue]) {
             RNCart *cart = [RNCart sharedCart];
-            [_user subtractPoints:[cart total]]; //more application?
+            [_user subtractPoints:[cart total]];
             [cart emptyCart];
                         
             RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
             [self.navigationController pushViewController:thanks animated:YES];
             
-            //if we are waiting for the checkout process to be done...
-            // we should show the thank you screen...
-            // and then drop it down automaticalyl wit hthe new gift cards?
-#warning Not Finished
         } else { //fail
             [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
         }
