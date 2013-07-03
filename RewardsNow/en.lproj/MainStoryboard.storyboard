@@ -2929,7 +2929,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="3FX-BP-Fbl" secondAttribute="trailing" constant="19" type="user" id="GLv-d4-Ei6"/>
                                                             <constraint firstItem="6E8-za-th5" firstAttribute="leading" secondItem="Wy1-0E-045" secondAttribute="leading" constant="6" id="GT7-rS-I18"/>
-                                                            <constraint firstAttribute="height" constant="134" type="user" id="GiG-Ew-myO"/>
                                                             <constraint firstItem="blI-bn-lme" firstAttribute="top" secondItem="Wy1-0E-045" secondAttribute="top" type="default" id="UuO-4S-01j"/>
                                                             <constraint firstAttribute="bottom" secondItem="6E8-za-th5" secondAttribute="bottom" constant="10" type="user" id="b8h-b3-sHF"/>
                                                             <constraint firstItem="3FX-BP-Fbl" firstAttribute="baseline" secondItem="6E8-za-th5" secondAttribute="baseline" type="default" id="c8U-Ot-uKu"/>
@@ -2942,14 +2941,14 @@
                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="4Cd-mX-eto" firstAttribute="top" secondItem="8I1-rV-zj5" secondAttribute="top" constant="7" id="7K8-fR-9B9"/>
-                                                    <constraint firstItem="Wy1-0E-045" firstAttribute="top" secondItem="8I1-rV-zj5" secondAttribute="top" constant="33" id="ABk-vj-1UR"/>
-                                                    <constraint firstAttribute="height" constant="159" type="user" id="GXJ-8k-kcI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Wy1-0E-045" secondAttribute="bottom" type="user" id="AnR-xv-eh9"/>
                                                     <constraint firstItem="Wy1-0E-045" firstAttribute="trailing" secondItem="8I1-rV-zj5" secondAttribute="trailing" type="default" id="TnD-XI-ns5"/>
                                                     <constraint firstItem="Wy1-0E-045" firstAttribute="leading" secondItem="8I1-rV-zj5" secondAttribute="leading" type="default" id="ZbA-rZ-MGn"/>
                                                     <constraint firstItem="Dwt-Ub-dY8" firstAttribute="leading" secondItem="8I1-rV-zj5" secondAttribute="leading" type="user" id="jMt-Di-mYV"/>
                                                     <constraint firstItem="4Cd-mX-eto" firstAttribute="leading" secondItem="8I1-rV-zj5" secondAttribute="leading" type="default" id="joN-Q9-odi"/>
                                                     <constraint firstItem="Dwt-Ub-dY8" firstAttribute="top" secondItem="8I1-rV-zj5" secondAttribute="top" type="default" id="mgq-0I-7YG"/>
                                                     <constraint firstItem="Dwt-Ub-dY8" firstAttribute="trailing" secondItem="8I1-rV-zj5" secondAttribute="trailing" type="user" id="obF-kD-GaK"/>
+                                                    <constraint firstItem="Wy1-0E-045" firstAttribute="top" secondItem="8I1-rV-zj5" secondAttribute="top" constant="25" type="user" id="yBt-EO-7it"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFt-rj-Rav" customClass="RNButton">
@@ -2978,6 +2977,7 @@
                                             <constraint firstAttribute="width" constant="320" type="user" id="XGa-uA-l0o"/>
                                             <constraint firstItem="8I1-rV-zj5" firstAttribute="top" secondItem="qQA-Fa-owZ" secondAttribute="top" constant="10" type="user" id="bMA-VO-iyN"/>
                                             <constraint firstAttribute="centerX" secondItem="UFt-rj-Rav" secondAttribute="centerX" type="user" id="u8x-AZ-Pxs"/>
+                                            <constraint firstAttribute="bottom" secondItem="8I1-rV-zj5" secondAttribute="bottom" constant="101" type="user" id="x5O-dC-Jzw"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -3012,7 +3012,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="innerInnerViewHeight" destination="GiG-Ew-myO" id="faK-ua-1jk"/>
                         <outlet property="innerView" destination="qQA-Fa-owZ" id="8iL-vi-0O8"/>
                         <outlet property="innerViewHeight" destination="9D8-IE-ldf" id="D54-Rs-AxE"/>
                         <outlet property="labelView" destination="Wy1-0E-045" id="gfD-d1-L54"/>
@@ -3533,7 +3532,6 @@
                 <relationship kind="action" name="cartTapped:"/>
                 <relationship kind="action" name="deliveryTapped:"/>
                 <relationship kind="action" name="placeOrderTapped:"/>
-                <relationship kind="outlet" name="innerInnerViewHeight" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="innerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="innerViewHeight" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="labelView" candidateClass="UIView"/>

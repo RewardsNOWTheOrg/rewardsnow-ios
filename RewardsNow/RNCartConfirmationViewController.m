@@ -52,21 +52,16 @@
 }
 
 - (void)resizeView {
-    CGFloat difference = self.innerViewHeight.constant - self.innerInnerViewHeight.constant;
-
-    self.innerInnerViewHeight.constant = (_checkoutItems.count) + 60;
+    self.innerViewHeight.constant = (_checkoutItems.count * 35) + 180;
+    self.scrollView.contentSize = _innerView.frame.size;
     
-#warning All this is broken, need to redo & fix.
-    
-    self.innerViewHeight.constant = self.innerInnerViewHeight.constant + difference + 100;
-    self.scrollView.contentSize = CGSizeMake(320, self.innerInnerViewHeight.constant + 100);
     [self.view layoutIfNeeded];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.scrollView.scrollEnabled = YES;
-    self.scrollView.contentSize = CGSizeMake(320, self.innerInnerViewHeight.constant + 100);
+    self.scrollView.contentSize = _innerView.frame.size;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -112,8 +112,15 @@
         //
         // save info
         //
-#warning Not Finished
         
+        RNUser *user = [[RNCart sharedCart] user];
+
+        user.shouldSetCurrenetEmailToDefault = _defaultEmailSwitch.on;
+        user.email = _emailTextField.text;
+        user.fullName = _addressNameTextField.text;
+        user.address = _addressStreetTextField.text;
+        user.apt = _addressUnitTextField.text;
+#warning Need to see how to store city/state/etc
     }
 }
 
