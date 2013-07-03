@@ -96,6 +96,7 @@
         [string addAttribute:NSUnderlineStyleAttributeName value:@1 range:NSMakeRange(0, string.length)];
         [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:C(0) green:C(94) blue:C(132) alpha:1.0] range:NSMakeRange(0, string.length)];
         [gcButton setAttributedTitle:string forState:UIControlStateNormal];
+        gcButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         gcButton.tag = i;
         gcButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [gcButton setFrame:CGRectMake(10, 50 + (35 * i), 280, 30)];
