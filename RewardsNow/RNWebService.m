@@ -18,6 +18,7 @@
 #import "RNBranding.h"
 #import "RNCategory.h"
 #import "RNResponse.h"
+#import "RNConstants.h"
 
 NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/";
 NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3eb07bc74d5bc081";
@@ -27,14 +28,18 @@ NSString *const kErrorKey = @"Error";
 NSString *const kStatementKey = @"Statement";
 NSString *const kOffersKey = @"Offers";
 
+typedef void (^RNAuthCallback)();
+
 #define SAFE_BLOCK(block, ...) block ? block(__VA_ARGS__) : nil
 #define RNError [NSError errorWithDomain:@"RNError" code:1 userInfo:nil]
 #define RNErrorString @"There was an error in fetching the information. Please try again."
 #define UNKNOWN_ERROR_RESPONSE_AND_CALLBACK SAFE_BLOCK(callback, [RNResponse responseWithError:RNError errorString:RNErrorString statusCode:0])
+#define CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response, authCallback, SAFE_BLOCK) if (response.statusCode == 401) {[self showLoginScreen:authCallback];} else {SAFE_BLOCK;}
 
 @interface RNWebService()
 
 @property (nonatomic, strong) NSString *authorizationHeader;
+@property (nonatomic, strong) RNAuthCallback authCallback;
 
 @end
 
@@ -89,17 +94,17 @@ NSString *const kOffersKey = @"Offers";
                                                                                          UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                      
-                                                                                     
-                                                                                     
-                                                                                     
-                                                                                     
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                                                                     //handle 401
+                                                                                     
                                                                                      DLog(@"FAILURE: %@", error);
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      DLog(@"Test: %@", request);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getRewardsWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -138,10 +143,13 @@ NSString *const kOffersKey = @"Offers";
                                                                                  
                                                                              } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                  [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                                                                 DLog(@"FAILURE: %@", error);
-                                                                                 DLog(@"JSON: %@", JSON);
-                                                                                 DLog(@"Test: %@", request);
-                                                                                 SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                              ^{ [self getDealsAtLocation:location query:query limit:lim offset:offset radius:radius category:category callback:callback]; },
+                                                                                                                              SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                 
                                                                              }];
     [self enqueueHTTPRequestOperation:op];
 
@@ -174,6 +182,7 @@ NSString *const kOffersKey = @"Offers";
                                                                                      DLog(@"FAILURE: %@", error);
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      DLog(@"Test: %@", request);
+                                                                                     
                                                                                      SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
@@ -201,7 +210,12 @@ NSString *const kOffersKey = @"Offers";
                                                                                      DLog(@"FAILURE: %@", error);
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      DLog(@"Test: %@", request);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getCartWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                     
+                                                                                     
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -236,7 +250,11 @@ NSString *const kOffersKey = @"Offers";
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getAccountStatementFrom:from to:to callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                     
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -274,7 +292,10 @@ NSString *const kOffersKey = @"Offers";
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getAccountInfoWithTipWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -301,7 +322,11 @@ NSString *const kOffersKey = @"Offers";
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getProgramInfoWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                     
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -327,7 +352,11 @@ NSString *const kOffersKey = @"Offers";
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                     
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getLocalCategoriesWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -380,8 +409,8 @@ NSString *const kOffersKey = @"Offers";
                                                                                          double delayInSeconds = 10.0;
                                                                                          dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                                                                                          dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//                                                                                             self.authorizationHeader = @"oe0nXAKH+vgByBWiQDw9LW7y28UhxwYtAOCfqm6hldqh5anYUM5gtoDItv5A5pUebwKchwiIUeztMRVl9LvimeKcP5AMVG+qtLDWDGd2u4dwv5ag7QQlYzGNlxcbTcRtOX8AFuMEyc041Mi3oRvYR+MfQWG8rOVY75tsiqyp9Dvaf4+5tNPKMdXIYPJqd/Zc3jw4bBrcfaGfi3TNp3t4A8pUJig+qQ5EW5c3iJuJ/rm2fOrPIi6YISmcXW8B9NFbFlqR393RZGmCbrH5W5fl1aD8TnbK6ZikS2Ufay9WkZXatTezjfwV33rJWBn98w+qbwHCLzIN5XIKuyRqpMKwx/n+OYj7Aw1WL9qsbWI5gvgFncLf44HTIf2s/MFB6fInU0pD3Mb/hxF/aKrBOdu6OCT8lSwv8JkF8W3fNYyc2arNa+s8PuhSGhEiU1+1nPt+mYTDpZu2L15Ng4V4cZt5EK+Pic8ye/LYEll6hX4bd/ZV/eh5QYYLBLV5Dqgtfr0PzOc6Mqdfspon3H7lynO8WvMW2SH94Wm3n0MxJt8vfSnu9NBM1A46YuPz7fgF19siVpM6I8Xr17sYgqLWDO/LGMYagfIpIf5StPtgiJWzGoIskvjM7O1CQDfBxITKacLIvKg2jotS4rtiK2LHD1d4sEFBTvWapkkJ1b8yrcyZ8CkNwSVdlKK4NR1VUyZBASR+yGMecUy9xd5N60i98rbTtdy+tIap/K3yJwTgxAyVwZfykrGDaUhTimzAA7WUlOAOxcHi65cFtVhwt3DR55Oc2c77Aeh7dyhbUMkDR5SDxS4bGoxViodYpiBsmarF4936";
-//                                                                                             [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
+                                                                                             self.authorizationHeader = @"oe0nXAKH+vgByBWiQDw9LW7y28UhxwYtAOCfqm6hldqh5anYUM5gtoDItv5A5pUebwKchwiIUeztMRVl9LvimeKcP5AMVG+qtLDWDGd2u4dwv5ag7QQlYzGNlxcbTcRtOX8AFuMEyc041Mi3oRvYR+MfQWG8rOVY75tsiqyp9Dvaf4+5tNPKMdXIYPJqd/Zc3jw4bBrcfaGfi3TNp3t4A8pUJig+qQ5EW5c3iJuJ/rm2fOrPIi6YISmcXW8B9NFbFlqR393RZGmCbrH5W5fl1aD8TnbK6ZikS2Ufay9WkZXatTezjfwV33rJWBn98w+qbwHCLzIN5XIKuyRqpMKwx/n+OYj7Aw1WL9qsbWI5gvgFncLf44HTIf2s/MFB6fInU0pD3Mb/hxF/aKrBOdu6OCT8lSwv8JkF8W3fNYyc2arNa+s8PuhSGhEiU1+1nPt+mYTDpZu2L15Ng4V4cZt5EK+Pic8ye/LYEll6hX4bd/ZV/eh5QYYLBLV5Dqgtfr0PzOc6Mqdfspon3H7lynO8WvMW2SH94Wm3n0MxJt8vfSnu9NBM1A46YuPz7fgF19siVpM6I8Xr17sYgqLWDO/LGMYagfIpIf5StPtgiJWzGoIskvjM7O1CQDfBxITKacLIvKg2jotS4rtiK2LHD1d4sEFBTvWapkkJ1b8yrcyZ8CkNwSVdlKK4NR1VUyZBASR+yGMecUy9xd5N60i98rbTtdy+tIap/K3yJwTgxAyVwZfykrGDaUhTimzAA7WUlOAOxcHi65cFtVhwt3DR55Oc2c77Aeh7dyhbUMkDR5SDxS4bGoxViodYpiBsmarF4936";
+                                                                                             [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
                                                                                          });
                                                                                          
                                                                                      } else {
@@ -425,7 +454,11 @@ NSString *const kOffersKey = @"Offers";
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self postChangePasswordWithUsername:username oldPassword:oldPassword newPassword:newPassword confirmPassword:confirmPassword callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                     
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -460,7 +493,10 @@ NSString *const kOffersKey = @"Offers";
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self postCatalogIDToCart:catalogID callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -527,7 +563,10 @@ NSString *const kOffersKey = @"Offers";
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self postPlaceOrderForUser:user items:redemptions callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
     
@@ -542,6 +581,29 @@ NSString *const kOffersKey = @"Offers";
         return JSON[@"Error"][@"Description"];
     }
     return nil;
+}
+
+- (void)showLoginScreen:(RNAuthCallback)callback {
+    
+    UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    self.authCallback = callback;
+    
+    if (rootViewController != nil) {
+        self.tipNumber = [[NSUserDefaults standardUserDefaults] stringForKey:BankCodeKey];
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UINavigationController *controller = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"RNLoginViewController"];
+        RNAuthViewController *auth = controller.viewControllers[0];
+        auth.delegate = self;
+        
+        [rootViewController presentViewController:controller animated:YES completion:nil];
+    }
+}
+
+- (void)authViewController:(RNAuthViewController *)auth didFinish:(BOOL)success {
+    
+    if (success && self.authCallback != nil) {
+        self.authCallback();
+    }
 }
 
 #pragma mark - Base 64 Encoding

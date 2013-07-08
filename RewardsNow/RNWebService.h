@@ -8,12 +8,13 @@
 
 #import "AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
+#import "RNAuthViewController.h"
 
 @class RNUser, RNResponse;
 
 typedef void (^RNResultCallback)(RNResponse *result);
 
-@interface RNWebService : AFHTTPClient
+@interface RNWebService : AFHTTPClient <RNAuthViewDelegate>
 
 /**
  * 
