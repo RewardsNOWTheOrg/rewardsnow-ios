@@ -405,14 +405,6 @@ typedef void (^RNAuthCallback)();
                                                                                          [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
                                                                                          self.tipNumber = [JSON[@"LoginResult"][@"Tipnumber"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
                                                                                          SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
-                                                                                         
-                                                                                         double delayInSeconds = 10.0;
-                                                                                         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                                                                                         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                                                                                             self.authorizationHeader = @"oe0nXAKH+vgByBWiQDw9LW7y28UhxwYtAOCfqm6hldqh5anYUM5gtoDItv5A5pUebwKchwiIUeztMRVl9LvimeKcP5AMVG+qtLDWDGd2u4dwv5ag7QQlYzGNlxcbTcRtOX8AFuMEyc041Mi3oRvYR+MfQWG8rOVY75tsiqyp9Dvaf4+5tNPKMdXIYPJqd/Zc3jw4bBrcfaGfi3TNp3t4A8pUJig+qQ5EW5c3iJuJ/rm2fOrPIi6YISmcXW8B9NFbFlqR393RZGmCbrH5W5fl1aD8TnbK6ZikS2Ufay9WkZXatTezjfwV33rJWBn98w+qbwHCLzIN5XIKuyRqpMKwx/n+OYj7Aw1WL9qsbWI5gvgFncLf44HTIf2s/MFB6fInU0pD3Mb/hxF/aKrBOdu6OCT8lSwv8JkF8W3fNYyc2arNa+s8PuhSGhEiU1+1nPt+mYTDpZu2L15Ng4V4cZt5EK+Pic8ye/LYEll6hX4bd/ZV/eh5QYYLBLV5Dqgtfr0PzOc6Mqdfspon3H7lynO8WvMW2SH94Wm3n0MxJt8vfSnu9NBM1A46YuPz7fgF19siVpM6I8Xr17sYgqLWDO/LGMYagfIpIf5StPtgiJWzGoIskvjM7O1CQDfBxITKacLIvKg2jotS4rtiK2LHD1d4sEFBTvWapkkJ1b8yrcyZ8CkNwSVdlKK4NR1VUyZBASR+yGMecUy9xd5N60i98rbTtdy+tIap/K3yJwTgxAyVwZfykrGDaUhTimzAA7WUlOAOxcHi65cFtVhwt3DR55Oc2c77Aeh7dyhbUMkDR5SDxS4bGoxViodYpiBsmarF4936";
-                                                                                             [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
-                                                                                         });
-                                                                                         
                                                                                      } else {
                                                                                          UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
