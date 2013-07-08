@@ -89,6 +89,11 @@
                 if ([accountInfoResponse wasSuccessful]) {
                     [[RNCart sharedCart] setUser:accountInfoResponse.result];
                     [[[RNCart sharedCart] user] setUsername:_usernameTextField.text];
+                    
+                    if ([self.delegate respondsToSelector:@selector(authViewController:didFinish:)]) {
+                        [self.delegate authViewController:self didFinish:YES];
+                    }
+                    
                     [self dismissViewControllerAnimated:YES completion:nil];
                 } else {
                     [self presentError:response.errorString];
