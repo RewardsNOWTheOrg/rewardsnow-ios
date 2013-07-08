@@ -30,7 +30,7 @@
     [super viewDidLoad];
     self.hasFinishedDownloadingImage = NO;
     self.hasFinishedDownloadingBranding = NO;
-    self.fields = @[self.helperLabel, self.codeTextField, self.continueButton];
+    self.fields = @[self.headerImageView, self.helperLabel, self.codeTextField, self.continueButton];
     [self.navigationController setNavigationBarHidden:YES];
     
     if (!IS_WIDESCREEN) {
