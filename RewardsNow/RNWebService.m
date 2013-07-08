@@ -240,7 +240,7 @@ typedef void (^RNAuthCallback)();
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     if (YES /*[self wasSuccessful:JSON]*/) {
+                                                                                     if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNAccountStatement objectsFromJSON:@[[JSON objectForKey:kStatementKey]]];
                                                                                          SAFE_BLOCK(callback, [RNResponse responseWithResult:[objects lastObject] statusCode:response.statusCode]);
                                                                                      } else {
