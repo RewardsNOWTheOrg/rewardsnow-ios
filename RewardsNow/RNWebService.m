@@ -551,7 +551,7 @@ typedef void (^RNAuthCallback)();
     //set redemptions
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:postParameters options:0 error:NULL];
-    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/PlaceOrder" parameters:nil];
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/PlaceOrderEx" parameters:nil];
     [request setHTTPBody:data];
     
     DLog(@"Request: %@",  request);
@@ -567,7 +567,7 @@ typedef void (^RNAuthCallback)();
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     if ([JSON[@"PlaceOrderResult"] boolValue]) {
+                                                                                     if ([self wasSuccessful:JSON]) {
                                                                                          SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
                                                                                      } else {
                                                                                          UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
