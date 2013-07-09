@@ -10,6 +10,8 @@
 #import "RNRedeemObject.h"
 #import "RNUser.h"
 #import "RNCartObject.h"
+#import "RNWebService.h"
+#import "RNResponse.h"
 
 @implementation RNCart
 
@@ -31,6 +33,15 @@
         
     }
     return self;
+}
+
+- (void)updateCartFromWeb;
+{
+    [[RNWebService sharedClient] getCartWithCallback:^(RNResponse *response) {
+        if (response.wasSuccessful) {
+            [self.items addObjectsFromArray:response.result];
+        }
+    }];
 }
 
 - (void)emptyCart {

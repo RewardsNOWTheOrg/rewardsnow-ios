@@ -29,6 +29,7 @@
 - (BOOL)hasItemsInCart;
 - (BOOL)canCheckout;
 - (NSArray *)itemsThatHaveQuantity;
+- (void)updateCartFromWeb;
 
 // used to get the dictionaries for the cart for checkout
 - (NSArray *)arrayForPlaceOrderItems;
