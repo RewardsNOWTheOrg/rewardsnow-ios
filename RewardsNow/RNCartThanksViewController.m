@@ -27,6 +27,10 @@
     UITabBarController *tabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
     if ([tabBar isKindOfClass:[UITabBarController class]]) {
         [tabBar setSelectedIndex:3];
+        UINavigationController *third = tabBar.viewControllers[3];
+        if ([third isKindOfClass:[UINavigationController class]]) {
+            [third popToRootViewControllerAnimated:NO];
+        }
     }
 }
 

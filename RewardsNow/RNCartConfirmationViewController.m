@@ -159,11 +159,15 @@
             RNCart *cart = [RNCart sharedCart];
             [_user subtractPoints:[cart total]];
             [cart emptyCart];
-                        
-            RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
-            [self.navigationController pushViewController:thanks animated:YES];
             
-        } else { //fail
+            [[RNWebService sharedClient] getAccountInfoWithTipWithCallback:^(RNResponse *accountInfoResponse) {
+                if ([accountInfoResponse wasSuccessful]) {
+                    [[RNCart sharedCart] setUser:accountInfoResponse.result];
+                }
+                RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
+                [self.navigationController pushViewController:thanks animated:YES];
+            }];
+        } else {
             [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
         }
     }];
