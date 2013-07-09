@@ -111,7 +111,9 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
             self.pointsEndLabel.text = [self.statement.pointsEnd description] == nil ? @"0" : [self.statement.pointsEnd description];
             [self.tableView reloadData];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+            if (self.navigationController.visibleViewController == self) {
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+            }
         }
     }];
 }
