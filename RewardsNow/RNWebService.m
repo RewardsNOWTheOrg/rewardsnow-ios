@@ -362,19 +362,40 @@ typedef void (^RNAuthCallback)();
 }
 
 
+#pragma mark - PUT
+
+
 - (void)putEmail:(NSString *)email callback:(RNResultCallback)callback {
-    
-//    NSString *url = [NSString stringWithFormat:@"email"];
-    
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/UpdateMyAccount" parameters:nil];
     
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-        SAFE_BLOCK(callback, [RNResponse responseWithResult:@{@"success" : @"true"} statusCode:200]);
-    });
+    NSDictionary *dataDictionary = @{@"tipnumber": _tipNumber, @"email" : email};
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dataDictionary options:0 error:NULL];
+    [request setHTTPBody:data];
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     
+                                                                                     if ([self wasSuccessful:JSON[@"UpdateMyAccountResult"]]) {
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:JSON[@"UpdateMyAccountResult"][@"Email"] statusCode:response.statusCode]);
+                                                                                     } else {
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
+                                                                                     }
+                                                                                     
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self putEmail:email callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                     
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
 }
 
 #pragma mark - POST

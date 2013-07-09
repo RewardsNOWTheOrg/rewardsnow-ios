@@ -44,14 +44,14 @@
         
         hud.mode = MBProgressHUDModeCustomView;
         
-        //pop back to main account screen
-        // TODO
         if ([response wasSuccessful]) {
+            NSString *email = response.result;
+            
             RNUser *user = [[RNCart sharedCart] user];
-            user.email = self.emailTextField.text;
+            user.email = email;
             hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
             hud.detailsLabelText = @"Completed";
-            [self.navigationController popViewControllerAnimated:YES];
+            [hud hide:YES afterDelay:1.5];
             [self.navigationController popViewControllerAnimated:YES];
         } else {
             [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
@@ -62,7 +62,6 @@
 
 - (IBAction)textFieldChanged:(id)sender {
     self.saveButton.enabled = [self shouldEnableSaveButton];
-
 }
 
 - (BOOL)shouldEnableSaveButton {
