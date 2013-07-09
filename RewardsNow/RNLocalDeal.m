@@ -19,6 +19,7 @@
     [fields setValue:@"ActiveTo" forKey:@"activeTo"];
     [fields setValue:@"AdditionalInfo" forKey:@"additionalInformation"];
     [fields setValue:@"Address" forKey:@"address"];
+    [fields setValue:@"City" forKey:@"city"];
     [fields setValue:@"BusinessName" forKey:@"businessName"];
     [fields setValue:@"Country" forKey:@"country"];
     [fields setValue:@"Description" forKey:@"localDealDescription"];

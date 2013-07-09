@@ -39,8 +39,7 @@
     self.hasFinishedLoadingMap = NO;
     
     self.upperTopLabel.text = _deal.businessName;
-#warning Need City
-    self.upperMiddleLabel.text = [NSString stringWithFormat:@"%@, %@", _deal.address, @"Philadelphia"];
+    self.upperMiddleLabel.text = [NSString stringWithFormat:@"%@, %@", _deal.address, _deal.city];
     self.upperLowerLabel.text = _deal.name;
     [self.topImageView setImageWithURL:_deal.imageURL];
     

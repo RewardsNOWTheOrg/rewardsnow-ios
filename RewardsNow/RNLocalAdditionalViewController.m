@@ -30,7 +30,7 @@
     [super viewDidLoad];
     
     self.upperTopLabel.text = _deal.businessName;
-    self.upperMiddleLabel.text = [NSString stringWithFormat:@"%@, %@", _deal.address, @"Philadelphia"];
+    self.upperMiddleLabel.text = [NSString stringWithFormat:@"%@, %@", _deal.address, _deal.city];
     self.upperLowerLabel.text = _deal.name;
     [self.imageView setImageWithURL:_deal.imageURL];
     self.textView.text = _deal.additionalInformation;
