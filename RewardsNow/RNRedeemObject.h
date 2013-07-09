@@ -20,6 +20,7 @@
 @property (nonatomic, copy) NSString *imageURL;
 @property (nonatomic) double  priceInPoints;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, copy) NSString *terms;
 
 - (NSString *)stringPriceInPoints;
 

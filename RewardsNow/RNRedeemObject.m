@@ -25,6 +25,7 @@
     [fields setValue:@"DescriptionName" forKey:@"descriptionName"];
     [fields setValue:@"Image" forKey:@"imageURL"];
     [fields setValue:@"PriceInPoints" forKey:@"priceInPoints"];
+    [fields setValue:@"Terms" forKey:@"terms"];
     return fields;
 }
 
