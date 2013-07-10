@@ -39,7 +39,9 @@
 {
     [[RNWebService sharedClient] getCartWithCallback:^(RNResponse *response) {
         if (response.wasSuccessful) {
-            [self.items addObjectsFromArray:response.result];
+            for (RNRedeemObject *redeem in response.result) {
+                [self addToCart:redeem];
+            }
         }
     }];
 }
@@ -61,8 +63,6 @@
 }
 
 - (void)addToCart:(RNRedeemObject *)card {
-    
-    DLog(@"Added: %@", card);
     
     NSInteger index = [_items indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         RNCartObject *object = obj;
