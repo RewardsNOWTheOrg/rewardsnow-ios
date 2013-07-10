@@ -422,7 +422,7 @@ typedef void (^RNAuthCallback)();
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
-                                                                                         self.authorizationHeader = JSON[@"Token"]; //should serialize this too?
+                                                                                         self.authorizationHeader = JSON[@"Token"];
                                                                                          [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
                                                                                          self.tipNumber = [JSON[@"Tipnumber"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
                                                                                          SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
