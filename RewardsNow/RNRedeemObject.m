@@ -21,7 +21,6 @@
     [fields setValue:@"CatalogCode" forKey:@"catalogCode"];
     [fields setValue:@"CatalogId" forKey:@"catalogID"];
     [fields setValue:@"CategoryId" forKey:@"categoryID"];
-    [fields setValue:@"Description" forKey:@"objectDescription"];
     [fields setValue:@"DescriptionName" forKey:@"descriptionName"];
     [fields setValue:@"Image" forKey:@"imageURL"];
     [fields setValue:@"PriceInPoints" forKey:@"priceInPoints"];

@@ -15,7 +15,6 @@
 @property (nonatomic, copy) NSString *catalogCode;
 @property (nonatomic, strong) NSNumber *catalogID;
 @property (nonatomic, strong) NSNumber *categoryID;
-@property (nonatomic, copy) NSString *objectDescription;
 @property (nonatomic, copy) NSString *descriptionName;
 @property (nonatomic, copy) NSString *imageURL;
 @property (nonatomic) double  priceInPoints;
