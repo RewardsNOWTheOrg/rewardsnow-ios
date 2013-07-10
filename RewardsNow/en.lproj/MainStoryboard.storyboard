@@ -2517,16 +2517,6 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="light-grey-single-divider.png" translatesAutoresizingMaskIntoConstraints="NO" id="XLE-G7-iOp"/>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRM-en-it7">
                                                         <subviews>
-                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Make this your default email address?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jv-0H-Za1">
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="21" id="SVM-Se-f7o"/>
-                                                                    <constraint firstAttribute="width" constant="209" id="XQ6-SY-M8j"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WCu-Xx-tUk"/>
                                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" background="input.png" translatesAutoresizingMaskIntoConstraints="NO" id="pnh-zG-4uz" customClass="CMTextField">
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="279" id="1eu-I6-BOY"/>
@@ -2542,14 +2532,10 @@
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstItem="WCu-Xx-tUk" firstAttribute="top" secondItem="pnh-zG-4uz" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ATj-7p-3bO"/>
-                                                            <constraint firstItem="8Jv-0H-Za1" firstAttribute="leading" secondItem="pnh-zG-4uz" secondAttribute="leading" type="default" id="B4v-vy-cO0"/>
                                                             <constraint firstItem="Wfe-ho-Z66" firstAttribute="centerX" secondItem="pnh-zG-4uz" secondAttribute="centerX" type="default" id="CqK-LH-kow"/>
                                                             <constraint firstItem="Wfe-ho-Z66" firstAttribute="leading" secondItem="pRM-en-it7" secondAttribute="leading" type="default" id="EnG-7T-Vnu"/>
+                                                            <constraint firstItem="pnh-zG-4uz" firstAttribute="top" secondItem="pRM-en-it7" secondAttribute="top" constant="5" id="H2b-w5-cvk"/>
                                                             <constraint firstItem="Wfe-ho-Z66" firstAttribute="top" secondItem="pRM-en-it7" secondAttribute="top" type="default" id="Opr-Vr-xM0"/>
-                                                            <constraint firstItem="WCu-Xx-tUk" firstAttribute="centerY" secondItem="8Jv-0H-Za1" secondAttribute="centerY" type="default" id="cVw-eY-xGC"/>
-                                                            <constraint firstAttribute="trailing" secondItem="WCu-Xx-tUk" secondAttribute="trailing" constant="6" id="cWn-oN-nxK"/>
-                                                            <constraint firstItem="WCu-Xx-tUk" firstAttribute="top" secondItem="pRM-en-it7" secondAttribute="top" constant="43" type="user" id="qgk-I4-xlJ"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -2659,13 +2645,13 @@
                                         <constraints>
                                             <constraint firstItem="tf3-H1-w6g" firstAttribute="top" secondItem="vRa-fx-gsz" secondAttribute="top" constant="130" id="8IW-H7-JHC"/>
                                             <constraint firstAttribute="trailing" secondItem="JM6-uE-vyS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ItT-uN-5XY"/>
-                                            <constraint firstAttribute="bottom" secondItem="vYr-je-AeO" secondAttribute="bottom" constant="276" id="JRf-dx-qKb"/>
+                                            <constraint firstAttribute="bottom" secondItem="vYr-je-AeO" secondAttribute="bottom" constant="300" type="user" id="JRf-dx-qKb"/>
                                             <constraint firstItem="vYr-je-AeO" firstAttribute="leading" secondItem="tf3-H1-w6g" secondAttribute="leading" type="default" id="TvL-rw-jbE"/>
                                             <constraint firstAttribute="height" constant="395" id="XcK-xP-pNH"/>
+                                            <constraint firstItem="vYr-je-AeO" firstAttribute="centerX" secondItem="vRa-fx-gsz" secondAttribute="centerX" type="default" id="irG-tW-lcA"/>
                                             <constraint firstItem="vYr-je-AeO" firstAttribute="top" secondItem="vRa-fx-gsz" secondAttribute="top" constant="10" id="n1T-Ia-dWc"/>
                                             <constraint firstAttribute="bottom" secondItem="JM6-uE-vyS" secondAttribute="bottom" constant="16" id="psr-PW-NCI"/>
                                             <constraint firstAttribute="width" constant="320" type="user" id="slZ-5f-nT0"/>
-                                            <constraint firstItem="tf3-H1-w6g" firstAttribute="centerX" secondItem="vRa-fx-gsz" secondAttribute="centerX" type="default" id="zhh-z8-kyK"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2701,7 +2687,6 @@
                         <outlet property="addressNameTextField" destination="aKF-DS-KfS" id="rkU-1z-OU9"/>
                         <outlet property="addressStreetTextField" destination="Wfy-gP-JUr" id="Pqk-F2-dLz"/>
                         <outlet property="addressUnitTextField" destination="4jD-Vm-Mu8" id="AiM-eE-amR"/>
-                        <outlet property="defaultEmailSwitch" destination="WCu-Xx-tUk" id="OFy-b1-l0s"/>
                         <outlet property="emailTextField" destination="pnh-zG-4uz" id="93l-EL-8Ks"/>
                         <outlet property="innerView" destination="vRa-fx-gsz" id="4h4-Eq-Yca"/>
                         <outlet property="lowerInnerView" destination="FCG-DM-XH8" id="L9p-KS-3G1"/>
