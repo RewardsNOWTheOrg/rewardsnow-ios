@@ -39,7 +39,7 @@
                                     <constraint firstAttribute="height" constant="57" type="user" id="jgh-Qm-AZe"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="3 letter code" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="I3Q-eY-uNc" customClass="RNTextField">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="3 character program ID" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="I3Q-eY-uNc" customClass="RNTextField">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="264" type="user" id="f1k-yJ-ZCn"/>
                                     <constraint firstAttribute="height" constant="56" type="user" id="pze-Oq-s5a"/>
@@ -72,7 +72,7 @@
                                     <action selector="continueTapped:" destination="T28-ai-f5K" eventType="touchUpInside" id="Kdk-Hz-t5N"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" text="Enter the 3 character program ID number found on your rewards program website or your institution’s website." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="255" translatesAutoresizingMaskIntoConstraints="NO" id="h0T-Ul-gyt">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" text="Enter the 3 character program ID found on your rewards program website or your institution’s website." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="255" translatesAutoresizingMaskIntoConstraints="NO" id="h0T-Ul-gyt">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" type="user" id="OOb-p7-htn"/>
                                 </constraints>
@@ -1068,7 +1068,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-fC-NP3">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="RGo-MC-Kuf">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                                    <rect key="frame" x="0.0" y="331" width="320" height="74"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="WSX-Z6-sb5">
                                             <constraints>
