@@ -39,7 +39,7 @@
     self.hasFinishedLoadingMap = NO;
     
     self.upperTopLabel.text = _deal.businessName;
-    self.upperMiddleLabel.text = [NSString stringWithFormat:@"%@, %@", _deal.address, _deal.city];
+    self.upperMiddleLabel.text = [NSString stringWithFormat:@"%@, %@", _deal.city, _deal.state];
     self.upperLowerLabel.text = _deal.name;
     [self.topImageView setImageWithURL:_deal.imageURL];
     
@@ -189,7 +189,7 @@
     RNAnnotation *annotation = [[RNAnnotation alloc] init];
     annotation.coordinate = location;
     annotation.title = _deal.businessName;
-//    annotation.subtitle = _deal.address;
+    annotation.subtitle = _deal.address;
     annotation.deal = _deal;
     
     [self.mapView addAnnotation:annotation];

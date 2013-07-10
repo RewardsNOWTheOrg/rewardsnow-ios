@@ -122,7 +122,8 @@
         self.mapViewController.location = [[_manager location] coordinate];
     }
     
-    self.title = @"Map";
+    self.navigationItem.title = @"Map";
+    
     [self transitionFromCurrentViewControllerToViewController:_mapViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listTapped:)];
     self.navigationItem.rightBarButtonItem = barButton;
@@ -137,10 +138,9 @@
         self.filterViewController.location = _manager.location;
     }
     
-    self.title = @"Filter";
+    self.navigationItem.title = @"Filter";
     
     [self transitionFromCurrentViewControllerToViewController:_filterViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
-    
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listTapped:)];
     self.navigationItem.leftBarButtonItem = barButton;
     UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapTapped:)];
@@ -152,10 +152,9 @@
     if (_listViewController == nil) {
         self.listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
     }
-    self.title = @"Deals";
+    self.navigationItem.title = @"Deals";
     
     self.deals = _deals;
-    
     BOOL right = [_displayedViewController isKindOfClass:[RNLocalMapViewController class]];
     [self transitionFromCurrentViewControllerToViewController:_listViewController options:UIViewAnimationOptionTransitionFlipFromRight];
     
