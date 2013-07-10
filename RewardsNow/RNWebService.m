@@ -422,9 +422,9 @@ typedef void (^RNAuthCallback)();
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
-                                                                                         self.authorizationHeader = JSON[@"LoginResult"][@"Token"]; //should serialize this too?
+                                                                                         self.authorizationHeader = JSON[@"Token"]; //should serialize this too?
                                                                                          [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
-                                                                                         self.tipNumber = [JSON[@"LoginResult"][@"Tipnumber"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                                                                                         self.tipNumber = [JSON[@"Tipnumber"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
                                                                                          SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
                                                                                      } else {
                                                                                          UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
