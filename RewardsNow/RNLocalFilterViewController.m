@@ -33,7 +33,7 @@
             self.categories = response.result;
             [self.tableView reloadData];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     }];
 
@@ -77,7 +77,7 @@
                                                    vc.isPushed = YES;
                                                    [self.navigationController pushViewController:vc animated:YES];
                                                } else {
-                                                   [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+                                                   [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                                                }
                                            }];
 }

@@ -112,7 +112,7 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
             [self.tableView reloadData];
         } else {
             if (self.navigationController.visibleViewController == self) {
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
             }
         }
     }];

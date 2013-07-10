@@ -208,7 +208,7 @@
             if ([response wasSuccessful]) {
                 self.deals = response.result;
             } else {
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
             }
             
             if (self.displayedViewController == self.mapViewController) { //kind hackish :/

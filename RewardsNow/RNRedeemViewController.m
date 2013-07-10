@@ -77,7 +77,7 @@
             self.rewards = response.result;
             [self.tableView reloadData];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
         
         [sender endRefreshing];
