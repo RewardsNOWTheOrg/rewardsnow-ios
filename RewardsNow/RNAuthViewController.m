@@ -111,7 +111,7 @@
 }
 
 - (IBAction)forgotPasswordTapped:(id)sender {
-    [[[UIAlertView alloc] initWithTitle:@"Forgot Password?" message:@"Please visit  your rewards program website or your financial institution's website to reset your password." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    [[[UIAlertView alloc] initWithTitle:@"Forgot Password?" message:@"Please visit your rewards program website or your financial institution's website to reset your password." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 - (IBAction)textFieldChanged:(UITextField *)sender {
