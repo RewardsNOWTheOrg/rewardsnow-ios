@@ -28,6 +28,8 @@
 
 @implementation RNLocalContainerViewController
 
+@synthesize radius = _radius;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.gettingInformation = NO;
@@ -136,6 +138,7 @@
     if (_filterViewController == nil) {
         self.filterViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalFilterViewController"];
         self.filterViewController.location = _manager.location;
+        self.filterViewController.delegate = self;
     }
     
     self.navigationItem.title = @"Filter";
@@ -184,13 +187,26 @@
 
 - (void)refreshDataWithRadius:(NSNumber *)radius {
     
-    if (radius != nil) {
+    if (radius == nil) {
+        radius = _radius;
+    } else {
         self.radius = radius;
     }
     
-    
     self.gettingInformation = NO;
     [_manager startUpdatingLocation];
+}
+
+- (void)setRadius:(NSNumber *)radius;
+{
+    if (_radius != radius) {
+        _radius = radius;
+    }
+}
+
+- (NSNumber *)radius;
+{
+    return _radius;
 }
 
 #pragma mark - CLLocationManagerDelegate

@@ -15,6 +15,8 @@
 @protocol RNLocalViewDelegate <NSObject>
 
 - (void)refreshDataWithRadius:(NSNumber *)radius;
+- (void)setRadius:(NSNumber *)radius;
+- (NSNumber *)radius;
 
 @end
 
