@@ -468,10 +468,7 @@ typedef void (^RNAuthCallback)();
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
                                                                                      
-                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
-                                                                                                                                   ^{ [self postChangePasswordWithUsername:username oldPassword:oldPassword newPassword:newPassword confirmPassword:confirmPassword callback:callback]; },
-                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
-                                                                                     
+                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
