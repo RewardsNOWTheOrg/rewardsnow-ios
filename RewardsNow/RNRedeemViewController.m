@@ -103,7 +103,7 @@
     
     RNRedeemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.redeemTopLabel.text = [NSString stringWithFormat:@"%@ pts for $%d", [self.rewards[indexPath.row] stringPriceInPoints], (NSInteger)[self.rewards[indexPath.row] cashValue]];
+    cell.redeemTopLabel.text = [NSString stringWithFormat:@"%@ pts - $%d card", [self.rewards[indexPath.row] stringPriceInPoints], (NSInteger)[self.rewards[indexPath.row] cashValue]];
     cell.redeemBottomLabel.text = [self.rewards[indexPath.row] catagoryDescription];
     cell.redeemImage.contentMode = UIViewContentModeScaleAspectFit;
     cell.addButton.tag = indexPath.row;
