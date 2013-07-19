@@ -515,23 +515,6 @@ typedef void (^RNAuthCallback)();
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
-    /*
-     {
-     "tipnumber":"969999999999999",
-     "Redemptions":[ { "Item":"EGC-LLBEAN", "Quantity":"1" } ],
-     "CustomerEmail":"ssmith@rewardsnow.com",
-     "saddress1":"380 Central Ave",
-     "saddress2":"Suite 350",
-     "scity":"Dover",
-     "sstate":"NH",
-     "szipcode":"03820",
-     "scountry":"USA",
-     "hphone":"603-516-3440",
-     "wphone":""
-     }
-     
-     */
-    
     NSMutableDictionary *postParameters = [NSMutableDictionary dictionary];
     [postParameters setValue:_tipNumber forKey:@"tipnumber"];
     [postParameters setValue:user.email forKey:@"CustomerEmail"];
