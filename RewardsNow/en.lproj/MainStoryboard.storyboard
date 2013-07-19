@@ -182,7 +182,7 @@
                                     <action selector="forgotPasswordTapped:" destination="eag-8K-4sh" eventType="touchUpInside" id="0o3-Iu-qe3"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you need to create a user name and password, please visit your rewards program website or your institution’s website." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-hH-U97">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you need to create a user name and password, please visit your rewards program website or your institution’s website." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="259" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-hH-U97">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" type="user" id="9hO-x7-Yez"/>
                                 </constraints>
@@ -298,7 +298,7 @@
                                                         <constraint firstAttribute="height" constant="35" id="13x-zq-TwL"/>
                                                         <constraint firstAttribute="width" constant="175" id="bcj-OZ-0dg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="21"/>
+                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="vertical-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZFG-sJ-gOX">
