@@ -51,8 +51,16 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.firstDay = [NSDate firstDayOfCurrentMonth];
-    self.lastDay = [NSDate firstDayOfNextMonth];
+    ///
+    /// From the last statement information, get the first and last day of THAT month.
+    ///
+    NSInteger month = self.lastStatementMonth.integerValue;
+    NSInteger year = self.lastStatementYear.integerValue;
+    NSDate *date = [NSDate dateWithYear:year month:month day:1];
+    
+    
+    self.firstDay = date;
+    self.lastDay = [date firstDayOfNextMonth];
     self.finalLastDay = _lastDay;
     
     self.finalFirstDay = _firstDay;

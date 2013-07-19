@@ -15,6 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RNBranding.h"
 #import "RNWebService.h"
+#import "RNAccountStatementViewController.h"
 
 @interface RNAccountViewController ()
 
@@ -145,6 +146,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+{
+    if ([segue.identifier isEqualToString:@"pushRNAccountStatementViewController"]) {
+        RNAccountStatementViewController *vc = segue.destinationViewController;
+        vc.lastStatementMonth = self.user.lastStatementMonth;
+        vc.lastStatementYear = self.user.lastStatementYear;
+    }
 }
 
 - (IBAction)logoutTapped:(id)sender {

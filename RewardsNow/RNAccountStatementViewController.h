@@ -19,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *forwardMonthButton;
 @property (weak, nonatomic) IBOutlet UIView *pointsAreaView;
 
+@property (nonatomic, copy) NSString *lastStatementMonth;
+@property (nonatomic, copy) NSString *lastStatementYear;
+
 - (IBAction)backMonth:(id)sender;
 - (IBAction)forwardMonth:(id)sender;
 
