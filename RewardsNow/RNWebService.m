@@ -458,7 +458,7 @@ typedef void (^RNAuthCallback)();
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     if (JSON[@"ChangePasswordResult"][@"IsValid"]) {
+                                                                                     if ([JSON[@"IsValid"] boolValue]) {
                                                                                          SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
                                                                                      } else {
                                                                                          UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
