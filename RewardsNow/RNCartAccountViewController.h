@@ -15,8 +15,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *addressNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *addressStreetTextField;
 @property (weak, nonatomic) IBOutlet UITextField *addressUnitTextField;
-@property (weak, nonatomic) IBOutlet UITextField *addressCityStateTextField;
-@property (weak, nonatomic) IBOutlet UISwitch *defaultEmailSwitch;
+@property (weak, nonatomic) IBOutlet UITextField *addressCityTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressStateTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressZipTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet UILabel *topPointsLabel;
