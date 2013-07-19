@@ -75,9 +75,8 @@
     } else {
         [self.delegate setRadius:radius];
     }
-
-#warning hardcoded location
-    [self getDealsForQuery:nil location:[[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159] limit:20 offset:0 radius:radius.doubleValue category:_selectedMerchantCategory];
+    
+    [self getDealsForQuery:nil location:_location limit:20 offset:0 radius:radius.doubleValue category:_selectedMerchantCategory];
 }
 
 #pragma mark - UITableView Delegate
@@ -101,14 +100,12 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selectedMerchantCategory = [_categories[indexPath.row] merchantCategory];
     
-#warning fix radius, needs to be set around
-    [self getDealsForQuery:nil location:[[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159] limit:20 offset:0 radius:[[self.delegate radius] doubleValue] category:_selectedMerchantCategory];
+    [self getDealsForQuery:nil location:_location limit:20 offset:0 radius:[[self.delegate radius] doubleValue] category:_selectedMerchantCategory];
 }
 
 - (void)getDealsForQuery:(NSString *)query location:(CLLocation *)location limit:(NSUInteger)limit offset:(NSUInteger)offset radius:(double)radius category:(NSNumber *)category;
 {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-#warning HardCoded Location Here
     
     [[RNWebService sharedClient] getDealsAtLocation:location
                                               query:query

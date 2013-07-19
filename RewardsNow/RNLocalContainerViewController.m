@@ -214,8 +214,6 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = [locations lastObject];
     
-    location = [[CLLocation alloc] initWithLatitude:43.19553545049059 longitude:-70.87328000848159];
-#warning Hard Coded Location Here
     if (!_gettingInformation) {
         self.gettingInformation = YES;
         [[RNWebService sharedClient] getDealsAtLocation:location query:@"" limit:50 offset:0 radius:_radius.doubleValue category:nil callback:^(RNResponse *response) {
