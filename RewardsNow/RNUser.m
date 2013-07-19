@@ -27,6 +27,8 @@
     [fields setValue:@"GiftCards" forKey:@"giftCards"];
     [fields setValue:@"Info.Tipnumber" forKey:@"tipNumber"];
     [fields setValue:@"Info.CustomerServicePhone" forKey:@"customerServicePhoneNumber"];
+    [fields setValue:@"Info.LastStatementMonth" forKey:@"lastStatementMonth"];
+    [fields setValue:@"Info.LastStatementYear" forKey:@"lastStatementYear"];
     return fields;
 }
 

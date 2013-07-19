@@ -23,6 +23,8 @@
 @property (nonatomic, copy) NSString *zipCode;
 @property (nonatomic, copy) NSString *tipNumber;
 @property (nonatomic, copy) NSString *customerServicePhoneNumber;
+@property (nonatomic, copy) NSString *lastStatementMonth;
+@property (nonatomic, copy) NSString *lastStatementYear;
 
 //not synced
 @property (nonatomic) BOOL shouldSetCurrenetEmailToDefault;
