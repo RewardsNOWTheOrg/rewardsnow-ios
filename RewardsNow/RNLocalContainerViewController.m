@@ -12,6 +12,8 @@
 #import "RNWebService.h"
 #import "RNConstants.h"
 #import "RNResponse.h"
+#import "RNCart.h"
+#import "RNUser.h"
 
 @interface RNLocalContainerViewController ()
 
@@ -23,6 +25,11 @@
 @property (nonatomic, strong) CLLocationManager *manager;
 @property (atomic) BOOL gettingInformation;
 @property (nonatomic, strong) NSNumber *radius;
+
+///
+/// Used only when the user tries to get deals without allowing location services
+///
+@property (nonatomic, strong) CLLocation *userHomeLocation;
 
 @end
 
@@ -183,6 +190,30 @@
     }
 }
 
+- (void)updateUserHomeLocation:(void (^)(void))callback;
+{
+    if (self.userHomeLocation == nil) {
+        ///
+        /// Use Address instead...
+        ///
+        RNUser *user = [[RNCart sharedCart] user];
+        
+        CLGeocoder *coder = [[CLGeocoder alloc] init];
+        NSString *address = [NSString stringWithFormat:@"%@, %@ %@, %@, %@", user.address, user.apt != nil ? user.apt : @"", user.city, user.state, user.zipCode];
+        [coder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
+            CLPlacemark *placemark = [placemarks lastObject];
+            self.userHomeLocation = [placemark location];
+            if (callback) {
+                callback();
+            }
+        }];
+    } else {
+        if (callback) {
+            callback();
+        }
+    }
+}
+
 #pragma mark - RNLocalViewDelegate
 
 - (void)refreshDataWithRadius:(NSNumber *)radius {
@@ -210,6 +241,25 @@
 }
 
 #pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+{
+    DLog(@"Status: %d", status);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
+{
+    DLog(@"Error: %@", error);
+    
+    [self updateUserHomeLocation:^{
+        
+        if (self.userHomeLocation == nil) {
+            self.userHomeLocation = [[CLLocation alloc] initWithLatitude:0 longitude:0];
+        }
+        
+        [self locationManager:self.manager didUpdateLocations:@[self.userHomeLocation]];
+    }];
+}
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = [locations lastObject];
