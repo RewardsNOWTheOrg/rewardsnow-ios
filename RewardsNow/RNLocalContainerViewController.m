@@ -42,6 +42,8 @@
     self.gettingInformation = NO;
     self.radius = [self defaultRadius];
     
+    [self setNavigationItemsEnabled:NO];
+    
     if (_displayedViewController == nil) {
         self.listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
         self.listViewController.delegate = self;
@@ -93,8 +95,13 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)setNavigationItemsEnabled:(BOOL)enabled;
+{
+    ///
+    /// By default, they cannot navigate away, until the location has actually been received
+    ///
+    self.navigationItem.rightBarButtonItem.enabled = enabled;
+    self.navigationItem.leftBarButtonItem.enabled = enabled;
 }
 
 - (NSNumber *)defaultRadius {
@@ -128,7 +135,7 @@
     if (_mapViewController == nil) {
         self.mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalMapViewController"];
         self.mapViewController.deals = _deals;
-        self.mapViewController.location = [[_manager location] coordinate];
+        self.mapViewController.location = _manager.location == nil ? [_userHomeLocation coordinate] : [_manager.location coordinate];
     }
     
     self.navigationItem.title = @"Map";
@@ -144,7 +151,7 @@
     
     if (_filterViewController == nil) {
         self.filterViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalFilterViewController"];
-        self.filterViewController.location = _manager.location;
+        self.filterViewController.location = _manager.location == nil ? _userHomeLocation : _manager.location;
         self.filterViewController.delegate = self;
     }
     
@@ -256,7 +263,7 @@
         if (self.userHomeLocation == nil) {
             self.userHomeLocation = [[CLLocation alloc] initWithLatitude:0 longitude:0];
         }
-        
+
         [self locationManager:self.manager didUpdateLocations:@[self.userHomeLocation]];
     }];
 }
@@ -279,6 +286,8 @@
             }
             [(RNLocalMapViewController *)self.displayedViewController setDeals:_deals]; //they all have this property
             self.gettingInformation = NO;
+            
+            [self setNavigationItemsEnabled:CLLocationCoordinate2DIsValid(location.coordinate)];
         }];
     }
     
