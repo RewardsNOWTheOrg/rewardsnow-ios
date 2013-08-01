@@ -159,7 +159,7 @@
 
 - (IBAction)logoutTapped:(id)sender {
     
-    [[RNCart sharedCart] setUser:nil];
+    [[RNCart sharedCart] logout];
     [[RNWebService sharedClient] setTipNumber:[[NSUserDefaults standardUserDefaults] objectForKey:BankCodeKey]];
     
     UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLoginViewController"];

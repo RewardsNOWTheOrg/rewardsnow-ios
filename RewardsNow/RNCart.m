@@ -146,5 +146,10 @@
     return items;
 }
 
+- (void)logout;
+{
+    self.user = nil;
+    [self.items removeAllObjects];
+}
 
 @end
