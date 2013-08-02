@@ -473,7 +473,7 @@ typedef void (^RNAuthCallback)();
     [self enqueueHTTPRequestOperation:op];
 }
 
-- (void)postCatalogIDToCart:(NSNumber *)catalogID callback:(RNResultCallback)callback {
+- (void)postCatalogIDToCart:(NSString *)catalogID callback:(RNResultCallback)callback {
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
@@ -509,6 +509,45 @@ typedef void (^RNAuthCallback)();
                                                                                                                                    SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
+}
+
+- (void)postRemoveItemFromCart:(NSString *)catalogID callback:(RNResultCallback)callback;
+{
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    NSDictionary *params = @{@"tipnumber": _tipNumber,
+                             @"catalogid": catalogID,
+                             @"wishlist": @0
+                             };
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/RemoveFromCart" parameters:nil];
+    [request setHTTPBody:data];
+    
+    DLog(@"Request: %@", request);
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     
+                                                                                     if ([self wasSuccessful:JSON[@"RemoveFromShoppingCartResult"]]) {
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
+                                                                                     } else {
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
+                                                                                     }
+                                                                                     
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self postRemoveItemFromCart:catalogID callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
+    
 }
 
 - (void)postPlaceOrderForUser:(RNUser *)user items:(NSArray *)redemptions  callback:(RNResultCallback)callback {
