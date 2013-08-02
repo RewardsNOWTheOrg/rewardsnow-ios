@@ -22,5 +22,6 @@
 @property (nonatomic, copy) NSString *terms;
 
 - (NSString *)stringPriceInPoints;
+- (NSString *)catalogIDString;
 
 @end

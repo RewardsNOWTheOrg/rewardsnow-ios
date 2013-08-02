@@ -35,4 +35,9 @@
     return [formatter stringFromNumber:@(_priceInPoints)];
 }
 
+- (NSString *)catalogIDString;
+{
+    return [NSString stringWithFormat:@"%d", self.catalogID.integerValue];
+}
+
 @end
