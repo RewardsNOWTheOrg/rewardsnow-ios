@@ -126,21 +126,8 @@
             
             ///
             /// The Checkout Process
-            /// 1: Add all items to the cart
-            /// 2: When finished, call checkout with the same items.
             ///
-
-            __block NSInteger count = 0;
-            
-            for (RNCartObject *object in _checkoutItems) {
-                
-                [[RNWebService sharedClient] postCatalogIDToCart:object.redeemObject.catalogID callback:^(RNResponse *response) {
-                    count++;
-                    if (count == _checkoutItems.count) {
-                        [self checkoutCartItems];
-                    }
-                }];
-            }
+            [self checkoutCartItems];
             
             break;
         }

@@ -186,12 +186,12 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     RNCartCell *cell = (RNCartCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.textView.tag = kCellIsBeingDeletedTag;
-    [_cart.items removeObjectAtIndex:indexPath.row];
+    [_cart removeItemAtIndex:indexPath.row callback:^(BOOL result) {
+        DLog(@"Removed Item? %d", result);
+    }];
     [self.tableView reloadData];
     [self updatePriceLabels];
     [self resizeView:YES];
-    
-
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

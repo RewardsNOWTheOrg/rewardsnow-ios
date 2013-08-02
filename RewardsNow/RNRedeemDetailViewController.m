@@ -77,7 +77,9 @@
 - (IBAction)addToCartTapped:(id)sender {
     [self animateCartAdd];
     self.addToCartButton.enabled = NO;
-    [[RNCart sharedCart] addToCart:_info];
+    [[RNCart sharedCart] addToCart:_info remote:YES callback:^(BOOL result) {
+        DLog(@"Did Add to Cart? %d", result);
+    }];
 }
 
 - (void)animateCartAdd {

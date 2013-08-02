@@ -138,7 +138,9 @@
 }
 
 - (void)addToCartButtonPressed:(UIButton *)sender {
-    [[RNCart sharedCart] addToCart:_rewards[[sender tag]]];
+    [[RNCart sharedCart] addToCart:_rewards[[sender tag]] remote:YES callback:^(BOOL result) {
+        DLog(@"Did Add remote? %d", result);
+    }];
     
     RNRedeemCell *cell = (RNRedeemCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
     
