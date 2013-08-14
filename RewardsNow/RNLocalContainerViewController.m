@@ -134,9 +134,14 @@
     
     if (_mapViewController == nil) {
         self.mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalMapViewController"];
-        self.mapViewController.deals = _deals;
-        self.mapViewController.location = _manager.location == nil ? [_userHomeLocation coordinate] : [_manager.location coordinate];
     }
+    ///
+    /// Reset the deals every time the map is shown in case things
+    /// have changed.
+    ///
+    self.mapViewController.deals = _deals;
+    self.mapViewController.location = _manager.location == nil ? [_userHomeLocation coordinate] : [_manager.location coordinate];
+
     
     self.navigationItem.title = @"Map";
     
@@ -151,9 +156,10 @@
     
     if (_filterViewController == nil) {
         self.filterViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalFilterViewController"];
-        self.filterViewController.location = _manager.location == nil ? _userHomeLocation : _manager.location;
         self.filterViewController.delegate = self;
     }
+    
+    self.filterViewController.location = _manager.location == nil ? _userHomeLocation : _manager.location;
     
     self.navigationItem.title = @"Filter";
     
