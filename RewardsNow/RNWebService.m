@@ -617,7 +617,12 @@ typedef void (^RNAuthCallback)();
 
 - (void)showLoginScreen:(RNAuthCallback)callback {
     
-    UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    
+    if ([rootViewController presentedViewController]) {
+        rootViewController = [rootViewController presentedViewController];
+    }
+    
     self.authCallback = callback;
     
     if (rootViewController != nil) {
@@ -631,9 +636,14 @@ typedef void (^RNAuthCallback)();
     }
 }
 
-- (void)authViewController:(RNAuthViewController *)auth didFinish:(BOOL)success {
+- (void)authViewController:(RNAuthViewController *)auth didFinish:(BOOL)success;
+{
     
-    if (success && self.authCallback != nil) {
+}
+
+- (void)authViewControllerDidDismiss:(RNAuthViewController *)auth;
+{
+    if (self.authCallback != nil) {
         self.authCallback();
     }
 }
