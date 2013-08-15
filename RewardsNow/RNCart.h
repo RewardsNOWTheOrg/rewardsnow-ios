@@ -23,11 +23,15 @@
 - (NSString *)getCartImageName;
 - (NSNumber *)pointsDifference;
 - (NSString *)stringPointsDifference;
-- (void)addToCart:(RNRedeemObject *)card;
+- (void)addToCart:(RNRedeemObject *)card remote:(BOOL)remote callback:(void (^)(BOOL result))callback;
+- (void)removeItemAtIndex:(NSInteger)index callback:(void (^)(BOOL result))callback;
 - (NSString *)formattedStringFromNumber:(NSNumber *)num;
 - (void)emptyCart;
 - (BOOL)hasItemsInCart;
 - (BOOL)canCheckout;
+- (NSArray *)itemsThatHaveQuantity;
+- (void)updateCartFromWeb;
+- (void)logout;
 
 // used to get the dictionaries for the cart for checkout
 - (NSArray *)arrayForPlaceOrderItems;

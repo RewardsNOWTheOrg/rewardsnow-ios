@@ -5,20 +5,23 @@ PODS:
   - libextobjc/EXTScope (0.2.5):
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.2.5)
-  - Mantle (1.0):
+  - Mantle (1.1):
     - libextobjc/EXTKeyPathCoding
     - libextobjc/EXTScope
-  - MBProgressHUD (0.6)
+  - MBProgressHUD (0.7)
+  - SparkInspector (1.0.10)
 
 DEPENDENCIES:
   - AFNetworking (~> 1.2.1)
   - Mantle (~> 1.0)
   - MBProgressHUD (~> 0.6)
+  - SparkInspector
 
 SPEC CHECKSUMS:
-  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
+  AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
   libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
-  Mantle: aa9860e40cc365a094ef60fec46848fee7b03ca7
-  MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
+  Mantle: aba2facc6ee8f97512a94768dc57c82b7802948c
+  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
+  SparkInspector: 57ed45397e9847e6678e52c64b5366251b2b8a49
 
-COCOAPODS: 0.18.1
+COCOAPODS: 0.20.2

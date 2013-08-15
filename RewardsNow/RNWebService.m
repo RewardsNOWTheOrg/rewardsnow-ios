@@ -17,6 +17,8 @@
 #import "RNProgramInfo.h"
 #import "RNBranding.h"
 #import "RNCategory.h"
+#import "RNResponse.h"
+#import "RNConstants.h"
 
 NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/";
 NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3eb07bc74d5bc081";
@@ -26,9 +28,18 @@ NSString *const kErrorKey = @"Error";
 NSString *const kStatementKey = @"Statement";
 NSString *const kOffersKey = @"Offers";
 
+typedef void (^RNAuthCallback)();
+
+#define SAFE_BLOCK(block, ...) block ? block(__VA_ARGS__) : nil
+#define RNError [NSError errorWithDomain:@"RNError" code:1 userInfo:nil]
+#define RNErrorString @"There was an error in fetching the information. Please try again."
+#define UNKNOWN_ERROR_RESPONSE_AND_CALLBACK SAFE_BLOCK(callback, [RNResponse responseWithError:RNError errorString:RNErrorString statusCode:0])
+#define CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response, authCallback, SAFE_BLOCK) if (response.statusCode == 401) {[self showLoginScreen:authCallback];} else {SAFE_BLOCK;}
+
 @interface RNWebService()
 
 @property (nonatomic, strong) NSString *authorizationHeader;
+@property (nonatomic, strong) RNAuthCallback authCallback;
 
 @end
 
@@ -73,27 +84,27 @@ NSString *const kOffersKey = @"Offers";
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
-//                                                                                     DLog(@"Requst: %@", response);
                                                                                      DLog(@"JSON: %@", JSON);
+                                                                                     DLog(@"Test: %d", response.statusCode);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNRedeemObject objectsFromJSON:[JSON objectForKey:kResultsKey]];
-                                                                                         // cache?
-                                                                                         callback(objects);
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:objects statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(nil);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
-                                                                                     
-                                                                                     
-                                                                                     
-                                                                                     
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
                                                                                      DLog(@"FAILURE: %@", error);
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      DLog(@"Test: %@", request);
-                                                                                     callback(nil);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getRewardsWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -101,33 +112,6 @@ NSString *const kOffersKey = @"Offers";
 - (void)getDealsAtLocation:(CLLocation *)location query:(NSString *)query callback:(RNResultCallback)callback {
     [self getDealsAtLocation:location query:query limit:20 offset:0 radius:15.0 category:nil callback:callback];
 }
-
-- (void)getSecretQuestionWithCallback:(RNResultCallback)callback {
-    
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    
-    NSString *url = [NSString stringWithFormat:@"StsService.svc/GetSecretQuestion/%@", _tipNumber];
-    
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:url parameters:nil]
-                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                                                                                                                                                          
-                                                                                     if ([self wasSuccessful:JSON]) {
-                                                                                         callback(JSON[@"Question"]);
-                                                                                     } else {
-                                                                                         callback(nil);
-                                                                                     }
-                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                                                                     DLog(@"FAILURE: %@", error);
-                                                                                     DLog(@"JSON: %@", JSON);
-                                                                                     DLog(@"Test: %@", request);
-                                                                                     callback(nil);
-                                                                                 }];
-    [self enqueueHTTPRequestOperation:op];
-
-}
-
 
 - (void)getDealsAtLocation:(CLLocation *)location query:(NSString *)query limit:(NSInteger)lim offset:(NSInteger)offset radius:(double)radius category:(NSNumber *)category callback:(RNResultCallback)callback {
     
@@ -152,18 +136,20 @@ NSString *const kOffersKey = @"Offers";
                                                                                  
                                                                                  if ([self wasSuccessful:JSON]) {
                                                                                      NSArray *objects = [RNLocalDeal objectsFromJSON:[JSON objectForKey:kOffersKey]];
-                                                                                     // cache?
-                                                                                     callback(objects);
+                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithResult:objects statusCode:response.statusCode]);
                                                                                  } else {
-                                                                                     callback(nil);
+                                                                                     UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                  }
                                                                                  
                                                                              } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                  [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                                                                 DLog(@"FAILURE: %@", error);
-                                                                                 DLog(@"JSON: %@", JSON);
-                                                                                 DLog(@"Test: %@", request);
-                                                                                 callback(nil);
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                              ^{ [self getDealsAtLocation:location query:query limit:lim offset:offset radius:radius category:category callback:callback]; },
+                                                                                                                              SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                 
                                                                              }];
     [self enqueueHTTPRequestOperation:op];
 
@@ -186,9 +172,9 @@ NSString *const kOffersKey = @"Offers";
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          RNBranding *branding = [RNBranding sharedBrandingFromDictionary:[JSON objectForKey:@"Brandings"]];
-                                                                                         callback(branding);
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:branding statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(nil);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
@@ -196,7 +182,8 @@ NSString *const kOffersKey = @"Offers";
                                                                                      DLog(@"FAILURE: %@", error);
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      DLog(@"Test: %@", request);
-                                                                                     callback(nil);
+                                                                                     
+                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 
@@ -211,20 +198,24 @@ NSString *const kOffersKey = @"Offers";
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
-                                                                                     //                                                                                     DLog(@"Requst: %@", response);
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
-                                                                                         callback([RNRedeemObject objectsFromJSON:JSON[@"ShoppingCart"]]);
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:[RNRedeemObject objectsFromJSON:JSON[@"ShoppingCart"]] statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(nil);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      DLog(@"Test: %@", request);
-                                                                                     callback(nil);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getCartWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                     
+                                                                                     
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -247,63 +238,23 @@ NSString *const kOffersKey = @"Offers";
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
-                                                                                     DLog(@"Requst: %@", response);
-                                                                                     DLog(@"JSON: %@", JSON);
-                                                                                     
-                                                                                     if (YES/*[self wasSuccessful:JSON]*/) {
-                                                                                         
-                                                                                         DLog(@"WHAT: %@", [JSON objectForKey:kStatementKey]);
-                                                                                         DLog(@"WHAT2: %@", NSStringFromClass([[JSON objectForKey:kStatementKey] class]));
-                                                                                         NSArray *objects = [RNAccountStatement objectsFromJSON:@[[JSON objectForKey:kStatementKey]]];
-                                                                                         // cache?
-                                                                                         callback([objects lastObject]);
-                                                                                     } else {
-                                                                                         callback(nil);
-                                                                                     }
-                                                                                     
-                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                                                                     DLog(@"FAILURE: %@", error);
-                                                                                     callback(nil);
-                                                                                 }];
-    [self enqueueHTTPRequestOperation:op];
-}
-
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password callback:(RNResultCallback)callback {
-    ///
-    /// Perform the authentication
-    ///
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    
-    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"StsService.svc/Login" parameters:nil];
-    NSDictionary *params = @{@"tipfirst": _tipNumber};    
-    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
-    [request setHTTPBody:data];
-    
-    NSString *base64Auth = [RNWebService encodeBase64WithString:[NSString stringWithFormat:@"%@:%@", username, password]];
-    // Set our own HTTP headers
-    [request setAllHTTPHeaderFields:@{@"X-RNI-ApiKey": kPAPISecret, @"Accept": @"application/json", @"Authorization" : base64Auth}];
-    
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-                                                                                     
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
-                                                                                         self.authorizationHeader = JSON[@"LoginResult"][@"Token"];
-                                                                                         [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
-                                                                                         self.tipNumber = [JSON[@"LoginResult"][@"Tipnumber"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-                                                                                         callback(@YES);
+                                                                                         NSArray *objects = [RNAccountStatement objectsFromJSON:@[[JSON objectForKey:kStatementKey]]];
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:[objects lastObject] statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(@NO);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
-
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     callback(@NO);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getAccountStatementFrom:from to:to callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                     
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -329,11 +280,11 @@ NSString *const kOffersKey = @"Offers";
                                                                                          RNUser *user = [MTLJSONAdapter modelOfClass:[RNUser class] fromJSONDictionary:JSON error:&error];
                                                                                          if (error != nil) {
                                                                                              DLog(@"Error creating RNUser: %@", error);
+                                                                                             SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[error description] statusCode:0]);
                                                                                          }
-                                                                                         
-                                                                                         callback(user);
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:user statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(nil);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                      
                                                                                      
@@ -341,7 +292,10 @@ NSString *const kOffersKey = @"Offers";
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     callback(nil);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getAccountInfoWithTipWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -354,13 +308,13 @@ NSString *const kOffersKey = @"Offers";
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
-                                                                                     DLog(@"JSON: %@", JSON);                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNProgramInfo objectsFromJSON:@[JSON]];
                                                                                          DLog(@"Objects: %@", objects);
-                                                                                         callback([objects lastObject]);
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:[objects lastObject] statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(nil);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                      
                                                                                      
@@ -368,7 +322,11 @@ NSString *const kOffersKey = @"Offers";
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     callback(nil);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getProgramInfoWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                     
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -386,63 +344,97 @@ NSString *const kOffersKey = @"Offers";
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNCategory objectsFromJSON:JSON[@"Categories"]];
                                                                                          DLog(@"Objects: %@", objects);
-                                                                                         callback(objects);
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:objects statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(nil);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     callback(nil);
+                                                                                     
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self getLocalCategoriesWithCallback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
 
 
+#pragma mark - PUT
+
+
 - (void)putEmail:(NSString *)email callback:(RNResultCallback)callback {
-    
-//    NSString *url = [NSString stringWithFormat:@"email"];
-    
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/UpdateMyAccount" parameters:nil];
     
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-        callback(@{@"success" : @"true"});
-    });
-}
-
-#pragma mark - POST
-
-- (void)postResetPasswordWithAnswer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback {
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    NSDictionary *dataDictionary = @{@"tipnumber": _tipNumber, @"email" : email};
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dataDictionary options:0 error:NULL];
+    [request setHTTPBody:data];
     
-    NSDictionary *params = @{@"tipNumber": _tipNumber,
-                             @"answer": answer,
-                             @"newpassword": password,
-                             @"newpasswordconfirm": confirmed,
-                             @"username": username,
-                             @"fullname": fullName};
-    
-    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"StsService.svc/ResetPassword" parameters:params]
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                  success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     if (JSON[@"IsValid"]) {
-                                                                                         callback(@YES);
+                                                                                     if ([self wasSuccessful:JSON[@"UpdateMyAccountResult"]]) {
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:JSON[@"UpdateMyAccountResult"][@"Email"] statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(@NO);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     callback(@NO);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self putEmail:email callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                     
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
+}
+
+#pragma mark - POST
+
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password callback:(RNResultCallback)callback {
+    ///
+    /// Perform the authentication
+    ///
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"StsService.svc/Login" parameters:nil];
+    NSDictionary *params = @{@"tipfirst": _tipNumber};
+    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
+    [request setHTTPBody:data];
+    
+    NSString *base64Auth = [RNWebService encodeBase64WithString:[NSString stringWithFormat:@"%@:%@", username, password]];
+    // Set our own HTTP headers
+    [request setAllHTTPHeaderFields:@{@"X-RNI-ApiKey": kPAPISecret, @"Accept": @"application/json", @"Authorization" : base64Auth}];
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     
+                                                                                     if ([self wasSuccessful:JSON]) {
+                                                                                         self.authorizationHeader = JSON[@"Token"];
+                                                                                         [self setDefaultHeader:@"Authorization" value:self.authorizationHeader];
+                                                                                         self.tipNumber = [JSON[@"Tipnumber"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
+                                                                                     } else {
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
+                                                                                     }
+                                                                                     
+                                                                                     
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
@@ -466,21 +458,22 @@ NSString *const kOffersKey = @"Offers";
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     if (JSON[@"IsValid"]) {
-                                                                                         callback(@YES);
+                                                                                     if ([JSON[@"IsValid"] boolValue]) {
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(@NO);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     callback(@NO);
+                                                                                     
+                                                                                     SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]);
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
 }
 
-- (void)postCatalogIDToCart:(NSNumber *)catalogID callback:(RNResultCallback)callback {
+- (void)postCatalogIDToCart:(NSString *)catalogID callback:(RNResultCallback)callback {
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
@@ -502,39 +495,64 @@ NSString *const kOffersKey = @"Offers";
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
-                                                                                         callback(@YES);
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(@NO);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     callback(@NO);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self postCatalogIDToCart:catalogID callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
+}
+
+- (void)postRemoveItemFromCart:(NSString *)catalogID callback:(RNResultCallback)callback;
+{
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    NSDictionary *params = @{@"tipnumber": _tipNumber,
+                             @"catalogid": catalogID,
+                             @"wishlist": @0
+                             };
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:NULL];
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/RemoveFromCart" parameters:nil];
+    [request setHTTPBody:data];
+    
+    DLog(@"Request: %@", request);
+    
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     
+                                                                                     DLog(@"JSON: %@", JSON);
+                                                                                     
+                                                                                     if ([self wasSuccessful:JSON[@"RemoveFromShoppingCartResult"]]) {
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
+                                                                                     } else {
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
+                                                                                     }
+                                                                                     
+                                                                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                     [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+                                                                                     DLog(@"FAILURE: %@", error);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self postRemoveItemFromCart:catalogID callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                 }];
+    [self enqueueHTTPRequestOperation:op];
+    
 }
 
 - (void)postPlaceOrderForUser:(RNUser *)user items:(NSArray *)redemptions  callback:(RNResultCallback)callback {
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    
-    /*
-     {
-     "tipnumber":"969999999999999",
-     "Redemptions":[ { "Item":"EGC-LLBEAN", "Quantity":"1" } ],
-     "CustomerEmail":"ssmith@rewardsnow.com",
-     "saddress1":"380 Central Ave",
-     "saddress2":"Suite 350",
-     "scity":"Dover",
-     "sstate":"NH",
-     "szipcode":"03820",
-     "scountry":"USA",
-     "hphone":"603-516-3440",
-     "wphone":""
-     }
-     
-     */
     
     NSMutableDictionary *postParameters = [NSMutableDictionary dictionary];
     [postParameters setValue:_tipNumber forKey:@"tipnumber"];
@@ -552,7 +570,7 @@ NSString *const kOffersKey = @"Offers";
     //set redemptions
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:postParameters options:0 error:NULL];
-    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/PlaceOrder" parameters:nil];
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"FacadeService.svc/PlaceOrderEx" parameters:nil];
     [request setHTTPBody:data];
     
     DLog(@"Request: %@",  request);
@@ -568,16 +586,19 @@ NSString *const kOffersKey = @"Offers";
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
-                                                                                     if ([JSON[@"PlaceOrderResult"] boolValue]) {
-                                                                                         callback(@YES);
+                                                                                     if ([self wasSuccessful:JSON]) {
+                                                                                         SAFE_BLOCK(callback, [RNResponse responseWithResult:@YES statusCode:response.statusCode]);
                                                                                      } else {
-                                                                                         callback(@NO);
+                                                                                         UNKNOWN_ERROR_RESPONSE_AND_CALLBACK;
                                                                                      }
                                                                                      
                                                                                  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      DLog(@"FAILURE: %@", error);
-                                                                                     callback(@NO);
+                                                                                     
+                                                                                     CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
+                                                                                                                                   ^{ [self postPlaceOrderForUser:user items:redemptions callback:callback]; },
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
     
@@ -585,6 +606,46 @@ NSString *const kOffersKey = @"Offers";
 
 - (BOOL)wasSuccessful:(id)JSON {
     return JSON != nil && [JSON isKindOfClass:[NSDictionary class]] && (JSON[kErrorKey] == nil || JSON[kErrorKey] == [NSNull null]);
+}
+
+- (NSString *)errorMessage:(id)JSON {
+    if ([JSON isKindOfClass:[NSDictionary class]]) {
+        return JSON[@"Error"][@"Description"];
+    }
+    return nil;
+}
+
+- (void)showLoginScreen:(RNAuthCallback)callback {
+    
+    UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    
+    if ([rootViewController presentedViewController]) {
+        rootViewController = [rootViewController presentedViewController];
+    }
+    
+    self.authCallback = callback;
+    
+    if (rootViewController != nil) {
+        self.tipNumber = [[NSUserDefaults standardUserDefaults] stringForKey:BankCodeKey];
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UINavigationController *controller = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"RNLoginViewController"];
+        RNAuthViewController *auth = controller.viewControllers[0];
+        auth.delegate = self;
+        
+        [rootViewController presentViewController:controller animated:YES completion:nil];
+    }
+}
+
+- (void)authViewController:(RNAuthViewController *)auth didFinish:(BOOL)success;
+{
+    
+}
+
+- (void)authViewControllerDidDismiss:(RNAuthViewController *)auth;
+{
+    if (self.authCallback != nil) {
+        self.authCallback();
+    }
 }
 
 #pragma mark - Base 64 Encoding

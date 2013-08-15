@@ -43,18 +43,25 @@
     self.searchResults = [NSMutableArray array];
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
     
-    if (!_isPushed) {
-        self.refreshControl = [[UIRefreshControl alloc] init];
-        [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-        [self.tableView addSubview:_refreshControl];
-        [_refreshControl beginRefreshing];
-    } else {
-        [self addTableFooter];
+    if (_isPushed) {
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.rightBarButtonItem = nil;
     }
     
-    // play with saerch bar
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:_refreshControl];
+    
+    if (self.deals == nil) {
+        [_refreshControl beginRefreshing];
+    }
+    
+    ///
+    /// If you set the deals before the view had loaded, then when the view loads, we should create this footer.
+    ///
+    [self addTableFooter];
+    
+    // play with Search bar
     self.topBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
 
     self.lowerNavigationBar = [[UINavigationItem alloc] init];
@@ -67,17 +74,13 @@
     _mySearchDisplayController.searchResultsDataSource = self;
     _mySearchDisplayController.searchResultsDelegate = self;
     
-    UIBarButtonItem *radius = [[UIBarButtonItem alloc] initWithTitle:@"15 mi" style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
+    NSString *title = [NSString stringWithFormat:@"%@ mi", [self.delegate radius]];
+    UIBarButtonItem *radius = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
     _lowerNavigationBar.titleView = searchBar;
     _lowerNavigationBar.rightBarButtonItem = radius;
     
     [_topBar pushNavigationItem:_lowerNavigationBar animated:NO];
     [self.tableView setTableHeaderView:_topBar];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -104,7 +107,7 @@
 
 - (void)addTableFooter {
     
-    if (_deals.count == 0) {
+    if (_deals != nil && _deals.count == 0 && self.tableView.tableFooterView == nil) {
         UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
         footer.backgroundColor = self.branding.commonBackgroundColor;
         
@@ -115,7 +118,7 @@
         [footer addSubview:noResponse];
         
         self.tableView.tableFooterView = footer;
-    } else {
+    } else if (_deals != nil && _deals.count > 0) {
         self.tableView.tableFooterView = nil;
     }
 }
@@ -129,9 +132,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    DLog(@"Tableview: %@", tableView);
-    DLog(@"OThe: %@", self.searchDisplayController.searchResultsTableView);
     
     if (tableView == kSearchTable) {
         NSString *CellIdentifier = @"SearchResultCell";
@@ -171,10 +171,7 @@
         RNLocalDetailViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalDetailViewController"];
         vc.deal = _searchResults[indexPath.row];
         [self.navigationController pushViewController:vc animated:YES];
-    } else {
-
     }
-
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

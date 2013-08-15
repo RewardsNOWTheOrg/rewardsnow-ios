@@ -15,10 +15,11 @@
 #import "RNUser.h"
 #import "RNWebService.h"
 #import "RNBranding.h"
+#import "RNResponse.h"
 
 @interface RNCartConfirmationViewController ()
 
-
+@property (nonatomic, copy) NSArray *checkoutItems;
 @property (nonatomic, strong) RNUser *user;
 
 @end
@@ -38,10 +39,10 @@
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
     self.user = [[RNCart sharedCart] user];
     
-    NSArray *items = [[RNCart sharedCart] items];
+    self.checkoutItems = [[RNCart sharedCart] itemsThatHaveQuantity];
     
-    for (NSInteger i = 0; i < items.count; i++) {
-        RNCartObject *cartObject = items[i];
+    for (NSInteger i = 0; i < _checkoutItems.count; i++) {
+        RNCartObject *cartObject = _checkoutItems[i];
         NSString *title = [[cartObject.redeemObject descriptionName] stringByAppendingFormat:@" x%d", cartObject.count];
         [self createLabelWithText:title points:[cartObject stringTotalPrice] number:i];
     }
@@ -51,20 +52,16 @@
 }
 
 - (void)resizeView {
-    CGFloat difference = self.innerViewHeight.constant - self.innerInnerViewHeight.constant;
-
-    self.innerInnerViewHeight.constant = (30 * [[[RNCart sharedCart] items] count]) + 60;
+    self.innerViewHeight.constant = (_checkoutItems.count * 35) + 180;
+    self.scrollView.contentSize = _innerView.frame.size;
     
-    
-    self.innerViewHeight.constant = self.innerInnerViewHeight.constant + difference + 100;
-    self.scrollView.contentSize = CGSizeMake(320, self.innerInnerViewHeight.constant + 100);
     [self.view layoutIfNeeded];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.scrollView.scrollEnabled = YES;
-    self.scrollView.contentSize = CGSizeMake(320, self.innerInnerViewHeight.constant + 100);
+    self.scrollView.contentSize = _innerView.frame.size;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -129,22 +126,8 @@
             
             ///
             /// The Checkout Process
-            /// 1: Add all items to the cart
-            /// 2: When finished, call checkout with the same items.
             ///
-            
-            RNCart *cart = [RNCart sharedCart];
-            __block NSInteger count = 0;
-            
-            for (RNCartObject *object in cart.items) {
-                
-                [[RNWebService sharedClient] postCatalogIDToCart:object.redeemObject.catalogID callback:^(id result) {
-                    count++;
-                    if (count == cart.items.count) {
-                        [self checkoutCartItems];
-                    }
-                }];
-            }
+            [self checkoutCartItems];
             
             break;
         }
@@ -155,24 +138,25 @@
 
 - (void)checkoutCartItems {
     
-    [[RNWebService sharedClient] postPlaceOrderForUser:_user items:[[RNCart sharedCart] arrayForPlaceOrderItems] callback:^(id result) {
+    [[RNWebService sharedClient] postPlaceOrderForUser:_user items:[[RNCart sharedCart] arrayForPlaceOrderItems] callback:^(RNResponse *response) {
         
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        if ([result boolValue]) { //succcess
-            RNCart *cart = [RNCart sharedCart];
-            [_user subtractPoints:[cart total]]; //more application?
-            [cart emptyCart];
-                        
-            RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
-            [self.navigationController pushViewController:thanks animated:YES];
-            
-            //if we are waiting for the checkout process to be done...
-            // we should show the thank you screen...
-            // and then drop it down automaticalyl wit hthe new gift cards?
-        } else { //fail
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, an error occurred during checkout." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
-        }
         
+        if ([response.result boolValue]) {
+            RNCart *cart = [RNCart sharedCart];
+            [_user subtractPoints:[cart total]];
+            [cart emptyCart];
+            
+            [[RNWebService sharedClient] getAccountInfoWithTipWithCallback:^(RNResponse *accountInfoResponse) {
+                if ([accountInfoResponse wasSuccessful]) {
+                    [[RNCart sharedCart] setUser:accountInfoResponse.result];
+                }
+                RNCartThanksViewController *thanks = [self.storyboard instantiateViewControllerWithIdentifier:@"RNCartThanksViewController"];
+                [self.navigationController pushViewController:thanks animated:YES];
+            }];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
     }];
 }
 

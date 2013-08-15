@@ -12,6 +12,7 @@
 #import "RNUser.h"
 #import "RNWebService.h"
 #import "NSString+Additions.h"
+#import "RNResponse.h"
 
 @interface RNAccountEditViewController ()
 
@@ -39,29 +40,28 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.detailsLabelText = @"Changing...";
     
-    [[RNWebService sharedClient] putEmail:self.emailTextField.text callback:^(id result) {
+    [[RNWebService sharedClient] putEmail:self.emailTextField.text callback:^(RNResponse *response) {
         
         hud.mode = MBProgressHUDModeCustomView;
-        [hud hide:YES afterDelay:1.5];
         
-        //pop back to main account screen
-        // TODO
-        if (result != nil) {
+        if ([response wasSuccessful]) {
+            NSString *email = response.result;
+            
             RNUser *user = [[RNCart sharedCart] user];
-            user.email = self.emailTextField.text;
+            user.email = email;
             hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
             hud.detailsLabelText = @"Completed";
+            [hud hide:YES afterDelay:1.5];
+            [self.navigationController popViewControllerAnimated:YES];
         } else {
-            hud.detailsLabelText = @"Error";
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            [hud hide:YES];
         }
-        
-        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 
 - (IBAction)textFieldChanged:(id)sender {
     self.saveButton.enabled = [self shouldEnableSaveButton];
-
 }
 
 - (BOOL)shouldEnableSaveButton {

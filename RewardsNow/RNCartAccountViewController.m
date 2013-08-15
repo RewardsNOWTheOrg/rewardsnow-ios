@@ -10,11 +10,13 @@
 #import "RNCartAccountViewController.h"
 #import "RNUser.h"
 #import "RNBranding.h"
+#import <AddressBookUI/AddressBookUI.h>
+#import <AddressBook/AddressBook.h>
 
 #define kKeyboardHeight 216
 #define kStatusBarHeight 20
 #define kViewChangeForKeyboard 120
-#define kScrollToNearBottom 105
+#define kScrollToNearBottom 125
 
 @interface RNCartAccountViewController ()
 
@@ -45,9 +47,9 @@
     _addressNameTextField.text = user.fullName;
     _addressStreetTextField.text = user.address;
     _addressUnitTextField.text = user.apt;
-    NSString *cityState = [[user.city stringByAppendingFormat:@" %@", user.state] stringByAppendingFormat:@" %@", user.zipCode];
-    cityState = [cityState stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    _addressCityStateTextField.text = cityState;
+    _addressCityTextField.text = user.city;
+    _addressStateTextField.text = user.state;
+    _addressZipTextField.text = user.zipCode;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,8 +78,8 @@
         frame.origin.y = -kViewChangeForKeyboard;
         [UIView animateWithDuration:0.25 animations:^{
             self.view.frame = frame;
-            self.scrollView.frame = CGRectMake(0, kViewChangeForKeyboard, [[UIScreen mainScreen] bounds].size.width,
-                                               [[UIScreen mainScreen] bounds].size.height - (self.navigationController.navigationBar.frame.size.height + kKeyboardHeight + kStatusBarHeight));
+            self.scrollView.frame = CGRectMake(0, kViewChangeForKeyboard, SCREEN_WIDTH,
+                                               SCREEN_HEIGHT - (self.navigationController.navigationBar.frame.size.height + kKeyboardHeight + kStatusBarHeight));
             CGPoint bottomOffset = CGPointMake(0, kScrollToNearBottom);
             [self.scrollView setContentOffset:bottomOffset animated:YES];
         } completion:^(BOOL finished) {
@@ -113,6 +115,15 @@
         // save info
         //
         
+        RNUser *user = [[RNCart sharedCart] user];
+
+        user.email = _emailTextField.text;
+        user.fullName = _addressNameTextField.text;
+        user.address = _addressStreetTextField.text;
+        user.apt = _addressUnitTextField.text;
+        user.city = _addressCityTextField.text;
+        user.state = _addressStateTextField.text;
+        user.zipCode = _addressZipTextField.text;
     }
 }
 

@@ -11,13 +11,14 @@
 
 @interface RNAboutDetailViewController ()
 
+@property (nonatomic) BOOL once;
+
 @end
 
 @implementation RNAboutDetailViewController
 
 - (void)brand {
     [super brand];
-//    self.webView.backgroundColor = self.branding.backgroundColor;
     [self.webView setOpaque:NO];
     [self.webView setBackgroundColor:[UIColor clearColor]];
 }
@@ -25,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.headerImageView.image = self.branding.headerImage;
+    _once = NO;
     [self.webView loadHTMLString:_html baseURL:nil];
 }
 
@@ -37,8 +39,8 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     CGFloat topDiff = _webView.frame.origin.y;
-    _webViewHeight.constant = _webView.scrollView.contentSize.height;
-    self.scrollView.contentSize = CGSizeMake(320, _webViewHeight.constant + topDiff);
+    _innerViewHeight.constant = _webView.scrollView.contentSize.height + topDiff;
+    [self.scrollView setContentSize:_innerView.frame.size];
     [self.view layoutIfNeeded];
 }
 
@@ -51,9 +53,8 @@
     return YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    DLog(@"Error: %@", error);
 }
 
 @end

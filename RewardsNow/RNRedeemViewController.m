@@ -17,6 +17,7 @@
 #import "RNCart.h"
 #import "RNUser.h"
 #import "RNAnimatedImageView.h"
+#import "RNResponse.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface RNRedeemViewController ()
@@ -70,13 +71,15 @@
 
 - (void)refresh:(UIRefreshControl *)sender {
     
-    [[RNWebService sharedClient] getRewardsWithCallback:^(id result) {
-        if (result) {
-            self.rewards = result;
+    [[RNWebService sharedClient] getRewardsWithCallback:^(RNResponse *response) {
+        
+        if ([response wasSuccessful]) {
+            self.rewards = response.result;
             [self.tableView reloadData];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
+        
         [sender endRefreshing];
     }];
 }
@@ -100,8 +103,8 @@
     
     RNRedeemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.redeemTopLabel.text = [NSString stringWithFormat:@"$%d eGift Card", (NSInteger)[self.rewards[indexPath.row] cashValue]];
-    cell.redeemBottomLabel.text = [NSString stringWithFormat:@"%@ Points", [self.rewards[indexPath.row] stringPriceInPoints]];
+    cell.redeemTopLabel.text = [NSString stringWithFormat:@"%@ pts - $%d card", [self.rewards[indexPath.row] stringPriceInPoints], (NSInteger)[self.rewards[indexPath.row] cashValue]];
+    cell.redeemBottomLabel.text = [self.rewards[indexPath.row] catagoryDescription];
     cell.redeemImage.contentMode = UIViewContentModeScaleAspectFit;
     cell.addButton.tag = indexPath.row;
     [cell.addButton addTarget:self action:@selector(addToCartButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -135,7 +138,9 @@
 }
 
 - (void)addToCartButtonPressed:(UIButton *)sender {
-    [[RNCart sharedCart] addToCart:_rewards[[sender tag]]];
+    [[RNCart sharedCart] addToCart:_rewards[[sender tag]] remote:YES callback:^(BOOL result) {
+        DLog(@"Did Add remote? %d", result);
+    }];
     
     RNRedeemCell *cell = (RNRedeemCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
     

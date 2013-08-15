@@ -186,9 +186,6 @@
 #pragma mark - UISearchBar Table
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
-    DLog(@"Search: %@", searchText);
-    
     [self filterWithQuery:searchText];
 }
 

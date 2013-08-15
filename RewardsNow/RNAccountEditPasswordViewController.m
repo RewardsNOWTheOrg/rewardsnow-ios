@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import "RNUser.h"
 #import "RNCart.h"
+#import "RNResponse.h"
 
 @interface RNAccountEditPasswordViewController ()
 
@@ -22,12 +23,6 @@
     [super viewDidLoad];
     [self.passwordOldTextField becomeFirstResponder];
     self.saveButton.enabled = NO;
-
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
 }
 
 - (IBAction)saveTapped:(id)sender {
@@ -42,42 +37,27 @@
                                                     oldPassword:_passwordOldTextField.text
                                                     newPassword:_passwordNewTextField.text
                                                 confirmPassword:_passwordNewRetypeTextField.text
-                                                       callback:^(id result) {
+                                                       callback:^(RNResponse *response) {
                                                            hud.mode = MBProgressHUDModeCustomView;
                                                            
-                                                           if ([result boolValue]) {
+                                                           if ([response wasSuccessful]) {
                                                                hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
                                                                hud.detailsLabelText = @"Completed";
+                                                               [hud hide:YES afterDelay:1.5];
+                                                               [self.navigationController popViewControllerAnimated:YES];
                                                            } else {
-                                                               hud.detailsLabelText = @"Error";
+                                                               [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                                                               [hud hide:YES];
                                                            }
-                                                           [hud hide:YES afterDelay:1.5];
-                                                           [self.navigationController popViewControllerAnimated:YES];
                                                        }];
 }
 
+- (IBAction)textFieldChanged:(UITextField *)sender {
+    self.saveButton.enabled = [self isRequiredInfoEntered];
+}
+
 - (BOOL)isRequiredInfoEntered {
-    return ![self isEmpty:self.passwordOldTextField.text] && ![self isEmpty:self.passwordNewTextField.text] && ![self isEmpty:self.passwordNewRetypeTextField.text];
-}
-
-- (BOOL)isEmpty:(NSString *)string {
-    
-    if([string length] == 0) {
-        return YES;
-    }
-    
-    if(![[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]) {
-        return YES;
-    }
-    
-    return NO;
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if ([self isRequiredInfoEntered]) {
-        self.saveButton.enabled = YES;
-    }
-    return YES;
+    return [_passwordOldTextField.text isNotEmpty] && [_passwordNewTextField.text isNotEmpty] && [_passwordNewRetypeTextField.text isNotEmpty] && [_passwordNewTextField.text isEqualToString:_passwordNewRetypeTextField.text];
 }
 
 

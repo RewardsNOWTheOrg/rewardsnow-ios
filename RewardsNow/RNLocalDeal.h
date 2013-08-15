@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSDate *activeTo;
 @property (nonatomic, copy) NSString *additionalInformation;
 @property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *city;
 @property (nonatomic, copy) NSString *businessName;
 @property (nonatomic, copy) NSString *country;
 @property (nonatomic, copy) NSString *localDealDescription;

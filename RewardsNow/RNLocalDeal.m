@@ -19,6 +19,7 @@
     [fields setValue:@"ActiveTo" forKey:@"activeTo"];
     [fields setValue:@"AdditionalInfo" forKey:@"additionalInformation"];
     [fields setValue:@"Address" forKey:@"address"];
+    [fields setValue:@"City" forKey:@"city"];
     [fields setValue:@"BusinessName" forKey:@"businessName"];
     [fields setValue:@"Country" forKey:@"country"];
     [fields setValue:@"Description" forKey:@"localDealDescription"];
@@ -82,7 +83,8 @@
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     if (_address != nil) [dictionary setValue:_address forKey:(NSString *)kABPersonAddressStreetKey];
     if (_country != nil) [dictionary setValue:_country forKey:(NSString *)kABPersonAddressCountryKey];
-    if (_state != nil) [dictionary setValue:_state forKey:(NSString *)kABPersonAddressStreetKey];
+    if (_city != nil) [dictionary setValue:_city forKey:(NSString *)kABPersonAddressCityKey];
+    if (_state != nil) [dictionary setValue:_state forKey:(NSString *)kABPersonAddressStateKey];
     if (_zipCode != nil) [dictionary setValue:_zipCode forKey:(NSString *)kABPersonAddressZIPKey];
     return dictionary;
 }

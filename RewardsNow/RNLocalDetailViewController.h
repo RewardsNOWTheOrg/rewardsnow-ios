@@ -22,10 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *upperLowerLabel;
 @property (weak, nonatomic) IBOutlet UITextView *lowerUpperLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet CMLabel *mapAddressLabel;
 @property (weak, nonatomic) IBOutlet UIView *lowerInnerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptionHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lowerInnerViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)directionsTapped:(id)sender;

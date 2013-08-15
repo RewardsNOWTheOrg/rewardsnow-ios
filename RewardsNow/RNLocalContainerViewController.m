@@ -11,6 +11,9 @@
 #import "RNLocalFilterViewController.h"
 #import "RNWebService.h"
 #import "RNConstants.h"
+#import "RNResponse.h"
+#import "RNCart.h"
+#import "RNUser.h"
 
 @interface RNLocalContainerViewController ()
 
@@ -23,14 +26,23 @@
 @property (atomic) BOOL gettingInformation;
 @property (nonatomic, strong) NSNumber *radius;
 
+///
+/// Used only when the user tries to get deals without allowing location services
+///
+@property (nonatomic, strong) CLLocation *userHomeLocation;
+
 @end
 
 @implementation RNLocalContainerViewController
+
+@synthesize radius = _radius;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.gettingInformation = NO;
     self.radius = [self defaultRadius];
+    
+    [self setNavigationItemsEnabled:NO];
     
     if (_displayedViewController == nil) {
         self.listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
@@ -83,8 +95,13 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)setNavigationItemsEnabled:(BOOL)enabled;
+{
+    ///
+    /// By default, they cannot navigate away, until the location has actually been received
+    ///
+    self.navigationItem.rightBarButtonItem.enabled = enabled;
+    self.navigationItem.leftBarButtonItem.enabled = enabled;
 }
 
 - (NSNumber *)defaultRadius {
@@ -117,11 +134,17 @@
     
     if (_mapViewController == nil) {
         self.mapViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalMapViewController"];
-        self.mapViewController.deals = _deals;
-        self.mapViewController.location = [[_manager location] coordinate];
     }
+    ///
+    /// Reset the deals every time the map is shown in case things
+    /// have changed.
+    ///
+    self.mapViewController.deals = _deals;
+    self.mapViewController.location = _manager.location == nil ? [_userHomeLocation coordinate] : [_manager.location coordinate];
+
     
-    self.title = @"Map";
+    self.navigationItem.title = @"Map";
+    
     [self transitionFromCurrentViewControllerToViewController:_mapViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listTapped:)];
     self.navigationItem.rightBarButtonItem = barButton;
@@ -133,13 +156,14 @@
     
     if (_filterViewController == nil) {
         self.filterViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalFilterViewController"];
-        self.filterViewController.location = _manager.location;
+        self.filterViewController.delegate = self;
     }
     
-    self.title = @"Filter";
+    self.filterViewController.location = _manager.location == nil ? _userHomeLocation : _manager.location;
+    
+    self.navigationItem.title = @"Filter";
     
     [self transitionFromCurrentViewControllerToViewController:_filterViewController options:UIViewAnimationOptionTransitionFlipFromLeft];
-    
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"List" style:UIBarButtonItemStylePlain target:self action:@selector(listTapped:)];
     self.navigationItem.leftBarButtonItem = barButton;
     UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapTapped:)];
@@ -151,10 +175,9 @@
     if (_listViewController == nil) {
         self.listViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalViewController"];
     }
-    self.title = @"Deals";
+    self.navigationItem.title = @"Deals";
     
     self.deals = _deals;
-    
     BOOL right = [_displayedViewController isKindOfClass:[RNLocalMapViewController class]];
     [self transitionFromCurrentViewControllerToViewController:_listViewController options:UIViewAnimationOptionTransitionFlipFromRight];
     
@@ -171,8 +194,6 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     
-    DLog(@"Class: %@", viewController.class);
-    
     if ([viewController isKindOfClass:[UINavigationController class]] &&
         ((UINavigationController *)viewController).viewControllers.count > 0 &&
         ((UINavigationController *)viewController).viewControllers[0] == self &&
@@ -182,31 +203,88 @@
     }
 }
 
+- (void)updateUserHomeLocation:(void (^)(void))callback;
+{
+    if (self.userHomeLocation == nil) {
+        ///
+        /// Use Address instead...
+        ///
+        RNUser *user = [[RNCart sharedCart] user];
+        
+        CLGeocoder *coder = [[CLGeocoder alloc] init];
+        NSString *address = [NSString stringWithFormat:@"%@, %@ %@, %@, %@", user.address, user.apt != nil ? user.apt : @"", user.city, user.state, user.zipCode];
+        [coder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
+            CLPlacemark *placemark = [placemarks lastObject];
+            self.userHomeLocation = [placemark location];
+            if (callback) {
+                callback();
+            }
+        }];
+    } else {
+        if (callback) {
+            callback();
+        }
+    }
+}
+
 #pragma mark - RNLocalViewDelegate
 
 - (void)refreshDataWithRadius:(NSNumber *)radius {
     
-    if (radius != nil) {
+    if (radius == nil) {
+        radius = _radius;
+    } else {
         self.radius = radius;
     }
-    
     
     self.gettingInformation = NO;
     [_manager startUpdatingLocation];
 }
 
+- (void)setRadius:(NSNumber *)radius;
+{
+    if (_radius != radius) {
+        _radius = radius;
+    }
+}
+
+- (NSNumber *)radius;
+{
+    return _radius;
+}
+
 #pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+{
+    DLog(@"Status: %d", status);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
+{
+    DLog(@"Error: %@", error);
+    
+    [self updateUserHomeLocation:^{
+        
+        if (self.userHomeLocation == nil) {
+            self.userHomeLocation = [[CLLocation alloc] initWithLatitude:0 longitude:0];
+        }
+
+        [self locationManager:self.manager didUpdateLocations:@[self.userHomeLocation]];
+    }];
+}
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = [locations lastObject];
     
     if (!_gettingInformation) {
         self.gettingInformation = YES;
-        [[RNWebService sharedClient] getDealsAtLocation:location query:@"" limit:50 offset:0 radius:_radius.doubleValue category:nil callback:^(id result) {
-            if (result != nil) {
-                self.deals = result;
+        [[RNWebService sharedClient] getDealsAtLocation:location query:@"" limit:50 offset:0 radius:_radius.doubleValue category:nil callback:^(RNResponse *response) {
+            
+            if ([response wasSuccessful]) {
+                self.deals = response.result;
             } else {
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:@"The content could not be correctly fetched." delegate:nil cancelButtonTitle:@"Okay." otherButtonTitles:nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
             }
             
             if (self.displayedViewController == self.mapViewController) { //kind hackish :/
@@ -214,6 +292,8 @@
             }
             [(RNLocalMapViewController *)self.displayedViewController setDeals:_deals]; //they all have this property
             self.gettingInformation = NO;
+            
+            [self setNavigationItemsEnabled:CLLocationCoordinate2DIsValid(location.coordinate)];
         }];
     }
     

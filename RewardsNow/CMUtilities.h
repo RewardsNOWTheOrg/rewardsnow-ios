@@ -18,8 +18,8 @@
 
 #pragma mark - Useful Macros
 
-#define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width;
-#define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height;
+#define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
 #define IS_WIDESCREEN ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 #define C(color) (float)color/255.0
 #define RGB(r,g,b) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f]

@@ -20,7 +20,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topPointsLabel.text = [[RNCart sharedCart] getNamePoints];
-
+    
+    //
+    // On this screen showing, change the underlaying tab to the Account screen
+    //
+    UITabBarController *tabBar = (UITabBarController *)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+    if ([tabBar isKindOfClass:[UITabBarController class]]) {
+        [tabBar setSelectedIndex:3];
+        UINavigationController *third = tabBar.viewControllers[3];
+        if ([third isKindOfClass:[UINavigationController class]]) {
+            [third popToRootViewControllerAnimated:NO];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -35,12 +46,8 @@
     [self.navigationItem setHidesBackButton:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
-}
-
 - (IBAction)thankYouTapped:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end

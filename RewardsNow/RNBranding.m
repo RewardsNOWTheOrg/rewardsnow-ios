@@ -17,6 +17,7 @@ NSString *const RNBrandingPersistenceKey = @"com.rewardsnow.RNBrandingPersistenc
 @implementation RNBranding
 
 static RNBranding *_sharedBranding;
+static bool triedToLoadOnce;
 
 + (instancetype)sharedBrandingFromDictionary:(NSDictionary *)dictionary {
     
@@ -40,9 +41,10 @@ static RNBranding *_sharedBranding;
 
 + (instancetype)sharedBranding {
     
-    if (_sharedBranding == nil) {
+    if (_sharedBranding == nil && !triedToLoadOnce) {
         id object = [[NSUserDefaults standardUserDefaults] objectForKey:RNBrandingPersistenceKey];
         _sharedBranding = [NSKeyedUnarchiver unarchiveObjectWithData:object];
+        triedToLoadOnce = true;
     }
     
     return _sharedBranding;

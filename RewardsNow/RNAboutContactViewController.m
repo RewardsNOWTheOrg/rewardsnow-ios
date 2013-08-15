@@ -8,13 +8,13 @@
 
 #import "RNAboutContactViewController.h"
 #import "RNBranding.h"
+#import "RNUser.h"
+#import "RNCart.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface RNAboutContactViewController ()
 
 @end
-
-NSString *const RNSupportPhoneNumber = @"1 (866) 445-9495";
 
 @implementation RNAboutContactViewController
 
@@ -22,7 +22,7 @@ NSString *const RNSupportPhoneNumber = @"1 (866) 445-9495";
     [super brand];
     
     self.lowerView.backgroundColor = self.branding.backgroundColor;
-    [self.callButton setTitle:[NSString stringWithFormat:@"Call %@", RNSupportPhoneNumber] forState:UIControlStateNormal];
+    [self.callButton setTitle:[NSString stringWithFormat:@"Call %@", [[[RNCart sharedCart] user] customerServicePhoneNumber]] forState:UIControlStateNormal];
     
     for (UIButton *button in _skinnableButtons) {
         button.backgroundColor = self.branding.pointsColor;
@@ -32,13 +32,7 @@ NSString *const RNSupportPhoneNumber = @"1 (866) 445-9495";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.headerImageView.image = self.branding.headerImage;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
 }
 
 - (IBAction)writeTapped:(id)sender {
@@ -50,7 +44,7 @@ NSString *const RNSupportPhoneNumber = @"1 (866) 445-9495";
 }
 
 - (IBAction)callTapped:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", [RNSupportPhoneNumber stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", [[[[RNCart sharedCart] user] customerServicePhoneNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller

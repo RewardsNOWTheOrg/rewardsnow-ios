@@ -39,7 +39,7 @@
     self.hasFinishedLoadingMap = NO;
     
     self.upperTopLabel.text = _deal.businessName;
-    self.upperMiddleLabel.text = _deal.address;
+    self.upperMiddleLabel.text = [NSString stringWithFormat:@"%@, %@", _deal.city, _deal.state];
     self.upperLowerLabel.text = _deal.name;
     [self.topImageView setImageWithURL:_deal.imageURL];
     
@@ -49,9 +49,6 @@
     _mapView.layer.cornerRadius = 4.0;
     _mapView.layer.masksToBounds = YES;
     _mapView.scrollEnabled = NO;
-    
-    self.mapAddressLabel.text = ABCreateStringWithAddressDictionary(_deal.addressDictionary, NO);
-    
     
     NSMutableArray *rows = [NSMutableArray array];
     
@@ -82,11 +79,6 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _descriptionHeight.constant = 50;
@@ -98,17 +90,10 @@
     [super viewDidLayoutSubviews];
     
     _lowerUpperLabel.frame = CGRectMake(10, 6, 295, 20);
-    
     _descriptionHeight.constant = _lowerUpperLabel.contentSize.height;
-    self.lowerInnerViewHeight.constant = _descriptionHeight.constant + 230 + (_cellRows.count * 44);
+    _tableViewHeight.constant = _cellRows.count * (_tableView.rowHeight + 6);
+    self.lowerInnerViewHeight.constant = _descriptionHeight.constant + 180 + (_cellRows.count * 44);
     [self.view layoutIfNeeded];
-    
-    DLog(@"Frame: %@", NSStringFromCGRect(_lowerUpperLabel.frame));
-}
-
-- (void)updateViewConstraints {
-    [super updateViewConstraints];
-    DLog(@"Frame: %@", NSStringFromCGRect(_lowerUpperLabel.frame));
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -188,8 +173,6 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     [((RNAnnotation *)view.annotation).deal openInMaps];
 }
-
-//- (void)mapview
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
     

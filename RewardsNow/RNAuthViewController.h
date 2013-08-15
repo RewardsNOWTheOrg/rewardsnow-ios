@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "RNSkinableViewController.h"
 
+@protocol RNAuthViewDelegate;
+
+
 @interface RNAuthViewController : RNSkinableViewController <UITextFieldDelegate>
+
+@property (nonatomic, weak) id<RNAuthViewDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -23,5 +28,14 @@
 - (IBAction)signInTapped:(id)sender;
 - (IBAction)forgotPasswordTapped:(id)sender;
 - (IBAction)textFieldChanged:(UITextField *)sender;
+
+@end
+
+
+@protocol RNAuthViewDelegate <NSObject>
+@optional
+
+- (void)authViewController:(RNAuthViewController *)auth didFinish:(BOOL)success;
+- (void)authViewControllerDidDismiss:(RNAuthViewController *)auth;
 
 @end

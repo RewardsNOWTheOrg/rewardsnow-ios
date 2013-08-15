@@ -10,6 +10,8 @@
 #import "RNRedeemObject.h"
 #import "RNUser.h"
 #import "RNCartObject.h"
+#import "RNWebService.h"
+#import "RNResponse.h"
 
 @implementation RNCart
 
@@ -33,6 +35,17 @@
     return self;
 }
 
+- (void)updateCartFromWeb;
+{
+    [[RNWebService sharedClient] getCartWithCallback:^(RNResponse *response) {
+        if (response.wasSuccessful) {
+            for (RNRedeemObject *redeem in response.result) {
+                [self addToCart:redeem remote:NO callback:nil];
+            }
+        }
+    }];
+}
+
 - (void)emptyCart {
     [self.items removeAllObjects];
 }
@@ -49,10 +62,8 @@
     return _items.count > 0 ? @"cart-full.png" : @"cart-empty.png";
 }
 
-- (void)addToCart:(RNRedeemObject *)card {
-    
-    DLog(@"Added: %@", card);
-    
+- (void)addToCart:(RNRedeemObject *)card remote:(BOOL)remote callback:(void (^)(BOOL result))callback;
+{
     NSInteger index = [_items indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         RNCartObject *object = obj;
         return object.redeemObject.catalogID == card.catalogID;
@@ -61,11 +72,39 @@
     if (index != NSNotFound) {
         [_items[index] addObject];
     } else {
+        ///
+        /// The item has not been sent added yet, add it, and optionally send it up to the cloud
+        ///
         RNCartObject *cartObject = [[RNCartObject alloc] init];
         cartObject.redeemObject = card;
         cartObject.count = 1;
         [_items addObject:cartObject];
+        
+        if (remote) {
+            ///send
+            [[RNWebService sharedClient] postCatalogIDToCart:[card catalogIDString] callback:^(RNResponse *result) {
+                if (callback) {
+                    callback([result.result boolValue]);
+                }
+            }];
+        }
     }
+}
+
+- (void)removeItemAtIndex:(NSInteger)index callback:(void (^)(BOOL result))callback;
+{
+    ///
+    /// Always try and remove it remotely too
+    ///
+    
+    NSString *catalogID = [[self.items[index] redeemObject] catalogIDString];
+    [self.items removeObjectAtIndex:index];
+    
+    [[RNWebService sharedClient] postRemoveItemFromCart:catalogID callback:^(RNResponse *result) {
+        if (callback) {
+            callback([result.result boolValue]);
+        }
+    }];
 }
 
 - (NSNumber *)total {
@@ -98,7 +137,7 @@
 - (NSArray *)arrayForPlaceOrderItems {
     NSMutableArray *array = [NSMutableArray array];
     
-    for (RNCartObject *cartObject in _items) {
+    for (RNCartObject *cartObject in [self itemsThatHaveQuantity]) {
         @try {
             [array addObject:[cartObject dictionaryForPlaceOrder]];
         }
@@ -123,5 +162,22 @@
     return [self hasItemsInCart] && [[self pointsDifference] doubleValue] > 0;
 }
 
+- (NSArray *)itemsThatHaveQuantity {
+    NSMutableArray *items = [NSMutableArray array];
+    
+    for (RNCartObject *object in _items) {
+        if (![object isEmpty]) {
+            [items addObject:object];
+        }
+    }
+    
+    return items;
+}
+
+- (void)logout;
+{
+    self.user = nil;
+    [self.items removeAllObjects];
+}
 
 @end

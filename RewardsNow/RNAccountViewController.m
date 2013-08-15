@@ -15,6 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RNBranding.h"
 #import "RNWebService.h"
+#import "RNAccountStatementViewController.h"
 
 @interface RNAccountViewController ()
 
@@ -50,9 +51,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.contentOffset = CGPointZero;
-    
-//    self.nameLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
-//    self.accountNumberLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grey-button.png"]];
     self.giftCardView.layer.cornerRadius = 5.0;
 }
 
@@ -99,6 +97,7 @@
         [string addAttribute:NSUnderlineStyleAttributeName value:@1 range:NSMakeRange(0, string.length)];
         [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:C(0) green:C(94) blue:C(132) alpha:1.0] range:NSMakeRange(0, string.length)];
         [gcButton setAttributedTitle:string forState:UIControlStateNormal];
+        gcButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         gcButton.tag = i;
         gcButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [gcButton setFrame:CGRectMake(10, 50 + (35 * i), 280, 30)];
@@ -149,9 +148,18 @@
 
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+{
+    if ([segue.identifier isEqualToString:@"pushRNAccountStatementViewController"]) {
+        RNAccountStatementViewController *vc = segue.destinationViewController;
+        vc.lastStatementMonth = self.user.lastStatementMonth;
+        vc.lastStatementYear = self.user.lastStatementYear;
+    }
+}
+
 - (IBAction)logoutTapped:(id)sender {
     
-    [[RNCart sharedCart] setUser:nil];
+    [[RNCart sharedCart] logout];
     [[RNWebService sharedClient] setTipNumber:[[NSUserDefaults standardUserDefaults] objectForKey:BankCodeKey]];
     
     UINavigationController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLoginViewController"];

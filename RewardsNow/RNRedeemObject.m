@@ -21,10 +21,10 @@
     [fields setValue:@"CatalogCode" forKey:@"catalogCode"];
     [fields setValue:@"CatalogId" forKey:@"catalogID"];
     [fields setValue:@"CategoryId" forKey:@"categoryID"];
-    [fields setValue:@"Description" forKey:@"objectDescription"];
     [fields setValue:@"DescriptionName" forKey:@"descriptionName"];
     [fields setValue:@"Image" forKey:@"imageURL"];
     [fields setValue:@"PriceInPoints" forKey:@"priceInPoints"];
+    [fields setValue:@"Terms" forKey:@"terms"];
     return fields;
 }
 
@@ -33,6 +33,11 @@
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [formatter setGroupingSeparator:[[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
     return [formatter stringFromNumber:@(_priceInPoints)];
+}
+
+- (NSString *)catalogIDString;
+{
+    return [NSString stringWithFormat:@"%d", self.catalogID.integerValue];
 }
 
 @end

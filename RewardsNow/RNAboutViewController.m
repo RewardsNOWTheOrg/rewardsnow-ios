@@ -15,6 +15,7 @@
 #import "RNWebService.h"
 #import "RNBranding.h"
 #import "MBProgressHUD.h"
+#import "RNResponse.h"
 
 @interface RNAboutViewController ()
 
@@ -36,9 +37,13 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[RNWebService sharedClient] getProgramInfoWithCallback:^(id result) {
-        self.info = result;
+    [[RNWebService sharedClient] getProgramInfoWithCallback:^(RNResponse *response) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if ([response wasSuccessful]) {
+            self.info = response.result;
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:response.errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
     }];
 }
 

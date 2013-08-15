@@ -8,12 +8,13 @@
 
 #import "AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
+#import "RNAuthViewController.h"
 
-@class RNUser;
+@class RNUser, RNResponse;
 
-typedef void (^RNResultCallback)(id result);
+typedef void (^RNResultCallback)(RNResponse *result);
 
-@interface RNWebService : AFHTTPClient
+@interface RNWebService : AFHTTPClient <RNAuthViewDelegate>
 
 /**
  * 
@@ -31,18 +32,17 @@ typedef void (^RNResultCallback)(id result);
 - (void)getLocalCategoriesWithCallback:(RNResultCallback)callback;
 - (void)getAccountInfoWithTipWithCallback:(RNResultCallback)callback;
 - (void)getBranding:(NSString *)code callback:(RNResultCallback)callback;
-- (void)getSecretQuestionWithCallback:(RNResultCallback)callback;
 - (void)getCartWithCallback:(RNResultCallback)callback;
-
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password callback:(RNResultCallback)callback;
 
 //????
 - (void)putEmail:(NSString *)email callback:(RNResultCallback)callback;
 
-- (void)postResetPasswordWithAnswer:(NSString *)answer password:(NSString *)password passwordConfirm:(NSString *)confirmed username:(NSString *)username fullName:(NSString *)fullName callback:(RNResultCallback)callback;
 - (void)postChangePasswordWithUsername:(NSString *)username oldPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword confirmPassword:(NSString *)confirmPassword callback:(RNResultCallback)callback;
-- (void)postCatalogIDToCart:(NSNumber *)catalogID callback:(RNResultCallback)callback;
 - (void)postPlaceOrderForUser:(RNUser *)user items:(NSArray *)redemptions  callback:(RNResultCallback)callback;
+- (void)postCatalogIDToCart:(NSString *)catalogID callback:(RNResultCallback)callback;
+- (void)postRemoveItemFromCart:(NSString *)catalogID callback:(RNResultCallback)callback;
+
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password callback:(RNResultCallback)callback;
 
 
 @end
