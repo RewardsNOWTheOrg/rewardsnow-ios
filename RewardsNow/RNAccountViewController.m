@@ -21,6 +21,7 @@
 
 @property (nonatomic) CGPoint contentOffset;
 @property (nonatomic, strong) UILabel *noCardsLabel;
+@property (nonatomic, strong) NSMutableArray *giftCardButtons;
 
 @end
 
@@ -52,10 +53,16 @@
     [super viewDidLoad];
     self.contentOffset = CGPointZero;
     self.giftCardView.layer.cornerRadius = 5.0;
+    self.giftCardButtons = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    for (UIButton *button in _giftCardButtons) {
+        [button removeFromSuperview];
+    }
+    [_giftCardButtons removeAllObjects];
     
     if ( (self.branding = [RNBranding sharedBranding]) ) {
         [self brand];
@@ -103,6 +110,7 @@
         [gcButton setFrame:CGRectMake(10, 50 + (35 * i), 280, 30)];
         [gcButton addTarget:self action:@selector(giftCardTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self.giftCardView addSubview:gcButton];
+        [self.giftCardButtons addObject:gcButton];
     }
     
     _giftCardHeightConstraint.constant = 70 + (_user.giftCards.count * 35);
