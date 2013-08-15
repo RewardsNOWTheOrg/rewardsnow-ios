@@ -94,7 +94,11 @@
                         [self.delegate authViewController:self didFinish:YES];
                     }
                     
-                    [self dismissViewControllerAnimated:YES completion:nil];
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        if ([self.delegate respondsToSelector:@selector(authViewControllerDidDismiss:)]) {
+                            [self.delegate authViewControllerDidDismiss:self];
+                        }
+                    }];
                 } else {
                     [self presentError:response.errorString];
                 }

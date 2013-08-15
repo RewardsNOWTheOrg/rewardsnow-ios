@@ -36,5 +36,6 @@
 @optional
 
 - (void)authViewController:(RNAuthViewController *)auth didFinish:(BOOL)success;
+- (void)authViewControllerDidDismiss:(RNAuthViewController *)auth;
 
 @end
