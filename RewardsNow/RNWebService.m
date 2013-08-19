@@ -621,7 +621,7 @@ typedef void (^RNAuthCallback)();
     if ([JSON isKindOfClass:[NSDictionary class]]) {
         return JSON[@"Error"][@"Description"];
     }
-    return nil;
+    return @"An unknown error occured, please try again.";
 }
 
 - (void)showLoginScreen:(RNAuthCallback)callback {
