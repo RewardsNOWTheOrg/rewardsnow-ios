@@ -20,8 +20,17 @@
 #import "RNResponse.h"
 #import "RNConstants.h"
 
-NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/";
-NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3eb07bc74d5bc081";
+///
+/// Testing
+///
+//NSString *const kPBaseURL = @"https://api.rewardsnow.com/qa/";
+//NSString *const kPAPISecret = @"f7ceef815c71ce92b613a841581f641d5982cba6fa2411c3eb07bc74d5bc081";
+
+///
+/// Production
+///
+NSString *const kPBaseURL = @"https://api.rewardsnow.com/2013/08/";
+NSString *const kPAPISecret = @"5dbaec0a19fa4154df0a186cb51aa9ae085711a14fd468a7f34d687112e80cb";
 
 NSString *const kResultsKey = @"Result";
 NSString *const kErrorKey = @"Error";
