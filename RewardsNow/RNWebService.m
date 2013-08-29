@@ -401,7 +401,7 @@ typedef void (^RNAuthCallback)();
                                                                                      
                                                                                      CHECK_UNAUTHORIZED_AND_CALLBACK_IF_AUTHORIZED(response,
                                                                                                                                    ^{ [self putEmail:email callback:callback]; },
-                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON] statusCode:response.statusCode]));
+                                                                                                                                   SAFE_BLOCK(callback, [RNResponse responseWithError:error errorString:[self errorMessage:JSON[@"UpdateMyAccountResult"]] statusCode:response.statusCode]));
                                                                                      
                                                                                  }];
     [self enqueueHTTPRequestOperation:op];
