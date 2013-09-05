@@ -63,7 +63,7 @@
 }
 
 - (NSString *)discountAsString {
-    return [NSString stringWithFormat:@"%@ Discount!", _discountString];
+    return [NSString stringWithFormat:@"%@", _discountString];
 }
 
 - (void)openInMaps {
