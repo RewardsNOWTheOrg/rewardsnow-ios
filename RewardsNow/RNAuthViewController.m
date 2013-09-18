@@ -48,7 +48,7 @@
     }
     
     if (_isFor401Response) {
-        self.loginTextLabel.text = @"You have been logged out due to inactivity. Please login again to continue.";
+        self.loginTextLabel.text = @"You have been logged out due to inactivity. Please login to continue.";
     }
 }
 
