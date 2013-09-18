@@ -46,6 +46,10 @@
     if (!IS_WIDESCREEN) {
         self.logoTopConstraint.constant = 35;
     }
+    
+    if (_isFor401Response) {
+        self.loginTextLabel.text = @"You have been logged out due to inactivity. Please login again to continue.";
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

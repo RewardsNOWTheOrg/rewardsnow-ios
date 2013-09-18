@@ -249,6 +249,10 @@ typedef void (^RNAuthCallback)();
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
                                                                                      
+                                                                                     [self showLoginScreen:nil];
+                                                                                     return;
+                                                                                     
+                                                                                     
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNAccountStatement objectsFromJSON:@[[JSON objectForKey:kStatementKey]]];
                                                                                          SAFE_BLOCK(callback, [RNResponse responseWithResult:[objects lastObject] statusCode:response.statusCode]);
@@ -640,6 +644,7 @@ typedef void (^RNAuthCallback)();
         UINavigationController *controller = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"RNLoginViewController"];
         RNAuthViewController *auth = controller.viewControllers[0];
         auth.delegate = self;
+        auth.isFor401Response = YES;
         
         [rootViewController presentViewController:controller animated:YES completion:nil];
     }

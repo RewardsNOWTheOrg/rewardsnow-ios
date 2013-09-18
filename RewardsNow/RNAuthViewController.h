@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
+@property (weak, nonatomic) IBOutlet UILabel *loginTextLabel;
+@property (nonatomic, assign) BOOL isFor401Response;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
 

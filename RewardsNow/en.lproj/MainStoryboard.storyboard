@@ -217,6 +217,7 @@
                     <navigationItem key="navigationItem" title="Login" id="r2K-4r-YyL"/>
                     <connections>
                         <outlet property="forgotPasswordButton" destination="p79-dq-AFG" id="kbb-AC-Aoe"/>
+                        <outlet property="loginTextLabel" destination="zrb-hH-U97" id="f32-6z-y3S"/>
                         <outlet property="logoImageView" destination="MsD-vr-Sm8" id="rwp-XK-997"/>
                         <outlet property="logoTopConstraint" destination="Res-Ys-OMe" id="o1d-gv-vze"/>
                         <outlet property="passwordTextField" destination="HDi-k1-VY5" id="kAT-Oz-W0P"/>
@@ -1068,7 +1069,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-fC-NP3">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="RGo-MC-Kuf">
-                                    <rect key="frame" x="0.0" y="331" width="320" height="74"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="WSX-Z6-sb5">
                                             <constraints>
@@ -3501,6 +3502,7 @@
                 <relationship kind="action" name="signInTapped:"/>
                 <relationship kind="action" name="textFieldChanged:" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="forgotPasswordButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTextLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="logoImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="logoTopConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
