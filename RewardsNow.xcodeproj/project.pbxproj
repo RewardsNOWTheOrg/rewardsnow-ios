@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA2259551731B03900F4C787 /* image 2.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2259541731B03900F4C787 /* image 2.png */; };
-		AA2259571731B05A00F4C787 /* image 22.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2259561731B05A00F4C787 /* image 22.png */; };
 		AA2493EF1731B701005B29E5 /* RNLocalDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2493EE1731B701005B29E5 /* RNLocalDeal.m */; };
 		AA2493F11731B881005B29E5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2493F01731B881005B29E5 /* CoreLocation.framework */; };
 		AA2E3EDB1718BCC6005ACE36 /* RNAccountStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */; };
@@ -114,6 +112,8 @@
 		AA5FBD4517386C87008B40BA /* RNCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5FBD4417386C87008B40BA /* RNCartCell.m */; };
 		AA5FBD471738A817008B40BA /* light-grey-single-divider.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5FBD461738A814008B40BA /* light-grey-single-divider.png */; };
 		AA5FBD4B1738A9D8008B40BA /* dark-grey-divider.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5FBD4A1738A9D6008B40BA /* dark-grey-divider.png */; };
+		AA84274A17EB2EAD0086F1FE /* RNI logo 57 x 57.png in Resources */ = {isa = PBXBuildFile; fileRef = AA84274917EB2EAD0086F1FE /* RNI logo 57 x 57.png */; };
+		AA84274C17EB2EB50086F1FE /* RNI logo 114 x 114.png in Resources */ = {isa = PBXBuildFile; fileRef = AA84274B17EB2EB50086F1FE /* RNI logo 114 x 114.png */; };
 		AA9020C01725AE6D0074B857 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */; };
 		AA9020C11725AE6D0074B857 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */; };
 		AA953D881743E9B10077E2A1 /* RNBranding.m in Sources */ = {isa = PBXBuildFile; fileRef = AA953D871743E9B10077E2A1 /* RNBranding.m */; };
@@ -182,8 +182,6 @@
 
 /* Begin PBXFileReference section */
 		68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		AA2259541731B03900F4C787 /* image 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image 2.png"; path = "../image 2.png"; sourceTree = "<group>"; };
-		AA2259561731B05A00F4C787 /* image 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image 22.png"; path = "../image 22.png"; sourceTree = "<group>"; };
 		AA2493ED1731B701005B29E5 /* RNLocalDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLocalDeal.h; sourceTree = "<group>"; };
 		AA2493EE1731B701005B29E5 /* RNLocalDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLocalDeal.m; sourceTree = "<group>"; };
 		AA2493F01731B881005B29E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -344,6 +342,8 @@
 		AA5FBD4417386C87008B40BA /* RNCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCartCell.m; sourceTree = "<group>"; };
 		AA5FBD461738A814008B40BA /* light-grey-single-divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-grey-single-divider.png"; sourceTree = "<group>"; };
 		AA5FBD4A1738A9D6008B40BA /* dark-grey-divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark-grey-divider.png"; sourceTree = "<group>"; };
+		AA84274917EB2EAD0086F1FE /* RNI logo 57 x 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RNI logo 57 x 57.png"; path = "../RNI logo 57 x 57.png"; sourceTree = "<group>"; };
+		AA84274B17EB2EB50086F1FE /* RNI logo 114 x 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RNI logo 114 x 114.png"; path = "../RNI logo 114 x 114.png"; sourceTree = "<group>"; };
 		AA9020BE1725AE6D0074B857 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		AA9020BF1725AE6D0074B857 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		AA953D861743E9B10077E2A1 /* RNBranding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNBranding.h; sourceTree = "<group>"; };
@@ -657,8 +657,8 @@
 			children = (
 				AA5510E7170F1134001CC718 /* Images */,
 				AA5510A9170F10A3001CC718 /* RewardsNow-Info.plist */,
-				AA2259561731B05A00F4C787 /* image 22.png */,
-				AA2259541731B03900F4C787 /* image 2.png */,
+				AA84274B17EB2EB50086F1FE /* RNI logo 114 x 114.png */,
+				AA84274917EB2EAD0086F1FE /* RNI logo 57 x 57.png */,
 				AA31022217207F4700E44D44 /* Default.png */,
 				AA31022017207F4300E44D44 /* Default@2x.png */,
 				AA31021E17207F3000E44D44 /* Default-568h@2x.png */,
@@ -1052,8 +1052,6 @@
 				AA2FF32117273CC100E4FB26 /* blue-arrow-button@2x.png in Resources */,
 				AACADBC717287DDE00F9D765 /* thank-you-button.png in Resources */,
 				AACADBC817287DDE00F9D765 /* thank-you-button@2x.png in Resources */,
-				AA2259551731B03900F4C787 /* image 2.png in Resources */,
-				AA2259571731B05A00F4C787 /* image 22.png in Resources */,
 				AA5FBD4017386890008B40BA /* blue-button.png in Resources */,
 				AA5FBD4117386890008B40BA /* blue-button@2x.png in Resources */,
 				AA5FBD471738A817008B40BA /* light-grey-single-divider.png in Resources */,
@@ -1082,6 +1080,8 @@
 				AAD3A9B4175CF63000E5392E /* popoverBg@2x.png in Resources */,
 				AA458DA91772592E00B906A7 /* NBPhoneNumberMetadata.plist in Resources */,
 				AA458DAA1772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist in Resources */,
+				AA84274A17EB2EAD0086F1FE /* RNI logo 57 x 57.png in Resources */,
+				AA84274C17EB2EB50086F1FE /* RNI logo 114 x 114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

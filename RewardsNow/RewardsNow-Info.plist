@@ -14,8 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>image 2.png</string>
-				<string>image 22.png</string>
+				<string>RNI logo 57 x 57.png</string>
+				<string>RNI logo 114 x 114.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
@@ -34,7 +34,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>465</string>
+	<string>466</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
