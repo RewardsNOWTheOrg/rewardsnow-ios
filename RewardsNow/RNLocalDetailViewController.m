@@ -17,6 +17,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AddressBookUI/AddressBookUI.h>
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 @interface RNLocalDetailViewController ()
 
 @property (nonatomic) BOOL hasFinishedLoadingMap;
@@ -50,6 +52,7 @@
     _mapView.layer.masksToBounds = YES;
     _mapView.scrollEnabled = NO;
     
+    
     NSMutableArray *rows = [NSMutableArray array];
     
     if (_deal.website != nil && [_deal.website.absoluteString isNotEmpty]) {
@@ -76,7 +79,6 @@
     }
     
     self.cellRows = rows;
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -103,6 +105,11 @@
     CGSize size = _scrollView.contentSize;
     size.height = _lowerInnerView.frame.origin.y + _lowerInnerView.frame.size.height;
     [self.scrollView setContentSize:size];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        [self updateMapView];
+    }
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -175,13 +182,16 @@
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
-    
-    if (!_hasFinishedLoadingMap) {
+    [self updateMapView];
+}
+
+- (void)updateMapView;
+{
+    if (!self.hasFinishedLoadingMap) {
         [self.mapView setRegion:MKCoordinateRegionMake(_deal.coordinate2D, MKCoordinateSpanMake(MapSpanSize, MapSpanSize)) animated:NO];
         [self placeAnnotationAtLocation:_deal.coordinate2D];
+        self.hasFinishedLoadingMap = YES;
     }
-    
-    self.hasFinishedLoadingMap = YES;
 }
 
 - (void)placeAnnotationAtLocation:(CLLocationCoordinate2D)location {
