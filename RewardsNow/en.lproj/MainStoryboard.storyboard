@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="height" constant="57" id="jgh-Qm-AZe"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="3 character program ID" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="I3Q-eY-uNc" customClass="RNTextField">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="auth-textfield-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="I3Q-eY-uNc" customClass="RNTextField">
                                 <rect key="frame" x="28" y="199" width="264" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="264" id="f1k-yJ-ZCn"/>

@@ -26,12 +26,15 @@
 
 @implementation RNPreAuthViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad;
+{
     [super viewDidLoad];
     self.hasFinishedDownloadingImage = NO;
     self.hasFinishedDownloadingBranding = NO;
     self.fields = @[self.headerImageView, self.helperLabel, self.codeTextField, self.continueButton];
     [self.navigationController setNavigationBarHidden:YES];
+    self.codeTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"3 character program ID"
+                                                                               attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
     if (!IS_WIDESCREEN) {
         self.logoTopConstraint.constant = 42;
@@ -41,11 +44,8 @@
     self.continueButton.enabled = [self canContinue];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated;
+{
     [super viewDidAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationPosted:) name:kImageDidFinishDownloadingNotification object:nil];
@@ -59,12 +59,14 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated;
+{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
+- (void)textFieldDidBeginEditing:(UITextField *)textField;
+{
     
     CGRect frame = self.view.frame;
     frame.origin.y = IS_WIDESCREEN ? -60 : -100;
@@ -75,7 +77,8 @@
 
 }
 
-- (IBAction)continueTapped:(id)sender {
+- (IBAction)continueTapped:(id)sender;
+{
     
     [[NSUserDefaults standardUserDefaults] setObject:self.codeTextField.text forKey:BankCodeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -104,14 +107,16 @@
     }];
 }
 
-- (void)notificationPosted:(NSNotification *)note {
+- (void)notificationPosted:(NSNotification *)note;
+{
     self.hasFinishedDownloadingImage = YES;
     if (self.hasFinishedDownloadingBranding) {
         [self skin];
     }
 }
 
-- (void)skin {
+- (void)skin;
+{
     MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
     hud.detailsLabelText = @"skinning...";
     
@@ -133,24 +138,28 @@
 
 }
 
-- (void)continueAfterProcessing {
+- (void)continueAfterProcessing;
+{
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     RNAuthViewController *auth = [self.storyboard instantiateViewControllerWithIdentifier:@"RNAuthViewController"];
     [self.navigationController pushViewController:auth animated:YES];
 }
 
-- (IBAction)backgroundTapped:(id)sender {
+- (IBAction)backgroundTapped:(id)sender;
+{
     [self.view endEditing:YES];
     [UIView animateWithDuration:0.25 animations:^{
         self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
 
-- (IBAction)textFieldChanged:(UITextField *)sender {
+- (IBAction)textFieldChanged:(UITextField *)sender;
+{
     self.continueButton.enabled = [self canContinue];
 }
 
-- (BOOL)canContinue {
+- (BOOL)canContinue;
+{
     return self.codeTextField.text.length > 0;
 }
 
