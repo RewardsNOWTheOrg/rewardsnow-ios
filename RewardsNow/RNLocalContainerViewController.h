@@ -10,8 +10,9 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "RNLocalViewController.h"
+#import "RNSkinableViewController.h"
 
-@interface RNLocalContainerViewController : UIViewController <UITabBarControllerDelegate, CLLocationManagerDelegate, RNLocalViewDelegate>
+@interface RNLocalContainerViewController : RNSkinableViewController <UITabBarControllerDelegate, CLLocationManagerDelegate, RNLocalViewDelegate>
 
 @property (nonatomic, strong) UIViewController *displayedViewController;
 @property (weak, nonatomic) IBOutlet UIView *containerView;

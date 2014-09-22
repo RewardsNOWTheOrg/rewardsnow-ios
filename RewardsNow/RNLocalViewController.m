@@ -33,7 +33,8 @@
 
 @implementation RNLocalViewController
 
-- (void)brand {
+- (void)brand;
+{
     [super brand];
 }
 
@@ -76,6 +77,7 @@
     
     NSString *title = [NSString stringWithFormat:@"%@ mi", [self.delegate radius]];
     UIBarButtonItem *radius = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
+    radius.tintColor = [UIColor whiteColor];
     _lowerNavigationBar.titleView = searchBar;
     _lowerNavigationBar.rightBarButtonItem = radius;
     

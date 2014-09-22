@@ -37,8 +37,10 @@
 
 @synthesize radius = _radius;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad;
+{
     [super viewDidLoad];
+
     self.gettingInformation = NO;
     self.radius = [self defaultRadius];
     
@@ -57,12 +59,11 @@
     [_manager startUpdatingLocation];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated;
+{
     [super viewWillAppear:animated];
-    
+
     self.tabBarController.delegate = self;
-    
-    self.containerView.backgroundColor = [UIColor redColor];
     
     if (_displayedViewController != nil) {
         [self addChildViewController:_displayedViewController];
@@ -100,11 +101,15 @@
     ///
     /// By default, they cannot navigate away, until the location has actually been received
     ///
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateDisabled];
+    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateDisabled];
+    
     self.navigationItem.rightBarButtonItem.enabled = enabled;
     self.navigationItem.leftBarButtonItem.enabled = enabled;
 }
 
-- (NSNumber *)defaultRadius {
+- (NSNumber *)defaultRadius;
+{
     return [RNConstants radii][0];
 }
 
