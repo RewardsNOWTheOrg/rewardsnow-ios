@@ -10,4 +10,6 @@
 
 @property (nonatomic) BOOL shouldHaveDefaultColor;
 
+@property (nonatomic) UIEdgeInsets textInsets;
+
 @end

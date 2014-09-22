@@ -16,13 +16,37 @@
     
     if ( (self = [super initWithCoder:aDecoder]) ) {
         self.shouldHaveDefaultColor = NO;
+        self.textInsets = [self defaultInsets];
+        self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     }
     return self;
 }
 
-- (void)drawPlaceholderInRect:(CGRect)rect {
-    [[UIColor whiteColor] setFill];
-    [self.placeholder drawInRect:rect withFont:self.font lineBreakMode:NSLineBreakByTruncatingTail alignment:self.textAlignment];
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.textInsets = [self defaultInsets];
+        self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    }
+    return self;
+}
+
+- (UIEdgeInsets)defaultInsets;
+{
+    return UIEdgeInsetsMake(0, 5, 0, 2);
+}
+
+// placeholder position
+- (CGRect)textRectForBounds:(CGRect)bounds;
+{
+    return UIEdgeInsetsInsetRect(bounds, _textInsets);
+}
+
+// text position
+- (CGRect)editingRectForBounds:(CGRect)bounds;
+{
+    return UIEdgeInsetsInsetRect(bounds, _textInsets);
 }
 
 
