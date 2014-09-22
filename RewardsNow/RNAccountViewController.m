@@ -11,7 +11,6 @@
 #import "RNUser.h"
 #import "RNGiftCard.h"
 #import "RNConstants.h"
-#import "NSString+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RNBranding.h"
 #import "RNWebService.h"

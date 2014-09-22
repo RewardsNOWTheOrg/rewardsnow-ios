@@ -57,7 +57,10 @@
 }
 
 - (BOOL)isRequiredInfoEntered {
-    return [_passwordOldTextField.text isNotEmpty] && [_passwordNewTextField.text isNotEmpty] && [_passwordNewRetypeTextField.text isNotEmpty] && [_passwordNewTextField.text isEqualToString:_passwordNewRetypeTextField.text];
+    return _passwordOldTextField.text.length > 0 &&
+        _passwordNewTextField.text.length > 0 &&
+        _passwordNewRetypeTextField.text.length > 0 &&
+        [_passwordNewTextField.text isEqualToString:_passwordNewRetypeTextField.text];
 }
 
 

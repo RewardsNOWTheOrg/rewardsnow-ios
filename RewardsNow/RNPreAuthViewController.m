@@ -151,7 +151,7 @@
 }
 
 - (BOOL)canContinue {
-    return [self.codeTextField.text isNotEmpty];
+    return self.codeTextField.text.length > 0;
 }
 
 @end

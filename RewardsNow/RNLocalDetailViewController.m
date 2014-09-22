@@ -11,7 +11,6 @@
 #import "RNLocalDeal.h"
 #import "UIImageView+AFNetworking.h"
 #import "RNAnnotation.h"
-#import "CMLabel.h"
 #import "RNConstants.h"
 #import "RNBranding.h"
 #import <QuartzCore/QuartzCore.h>
@@ -55,7 +54,7 @@
     
     NSMutableArray *rows = [NSMutableArray array];
     
-    if (_deal.website != nil && [_deal.website.absoluteString isNotEmpty]) {
+    if (_deal.website != nil && _deal.website.absoluteString.length > 0) {
         [rows addObject:@{@"title": [NSString stringWithFormat:@"Visit: %@", _deal.website.absoluteString], @"action" : ^{
             if (![[UIApplication sharedApplication] openURL:_deal.website]) {NSLog(@"Failed to open url.");}
             }
@@ -69,7 +68,7 @@
          }];
     }
     
-    if ([_deal.additionalInformation isNotEmpty]) {
+    if (_deal.additionalInformation.length > 0) {
         [rows addObject:@{@"title": @"Additional Information", @"action" : ^{
             RNLocalAdditionalViewController *more = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalAdditionalViewController"];
             more.deal = _deal;

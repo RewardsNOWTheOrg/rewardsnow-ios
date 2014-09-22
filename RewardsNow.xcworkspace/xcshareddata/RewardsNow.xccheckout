@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>741DCB8D-81E0-4191-A46F-AAE448531ECA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RewardsNow</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F829F83B3F1C86AC098F61AB8B08F97C924B3378</key>
+		<string>github.com:cloudmine/rewardsnow-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RewardsNow.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F829F83B3F1C86AC098F61AB8B08F97C924B3378</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:cloudmine/rewardsnow-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F829F83B3F1C86AC098F61AB8B08F97C924B3378</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F829F83B3F1C86AC098F61AB8B08F97C924B3378</string>
+			<key>IDESourceControlWCCName</key>
+			<string>rewardsnow-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

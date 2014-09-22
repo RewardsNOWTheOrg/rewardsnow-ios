@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *accountNumberLabel;
-@property (weak, nonatomic) IBOutlet CMLabel *pointsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
 @property (nonatomic, strong) RNUser *user;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *giftCardHeightConstraint;
 

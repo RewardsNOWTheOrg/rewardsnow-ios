@@ -132,7 +132,7 @@ typedef void (^RNAuthCallback)();
                                    @"lon" : @(location.coordinate.longitude),
                                    @"radius" : @(radius)}];
     
-    if ([query isNotEmpty]) [params setValue:query forKey:@"q"];
+    if (query.length > 0) [params setValue:query forKey:@"q"];
     if (category != nil) [params setValue:category forKey:@"categoryid"];
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];

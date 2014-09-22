@@ -11,7 +11,6 @@
 #import "RNCart.h"
 #import "RNUser.h"
 #import "RNWebService.h"
-#import "NSString+Additions.h"
 #import "RNResponse.h"
 
 @interface RNAccountEditViewController ()
@@ -65,7 +64,9 @@
 }
 
 - (BOOL)shouldEnableSaveButton {
-    return [self.emailTextField.text isNotEmpty] && [self.emailAgainTextField.text isNotEmpty] && [self.emailTextField.text isEqualToString:self.emailAgainTextField.text];
+    return self.emailTextField.text.length > 0 &&
+        self.emailAgainTextField.text.length > 0 &&
+        [self.emailTextField.text isEqualToString:self.emailAgainTextField.text];
 }
 
 @end

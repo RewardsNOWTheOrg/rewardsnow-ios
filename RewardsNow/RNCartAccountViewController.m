@@ -78,8 +78,10 @@
         frame.origin.y = -kViewChangeForKeyboard;
         [UIView animateWithDuration:0.25 animations:^{
             self.view.frame = frame;
-            self.scrollView.frame = CGRectMake(0, kViewChangeForKeyboard, SCREEN_WIDTH,
-                                               SCREEN_HEIGHT - (self.navigationController.navigationBar.frame.size.height + kKeyboardHeight + kStatusBarHeight));
+            CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+            CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+            self.scrollView.frame = CGRectMake(0, kViewChangeForKeyboard, screenWidth,
+                                               screenHeight - (self.navigationController.navigationBar.frame.size.height + kKeyboardHeight + kStatusBarHeight));
             CGPoint bottomOffset = CGPointMake(0, kScrollToNearBottom);
             [self.scrollView setContentOffset:bottomOffset animated:YES];
         } completion:^(BOOL finished) {

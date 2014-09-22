@@ -175,7 +175,8 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     
     UIView *headerSection = [[UIView alloc] init];
     
-    CMLabel *title = [[CMLabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kTableHeaderHeight)];
+    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, kTableHeaderHeight)];
     title.backgroundColor = self.branding.pointsColor;
     title.text = kSectionTitles[section];
     [headerSection addSubview:title];

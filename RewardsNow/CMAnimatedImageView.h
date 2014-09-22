@@ -1,9 +1,9 @@
 //
-//  RNAnimatedImageView.h
+//  CMAnimatedImageView.h
 //  RewardsNow
 //
-//  Created by Ethan Mick on 5/24/13.
-//  Copyright (c) 2013 CloudMine LLC. All rights reserved.
+//  Created by Ethan Mick on 9/22/14.
+//  Copyright (c) 2014 CloudMine LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

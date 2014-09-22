@@ -16,8 +16,9 @@
 #import "RNAuthViewController.h"
 #import "RNCart.h"
 #import "RNUser.h"
-#import "RNAnimatedImageView.h"
+#import "CMAnimatedImageView.h"
 #import "RNResponse.h"
+#import "CMAnimatedImageView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface RNRedeemViewController ()
@@ -186,7 +187,7 @@
 - (void)animateCartAddFromPoint:(CGPoint )point {
     
     
-    RNAnimatedImageView *animatedImage = [[RNAnimatedImageView alloc] initWithImage:[UIImage imageNamed:@"thank-you-button"]];
+    CMAnimatedImageView *animatedImage = [[CMAnimatedImageView alloc] initWithImage:[UIImage imageNamed:@"thank-you-button"]];
     [_animatedImages addObject:animatedImage];
     
     animatedImage.frame = CGRectMake(160, 190, 25, 25);
