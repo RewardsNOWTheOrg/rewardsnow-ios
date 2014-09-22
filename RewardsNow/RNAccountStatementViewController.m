@@ -17,6 +17,7 @@
 #import "RNAccountStatementDetailView.h"
 #import "RNBranding.h"
 #import "RNResponse.h"
+#import "RNLabel.h"
 
 #define kNumberOfMonthsVisible 4
 
@@ -176,7 +177,7 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     UIView *headerSection = [[UIView alloc] init];
     
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, kTableHeaderHeight)];
+    RNLabel *title = [[RNLabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, kTableHeaderHeight)];
     title.backgroundColor = self.branding.pointsColor;
     title.text = kSectionTitles[section];
     [headerSection addSubview:title];

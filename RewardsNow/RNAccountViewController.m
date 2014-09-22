@@ -26,7 +26,8 @@
 
 @implementation RNAccountViewController
 
-- (void)brand {
+- (void)brand;
+{
     [super brand];
     
     self.nameLabel.backgroundColor = self.branding.pointsColor;
@@ -39,7 +40,6 @@
     
     self.pointsLabel.backgroundColor = self.branding.pointsColor;
     self.pointsLabel.layer.cornerRadius = 5.0;
-
     
     for (UIButton *button in _skinningButtons) {
         button.backgroundColor = self.branding.pointsColor;
@@ -48,14 +48,21 @@
     
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad;
+{
     [super viewDidLoad];
     self.contentOffset = CGPointZero;
     self.giftCardView.layer.cornerRadius = 5.0;
     self.giftCardButtons = [NSMutableArray array];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+-(UIStatusBarStyle)preferredStatusBarStyle;
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)viewWillAppear:(BOOL)animated;
+{
     [super viewWillAppear:animated];
     
     for (UIButton *button in _giftCardButtons) {
@@ -128,7 +135,8 @@
     _innerViewHeight.constant = 400 + _giftCardHeightConstraint.constant;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated;
+{
     [super viewDidDisappear:animated];
     
     [self.scrollView setScrollEnabled:YES];
@@ -139,20 +147,17 @@
     self.scrollView.contentOffset = _contentOffset;
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated;
+{
     [super viewDidDisappear:animated];
     self.scrollView.contentOffset = CGPointZero;
     self.contentOffset = self.scrollView.contentOffset;
 }
 
-- (void)viewDidLayoutSubviews {
+- (void)viewDidLayoutSubviews;
+{
     [super viewDidLayoutSubviews];
     self.scrollView.contentOffset = self.contentOffset;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
@@ -164,7 +169,8 @@
     }
 }
 
-- (IBAction)logoutTapped:(id)sender {
+- (IBAction)logoutTapped:(id)sender;
+{
     
     [[RNCart sharedCart] logout];
     [[RNWebService sharedClient] setTipNumber:[[NSUserDefaults standardUserDefaults] objectForKey:BankCodeKey]];
@@ -173,7 +179,8 @@
     [self presentViewController:auth animated:YES completion:nil];
 }
 
-- (void)giftCardTapped:(UIButton *)sender {
+- (void)giftCardTapped:(UIButton *)sender;
+{
     [_user.giftCards[sender.tag] open];
 }
 
