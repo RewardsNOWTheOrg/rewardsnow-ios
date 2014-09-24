@@ -249,7 +249,11 @@
 - (void)popoverDidFinishWithIndexPathSelected:(NSIndexPath *)indexPath {
     
     NSString *title = [NSString stringWithFormat:@"%@ mi", [RNConstants radii][indexPath.row]];
-    self.lowerNavigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
+    self.lowerNavigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title
+                                                                                  style:UIBarButtonItemStyleBordered
+                                                                                 target:self
+                                                                                 action:@selector(radiusBarButtonTapped:)];
+    self.lowerNavigationBar.rightBarButtonItem.tintColor = [UIColor whiteColor];
     [self hidePopover];
     
     [self.delegate refreshDataWithRadius:[RNConstants radii][indexPath.row]];
