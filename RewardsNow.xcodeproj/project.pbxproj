@@ -355,6 +355,7 @@
 		AA9FB23E1758030B00B83B98 /* input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input@2x.png"; sourceTree = "<group>"; };
 		AA9FB2431759050E00B83B98 /* RNSkinableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSkinableViewController.h; sourceTree = "<group>"; };
 		AA9FB2441759050E00B83B98 /* RNSkinableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSkinableViewController.m; sourceTree = "<group>"; };
+		AAAE3A6F19D35CEB00D2DE38 /* DefaultLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DefaultLocation.gpx; sourceTree = "<group>"; };
 		AAC191661762865300E08FD2 /* RNPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPopoverViewController.h; sourceTree = "<group>"; };
 		AAC191671762865300E08FD2 /* RNPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPopoverViewController.m; sourceTree = "<group>"; };
 		AAC806B7176A835100BE9F72 /* RNTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTextField.h; sourceTree = "<group>"; };
@@ -645,6 +646,7 @@
 				AA5510AA170F10A3001CC718 /* InfoPlist.strings */,
 				AA5510AD170F10A3001CC718 /* main.m */,
 				AA5510AF170F10A3001CC718 /* RewardsNow-Prefix.pch */,
+				AAAE3A6F19D35CEB00D2DE38 /* DefaultLocation.gpx */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1282,8 +1284,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: RewardsNOW,  Inc. (Z3K2J9XMAA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: RewardsNOW,  Inc. (Z3K2J9XMAA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CloudMine LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CloudMine LLC";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
 				INFOPLIST_FILE = "RewardsNow/RewardsNow-Info.plist";
@@ -1293,8 +1295,8 @@
 					"\"$(SRCROOT)/RewardsNow\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D41E5513-4CC1-41FC-8AA9-38105856AB91";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D41E5513-4CC1-41FC-8AA9-38105856AB91";
+				PROVISIONING_PROFILE = "64d90998-4840-43b5-bf9f-ab29bd715880";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "64d90998-4840-43b5-bf9f-ab29bd715880";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
