@@ -56,7 +56,11 @@
     _manager.delegate = self;
     _manager.distanceFilter = kCLDistanceFilterNone;
     _manager.desiredAccuracy = kCLLocationAccuracyBest;
-    [_manager startUpdatingLocation];
+    if ([_manager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [_manager requestWhenInUseAuthorization];
+    } else {
+        [_manager startUpdatingLocation];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated;
@@ -263,6 +267,11 @@
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
 {
     DLog(@"Status: %d", status);
+    if (status == kCLAuthorizationStatusAuthorized ||
+        status == kCLAuthorizationStatusAuthorizedWhenInUse ||
+        status == kCLAuthorizationStatusAuthorizedAlways) {
+        [_manager startUpdatingLocation];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
@@ -279,7 +288,8 @@
     }];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
+{
     CLLocation *location = [locations lastObject];
     
     if (!_gettingInformation) {
