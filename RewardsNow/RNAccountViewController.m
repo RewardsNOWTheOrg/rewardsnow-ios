@@ -54,11 +54,34 @@
     self.contentOffset = CGPointZero;
     self.giftCardView.layer.cornerRadius = 5.0;
     self.giftCardButtons = [NSMutableArray array];
+    
+//    self.user = [[RNCart sharedCart] user];
+//    
+//    if (self.user == nil) {
+//        NSString *authName = self.branding == nil ? @"RNAuthNavigationController" : @"RNLoginViewController";
+//        UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:authName];
+//        [self.tabBarController presentViewController:navController animated:NO completion:nil];
+//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated;
 {
     [super viewWillAppear:animated];
+    
+    self.user = [[RNCart sharedCart] user];
+    
+    if (self.user == nil) {
+        NSString *authName = self.branding == nil ? @"RNAuthNavigationController" : @"RNLoginViewController";
+        UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:authName];
+        [self.tabBarController presentViewController:navController animated:NO completion:^{
+            
+        }];
+        return;
+    }
+    
+
+    
+
     
     for (UIButton *button in _giftCardButtons) {
         [button removeFromSuperview];
@@ -70,12 +93,6 @@
     }
     
     self.user = [[RNCart sharedCart] user];
-    
-    if (self.user == nil) {
-        NSString *authName = self.branding == nil ? @"RNAuthNavigationController" : @"RNLoginViewController";
-        UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:authName];
-        [self presentViewController:navController animated:NO completion:nil];
-    }
     
     self.nameLabel.text = self.user.fullName;
     [self.emailLabel setTitle:self.user.email forState:UIControlStateNormal];
