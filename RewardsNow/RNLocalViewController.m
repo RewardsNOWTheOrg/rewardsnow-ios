@@ -213,7 +213,11 @@
     if (_popOver == nil) {
         
         RNPopoverViewController *popup = [self.storyboard instantiateViewControllerWithIdentifier:@"RNPopoverViewController"];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         popup.contentSizeForViewInPopover = CGSizeMake(70, 4 * 44);
+#pragma clang diagnostic pop
+
         popup.delegate = self;
         
         self.popOver = [[WEPopoverController alloc] initWithContentViewController:popup];

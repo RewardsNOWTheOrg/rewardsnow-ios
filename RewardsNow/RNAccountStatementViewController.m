@@ -55,8 +55,8 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     ///
     /// From the last statement information, get the first and last day of THAT month.
     ///
-    NSInteger month = self.lastStatementMonth.integerValue;
-    NSInteger year = self.lastStatementYear.integerValue;
+    int month = self.lastStatementMonth.intValue;
+    int year = self.lastStatementYear.intValue;
     NSDate *date = [NSDate dateWithYear:year month:month day:1];
     
     

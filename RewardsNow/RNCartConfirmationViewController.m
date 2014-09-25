@@ -43,7 +43,7 @@
     
     for (NSInteger i = 0; i < _checkoutItems.count; i++) {
         RNCartObject *cartObject = _checkoutItems[i];
-        NSString *title = [[cartObject.redeemObject descriptionName] stringByAppendingFormat:@" x%d", cartObject.count];
+        NSString *title = [[cartObject.redeemObject descriptionName] stringByAppendingFormat:@" x%ld", (long)cartObject.count];
         [self createLabelWithText:title points:[cartObject stringTotalPrice] number:i];
     }
     

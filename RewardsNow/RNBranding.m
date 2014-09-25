@@ -142,8 +142,8 @@ static bool triedToLoadOnce;
 //    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundColor:[UIColor clearColor]];
     
     
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : self.tabBarTextColor } forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : self.tabBarTextColor } forState:UIControlStateHighlighted];    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : self.tabBarTextColor } forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : self.tabBarTextColor } forState:UIControlStateHighlighted];
 }
 
 - (UIColor *)commonBackgroundColor {

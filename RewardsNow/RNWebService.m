@@ -94,7 +94,6 @@ typedef void (^RNAuthCallback)();
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
-                                                                                     DLog(@"Test: %d", response.statusCode);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNRedeemObject objectsFromJSON:[JSON objectForKey:kResultsKey]];

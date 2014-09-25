@@ -37,7 +37,7 @@
 
 - (NSString *)catalogIDString;
 {
-    return [NSString stringWithFormat:@"%d", self.catalogID.integerValue];
+    return [NSString stringWithFormat:@"%ld", self.catalogID.longValue];
 }
 
 @end

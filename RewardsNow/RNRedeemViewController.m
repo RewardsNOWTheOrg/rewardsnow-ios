@@ -104,7 +104,8 @@
     
     RNRedeemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.redeemTopLabel.text = [NSString stringWithFormat:@"%@ pts - $%d card", [self.rewards[indexPath.row] stringPriceInPoints], (NSInteger)[self.rewards[indexPath.row] cashValue]];
+    cell.redeemTopLabel.text = [NSString stringWithFormat:@"%@ pts - $%ld card",
+                                [self.rewards[indexPath.row] stringPriceInPoints], (long)[self.rewards[indexPath.row] cashValue]];
     cell.redeemBottomLabel.text = [self.rewards[indexPath.row] catagoryDescription];
     cell.redeemImage.contentMode = UIViewContentModeScaleAspectFit;
     cell.addButton.tag = indexPath.row;
@@ -151,7 +152,6 @@
     ///
     /// If the cart has nothing in it, then the first time they add something change the icon after the animation is done
     ///
-    DLog(@"Count: %d", [[RNCart sharedCart] items].count);
     if ([[RNCart sharedCart] items].count == 1) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animationDidFinishWithNotification:) name:kAnimationDidStopNotification object:nil];
     }
