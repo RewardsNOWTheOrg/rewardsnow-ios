@@ -18,7 +18,7 @@
 #define kViewChangeForKeyboard 120
 #define kScrollToNearBottom 125
 #define kTopBarHeight 70
-#define kTextFieldMoveDistance 35
+#define kTextFieldMoveDistance 45
 
 @interface RNCartAccountViewController ()
 
@@ -56,11 +56,6 @@
     _addressStateTextField.text = user.state;
     _addressZipTextField.text = user.zipCode;
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWillShow:)
-//                                                 name:UIKeyboardWillShowNotification
-//                                               object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
@@ -70,9 +65,16 @@
 - (void)viewDidAppear:(BOOL)animated;
 {
     [super viewDidAppear:animated];
-    [self.scrollView setScrollEnabled:YES];
-    [self.scrollView setContentSize:self.innerView.frame.size];
     self.originalFrame = self.view.frame;
+}
+
+- (void)viewDidLayoutSubviews;
+{
+    [super viewDidLayoutSubviews];
+    [self.scrollView setScrollEnabled:YES];
+    [self.scrollView setContentSize:CGSizeMake(self.innerView.frame.size.width, self.innerView.frame.size.height + kTopBarHeight + 15)];
+    DLog(@"Size: %f", self.innerView.frame.size.height);
+    DLog(@"Scroll: %f", self.scrollView.contentSize.height);
 }
 
 - (void)viewDidDisappear:(BOOL)animated;
@@ -82,25 +84,6 @@
 }
 
 #pragma mark - Keyboard
-
-//- (void)keyboardWillShow:(NSNotification *)notification;
-//{
-//    CGFloat keyboardHeight = [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-//    NSTimeInterval animationDuration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-//    NSInteger curve = [[notification.userInfo valueForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
-//    UIViewAnimationOptions options = (curve << 16);
-//    
-//    CGRect frame = self.view.frame;
-//    frame.origin.y -= kTopBarHeight;
-//    frame.origin.y -= (self.editingTag - 1) * kTextFieldMoveDistance;
-//    
-//    [UIView animateWithDuration:animationDuration
-//                          delay:0.0
-//                        options:options
-//                     animations:^{
-//                         self.view.frame = frame;
-//                     } completion:nil];
-//}
 
 - (void)keyboardWillHide:(NSNotification *)notification;
 {
@@ -143,19 +126,6 @@
     [textField resignFirstResponder];
     return YES;
 }
-
-//- (void)endEditing {
-//    [self.view endEditing:YES];
-//    CGRect frame = self.view.frame;
-//    frame.origin.y = 64;
-//    [UIView animateWithDuration:0.25 animations:^{
-//        self.view.frame = frame;
-//        if (!CGRectEqualToRect(_scrollViewFrame, CGRectNull)) {
-//            self.scrollView.frame = _scrollViewFrame;
-//        }
-//        
-//    }];
-//}
 
 #pragma mark - Navigation
 
