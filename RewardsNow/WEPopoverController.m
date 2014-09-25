@@ -54,7 +54,10 @@
 - (void)setContentViewController:(UIViewController *)vc {
 	if (vc != contentViewController) {
 		contentViewController = vc;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 		popoverContentSize = [vc contentSizeForViewInPopover];
+#pragma clang diagnostic pop
 	}
 }
 

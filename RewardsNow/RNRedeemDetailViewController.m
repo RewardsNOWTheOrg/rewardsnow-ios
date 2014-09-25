@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     self.redeemImage.image = self.info.image;
-    self.redeemTopLabel.text = [NSString stringWithFormat:@"$%d eGift Card", (NSInteger)self.info.cashValue];
+    self.redeemTopLabel.text = [NSString stringWithFormat:@"$%ld eGift Card", (long)self.info.cashValue];
     self.redeemBottomLabel.text = [NSString stringWithFormat:@"%@ Points", _info.stringPriceInPoints];
     self.descriptionTextView.text = self.info.terms;
 }

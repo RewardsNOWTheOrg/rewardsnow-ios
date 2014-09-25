@@ -12,10 +12,10 @@
 
 @class RNLocalDeal, CMLabel;
 
-@interface RNLocalDetailViewController : RNSkinableViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate>
+@interface RNLocalDetailViewController : UITableViewController <MKMapViewDelegate>
 
 @property (nonatomic, strong) RNLocalDeal *deal;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *topImageView;
 @property (weak, nonatomic) IBOutlet UILabel *upperTopLabel;
 @property (weak, nonatomic) IBOutlet UILabel *upperMiddleLabel;
@@ -23,10 +23,11 @@
 @property (weak, nonatomic) IBOutlet UITextView *lowerUpperLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *lowerInnerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *upperViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptionHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lowerInnerViewHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapHeight;
+
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lowerInnerViewHeight;
 
 - (IBAction)directionsTapped:(id)sender;
 

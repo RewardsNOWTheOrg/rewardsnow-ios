@@ -37,8 +37,10 @@
 
 @synthesize radius = _radius;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad;
+{
     [super viewDidLoad];
+
     self.gettingInformation = NO;
     self.radius = [self defaultRadius];
     
@@ -54,15 +56,18 @@
     _manager.delegate = self;
     _manager.distanceFilter = kCLDistanceFilterNone;
     _manager.desiredAccuracy = kCLLocationAccuracyBest;
-    [_manager startUpdatingLocation];
+    if ([_manager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [_manager requestWhenInUseAuthorization];
+    } else {
+        [_manager startUpdatingLocation];
+    }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated;
+{
     [super viewWillAppear:animated];
-    
+
     self.tabBarController.delegate = self;
-    
-    self.containerView.backgroundColor = [UIColor redColor];
     
     if (_displayedViewController != nil) {
         [self addChildViewController:_displayedViewController];
@@ -100,11 +105,15 @@
     ///
     /// By default, they cannot navigate away, until the location has actually been received
     ///
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateDisabled];
+    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateDisabled];
+    
     self.navigationItem.rightBarButtonItem.enabled = enabled;
     self.navigationItem.leftBarButtonItem.enabled = enabled;
 }
 
-- (NSNumber *)defaultRadius {
+- (NSNumber *)defaultRadius;
+{
     return [RNConstants radii][0];
 }
 
@@ -258,6 +267,11 @@
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
 {
     DLog(@"Status: %d", status);
+    if (status == kCLAuthorizationStatusAuthorized ||
+        status == kCLAuthorizationStatusAuthorizedWhenInUse ||
+        status == kCLAuthorizationStatusAuthorizedAlways) {
+        [_manager startUpdatingLocation];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
@@ -274,7 +288,8 @@
     }];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
+{
     CLLocation *location = [locations lastObject];
     
     if (!_gettingInformation) {

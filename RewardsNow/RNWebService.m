@@ -94,7 +94,6 @@ typedef void (^RNAuthCallback)();
                                                                                      [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                                                                                      
                                                                                      DLog(@"JSON: %@", JSON);
-                                                                                     DLog(@"Test: %d", response.statusCode);
                                                                                      
                                                                                      if ([self wasSuccessful:JSON]) {
                                                                                          NSArray *objects = [RNRedeemObject objectsFromJSON:[JSON objectForKey:kResultsKey]];
@@ -132,7 +131,7 @@ typedef void (^RNAuthCallback)();
                                    @"lon" : @(location.coordinate.longitude),
                                    @"radius" : @(radius)}];
     
-    if ([query isNotEmpty]) [params setValue:query forKey:@"q"];
+    if (query.length > 0) [params setValue:query forKey:@"q"];
     if (category != nil) [params setValue:category forKey:@"categoryid"];
     
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];

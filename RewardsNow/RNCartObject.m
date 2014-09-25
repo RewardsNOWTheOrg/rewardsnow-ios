@@ -32,9 +32,7 @@
 }
 
 - (NSDictionary *)dictionaryForPlaceOrder {
-    DLog(@"Redeem Object: %@", _redeemObject);
-    DLog(@"Derp: %@ and %@", _redeemObject.catalogCode, [NSString stringWithFormat:@"%d", _count]);
-    return @{@"Item": _redeemObject.catalogCode, @"Quantity" : [NSString stringWithFormat:@"%d", _count]};
+    return @{@"Item": _redeemObject.catalogCode, @"Quantity" : [NSString stringWithFormat:@"%ld", (long)_count]};
 }
 
 - (BOOL)isEmpty {

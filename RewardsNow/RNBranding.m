@@ -113,14 +113,18 @@ static bool triedToLoadOnce;
     [[NSNotificationCenter defaultCenter] postNotificationName:kImageDidFinishDownloadingNotification object:self];
 }
 
-- (void)globalBranding {
-    
+- (void)globalBranding;
+{
     [[UITabBar appearance] setTintColor:self.menuBackgroundColor];
     [[UITabBar appearance] setBackgroundImage:[self imageFromColor:self.menuBackgroundColor withSize:CGSizeMake(1, 44)]];
     [[UISearchBar appearance] setBackgroundImage:[self imageFromColor:self.menuBackgroundColor withSize:CGSizeMake(1, 44)]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setBackgroundImage:[self imageFromColor:self.menuBackgroundColor withSize:CGSizeMake(1, 44)] forBarMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearance] setTintColor:self.menuBackgroundColor];
+    [[UINavigationBar appearance] setBarTintColor:self.menuBackgroundColor];
+    [[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+//    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
 //    [[UILabel appearance] setTextColor:self.textColor];
 //    [[UILabel appearance] setBackgroundColor:self.pointsColor];
@@ -138,8 +142,8 @@ static bool triedToLoadOnce;
 //    [[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundColor:[UIColor clearColor]];
     
     
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : self.tabBarTextColor } forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : self.tabBarTextColor } forState:UIControlStateHighlighted];    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : self.tabBarTextColor } forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : self.tabBarTextColor } forState:UIControlStateHighlighted];
 }
 
 - (UIColor *)commonBackgroundColor {

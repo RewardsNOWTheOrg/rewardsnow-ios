@@ -17,6 +17,7 @@
 #import "RNAccountStatementDetailView.h"
 #import "RNBranding.h"
 #import "RNResponse.h"
+#import "RNLabel.h"
 
 #define kNumberOfMonthsVisible 4
 
@@ -54,8 +55,8 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     ///
     /// From the last statement information, get the first and last day of THAT month.
     ///
-    NSInteger month = self.lastStatementMonth.integerValue;
-    NSInteger year = self.lastStatementYear.integerValue;
+    int month = self.lastStatementMonth.intValue;
+    int year = self.lastStatementYear.intValue;
     NSDate *date = [NSDate dateWithYear:year month:month day:1];
     
     
@@ -175,7 +176,8 @@ static NSString *RNAccountStatementCell = @"RNAccountStatementCell";
     
     UIView *headerSection = [[UIView alloc] init];
     
-    CMLabel *title = [[CMLabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kTableHeaderHeight)];
+    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    RNLabel *title = [[RNLabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, kTableHeaderHeight)];
     title.backgroundColor = self.branding.pointsColor;
     title.text = kSectionTitles[section];
     [headerSection addSubview:title];

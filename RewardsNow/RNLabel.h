@@ -1,5 +1,5 @@
 //
-//  CMAnimatedImageView.h
+//  RNLabel.h
 //  RewardsNow
 //
 //  Created by Ethan Mick on 9/22/14.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#define kAnimationDidStopNotification @"CMAnimationDidStopNotification"
+@interface RNLabel : UILabel
 
-@interface CMAnimatedImageView : UIImageView
+@property (nonatomic) UIEdgeInsets textInsets;
 
 @end

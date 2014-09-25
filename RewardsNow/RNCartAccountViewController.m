@@ -17,10 +17,14 @@
 #define kStatusBarHeight 20
 #define kViewChangeForKeyboard 120
 #define kScrollToNearBottom 125
+#define kTopBarHeight 70
+#define kTextFieldMoveDistance 45
 
 @interface RNCartAccountViewController ()
 
 @property (nonatomic) CGRect scrollViewFrame;
+@property (nonatomic, assign) CGRect originalFrame;
+@property (nonatomic, assign) NSInteger editingTag;
 
 @end
 
@@ -36,7 +40,8 @@
     self.lowerInnerView.backgroundColor = self.branding.pointsColor;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad;
+{
     [super viewDidLoad];
     self.scrollViewFrame = CGRectNull;
     
@@ -50,65 +55,82 @@
     _addressCityTextField.text = user.city;
     _addressStateTextField.text = user.state;
     _addressZipTextField.text = user.zipCode;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
-}
-
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated;
+{
     [super viewDidAppear:animated];
-    [self.scrollView setScrollEnabled:YES];
-    [self.scrollView setContentSize:self.innerView.frame.size];
+    self.originalFrame = self.view.frame;
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidLayoutSubviews;
+{
+    [super viewDidLayoutSubviews];
+    [self.scrollView setScrollEnabled:YES];
+    [self.scrollView setContentSize:CGSizeMake(self.innerView.frame.size.width, self.innerView.frame.size.height + kTopBarHeight + 15)];
+    DLog(@"Size: %f", self.innerView.frame.size.height);
+    DLog(@"Scroll: %f", self.scrollView.contentSize.height);
+}
+
+- (void)viewDidDisappear:(BOOL)animated;
+{
     [super viewDidDisappear:animated];
     self.scrollView.contentOffset = CGPointZero;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
+#pragma mark - Keyboard
 
-    if (textField.tag > 1) {
-        if (CGRectEqualToRect(_scrollViewFrame, CGRectNull)) {
-            self.scrollViewFrame = self.scrollView.frame;
-        }
-        CGRect frame = self.view.frame;
-        frame.origin.y = -kViewChangeForKeyboard;
-        [UIView animateWithDuration:0.25 animations:^{
-            self.view.frame = frame;
-            self.scrollView.frame = CGRectMake(0, kViewChangeForKeyboard, SCREEN_WIDTH,
-                                               SCREEN_HEIGHT - (self.navigationController.navigationBar.frame.size.height + kKeyboardHeight + kStatusBarHeight));
-            CGPoint bottomOffset = CGPointMake(0, kScrollToNearBottom);
-            [self.scrollView setContentOffset:bottomOffset animated:YES];
-        } completion:^(BOOL finished) {
-            
-        }];
-    }
+- (void)keyboardWillHide:(NSNotification *)notification;
+{
+    NSTimeInterval animationDuration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    NSInteger animationCurve = [[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    UIViewAnimationOptions options = (animationCurve << 16);
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:0.0
+                        options:options
+                     animations:^{
+                         self.view.frame = self.originalFrame;
+                     } completion:nil];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    [self endEditing];
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
+{
+    self.editingTag = textField.tag;
     return YES;
 }
 
-- (void)endEditing {
-    [self.view endEditing:YES];
-    CGRect frame = self.view.frame;
-    frame.origin.y = 0;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.view.frame = frame;
-        if (!CGRectEqualToRect(_scrollViewFrame, CGRectNull)) {
-            self.scrollView.frame = _scrollViewFrame;
-        }
-        
-    }];
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField;
+{
+    CGRect frame = self.originalFrame;
+    frame.origin.y -= kTopBarHeight;
+    frame.origin.y -= (self.editingTag - 1) * kTextFieldMoveDistance;
+    
+    [UIView animateWithDuration:0.33
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.view.frame = frame;
+                     } completion:nil];
+    
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+{
     
     if ([[segue identifier] isEqualToString:@"pushRNCartConfirmationViewController"] || [[segue identifier] isEqualToString:@"pushRNCartConfirmationViewControllerFromConfirm"]) {
         //
@@ -128,7 +150,8 @@
 }
 
 
-- (IBAction)cartButtonTapped:(id)sender {
+- (IBAction)cartButtonTapped:(id)sender;
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

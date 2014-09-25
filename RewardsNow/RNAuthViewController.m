@@ -127,7 +127,7 @@
 }
 
 - (BOOL)canSignIn {
-    return [self.usernameTextField.text isNotEmpty] && [self.passwordTextField.text isNotEmpty];
+    return self.usernameTextField.text.length > 0 && self.passwordTextField.text.length > 0;
 }
 
 @end

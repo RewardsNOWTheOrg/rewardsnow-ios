@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 CloudMine LLC. All rights reserved.
 //
 
-#import "CMTextField.h"
-
-@interface RNTextField : CMTextField
+@interface RNTextField : UITextField
 
 @property (nonatomic) BOOL shouldHaveDefaultColor;
+
+@property (nonatomic) UIEdgeInsets textInsets;
 
 @end

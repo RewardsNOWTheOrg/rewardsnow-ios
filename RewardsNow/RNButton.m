@@ -39,7 +39,7 @@
 
 - (UIColor *)darkerColorForColor:(UIColor *)c
 {
-    float r, g, b, a;
+    CGFloat r, g, b, a;
     if ([c getRed:&r green:&g blue:&b alpha:&a])
         return [UIColor colorWithRed:MAX(r - 0.1, 0.0)
                                green:MAX(g - 0.1, 0.0)
@@ -50,8 +50,8 @@
 
 - (void)drawRect:(CGRect)rect {
     
-    UIColor* color6 = [RNBranding sharedBranding] != nil ? [[RNBranding sharedBranding] menuBackgroundColor] : RGB(73, 89, 103);
-    UIColor* color7 = [RNBranding sharedBranding] != nil ? [[RNBranding sharedBranding] pointsColor] : RGB(83, 99, 113);
+    UIColor* color6 = [RNBranding sharedBranding] != nil ? [[RNBranding sharedBranding] menuBackgroundColor] : [UIColor colorWithRed:(73.0 / 255.0) green:(89.0 / 255.0) blue:(103.0 / 255.0) alpha:1.0];
+    UIColor* color7 = [RNBranding sharedBranding] != nil ? [[RNBranding sharedBranding] pointsColor] : [UIColor colorWithRed:(83.0 / 255.0) green:(99.0/255.0) blue:(113.0 / 255.0) alpha:1.0];
     
     self.alpha = self.isEnabled ? 1.0 : 0.5;
     

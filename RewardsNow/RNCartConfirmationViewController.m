@@ -43,7 +43,7 @@
     
     for (NSInteger i = 0; i < _checkoutItems.count; i++) {
         RNCartObject *cartObject = _checkoutItems[i];
-        NSString *title = [[cartObject.redeemObject descriptionName] stringByAppendingFormat:@" x%d", cartObject.count];
+        NSString *title = [[cartObject.redeemObject descriptionName] stringByAppendingFormat:@" x%ld", (long)cartObject.count];
         [self createLabelWithText:title points:[cartObject stringTotalPrice] number:i];
     }
     
@@ -85,7 +85,7 @@
     [_labelView addSubview:left];
     
     UILabel *right = [[UILabel alloc] initWithFrame:CGRectMake(230, 5 + (num * 30), 50, 30)];
-    right.textColor = [UIColor colorWithRed:C(180) green:C(14) blue:C(14) alpha:1.0];
+    right.textColor = [UIColor colorWithRed:(180.0 / 255.0) green:(14.0 / 255.0) blue:(14.0 / 255.0) alpha:1.0];
     right.textAlignment = NSTextAlignmentRight;
     right.adjustsFontSizeToFitWidth = YES;
     right.minimumScaleFactor = 0.5;

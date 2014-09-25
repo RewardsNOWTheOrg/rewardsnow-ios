@@ -11,7 +11,6 @@
 #import "RNUser.h"
 #import "RNGiftCard.h"
 #import "RNConstants.h"
-#import "NSString+Additions.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RNBranding.h"
 #import "RNWebService.h"
@@ -27,7 +26,8 @@
 
 @implementation RNAccountViewController
 
-- (void)brand {
+- (void)brand;
+{
     [super brand];
     
     self.nameLabel.backgroundColor = self.branding.pointsColor;
@@ -40,7 +40,6 @@
     
     self.pointsLabel.backgroundColor = self.branding.pointsColor;
     self.pointsLabel.layer.cornerRadius = 5.0;
-
     
     for (UIButton *button in _skinningButtons) {
         button.backgroundColor = self.branding.pointsColor;
@@ -49,15 +48,40 @@
     
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad;
+{
     [super viewDidLoad];
     self.contentOffset = CGPointZero;
     self.giftCardView.layer.cornerRadius = 5.0;
     self.giftCardButtons = [NSMutableArray array];
+    
+//    self.user = [[RNCart sharedCart] user];
+//    
+//    if (self.user == nil) {
+//        NSString *authName = self.branding == nil ? @"RNAuthNavigationController" : @"RNLoginViewController";
+//        UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:authName];
+//        [self.tabBarController presentViewController:navController animated:NO completion:nil];
+//    }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated;
+{
     [super viewWillAppear:animated];
+    
+    self.user = [[RNCart sharedCart] user];
+    
+    if (self.user == nil) {
+        NSString *authName = self.branding == nil ? @"RNAuthNavigationController" : @"RNLoginViewController";
+        UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:authName];
+        [self.tabBarController presentViewController:navController animated:NO completion:^{
+            
+        }];
+        return;
+    }
+    
+
+    
+
     
     for (UIButton *button in _giftCardButtons) {
         [button removeFromSuperview];
@@ -69,12 +93,6 @@
     }
     
     self.user = [[RNCart sharedCart] user];
-    
-    if (self.user == nil) {
-        NSString *authName = self.branding == nil ? @"RNAuthNavigationController" : @"RNLoginViewController";
-        UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:authName];
-        [self presentViewController:navController animated:NO completion:nil];
-    }
     
     self.nameLabel.text = self.user.fullName;
     [self.emailLabel setTitle:self.user.email forState:UIControlStateNormal];
@@ -129,7 +147,8 @@
     _innerViewHeight.constant = 400 + _giftCardHeightConstraint.constant;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated;
+{
     [super viewDidDisappear:animated];
     
     [self.scrollView setScrollEnabled:YES];
@@ -140,20 +159,17 @@
     self.scrollView.contentOffset = _contentOffset;
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated;
+{
     [super viewDidDisappear:animated];
     self.scrollView.contentOffset = CGPointZero;
     self.contentOffset = self.scrollView.contentOffset;
 }
 
-- (void)viewDidLayoutSubviews {
+- (void)viewDidLayoutSubviews;
+{
     [super viewDidLayoutSubviews];
     self.scrollView.contentOffset = self.contentOffset;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
@@ -165,7 +181,8 @@
     }
 }
 
-- (IBAction)logoutTapped:(id)sender {
+- (IBAction)logoutTapped:(id)sender;
+{
     
     [[RNCart sharedCart] logout];
     [[RNWebService sharedClient] setTipNumber:[[NSUserDefaults standardUserDefaults] objectForKey:BankCodeKey]];
@@ -174,7 +191,8 @@
     [self presentViewController:auth animated:YES completion:nil];
 }
 
-- (void)giftCardTapped:(UIButton *)sender {
+- (void)giftCardTapped:(UIButton *)sender;
+{
     [_user.giftCards[sender.tag] open];
 }
 

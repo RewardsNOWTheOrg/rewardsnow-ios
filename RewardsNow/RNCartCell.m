@@ -21,7 +21,7 @@
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
     if(highlighted) {
-        self.contentView.backgroundColor = [UIColor colorWithRed:C(149) green:C(149) blue:C(149) alpha:.3];
+        self.contentView.backgroundColor = [UIColor colorWithRed:(149.0 / 255.0) green:(149.0 / 255.0) blue:(149.0 / 255.0) alpha:.3];
     } else {
         self.contentView.backgroundColor = [UIColor whiteColor];
     }

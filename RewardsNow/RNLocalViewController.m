@@ -33,7 +33,8 @@
 
 @implementation RNLocalViewController
 
-- (void)brand {
+- (void)brand;
+{
     [super brand];
 }
 
@@ -76,6 +77,7 @@
     
     NSString *title = [NSString stringWithFormat:@"%@ mi", [self.delegate radius]];
     UIBarButtonItem *radius = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
+    radius.tintColor = [UIColor whiteColor];
     _lowerNavigationBar.titleView = searchBar;
     _lowerNavigationBar.rightBarButtonItem = radius;
     
@@ -211,7 +213,11 @@
     if (_popOver == nil) {
         
         RNPopoverViewController *popup = [self.storyboard instantiateViewControllerWithIdentifier:@"RNPopoverViewController"];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         popup.contentSizeForViewInPopover = CGSizeMake(70, 4 * 44);
+#pragma clang diagnostic pop
+
         popup.delegate = self;
         
         self.popOver = [[WEPopoverController alloc] initWithContentViewController:popup];
@@ -247,7 +253,11 @@
 - (void)popoverDidFinishWithIndexPathSelected:(NSIndexPath *)indexPath {
     
     NSString *title = [NSString stringWithFormat:@"%@ mi", [RNConstants radii][indexPath.row]];
-    self.lowerNavigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(radiusBarButtonTapped:)];
+    self.lowerNavigationBar.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title
+                                                                                  style:UIBarButtonItemStyleBordered
+                                                                                 target:self
+                                                                                 action:@selector(radiusBarButtonTapped:)];
+    self.lowerNavigationBar.rightBarButtonItem.tintColor = [UIColor whiteColor];
     [self hidePopover];
     
     [self.delegate refreshDataWithRadius:[RNConstants radii][indexPath.row]];

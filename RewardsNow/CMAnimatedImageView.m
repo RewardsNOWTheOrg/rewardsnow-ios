@@ -1,21 +1,18 @@
 //
-//  RNAnimatedImageView.m
+//  CMAnimatedImageView.m
 //  RewardsNow
 //
-//  Created by Ethan Mick on 5/24/13.
-//  Copyright (c) 2013 CloudMine LLC. All rights reserved.
+//  Created by Ethan Mick on 9/22/14.
+//  Copyright (c) 2014 CloudMine LLC. All rights reserved.
 //
 
-#import "RNAnimatedImageView.h"
-#import <QuartzCore/QuartzCore.h>
+#import "CMAnimatedImageView.h"
 
-@implementation RNAnimatedImageView
+@implementation CMAnimatedImageView
 
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)finished {
     [self removeFromSuperview];
     [[NSNotificationCenter defaultCenter] postNotificationName:kAnimationDidStopNotification object:self];
 }
-
-
 
 @end

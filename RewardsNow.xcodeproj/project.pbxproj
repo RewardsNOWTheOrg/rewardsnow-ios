@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0D2B1C19D064C700E79C4C /* CMAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0D2B1B19D064C700E79C4C /* CMAnimatedImageView.m */; };
 		AA2493EF1731B701005B29E5 /* RNLocalDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2493EE1731B701005B29E5 /* RNLocalDeal.m */; };
 		AA2493F11731B881005B29E5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2493F01731B881005B29E5 /* CoreLocation.framework */; };
 		AA2E3EDB1718BCC6005ACE36 /* RNAccountStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EDA1718BCC6005ACE36 /* RNAccountStatement.m */; };
@@ -49,9 +50,7 @@
 		AA355A6A172199DD0014E01B /* divider-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A68172199DD0014E01B /* divider-line@2x.png */; };
 		AA458D911772118E00B906A7 /* RNLeftArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AA458D901772118E00B906A7 /* RNLeftArrow.m */; };
 		AA458D9417723A6400B906A7 /* RNRightArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AA458D9317723A6400B906A7 /* RNRightArrow.m */; };
-		AA458DA81772592E00B906A7 /* libCMUtilities-Combined.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA458D9A1772592E00B906A7 /* libCMUtilities-Combined.a */; };
-		AA458DA91772592E00B906A7 /* NBPhoneNumberMetadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA458DA11772592E00B906A7 /* NBPhoneNumberMetadata.plist */; };
-		AA458DAA1772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA458DA21772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist */; };
+		AA51FF3719D07997008E361D /* RNLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA51FF3619D07997008E361D /* RNLabel.m */; };
 		AA53FE34170F5D6A00041748 /* RNRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */; };
 		AA53FE37170F5D7E00041748 /* RNRedeemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */; };
 		AA53FE3B170F5D9200041748 /* RNLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA53FE3A170F5D9200041748 /* RNLocalViewController.m */; };
@@ -162,7 +161,6 @@
 		AAD973551725C58200171240 /* account-point-divider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD973531725C58200171240 /* account-point-divider@2x.png */; };
 		AAD973581725DB2E00171240 /* NSDate+Reporting.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD973571725DB2E00171240 /* NSDate+Reporting.m */; };
 		AAD9735B1726D6F300171240 /* RNAccountStatementDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD9735A1726D6F300171240 /* RNAccountStatementDetailView.m */; };
-		AADD7887174FC5790070EE9C /* RNAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADD7886174FC5770070EE9C /* RNAnimatedImageView.m */; };
 		AADD7889174FD1620070EE9C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AADD7888174FD15C0070EE9C /* MessageUI.framework */; };
 		AAE2BBB4174A713A001CAFA1 /* RNLocalFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2BBB3174A713A001CAFA1 /* RNLocalFilterViewController.m */; };
 		AAE2BBC3174AB675001CAFA1 /* RNProgramInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2BBC2174AB675001CAFA1 /* RNProgramInfo.m */; };
@@ -182,6 +180,8 @@
 
 /* Begin PBXFileReference section */
 		68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		AA0D2B1A19D064C700E79C4C /* CMAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMAnimatedImageView.h; sourceTree = "<group>"; };
+		AA0D2B1B19D064C700E79C4C /* CMAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMAnimatedImageView.m; sourceTree = "<group>"; };
 		AA2493ED1731B701005B29E5 /* RNLocalDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLocalDeal.h; sourceTree = "<group>"; };
 		AA2493EE1731B701005B29E5 /* RNLocalDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLocalDeal.m; sourceTree = "<group>"; };
 		AA2493F01731B881005B29E5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -234,25 +234,8 @@
 		AA458D901772118E00B906A7 /* RNLeftArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLeftArrow.m; sourceTree = "<group>"; };
 		AA458D9217723A6300B906A7 /* RNRightArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRightArrow.h; sourceTree = "<group>"; };
 		AA458D9317723A6400B906A7 /* RNRightArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRightArrow.m; sourceTree = "<group>"; };
-		AA458D951772592E00B906A7 /* CMAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMAnimatedImageView.h; sourceTree = "<group>"; };
-		AA458D961772592E00B906A7 /* CMLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLabel.h; sourceTree = "<group>"; };
-		AA458D971772592E00B906A7 /* CMPhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPhoneNumberFormatter.h; sourceTree = "<group>"; };
-		AA458D981772592E00B906A7 /* CMTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMTextField.h; sourceTree = "<group>"; };
-		AA458D991772592E00B906A7 /* CMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMUtilities.h; sourceTree = "<group>"; };
-		AA458D9A1772592E00B906A7 /* libCMUtilities-Combined.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCMUtilities-Combined.a"; sourceTree = "<group>"; };
-		AA458D9B1772592E00B906A7 /* NBNumberFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBNumberFormat.h; sourceTree = "<group>"; };
-		AA458D9C1772592E00B906A7 /* NBPhoneMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaData.h; sourceTree = "<group>"; };
-		AA458D9D1772592E00B906A7 /* NBPhoneMetaDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaDataGenerator.h; sourceTree = "<group>"; };
-		AA458D9E1772592E00B906A7 /* NBPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumber.h; sourceTree = "<group>"; };
-		AA458D9F1772592E00B906A7 /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDefines.h; sourceTree = "<group>"; };
-		AA458DA01772592E00B906A7 /* NBPhoneNumberDesc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDesc.h; sourceTree = "<group>"; };
-		AA458DA11772592E00B906A7 /* NBPhoneNumberMetadata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadata.plist; sourceTree = "<group>"; };
-		AA458DA21772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadataForTesting.plist; sourceTree = "<group>"; };
-		AA458DA31772592E00B906A7 /* NBPhoneNumberUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberUtil.h; sourceTree = "<group>"; };
-		AA458DA41772592E00B906A7 /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Additions.h"; sourceTree = "<group>"; };
-		AA458DA51772592E00B906A7 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
-		AA458DA61772592E00B906A7 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
-		AA458DA71772592E00B906A7 /* UIImage+additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+additions.h"; sourceTree = "<group>"; };
+		AA51FF3519D07997008E361D /* RNLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLabel.h; sourceTree = "<group>"; };
+		AA51FF3619D07997008E361D /* RNLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLabel.m; sourceTree = "<group>"; };
 		AA53FE32170F5D6A00041748 /* RNRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemViewController.h; sourceTree = "<group>"; };
 		AA53FE33170F5D6A00041748 /* RNRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRedeemViewController.m; sourceTree = "<group>"; };
 		AA53FE35170F5D7E00041748 /* RNRedeemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRedeemDetailViewController.h; sourceTree = "<group>"; };
@@ -372,6 +355,7 @@
 		AA9FB23E1758030B00B83B98 /* input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input@2x.png"; sourceTree = "<group>"; };
 		AA9FB2431759050E00B83B98 /* RNSkinableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSkinableViewController.h; sourceTree = "<group>"; };
 		AA9FB2441759050E00B83B98 /* RNSkinableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSkinableViewController.m; sourceTree = "<group>"; };
+		AAAE3A6F19D35CEB00D2DE38 /* DefaultLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DefaultLocation.gpx; sourceTree = "<group>"; };
 		AAC191661762865300E08FD2 /* RNPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPopoverViewController.h; sourceTree = "<group>"; };
 		AAC191671762865300E08FD2 /* RNPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPopoverViewController.m; sourceTree = "<group>"; };
 		AAC806B7176A835100BE9F72 /* RNTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTextField.h; sourceTree = "<group>"; };
@@ -407,8 +391,6 @@
 		AAD973571725DB2E00171240 /* NSDate+Reporting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Reporting.m"; sourceTree = "<group>"; };
 		AAD973591726D6F200171240 /* RNAccountStatementDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAccountStatementDetailView.h; sourceTree = "<group>"; };
 		AAD9735A1726D6F300171240 /* RNAccountStatementDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAccountStatementDetailView.m; sourceTree = "<group>"; };
-		AADD7885174FC5760070EE9C /* RNAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAnimatedImageView.h; sourceTree = "<group>"; };
-		AADD7886174FC5770070EE9C /* RNAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAnimatedImageView.m; sourceTree = "<group>"; };
 		AADD7888174FD15C0070EE9C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		AAE2BBB2174A713A001CAFA1 /* RNLocalFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLocalFilterViewController.h; sourceTree = "<group>"; };
 		AAE2BBB3174A713A001CAFA1 /* RNLocalFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLocalFilterViewController.m; sourceTree = "<group>"; };
@@ -436,7 +418,6 @@
 				AA5510A4170F10A3001CC718 /* Foundation.framework in Frameworks */,
 				AA5510A6170F10A3001CC718 /* CoreGraphics.framework in Frameworks */,
 				BEE78D9760F24F3DB6FAB95F /* libPods.a in Frameworks */,
-				AA458DA81772592E00B906A7 /* libCMUtilities-Combined.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +646,7 @@
 				AA5510AA170F10A3001CC718 /* InfoPlist.strings */,
 				AA5510AD170F10A3001CC718 /* main.m */,
 				AA5510AF170F10A3001CC718 /* RewardsNow-Prefix.pch */,
+				AAAE3A6F19D35CEB00D2DE38 /* DefaultLocation.gpx */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -773,12 +755,16 @@
 				AA9FB2441759050E00B83B98 /* RNSkinableViewController.m */,
 				AAC806B7176A835100BE9F72 /* RNTextField.h */,
 				AAC806B8176A835100BE9F72 /* RNTextField.m */,
+				AA51FF3519D07997008E361D /* RNLabel.h */,
+				AA51FF3619D07997008E361D /* RNLabel.m */,
 				AAC806BA176A851000BE9F72 /* RNButton.h */,
 				AAC806BB176A851000BE9F72 /* RNButton.m */,
 				AA458D8F1772118E00B906A7 /* RNLeftArrow.h */,
 				AA458D901772118E00B906A7 /* RNLeftArrow.m */,
 				AA458D9217723A6300B906A7 /* RNRightArrow.h */,
 				AA458D9317723A6400B906A7 /* RNRightArrow.m */,
+				AA0D2B1A19D064C700E79C4C /* CMAnimatedImageView.h */,
+				AA0D2B1B19D064C700E79C4C /* CMAnimatedImageView.m */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -803,8 +789,6 @@
 				AA53FE36170F5D7E00041748 /* RNRedeemDetailViewController.m */,
 				AA53FE7B170F78D900041748 /* RNRedeemCell.h */,
 				AA53FE7C170F78D900041748 /* RNRedeemCell.m */,
-				AADD7885174FC5760070EE9C /* RNAnimatedImageView.h */,
-				AADD7886174FC5770070EE9C /* RNAnimatedImageView.m */,
 			);
 			name = Redeem;
 			sourceTree = "<group>";
@@ -822,7 +806,6 @@
 			isa = PBXGroup;
 			children = (
 				AAD3A9A0175CF60B00E5392E /* WEPopover */,
-				AAE2BBC0174AB560001CAFA1 /* CMUtilities */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -893,32 +876,6 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		AAE2BBC0174AB560001CAFA1 /* CMUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				AA458D951772592E00B906A7 /* CMAnimatedImageView.h */,
-				AA458D961772592E00B906A7 /* CMLabel.h */,
-				AA458D971772592E00B906A7 /* CMPhoneNumberFormatter.h */,
-				AA458D981772592E00B906A7 /* CMTextField.h */,
-				AA458D991772592E00B906A7 /* CMUtilities.h */,
-				AA458D9A1772592E00B906A7 /* libCMUtilities-Combined.a */,
-				AA458D9B1772592E00B906A7 /* NBNumberFormat.h */,
-				AA458D9C1772592E00B906A7 /* NBPhoneMetaData.h */,
-				AA458D9D1772592E00B906A7 /* NBPhoneMetaDataGenerator.h */,
-				AA458D9E1772592E00B906A7 /* NBPhoneNumber.h */,
-				AA458D9F1772592E00B906A7 /* NBPhoneNumberDefines.h */,
-				AA458DA01772592E00B906A7 /* NBPhoneNumberDesc.h */,
-				AA458DA11772592E00B906A7 /* NBPhoneNumberMetadata.plist */,
-				AA458DA21772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist */,
-				AA458DA31772592E00B906A7 /* NBPhoneNumberUtil.h */,
-				AA458DA41772592E00B906A7 /* NSArray+Additions.h */,
-				AA458DA51772592E00B906A7 /* NSString+Additions.h */,
-				AA458DA61772592E00B906A7 /* UIColor+Additions.h */,
-				AA458DA71772592E00B906A7 /* UIImage+additions.h */,
-			);
-			name = CMUtilities;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -958,7 +915,7 @@
 			name = RewardsNowTests;
 			productName = RewardsNowTests;
 			productReference = AA5510CF170F10A3001CC718 /* RewardsNowTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1078,8 +1035,6 @@
 				AAD3A9B2175CF63000E5392E /* popoverArrowUp@2x.png in Resources */,
 				AAD3A9B3175CF63000E5392E /* popoverBg.png in Resources */,
 				AAD3A9B4175CF63000E5392E /* popoverBg@2x.png in Resources */,
-				AA458DA91772592E00B906A7 /* NBPhoneNumberMetadata.plist in Resources */,
-				AA458DAA1772592E00B906A7 /* NBPhoneNumberMetadataForTesting.plist in Resources */,
 				AA84274A17EB2EAD0086F1FE /* RNI logo 57 x 57.png in Resources */,
 				AA84274C17EB2EB50086F1FE /* RNI logo 114 x 114.png in Resources */,
 			);
@@ -1144,6 +1099,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA51FF3719D07997008E361D /* RNLabel.m in Sources */,
 				AA5510AE170F10A3001CC718 /* main.m in Sources */,
 				AA5510B2170F10A3001CC718 /* RNAppDelegate.m in Sources */,
 				AA53FE34170F5D6A00041748 /* RNRedeemViewController.m in Sources */,
@@ -1177,6 +1133,7 @@
 				AA355A5E1720ACFA0014E01B /* RNCart.m in Sources */,
 				AA5DF36217231B2D0093B7AC /* RNPreAuthViewController.m in Sources */,
 				AAD973581725DB2E00171240 /* NSDate+Reporting.m in Sources */,
+				AA0D2B1C19D064C700E79C4C /* CMAnimatedImageView.m in Sources */,
 				AAD9735B1726D6F300171240 /* RNAccountStatementDetailView.m in Sources */,
 				AA2493EF1731B701005B29E5 /* RNLocalDeal.m in Sources */,
 				AA5FBD4517386C87008B40BA /* RNCartCell.m in Sources */,
@@ -1186,7 +1143,6 @@
 				AAE2BBB4174A713A001CAFA1 /* RNLocalFilterViewController.m in Sources */,
 				AAE2BBC3174AB675001CAFA1 /* RNProgramInfo.m in Sources */,
 				AA9D05AE174ABD3000739BA8 /* RNAboutContactViewController.m in Sources */,
-				AADD7887174FC5790070EE9C /* RNAnimatedImageView.m in Sources */,
 				AA9FB20A1754FCDE00B83B98 /* RNCartObject.m in Sources */,
 				AA9FB2111755509200B83B98 /* RNCategory.m in Sources */,
 				AA9FB2451759050E00B83B98 /* RNSkinableViewController.m in Sources */,
@@ -1312,14 +1268,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
 				INFOPLIST_FILE = "RewardsNow/RewardsNow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RewardsNow\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A7AE7D87-563D-499C-ADEA-336B97AD0164";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A7AE7D87-563D-499C-ADEA-336B97AD0164";
+				PROVISIONING_PROFILE = "6ef8a177-52d0-4112-9651-7d96337795f7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6ef8a177-52d0-4112-9651-7d96337795f7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1328,19 +1284,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68BFD101FD1C4C81A40FF170 /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: RewardsNOW,  Inc. (Z3K2J9XMAA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: RewardsNOW,  Inc. (Z3K2J9XMAA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CloudMine LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CloudMine LLC";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RewardsNow/RewardsNow-Prefix.pch";
 				INFOPLIST_FILE = "RewardsNow/RewardsNow-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/RewardsNow\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D41E5513-4CC1-41FC-8AA9-38105856AB91";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D41E5513-4CC1-41FC-8AA9-38105856AB91";
+				PROVISIONING_PROFILE = "64d90998-4840-43b5-bf9f-ab29bd715880";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "64d90998-4840-43b5-bf9f-ab29bd715880";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

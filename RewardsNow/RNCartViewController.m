@@ -145,7 +145,7 @@
 
 - (IBAction)stepperChanged:(UIStepper *)sender {
     RNCartCell *cell = (RNCartCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
-    cell.textView.text = [NSString stringWithFormat:@"%d", (NSInteger)sender.value];
+    cell.textView.text = [NSString stringWithFormat:@"%ld", (long)sender.value];
     [_cart.items[sender.tag] setCount:sender.value];
     [self updatePriceLabels];
 }
@@ -169,7 +169,7 @@
     [cell.cellImageView setImageWithURL:[NSURL URLWithString:[[co.redeemObject imageURL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     cell.stepper.value = co.count;
     cell.stepper.tag = indexPath.row;
-    cell.textView.text = [NSString stringWithFormat:@"%d", co.count];
+    cell.textView.text = [NSString stringWithFormat:@"%ld", (long)co.count];
     cell.textView.tag = indexPath.row;
     
     return cell;
@@ -227,7 +227,6 @@
             // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
             // 2. increase the size of the view so that the area behind the keyboard is covered up.
             rect.size.height -= (keyboardHeight + topMovement);
-            DLog(@"Changed: %d", keyboardHeight);
             frame.origin.y = topMovement;
         } else {
             [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] getValue:&keyboardFrame];

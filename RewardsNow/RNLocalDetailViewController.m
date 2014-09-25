@@ -11,7 +11,6 @@
 #import "RNLocalDeal.h"
 #import "UIImageView+AFNetworking.h"
 #import "RNAnnotation.h"
-#import "CMLabel.h"
 #import "RNConstants.h"
 #import "RNBranding.h"
 #import <QuartzCore/QuartzCore.h>
@@ -23,20 +22,43 @@
 
 @property (nonatomic) BOOL hasFinishedLoadingMap;
 @property (nonatomic, copy) NSArray *cellRows;
+@property (nonatomic, strong) RNBranding *branding;
 
 @end
 
 @implementation RNLocalDetailViewController
 
-- (void)brand {
-    [super brand];
+- (void)brand;
+{
     self.lowerInnerView.backgroundColor = self.branding.backgroundColor;
     self.lowerUpperLabel.backgroundColor = self.branding.pointsColor;
-    
     self.tableView.backgroundColor = self.branding.backgroundColor;
+    
+    self.view.backgroundColor = _branding.commonBackgroundColor;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    [self.tabBarController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: _branding.tabBarTextColor}
+                                                    forState:UIControlStateNormal];
+    [self.tabBarController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: _branding.tabBarTextColor}
+                                                    forState:UIControlStateNormal];
+    
+    if ([self respondsToSelector:@selector(innerView)]) {
+        [[self performSelector:@selector(innerView)] setBackgroundColor:_branding.commonBackgroundColor];
+    }
+    
+    if ([self respondsToSelector:@selector(topPointsLabel)]) {
+        [[self performSelector:@selector(topPointsLabel)] setBackgroundColor:_branding.pointsColor];
+        //        [[self performSelector:@selector(topPointsLabel)] setTextColor:_branding.pointsColor];
+    }
+
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad;
+{
+    if ( (self.branding = [RNBranding sharedBranding]) ) {
+        [self brand];
+    }
+    
     [super viewDidLoad];
     self.hasFinishedLoadingMap = NO;
     
@@ -55,7 +77,7 @@
     
     NSMutableArray *rows = [NSMutableArray array];
     
-    if (_deal.website != nil && [_deal.website.absoluteString isNotEmpty]) {
+    if (_deal.website != nil && _deal.website.absoluteString.length > 0) {
         [rows addObject:@{@"title": [NSString stringWithFormat:@"Visit: %@", _deal.website.absoluteString], @"action" : ^{
             if (![[UIApplication sharedApplication] openURL:_deal.website]) {NSLog(@"Failed to open url.");}
             }
@@ -69,7 +91,7 @@
          }];
     }
     
-    if ([_deal.additionalInformation isNotEmpty]) {
+    if (_deal.additionalInformation.length > 0) {
         [rows addObject:@{@"title": @"Additional Information", @"action" : ^{
             RNLocalAdditionalViewController *more = [self.storyboard instantiateViewControllerWithIdentifier:@"RNLocalAdditionalViewController"];
             more.deal = _deal;
@@ -81,53 +103,37 @@
     self.cellRows = rows;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    _descriptionHeight.constant = 50;
-    [self updateViewConstraints];
-    [self.view layoutSubviews];
-}
-
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    
-    _lowerUpperLabel.frame = CGRectMake(10, 6, 295, 20);
-    _descriptionHeight.constant = _lowerUpperLabel.contentSize.height;
-    _tableViewHeight.constant = _cellRows.count * (_tableView.rowHeight + 6);
-    self.lowerInnerViewHeight.constant = _descriptionHeight.constant + 180 + (_cellRows.count * 44);
-    [self.view layoutIfNeeded];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self.scrollView setScrollEnabled:YES];
-    CGSize size = _scrollView.contentSize;
-    size.height = _lowerInnerView.frame.origin.y + _lowerInnerView.frame.size.height;
-    [self.scrollView setContentSize:size];
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        [self updateMapView];
+- (void)viewWillLayoutSubviews;
+{
+    [super viewWillLayoutSubviews];
+    CGRect newFrame = self.lowerInnerView.frame;
+    newFrame.size.height = self.upperViewHeight.constant + _lowerUpperLabel.frame.size.height + _mapHeight.constant + 30;
+    if (self.lowerInnerView.frame.size.height != newFrame.size.height) {
+        self.lowerInnerView.frame = newFrame;
+        [self.tableView setTableHeaderView:self.lowerInnerView];
     }
-
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    self.scrollView.contentOffset = CGPointZero;
+- (void)viewDidAppear:(BOOL)animated;
+{
+    [super viewDidAppear:animated];
+    [self updateMapView];
 }
 
-- (IBAction)directionsTapped:(id)sender {
+- (IBAction)directionsTapped:(id)sender;
+{
     [_deal openInMaps];
 }
 
 #pragma mark - UITableView Methods
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+{
     return _cellRows.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
     
     NSString *CellIdentifier = @"LocalDealDetailCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -137,16 +143,20 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     void (^action)(void) = _cellRows[indexPath.row][@"action"];
-    action();
+    if (action) {
+        action();
+    }
 }
 
 #pragma mark - MKMapViewDelegate
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation {
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation;
+{
     
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
@@ -177,11 +187,13 @@
     return nil;
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control;
+{
     [((RNAnnotation *)view.annotation).deal openInMaps];
 }
 
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView;
+{
     [self updateMapView];
 }
 
@@ -194,8 +206,8 @@
     }
 }
 
-- (void)placeAnnotationAtLocation:(CLLocationCoordinate2D)location {
-    
+- (void)placeAnnotationAtLocation:(CLLocationCoordinate2D)location;
+{
     RNAnnotation *annotation = [[RNAnnotation alloc] init];
     annotation.coordinate = location;
     annotation.title = _deal.businessName;
