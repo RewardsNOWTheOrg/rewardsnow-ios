@@ -153,6 +153,8 @@
 		AAD3A9B4175CF63000E5392E /* popoverBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD3A9AA175CF63000E5392E /* popoverBg@2x.png */; };
 		AAD3A9B9175CF64900E5392E /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD3A9B6175CF64900E5392E /* WEPopoverContainerView.m */; };
 		AAD3A9BA175CF64900E5392E /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD3A9B8175CF64900E5392E /* WEPopoverController.m */; };
+		AAD68BF319D4801200179E03 /* branding.json in Resources */ = {isa = PBXBuildFile; fileRef = AAD68BF119D4801200179E03 /* branding.json */; };
+		AAD68BF719D4808800179E03 /* 271header.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAD68BF619D4808800179E03 /* 271header.jpg */; };
 		AAD9734E1725C48E00171240 /* account-back.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734A1725C48E00171240 /* account-back.png */; };
 		AAD9734F1725C48E00171240 /* account-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734B1725C48E00171240 /* account-back@2x.png */; };
 		AAD973501725C48E00171240 /* account-forward.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD9734C1725C48E00171240 /* account-forward.png */; };
@@ -381,6 +383,8 @@
 		AAD3A9B7175CF64900E5392E /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
 		AAD3A9B8175CF64900E5392E /* WEPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverController.m; sourceTree = "<group>"; };
 		AAD3A9BB175CF6D300E5392E /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
+		AAD68BF119D4801200179E03 /* branding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = branding.json; sourceTree = "<group>"; };
+		AAD68BF619D4808800179E03 /* 271header.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 271header.jpg; sourceTree = "<group>"; };
 		AAD9734A1725C48E00171240 /* account-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-back.png"; sourceTree = "<group>"; };
 		AAD9734B1725C48E00171240 /* account-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-back@2x.png"; sourceTree = "<group>"; };
 		AAD9734C1725C48E00171240 /* account-forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account-forward.png"; sourceTree = "<group>"; };
@@ -637,6 +641,7 @@
 			isa = PBXGroup;
 			children = (
 				AA5510E7170F1134001CC718 /* Images */,
+				AAD68BF519D4806300179E03 /* Branding */,
 				AA5510A9170F10A3001CC718 /* RewardsNow-Info.plist */,
 				AA84274B17EB2EB50086F1FE /* RNI logo 114 x 114.png */,
 				AA84274917EB2EAD0086F1FE /* RNI logo 57 x 57.png */,
@@ -841,6 +846,15 @@
 			name = WEPopover;
 			sourceTree = "<group>";
 		};
+		AAD68BF519D4806300179E03 /* Branding */ = {
+			isa = PBXGroup;
+			children = (
+				AAD68BF619D4808800179E03 /* 271header.jpg */,
+				AAD68BF119D4801200179E03 /* branding.json */,
+			);
+			name = Branding;
+			sourceTree = "<group>";
+		};
 		AAD9735C1726DBC900171240 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -984,6 +998,7 @@
 				AA355A65172199240014E01B /* red-button.png in Resources */,
 				AA355A66172199240014E01B /* red-button@2x.png in Resources */,
 				AA355A69172199DD0014E01B /* divider-line.png in Resources */,
+				AAD68BF319D4801200179E03 /* branding.json in Resources */,
 				AA355A6A172199DD0014E01B /* divider-line@2x.png in Resources */,
 				AA9020C01725AE6D0074B857 /* 37x-Checkmark.png in Resources */,
 				AA9020C11725AE6D0074B857 /* 37x-Checkmark@2x.png in Resources */,
@@ -1015,6 +1030,7 @@
 				AA5FBD4B1738A9D8008B40BA /* dark-grey-divider.png in Resources */,
 				AA9B9A801742D45900EA5E33 /* grey-button.png in Resources */,
 				AA9B9A811742D45900EA5E33 /* grey-button@2x.png in Resources */,
+				AAD68BF719D4808800179E03 /* 271header.jpg in Resources */,
 				AA9B9A841742D89800EA5E33 /* grey-hard-button.png in Resources */,
 				AA9B9A851742D89800EA5E33 /* grey-hard-button@2x.png in Resources */,
 				AA9FB20D1755356C00B83B98 /* Green-Plus-Down.png in Resources */,

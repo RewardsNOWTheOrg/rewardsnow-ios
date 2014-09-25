@@ -17,7 +17,6 @@ NSString *const RNBrandingPersistenceKey = @"com.rewardsnow.RNBrandingPersistenc
 @implementation RNBranding
 
 static RNBranding *_sharedBranding;
-static bool triedToLoadOnce;
 
 + (instancetype)sharedBrandingFromDictionary:(NSDictionary *)dictionary {
     
@@ -39,18 +38,19 @@ static bool triedToLoadOnce;
     return _sharedBranding;
 }
 
-+ (instancetype)sharedBranding {
-    
-    if (_sharedBranding == nil && !triedToLoadOnce) {
-        id object = [[NSUserDefaults standardUserDefaults] objectForKey:RNBrandingPersistenceKey];
-        _sharedBranding = [NSKeyedUnarchiver unarchiveObjectWithData:object];
-        triedToLoadOnce = true;
++ (instancetype)sharedBranding;
+{
+    if (!_sharedBranding) {
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"branding" ofType:@"json"];
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        [self sharedBrandingFromDictionary:json];
     }
-    
     return _sharedBranding;
 }
 
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
++ (NSDictionary *)JSONKeyPathsByPropertyKey;
+{
     
     NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithDictionary:[super JSONKeyPathsByPropertyKey]];
     [fields setValue:@"css_background_color" forKey:@"backgroundColor"];
@@ -63,7 +63,8 @@ static bool triedToLoadOnce;
     return fields;
 }
 
-+ (MTLValueTransformer *)RGBColorTransformer {
++ (MTLValueTransformer *)RGBColorTransformer;
+{
     return [MTLValueTransformer transformerWithBlock:^id(NSString *string) {
         
         NSCharacterSet *extraChars = [NSCharacterSet characterSetWithCharactersInString:@"rgb()"];
