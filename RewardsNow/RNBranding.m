@@ -41,6 +41,10 @@ static RNBranding *_sharedBranding;
 + (instancetype)sharedBranding;
 {
     if (!_sharedBranding) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@"271" forKey:BankCodeKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"branding" ofType:@"json"];
         NSData *data = [NSData dataWithContentsOfFile:filePath];
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
