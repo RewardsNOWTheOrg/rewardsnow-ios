@@ -28,9 +28,6 @@
 		AA2FF32017273CC100E4FB26 /* blue-arrow-button.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2FF31E17273CC100E4FB26 /* blue-arrow-button.png */; };
 		AA2FF32117273CC100E4FB26 /* blue-arrow-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2FF31F17273CC100E4FB26 /* blue-arrow-button@2x.png */; };
 		AA31021D1720782000E44D44 /* RNAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA31021C1720782000E44D44 /* RNAuthViewController.m */; };
-		AA31021F17207F3000E44D44 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31021E17207F3000E44D44 /* Default-568h@2x.png */; };
-		AA31022117207F4300E44D44 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31022017207F4300E44D44 /* Default@2x.png */; };
-		AA31022317207F4700E44D44 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA31022217207F4700E44D44 /* Default.png */; };
 		AA31022617207FD100E44D44 /* RNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA31022517207FD100E44D44 /* RNUser.m */; };
 		AA31022A172080EC00E44D44 /* auth-textfield-background.png in Resources */ = {isa = PBXBuildFile; fileRef = AA310228172080EC00E44D44 /* auth-textfield-background.png */; };
 		AA31022B172080EC00E44D44 /* auth-textfield-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA310229172080EC00E44D44 /* auth-textfield-background@2x.png */; };
@@ -48,6 +45,9 @@
 		AA355A66172199240014E01B /* red-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A64172199240014E01B /* red-button@2x.png */; };
 		AA355A69172199DD0014E01B /* divider-line.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A67172199DD0014E01B /* divider-line.png */; };
 		AA355A6A172199DD0014E01B /* divider-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA355A68172199DD0014E01B /* divider-line@2x.png */; };
+		AA3E949D19E341EC00A42AF5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3E949A19E341EC00A42AF5 /* Default-568h@2x.png */; };
+		AA3E949E19E341EC00A42AF5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3E949B19E341EC00A42AF5 /* Default.png */; };
+		AA3E949F19E341EC00A42AF5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3E949C19E341EC00A42AF5 /* Default@2x.png */; };
 		AA458D911772118E00B906A7 /* RNLeftArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AA458D901772118E00B906A7 /* RNLeftArrow.m */; };
 		AA458D9417723A6400B906A7 /* RNRightArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = AA458D9317723A6400B906A7 /* RNRightArrow.m */; };
 		AA51FF3719D07997008E361D /* RNLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA51FF3619D07997008E361D /* RNLabel.m */; };
@@ -209,9 +209,6 @@
 		AA2FF31F17273CC100E4FB26 /* blue-arrow-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-arrow-button@2x.png"; sourceTree = "<group>"; };
 		AA31021B1720782000E44D44 /* RNAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAuthViewController.h; sourceTree = "<group>"; };
 		AA31021C1720782000E44D44 /* RNAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAuthViewController.m; sourceTree = "<group>"; };
-		AA31021E17207F3000E44D44 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		AA31022017207F4300E44D44 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
-		AA31022217207F4700E44D44 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		AA31022417207FD100E44D44 /* RNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNUser.h; sourceTree = "<group>"; };
 		AA31022517207FD100E44D44 /* RNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNUser.m; sourceTree = "<group>"; };
 		AA310228172080EC00E44D44 /* auth-textfield-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auth-textfield-background.png"; sourceTree = "<group>"; };
@@ -232,6 +229,9 @@
 		AA355A64172199240014E01B /* red-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-button@2x.png"; sourceTree = "<group>"; };
 		AA355A67172199DD0014E01B /* divider-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "divider-line.png"; sourceTree = "<group>"; };
 		AA355A68172199DD0014E01B /* divider-line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "divider-line@2x.png"; sourceTree = "<group>"; };
+		AA3E949A19E341EC00A42AF5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AA3E949B19E341EC00A42AF5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AA3E949C19E341EC00A42AF5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AA458D8F1772118E00B906A7 /* RNLeftArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNLeftArrow.h; sourceTree = "<group>"; };
 		AA458D901772118E00B906A7 /* RNLeftArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNLeftArrow.m; sourceTree = "<group>"; };
 		AA458D9217723A6300B906A7 /* RNRightArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRightArrow.h; sourceTree = "<group>"; };
@@ -645,9 +645,9 @@
 				AA5510A9170F10A3001CC718 /* RewardsNow-Info.plist */,
 				AA84274B17EB2EB50086F1FE /* RNI logo 114 x 114.png */,
 				AA84274917EB2EAD0086F1FE /* RNI logo 57 x 57.png */,
-				AA31022217207F4700E44D44 /* Default.png */,
-				AA31022017207F4300E44D44 /* Default@2x.png */,
-				AA31021E17207F3000E44D44 /* Default-568h@2x.png */,
+				AA3E949A19E341EC00A42AF5 /* Default-568h@2x.png */,
+				AA3E949B19E341EC00A42AF5 /* Default.png */,
+				AA3E949C19E341EC00A42AF5 /* Default@2x.png */,
 				AA5510AA170F10A3001CC718 /* InfoPlist.strings */,
 				AA5510AD170F10A3001CC718 /* main.m */,
 				AA5510AF170F10A3001CC718 /* RewardsNow-Prefix.pch */,
@@ -976,15 +976,13 @@
 				AA53FE74170F736800041748 /* cart-empty@2x.png in Resources */,
 				AA53FE75170F736800041748 /* cart-full.png in Resources */,
 				AA53FE76170F736800041748 /* cart-full@2x.png in Resources */,
+				AA3E949F19E341EC00A42AF5 /* Default@2x.png in Resources */,
 				AA53FE79170F741600041748 /* navbar-background.png in Resources */,
 				AA53FE7A170F741600041748 /* navbar-background@2x.png in Resources */,
 				AA53FEAE170F937A00041748 /* about.png in Resources */,
 				AA53FEAF170F937A00041748 /* about@2x.png in Resources */,
 				AA53FEB0170F937A00041748 /* account.png in Resources */,
 				AA53FEB1170F937A00041748 /* account@2x.png in Resources */,
-				AA31021F17207F3000E44D44 /* Default-568h@2x.png in Resources */,
-				AA31022117207F4300E44D44 /* Default@2x.png in Resources */,
-				AA31022317207F4700E44D44 /* Default.png in Resources */,
 				AA31022A172080EC00E44D44 /* auth-textfield-background.png in Resources */,
 				AA31022B172080EC00E44D44 /* auth-textfield-background@2x.png in Resources */,
 				AA31022E1720816800E44D44 /* rewardsnow-logo.png in Resources */,
@@ -1002,6 +1000,7 @@
 				AA355A6A172199DD0014E01B /* divider-line@2x.png in Resources */,
 				AA9020C01725AE6D0074B857 /* 37x-Checkmark.png in Resources */,
 				AA9020C11725AE6D0074B857 /* 37x-Checkmark@2x.png in Resources */,
+				AA3E949D19E341EC00A42AF5 /* Default-568h@2x.png in Resources */,
 				AAD9734E1725C48E00171240 /* account-back.png in Resources */,
 				AAD9734F1725C48E00171240 /* account-back@2x.png in Resources */,
 				AAD973501725C48E00171240 /* account-forward.png in Resources */,
@@ -1009,6 +1008,7 @@
 				AAD973541725C58200171240 /* account-point-divider.png in Resources */,
 				AAD973551725C58200171240 /* account-point-divider@2x.png in Resources */,
 				AA2FF3121727397700E4FB26 /* cart-nav.png in Resources */,
+				AA3E949E19E341EC00A42AF5 /* Default.png in Resources */,
 				AA2FF3131727397700E4FB26 /* cart-nav@2x.png in Resources */,
 				AA2FF3141727397700E4FB26 /* cart-nav-depressed.png in Resources */,
 				AA2FF3151727397700E4FB26 /* cart-nav-depressed@2x.png in Resources */,
