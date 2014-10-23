@@ -54,14 +54,6 @@
     self.contentOffset = CGPointZero;
     self.giftCardView.layer.cornerRadius = 5.0;
     self.giftCardButtons = [NSMutableArray array];
-    
-//    self.user = [[RNCart sharedCart] user];
-//    
-//    if (self.user == nil) {
-//        NSString *authName = self.branding == nil ? @"RNAuthNavigationController" : @"RNLoginViewController";
-//        UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:authName];
-//        [self.tabBarController presentViewController:navController animated:NO completion:nil];
-//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated;
@@ -169,7 +161,10 @@
 - (void)viewDidLayoutSubviews;
 {
     [super viewDidLayoutSubviews];
-    self.scrollView.contentOffset = self.contentOffset;
+    CGSize size = self.scrollView.contentSize;
+    size.height = self.innerViewHeight.constant;
+    self.scrollView.contentSize = size;
+    self.scrollView.contentOffset = _contentOffset;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
